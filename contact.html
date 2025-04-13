@@ -6,22 +6,21 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Personal Blog - Yen Tran</title>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    
+
     <!-- Font Awesome icons -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    
+
     <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
-    
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" />
+
     <!-- Bootstrap CSS -->
     <link href="css/styles.css" rel="stylesheet" />
 
     <style>
-        /* Định dạng chung */
         body {
             font-family: 'Open Sans', sans-serif;
             margin: 0;
@@ -29,14 +28,12 @@
             line-height: 1.6;
         }
 
-        /* Căn giữa nội dung */
         .container {
             max-width: 900px;
             margin: auto;
             padding: 20px;
         }
 
-        /* Hình ảnh co giãn linh hoạt */
         img {
             max-width: 100%;
             height: auto;
@@ -44,14 +41,12 @@
             margin: 10px auto;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 10px 0;
             background: #f8f9fa;
         }
 
-        /* Responsive cho thiết bị nhỏ */
         @media screen and (max-width: 768px) {
             .navbar-nav {
                 text-align: center;
@@ -80,7 +75,8 @@
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="index.html">YEN TRAN</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -116,9 +112,33 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <p>Kết nối với tôi ngay hôm nay!</p>
-                <p>Nếu bạn muốn tìm hiểu thêm về hành trình này hoặc cần ai đó đồng hành cùng bạn, đừng ngần ngại kết nối với tôi qua Zalo.</p>
-                <img src="assets/img/zaloQR.jpg" alt="Zalo QR Code">
+                <img src="assets/img/zaloQR.jpg" alt="Zalo QR Code" />
+
+                <!-- Lời kêu gọi + CTA: Tư vấn 1-1 -->
+                <div class="mt-4 text-center">
+                    <h4 style="font-weight: bold; margin-bottom: 15px;">👉 Bạn sẵn sàng thay đổi cuộc sống tài chính của mình?</h4>
+                    <p>Hãy bắt đầu bằng cách đặt lịch tư vấn 1-1 để tìm ra hướng đi phù hợp với bạn!</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSep2B6Wbti9RsxE9GuAl2G5sWZUXyptfc0v57WWOgM-bAGPoQ/viewform?usp=header"
+                        class="btn text-white px-4 py-2"
+                        style="background: linear-gradient(45deg, #ff416c, #ff4b2b); font-weight: bold; font-size: 1.1rem; border-radius: 30px;"
+                        target="_blank">
+                        <i class="fas fa-calendar-check me-2"></i> ĐẶT HẸN TƯ VẤN 1-1
+                    </a>
+                </div>
+
+                <!-- Lời kêu gọi + CTA: Tư vấn dinh dưỡng -->
+                <div class="mt-5 text-center">
+                    <h4 style="font-weight: bold; margin-bottom: 15px;">🥗 Quan tâm đến sức khỏe và chế độ ăn uống?</h4>
+                    <p>Đặt lịch hẹn để nhận tư vấn dinh dưỡng cá nhân hoá từ chuyên gia!</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSclfUUwaSha4yUm9nWuQARceyDBu68ZhvuZRfa_F22WFAcTjA/viewform?usp=header"
+                        class="btn btn-outline-success"
+                        style="font-size: 1.05rem; padding: 10px 20px;"
+                        target="_blank">
+                        <i class="fas fa-leaf me-2"></i> ĐẶT HẸN TƯ VẤN DINH DƯỠNG
+                    </a>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -141,9 +161,8 @@
     </div>
 </footer>
 
-<!-- Bootstrap core JS -->
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS -->
 <script src="js/scripts.js"></script>
 
 </body>
