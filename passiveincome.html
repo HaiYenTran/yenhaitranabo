@@ -1,76 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Personal Blog - Yen Tran</title>
-        
-        <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        
-        <!-- Custom Google font -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
-        
-        <!-- Bootstrap icons -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-        
-        <!-- Core theme CSS (includes Bootstrap) -->
-        <link href="css/styles.css" rel="stylesheet" />
-    
-        <style>
-            /* Điều chỉnh chung */
-            body {
-                font-family: 'Plus Jakarta Sans', sans-serif;
-                margin: 0;
-                padding: 0;
-            }
-    
-            /* Điều chỉnh navbar */
-            .navbar-nav {
-                text-align: center;
-            }
-    
-            .navbar-toggler {
-                margin-bottom: 10px;
-            }
-    
-            /* Hình ảnh co giãn linh hoạt */
-            img {
-                max-width: 100%;
-                height: auto;
-                display: block;
-            }
-    
-            /* Responsive cho thiết bị nhỏ hơn */
-            @media screen and (max-width: 768px) {
-                .d-flex {
-                    flex-direction: column;
-                    align-items: center;
-                }
-    
-                .container {
-                    padding: 0 15px;
-                }
-    
-                .navbar-nav {
-                    text-align: center;
-                    width: 100%;
-                }
-    
-                .card {
-                    width: 100%;
-                    margin-bottom: 20px;
-                }
-            }
-        </style>
-    </head> 
-    <body class="d-flex flex-column h-100 bg-light">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Passive Income | Personal Blog - Yen Tran" />
+    <meta name="author" content="Yen Tran" />
+    <title>Passive Income | Personal Blog - Yen Tran</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Core theme CSS (includes Bootstrap) -->
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 32px 16px 0 16px;
+        }
+        .section-title {
+            font-size: 2.1em;
+            text-align: center;
+            color: #0064d2;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+        .card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px #0064d222;
+            padding: 28px 24px;
+            border-left: 5px solid #0064d2;
+            transition: box-shadow 0.18s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 48px #0064d238;
+        }
+        .card-title {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+        .card-desc {
+            color: #555;
+            font-size: 1.04em;
+        }
+        .card-link {
+            display: inline-block;
+            margin-top: 12px;
+            color: #0064d2;
+            font-weight: 600;
+            text-decoration: underline;
+            font-size: 1.05em;
+            transition: color 0.2s;
+        }
+        .card-link:hover {
+            color: #0051a3;
+            text-decoration: underline;
+        }
+        .post-meta {
+            color: #888;
+            font-size: 0.95em;
+            margin-top: 4px;
+        }
+        .navbar-nav { text-align: center; }
+        .navbar-toggler { margin-bottom: 10px; }
+        .navbar {
+            box-shadow: 0 4px 18px #ddd2;
+        }
+        @media (max-width:700px) {
+            .container { padding: 14px 2vw; }
+            .card { padding: 18px 10px;}
+            .section-title { font-size: 1.4em;}
+            .card-title { font-size: 1.09em; }
+        }
+    </style>
+</head>
+<body class="d-flex flex-column h-100 bg-light">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
                 <div class="container px-5">
                     <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Passive Income</span></a>
@@ -88,314 +117,53 @@
                     </div>
                 </div>
             </nav>
-            <!-- Projects Section-->
-            <section class="py-5">
-                <div class="container px-5 mb-5">
-                    <div class="text-center mb-5">
-                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Passive Income</span></h1>
-                    </div>
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-lg-11 col-xl-9 col-xxl-8">
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <h2 style="font-weight: bold; text-align: center; color: #333;">Chuyện Một Lần “Hành Động Liều Lĩnh" Đã Thay Đổi Toàn Bộ Cuộc Chơi Của Mình.</h2>
-    
-                                            <p>Có một điều mà không ai nói với mình từ đầu…</p>
-                                            <p><strong>Rằng:</strong> Muốn tạo ra kết quả đột phá – bạn phải hành động với một tốc độ “không khoan nhượng”.</p>
-                                            
-                                            <p>Nghe có vẻ hơi “gắt”, nhưng đó là cách duy nhất mình thoát khỏi cái vòng luẩn quẩn:</p>
-                                            <ul>
-                                                <li>Suy nghĩ – phân tích – chờ đợi – rồi… chẳng làm gì cả.</li>
-                                            </ul>
-                                            
-                                            <p>Mình từng như vậy đấy!</p>
-                                            <ul>
-                                                <li>Dành hàng tuần để lên plan cho một ý tưởng.</li>
-                                                <li>Mất vài tháng để học thêm vì nghĩ “chưa đủ giỏi”.</li>
-                                                <li>Chờ một ai đó ủng hộ. Chờ một thời điểm hoàn hảo.</li>
-                                            </ul>
-                                            <p><em>Kết quả? Không có kết quả nào cả. Chỉ có thêm nỗi thất vọng với chính mình.</em></p>
-                                        
-                                            <hr/>
-                                        
-                                            <p><strong>Mọi thứ thay đổi vào một buổi tối rất bình thường.</strong></p>
-                                            <p>Mình nhớ như in. Đó là ngày mình đang ngồi ở quán cà phê quen, viết dở một cái proposal cho khách hàng.</p>
-                                            <p>Lúc đó, mình đang căng thẳng, cảm thấy như mình bị tụt lại so với tất cả mọi người trên mạng.</p>
-                                            <p><em>Ngay lúc đó, một câu hỏi bật lên trong đầu:</em></p>
-                                            <blockquote style="border-left: 4px solid #ccc; padding-left: 10px; font-style: italic;">"Nếu bây giờ mày chỉ có 1 cơ hội cuối cùng để đổi đời – mày sẽ làm cái gì?"</blockquote>
-                                            
-                                            <p>Và mình hành động. Không suy nghĩ thêm. Không hỏi ai. Không cần sự đồng thuận.</p>
-                                            <p>Mình gửi proposal, chốt deal, quay video đầu tiên chia sẻ về hành trình của mình – đăng luôn lên fanpage cá nhân.</p>
-                                            
-                                            <p><strong>Từ khoảnh khắc đó, mình chọn một luật chơi khác:</strong> Hành động với tốc độ quyết liệt, không khoan nhượng mỗi ngày.</p>
-                                        
-                                            <hr/>
-                                        
-                                            <h3>“Hành động không khoan nhượng” nghĩa là gì?</h3>
-                                            <p>Không phải là hành động phá huỷ hay gây hại cho ai. Mà là:</p>
-                                            <ul>
-                                                <li>Đối mặt với sự trì hoãn</li>
-                                                <li>Vượt qua sự sợ sai</li>
-                                                <li>Ngưng cần người khác cho phép</li>
-                                            </ul>
-                                            <p>Là khi mình:</p>
-                                            <ul>
-                                                <li>Bấm nút đăng bài mà không cần suy nghĩ “có ai like không?”</li>
-                                                <li>Gọi điện cho khách hàng tiềm năng ngay cả khi tim đập thình thịch.</li>
-                                                <li>Bắt đầu dự án dù còn nhiều thứ chưa rõ ràng.</li>
-                                                <li>Nói lời từ chối với những thứ không còn phù hợp.</li>
-                                            </ul>
-                                            <p>Trong khi người khác vẫn đang:</p>
-                                            <ul>
-                                                <li>Mơ mộng</li>
-                                                <li>Lên kế hoạch</li>
-                                                <li>Cầu mong một cơ hội</li>
-                                                <li>Tìm kiếm sự công nhận</li>
-                                            </ul>
-                                            <p><strong>Mình đã chọn:</strong> Thực thi – Xây dựng – Phát triển – Mở rộng – Và... Dẫn đầu.</p>
-                                        
-                                            <hr/>
-                                        
-                                            <h3>Mình đã nhận ra một sự thật:</h3>
-                                            <p><em>“Bạn chỉ cần một hành động đủ liều lĩnh – là có thể thay đổi hoàn toàn cuộc chơi của mình.”</em></p>
-                                            <ul>
-                                                <li>Một lần gửi tin nhắn xin hợp tác.</li>
-                                                <li>Một lần ngồi xuống và viết ra mô hình kinh doanh.</li>
-                                                <li>Một video kể thật về câu chuyện của bạn.</li>
-                                                <li>Một email mời người đầu tiên vào hành trình coaching.</li>
-                                                <li>Một buổi gọi điện nói thẳng về điều bạn cần.</li>
-                                            </ul>
-                                            <p><strong>Mọi thứ mình đang có hôm nay – đều bắt đầu từ những khoảnh khắc dám hành động như vậy.</strong></p>
-                                        
-                                            <hr/>
-                                        
-                                            <h3>Nếu bạn đang ở giữa ngã ba đường...</h3>
-                                            <p>Bạn có thể đang:</p>
-                                            <ul>
-                                                <li>Có một ý tưởng chưa dám làm</li>
-                                                <li>Một mục tiêu cứ nghĩ mãi mà không bắt tay</li>
-                                                <li>Một cuộc trò chuyện cần nói nhưng cứ né tránh</li>
-                                                <li>Một sản phẩm trong đầu nhưng chưa bắt đầu phác thảo…</li>
-                                            </ul>
-                                            <p>Hãy nhớ điều này:</p>
-                                            <blockquote style="border-left: 4px solid #ccc; padding-left: 10px;">Không ai thành công vì họ làm mọi thứ đúng đắn. Họ thành công vì họ hành động trước – học sau.</blockquote>
-                                            <p><strong>Công thức rất đơn giản:</strong></p>
-                                            <ul>
-                                                <li>Hành động liên tục</li>
-                                                <li>Không lý do</li>
-                                                <li>Không chờ đợi</li>
-                                            </ul>
-                                            <p><em>Kết quả không thể ngăn cản.</em></p>
-                                        
-                                            <hr/>
-                                        
-                                            <p><strong>Bây giờ là lúc. Không phải ngày mai. Không phải khi bạn sẵn sàng.</strong></p>
-                                            <p>Chọn một việc khiến bạn sợ. Dấn thân. Làm nó. Xong luôn.</p>
-                                            <p>Vì rất có thể, chỉ cần một hành động “điên rồ” đó thôi, bạn sẽ:</p>
-                                            <ul>
-                                                <li>Có khách hàng đầu tiên.</li>
-                                                <li>Có thu nhập đầu tiên từ ý tưởng của bạn.</li>
-                                                <li>Có sự chuyển hoá đầu tiên trong chính bạn.</li>
-                                            </ul>
-                                            <p><strong>Không ai nắm bắt tương lai bằng việc ngồi yên.</strong></p>
-                                        
-                                            <hr/>
-                                        
-                                            <p><em>Mình không viết bài này để nói mình “ngầu”.</em></p>
-                                            <p>Mình viết vì mình đã từng ngồi ở vị trí của bạn – và chỉ ước gì có ai đó nói thẳng với mình:</p>
-                                            <blockquote style="border-left: 4px solid #ccc; padding-left: 10px;"><strong>“Muốn cuộc sống khác đi – thì phải hành động khác đi. Mạnh mẽ hơn. Quyết liệt hơn. Nhanh hơn.”</strong></blockquote>
-                                        
-                                            <h3 style="text-align: center; margin-top: 40px;">Let’s move!</h3>
-                                            <p style="text-align: center;"><strong>Một bước là đủ để mọi thứ đổi chiều.</strong></p>
-                                        
-                                            <p class="post-meta">
-                                                Posted by
-                                                <a href="https://www.facebook.com/mayasharedotcom">Mayashare</a>
-                                                on Apr 15, 2025
-                                            </p>
-                                        </div>                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Project Card 1-->
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <h2 class="fw-bolder">📌 LỰA CHỌN 25 - KẾT QUẢ 35</h2>
-                                            <p>Dạo gần đây, tôi có dịp gặp nhiều bạn. Nhiều người từng học đại học - cao học, từng bắt đầu sự nghiệp đầy nhiệt huyết ở tuổi 22-25 tại những công ty, tập đoàn lớn. Nhưng giờ, khi bước qua 35 - 40, nhiều người lại rơi vào tình cảnh loay hoay tìm việc mới, thậm chí chấp nhận mức lương thấp hơn trước đây.</p>
-                                               
-                                            <div class="section">
-                                                <h2>⭐️ 1. Khi kinh nghiệm không còn là lợi thế tuyệt đối</h2>
-                                                <p>Tôi từng nghĩ, chỉ cần làm tốt công việc của mình, có kinh nghiệm là sẽ ổn. Nhưng rồi tôi nhận ra, nếu chỉ làm đi làm lại một công việc quen tay, thì sau 10 năm, kinh nghiệm đó có thể không còn nhiều giá trị.</p>
-                                            </div>
-                                            
-                                            <div class="section">
-                                                <h2>⭐️ 2. Đến tuổi 35, ai có lợi thế hơn?</h2>
-                                                <p>Tôi từng hỏi một người bạn làm tuyển dụng: "Giữa một ứng viên 35 tuổi có kinh nghiệm và một ứng viên trẻ 27 tuổi, công ty sẽ ưu tiên ai?"</p>
-                                                <p>Câu trả lời không làm tôi ngạc nhiên lắm: "Chọn người linh hoạt, dễ đào tạo, ít đòi hỏi."</p>
-                                            </div>
-                                            
-                                            <div class="section">
-                                                <h2>⭐️ 3. Những người bạn của tôi đã "ngủ quên" từ khi nào?</h2>
-                                                <p>Tôi nhìn lại những người bạn của mình và thấy một mô hình khá quen thuộc:</p>
-                                                <ul>
-                                                    <li>22 tuổi, ra trường, đi làm công ty đầu tiên.</li>
-                                                    <li>24 tuổi, thấy công việc hơi nhàm chán nhưng vẫn ổn, lương đủ sống.</li>
-                                                    <li>25 tuổi, kết hôn, có con.</li>
-                                                    <li>26-30 tuổi, bận rộn với gia đình, công việc cứ thế trôi qua ngày này qua ngày khác.</li>
-                                                    <li>31-35 tuổi, bắt đầu cảm thấy áp lực vì công ty thay đổi, thị trường lao động cạnh tranh hơn.</li>
-                                                </ul>
-                                            </div>
-                                            
-                                            <div class="section">
-                                                <h2>⭐️ 4. Tôi đã nghĩ gì về tương lai của chính mình?</h2>
-                                                <p>May mắn là ở tuổi 25, tôi đã có cơ hội nhìn thấy một hướng đi khác – không phải một con đường làm giàu nhanh chóng, mà là một cách để xây dựng một dòng tiền bền vững với Amway.</p>
-                                            </div>
-                                            
-                                            <div class="section">
-                                                <h2>⭐️ 5. Không ai muốn bất ngờ rơi vào khủng hoảng ở tuổi 35</h2>
-                                                <p>Nhìn lại, có lẽ giờ đây bản thân tôi cũng đang chật vật ở tuổi 35 nếu như không mở lòng đón nhận cơ hội kinh doanh Amway.</p>
-                                            </div>
-                                            
-                                            <p>"Đừng ngủ quên khi còn trẻ. Cuộc đời không có chế độ tua lại đâu." ❤️</p>
-                                            
-                                            <p>#thiABO</p>
-                                            <p class="post-meta">
-                                                Posted by
-                                                <a href="https://www.facebook.com/ThiABOvn">Trịnh Thi</a>
-                                                on Mar 06, 2025
-                                            </p>
-                                        </div>                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Project Card 1-->
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <h2 class="fw-bolder">✨ Fulltime Family – Giá trị tuyệt vời của sự tự do ✨</h2>
-                                            <p>Hạnh phúc là khi mỗi ngày, mình có thể dành trọn vẹn thời gian cho những người mình yêu thương nhất – gia đình. ❤️</p>
-                                            <p>Không phải vội vàng thức dậy để chạy theo guồng quay công việc, không phải lỡ mất những khoảnh khắc đặc biệt của con cái hay gia đình. Mình chọn Fulltime Family – vì với mình, gia đình là nơi khởi nguồn mọi giá trị tuyệt vời nhất trong cuộc sống. 🥰🥰🥰</p>
-                                            <p>Tự do thời gian không chỉ là một đặc quyền, mà là một món quà vô giá mình trao cho chính mình và những người mình yêu thương.</p>
-                                            <p>✨ Cảm ơn cuộc sống đã cho mình lựa chọn và cơ hội để xây dựng hạnh phúc theo cách mình muốn. Bạn thì sao, bạn đang dành thời gian quý giá của mình cho điều gì?</p>
-                                            <p>Hãy luôn nhớ rằng, thời gian chính là món quà tuyệt vời nhất bạn có thể dành tặng cho gia đình. ❤️</p>      
-                                            <p class="post-meta">
-                                                Posted by
-                                                <a href="https://www.facebook.com/ThiABOvn">Trịnh Thi</a>
-                                                on November 30, 2024
-                                            </p>
-                                        </div>                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Project Card 1-->
-                            <!-- Project Card 2-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <h2 class="fw-bolder">✨ Hành trình cuộc đời ✨</h2>
-                                            <p>“Suy cho cùng, người sẽ đi hết hành trình cuộc đời này là chính mình.”</p>
-                                            <p>Trong suốt hành trình cuộc đời của mỗi người, chúng ta sẽ gặp rất nhiều người, rất nhiều điều thuận lợi giúp ta tiến lên, nhưng lắm khi cũng gặp nhiều điều bất như ý, gặp nhiều sự việc không như mình mong muốn, gặp những thách thức tưởng chừng không thể nào bước qua nỗi.</p>
-                                            <p>Lắm khi ta trách mình, rồi có khi lại trách người này, người kia, trong lòng có chút chấp niệm vì họ mà ....</p>
-                                            <p>Đó cũng là suy nghĩ hiển nhiên, không thể nào tránh khỏi. Vì ta là con người bình thường.</p>
-                                            <p>Nhưng đến cuối cùng, chỉ có chính chúng ta là người bước qua mọi chặng đường, đối mặt với những thử thách, và cảm nhận trọn vẹn ý nghĩa của cuộc đời mình.</p>
-                                            <p>Trên đường đi sẽ có người tin tưởng, phù hợp với ta mà đồng hành, lắm khi cũng có người không tin mình, đơn giản vì họ không tin, thế nên chỉ đi được một đoạn cùng nhau.</p>
-                                            <p>Suy cho cùng, chặng đường dài trước mắt chính ta sẽ là người sãi bước đến cuối cùng. Chính ta là người sẽ dành trọn thời gian của mình để thực hiện những ước mơ, hoài bão mà mình luôn khao khát.</p>
-                                            <p>Cũng chẳng thể tránh khỏi những lúc trái tim thấy buồn, nhưng hãy giữ cho tâm trí luôn có được sự tích cực.</p>
-                                            <p>Hít một hơi dài, pour một tách cafe với mấy hạt cà mình mê, nhấm nháp chút gin tonic hoà quyện với phô-mai béo ngậy, xem một bộ phim nhiều cảm xúc, ngủ một giấc thật sâu.</p>
-                                            <p>Rồi mai, ta lại bước tiếp.</p>
-                                            <p>Vì cuối cùng, đi hết hành trình cuộc đời này không ai khác, là chính ta.</p>
-                                            <p>🌟</p>    
-                                            <p class="post-meta">
-                                                Posted by
-                                                <a href="https://www.facebook.com/ThiABOvn">Trịnh Thi</a>
-                                                on December 26, 2024
-                                            </p>
-                                        </div>                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Project Card 2-->
-                            <!-- Project Card 3-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <h2 class="fw-bolder">✨11 Cách Thức Tỉnh Tiềm Năng Bên Trong Bạn✨</h2>
-                                            <p>Bạn có từng tự hỏi: Làm thế nào để khám phá và đánh thức sức mạnh tiềm ẩn bên trong mình?</p>
-                                            <p>Dù bạn đang theo đuổi sự nghiệp, kinh doanh hay chỉ đơn giản là muốn hoàn thiện bản thân, những thói quen nhỏ hàng ngày có thể tạo nên thay đổi lớn lao. Trong bài viết này, mình sẽ chia sẻ 11 cách thực tế mà mình đã áp dụng để vừa phát triển bản thân, vừa xây dựng cuộc sống ý nghĩa hơn.</p>
-                                            <p class="post-meta">
-                                                    Chọn vào link để đọc tiếp: 
-                                                    <a href="https://thiabo.com/11-cach-thuc-tinh-tiem-nang-ben-trong-ban/">https://thiabo.com/11-cach-thuc-tinh-tiem-nang-ben-trong-ban/</a>
-                                            </p>
-                                            <p class="post-meta">
-                                                    Posted by
-                                                    <a href="https://www.facebook.com/ThiABOvn">Trịnh Thi</a>
-                                                    on December 12, 2024
-                                            </p>
-                                        </div> 
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Project Card 3-->
-                            <!-- Project Card 4-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <h2 class="fw-bolder">✨Kyle Maynard và Hành Trình Chinh Phục Giới Hạn Bản Thân: Bài Học về Thái Độ, Niềm Tin, Cam Kết và Quyết Tâm✨</h2>
-                                            <p>Thái Độ: Tâm Thế Là Nền Tảng</p>
-                                            <p>Niềm Tin: Động Lực Thúc Đẩy</p>
-                                            <p>Cam Kết: Hành Động Mạnh Mẽ</p>
-                                            <p>Quyết Tâm: Chìa Khóa Vượt Qua Mọi Rào Cản</p>
-                                            <p>Câu Hỏi Cho Bản Thân: Bạn Sẽ Chọn Đối Mặt Với Thử Thách Ra Sao?</p>
-                                            <p class="post-meta">
-                                                    Chọn vào link để đọc tiếp: 
-                                                    <a href="https://thiabo.com/kyle-maynard-va-hanh-trinh-chinh-phuc-gioi-han-ban-than-bai-hoc-ve-thai-do-niem-tin-cam-ket-va-quyet-tam/">https://thiabo.com/kyle-maynard-va-hanh-trinh-chinh-phuc-gioi-han-ban-than-bai-hoc-ve-thai-do-niem-tin-cam-ket-va-quyet-tam/</a>
-                                            </p>
-                                            <p class="post-meta">
-                                                    Posted by
-                                                    <a href="https://www.facebook.com/ThiABOvn">Trịnh Thi</a>
-                                                    on December 08, 2024
-                                            </p>
-                                        </div> 
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Project Card 4-->
-                        </div>
-                    </div>
+        <!-- Main section -->
+        <div class="container">
+            <h1 class="section-title">Chuỗi Bài Viết: Passive Income &amp; Tư Duy Chủ Động Cuộc Sống</h1>
+            <div class="card-list">
+                <div class="card">
+                    <div class="card-title">1. Chuyện Một Lần “Hành Động Liều Lĩnh" Đã Thay Đổi Toàn Bộ Cuộc Chơi Của Mình</div>
+                    <div class="card-desc">Bài học về “hành động không khoan nhượng” và bước ngoặt thay đổi hoàn toàn kết quả của mình, dành cho ai đang mắc kẹt với sự trì hoãn.</div>
+                    <a class="card-link" href="passiveincome1.html">Đọc bài này →</a>
                 </div>
-            </section>
-            <!-- Call to action section-->
-            <section class="py-5 bg-gradient-primary-to-secondary text-white">
-                <div class="container px-5 my-5">
-                    <div class="text-center">
-                        <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
-                        <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">Contact me</a>
-                    </div>
+                <div class="card">
+                    <div class="card-title">2. LỰA CHỌN 25 - KẾT QUẢ 35</div>
+                    <div class="card-desc">Những suy ngẫm về tuổi trẻ, kinh nghiệm, sự linh hoạt và xây dựng dòng tiền bền vững để không bị “giật mình” ở tuổi 35.</div>
+                    <a class="card-link" href="passiveincome2.html">Đọc bài này →</a>
                 </div>
-            </section>
-        </main>
-           <!-- Footer-->
-           <footer class="bg-white py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="small text-center text-muted fst-italic">Copyright &copy; YEN HAI TRAN</div>
+                <div class="card">
+                    <div class="card-title">3. Fulltime Family – Giá trị tuyệt vời của sự tự do</div>
+                    <div class="card-desc">Chọn tự do thời gian, trọn vẹn cho gia đình và niềm vui mỗi ngày – tại sao mình chọn mô hình “fulltime family”.</div>
+                    <a class="card-link" href="passiveincome3.html">Đọc bài này →</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">4. Hành trình cuộc đời</div>
+                    <div class="card-desc">Trải nghiệm, thử thách, những điều nhận ra trên hành trình, và ý nghĩa của việc làm chủ cuộc sống mình.</div>
+                    <a class="card-link" href="passiveincome4.html">Đọc bài này →</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">5. 11 Cách Thức Tỉnh Tiềm Năng Bên Trong Bạn</div>
+                    <div class="card-desc">Những thói quen, chiến lược thực tế để phát triển bản thân, xây dựng cuộc sống ý nghĩa hơn mỗi ngày.</div>
+                    <a class="card-link" href="passiveincome5.html">Đọc bài này →</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">6. Kyle Maynard và Hành Trình Chinh Phục Giới Hạn Bản Thân</div>
+                    <div class="card-desc">Bài học về thái độ, niềm tin, cam kết và quyết tâm từ câu chuyện vượt giới hạn của Kyle Maynard.</div>
+                    <a class="card-link" href="passiveincome6.html">Đọc bài này →</a>
                 </div>
             </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-white py-4 mt-auto" style="margin-top:56px;">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="small text-center text-muted fst-italic">Copyright &copy; YEN HAI TRAN</div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
 </html>
