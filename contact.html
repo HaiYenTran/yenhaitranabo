@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Personal Blog - Yen Tran</title>
+    <title>Contact | Yen Tran</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -26,45 +26,82 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            background: #fafbfc;
         }
-
         .container {
             max-width: 900px;
             margin: auto;
             padding: 20px;
         }
-
         img {
-            max-width: 100%;
+            max-width: 220px;
             height: auto;
             display: block;
-            margin: 10px auto;
+            margin: 16px auto 20px auto;
+            border-radius: 18px;
+            border: 2px solid #e9ecef;
+            box-shadow: 0 4px 24px 0 #eee;
         }
-
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background: #f8f9fa;
+        .page-heading h1 {
+            color: #D2691E;
+            font-weight: 800;
+            letter-spacing: 2px;
         }
-
-        @media screen and (max-width: 768px) {
-            .navbar-nav {
-                text-align: center;
-                width: 100%;
-            }
-
+        .page-heading .subheading {
+            color: #777;
+            font-size: 1.25rem;
+            font-style: italic;
+        }
+        .cta-btn {
+            font-weight: bold;
+            font-size: 1.12rem;
+            border-radius: 30px;
+            padding: 12px 32px;
+            margin-bottom: 8px;
+            margin-top: 6px;
+            transition: all 0.25s;
+            box-shadow: 0 2px 8px 0 #ffe2e2;
+        }
+        .cta-btn-main {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: #fff !important;
+            border: none;
+        }
+        .cta-btn-main:hover {
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            color: #fff;
+        }
+        .cta-btn-outline {
+            background: #fff;
+            border: 2px solid #43bc70;
+            color: #2d7a40;
+        }
+        .cta-btn-outline:hover {
+            background: #43bc70;
+            color: #fff;
+            border-color: #43bc70;
+        }
+        .contact-block {
+            margin-bottom: 44px;
+            padding: 28px 22px 18px 22px;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 2px 14px 0 #eee;
+        }
+        @media (max-width: 768px) {
             .container {
-                padding: 0 15px;
+                padding: 0 6px;
             }
-
             .page-heading h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
+                margin-top: 8px;
             }
-
-            p {
-                font-size: 1rem;
-                text-align: justify;
-                padding: 0 10px;
+            .contact-block {
+                padding: 16px 6px 10px 6px;
+                margin-bottom: 28px;
+            }
+            img {
+                max-width: 150px;
             }
         }
     </style>
@@ -94,13 +131,13 @@
 </nav>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('assets/img/contact-bg.jpg')">
-    <div class="container position-relative px-4 px-lg-5">
+<header class="masthead" style="background-image: url('assets/img/contact-bg.jpg'); background-size: cover; background-position: center;">
+    <div class="container position-relative px-4 px-lg-5" style="padding-top:32px;padding-bottom:26px;">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="page-heading">
-                    <h1>Contact Me</h1>
-                    <span class="subheading">Have questions? I have answers.</span>
+                <div class="page-heading text-center">
+                    <h1 style="color: #fff;">Contact Me</h1>
+                    <span class="subheading">Bạn có câu hỏi, hay muốn kết nối? Tôi luôn sẵn sàng lắng nghe!</span>
                 </div>
             </div>
         </div>
@@ -112,32 +149,33 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <img src="assets/img/zaloQR.jpg" alt="Zalo QR Code" />
 
-                <!-- Lời kêu gọi + CTA: Tư vấn 1-1 -->
-                <div class="mt-4 text-center">
-                    <h4 style="font-weight: bold; margin-bottom: 15px;">👉 Bạn sẵn sàng thay đổi cuộc sống tài chính của mình?</h4>
-                    <p>Hãy bắt đầu bằng cách đặt lịch tư vấn 1-1 để tìm ra hướng đi phù hợp với bạn!</p>
+                <!-- QR Code Zalo -->
+                <img src="assets/img/zaloQR.jpg" alt="Kết nối Zalo - Yen Tran" />
+
+                <!-- CTA 1: Tư vấn 1-1 -->
+                <div class="contact-block text-center">
+                    <h4 style="font-weight: bold; margin-bottom: 16px;">👉 Bạn sẵn sàng thay đổi cuộc sống tài chính của mình?</h4>
+                    <p>Bắt đầu bằng việc đặt lịch tư vấn 1-1. Tìm ra hướng đi phù hợp & bắt tay hành động từ hôm nay!</p>
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSep2B6Wbti9RsxE9GuAl2G5sWZUXyptfc0v57WWOgM-bAGPoQ/viewform?usp=header"
-                        class="btn text-white px-4 py-2"
-                        style="background: linear-gradient(45deg, #ff416c, #ff4b2b); font-weight: bold; font-size: 1.1rem; border-radius: 30px;"
-                        target="_blank">
+                        class="cta-btn cta-btn-main"
+                        target="_blank"
+                        rel="noopener">
                         <i class="fas fa-calendar-check me-2"></i> ĐẶT HẸN TƯ VẤN 1-1
                     </a>
                 </div>
 
-                <!-- Lời kêu gọi + CTA: Tư vấn dinh dưỡng -->
-                <div class="mt-5 text-center">
-                    <h4 style="font-weight: bold; margin-bottom: 15px;">🥗 Quan tâm đến sức khỏe và chế độ ăn uống?</h4>
-                    <p>Đặt lịch hẹn để nhận tư vấn dinh dưỡng cá nhân hoá từ chuyên gia!</p>
+                <!-- CTA 2: Tư vấn dinh dưỡng -->
+                <div class="contact-block text-center">
+                    <h4 style="font-weight: bold; margin-bottom: 16px;">🥗 Muốn cải thiện sức khỏe & chế độ ăn uống?</h4>
+                    <p>Đặt lịch để nhận tư vấn dinh dưỡng cá nhân hóa từ chuyên gia - phù hợp với mục tiêu và phong cách sống của bạn.</p>
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSclfUUwaSha4yUm9nWuQARceyDBu68ZhvuZRfa_F22WFAcTjA/viewform?usp=header"
-                        class="btn btn-outline-success"
-                        style="font-size: 1.05rem; padding: 10px 20px;"
-                        target="_blank">
+                        class="cta-btn cta-btn-outline"
+                        target="_blank"
+                        rel="noopener">
                         <i class="fas fa-leaf me-2"></i> ĐẶT HẸN TƯ VẤN DINH DƯỠNG
                     </a>
                 </div>
-
 
             </div>
         </div>
@@ -147,9 +185,9 @@
 <!-- Footer -->
 <footer class="border-top">
     <div class="container">
-        <ul class="list-inline text-center">
+        <ul class="list-inline text-center mb-2">
             <li class="list-inline-item">
-                <a href="https://www.facebook.com/haiyen.tran2">
+                <a href="https://www.facebook.com/haiyen.tran2" target="_blank" rel="noopener">
                     <span class="fa-stack fa-lg">
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
