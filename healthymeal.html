@@ -1,311 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Personal Blog - Yen Tran</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Custom Google font-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <style>
-            /* Bố cục trên thiết bị lớn */
-            body {
-                font-family: 'Plus Jakarta Sans', sans-serif;
-                margin: 0;
-                padding: 0;
-            }
-    
-            /* Điều chỉnh navbar */
-            .navbar-nav {
-                text-align: center;
-            }
-            
-            .navbar-toggler {
-                margin-bottom: 10px;
-            }
-    
-            /* Hình ảnh co giãn linh hoạt */
-            img {
-                max-width: 100%;
-                height: auto;
-                display: block;
-            }
-    
-            /* Responsive cho thiết bị nhỏ hơn */
-            @media screen and (max-width: 768px) {
-                .d-flex {
-                    flex-direction: column;
-                    align-items: center;
-                }
-    
-                .container {
-                    padding: 0 15px;
-                }
-    
-                .navbar-nav {
-                    text-align: center;
-                    width: 100%;
-                }
-    
-                .card {
-                    width: 100%;
-                    margin-bottom: 20px;
-                }
-            }
-        </style>
-    </head>  
-    <body class="d-flex flex-column h-100 bg-light">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Healthy Meal</span></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="events.html">Events</a></li>
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthylifestyle.html">Healthy LifeStyle</a></li>
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthymeal.html">Healthy Meal</a></li>
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="passiveincome.html">Passive Income</a></li>
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Healthy Meal - Personal Blog of Yen Tran" />
+    <meta name="author" content="Yen Tran" />
+    <title>Healthy Meal | Yen Tran</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;900&amp;display=swap" rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+        }
+        .container {
+            max-width: 1080px;
+            margin: auto;
+            padding: 32px 14px 0 14px;
+        }
+        .display-5 {
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #0064d2;
+        }
+        .card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #0064d230;
+            margin-bottom: 28px;
+            border: none;
+            transition: box-shadow 0.16s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 40px #0064d23a;
+        }
+        .card-body {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 32px 18px;
+        }
+        .card-body > div {
+            flex: 1;
+        }
+        .card-body img {
+            border-radius: 12px;
+            box-shadow: 0 1px 8px #ddd;
+            transition: transform 0.18s;
+            max-width: 180px;
+            min-width: 110px;
+            margin-left: 16px;
+        }
+        .card:hover .card-body img {
+            transform: scale(1.04);
+        }
+        .card h2 {
+            font-size: 1.16em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .card a {
+            color: #0064d2;
+            text-decoration: none;
+        }
+        .card a:hover h2 {
+            color: #0950a2;
+            text-decoration: underline;
+        }
+        .card p {
+            color: #555;
+            font-size: 1.04em;
+            margin-bottom: 0;
+        }
+        @media (max-width: 900px) {
+            .container { max-width: 99vw; }
+        }
+        @media (max-width: 700px) {
+            .container { padding: 8px 1vw; }
+            .card-body { flex-direction: column; padding: 20px 5px;}
+            .card-body img { margin-left: 0; margin-top: 14px; max-width: 99vw; }
+        }
+    </style>
+</head>
+<body class="d-flex flex-column h-100 bg-light">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">YEN TRAN</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="events.html">Events</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthylifestyle.html">Healthy LifeStyle</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4 active" href="healthymeal.html">Healthy Meal</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="passiveincome.html">Passive Income</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+                    </ul>
                 </div>
-            </nav>
-            <!-- Projects Section-->
-            <section class="py-5">
-                <div class="container px-5 mb-5">
-                    <div class="text-center mb-5">
-                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Healthy Meal</span></h1>
+            </div>
+        </nav>
+        <!-- Projects Section-->
+        <section class="py-5">
+            <div class="container mb-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bolder mb-0">Healthy Meal</h1>
+                </div>
+                <!-- List of Cards -->
+                <div>
+                    <!-- Card 1 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <a href="Buoisangdinhduong.html"><h2>Buổi sáng dinh dưỡng và Những điều cần biết</h2></a>
+                                <p>Chọn vào để tìm hiểu thêm...</p>
+                            </div>
+                            <img src="assets/img/ansangvaloiichsuckhoe.webp" alt="Buổi sáng dinh dưỡng">
+                        </div>
                     </div>
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-lg-11 col-xl-9 col-xxl-8">
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <a href="Buoisangdinhduong.html">
-                                                <h2 class="fw-bolder">Buổi sáng dinh dưỡng và Những điều cần biết </h2>
-                                                <p>Chọn vào để tìm hiểu thêm...</p>
-                                            </a>
-                                         </div>
-                                        <img class="img-fluid" src="assets/img/ansangvaloiichsuckhoe.webp" alt="Italian Trulli" style="width:300px;height:300px;">
-                                    </div>
-                                </div>
+                    <!-- Card 2 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <a href="Hatchia.html"><h2>Hạt Chia – Sức Mạnh Như Hổ!</h2></a>
+                                <p>Chọn vào để tìm hiểu thêm...</p>
                             </div>
-                            <!-- Project Card 1-->
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <a href="Hatchia.html">
-                                                <h2 class="fw-bolder">Hạt Chia – Sức Mạnh Như Hổ!</h2>
-                                                <p>Chọn vào để tìm hiểu thêm...</p>
-                                            </a>
-                                         </div>
-                                        <img class="img-fluid" src="assets/img/hatchia.webp" alt="Italian Trulli" style="width:300px;height:300px;">
-                                    </div>
-                                </div>
+                            <img src="assets/img/hatchia.webp" alt="Hạt Chia">
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <a href="CheDoAn.html"><h2>📊 Bảng So Sánh Các Chế Độ Ăn</h2></a>
+                                <p>Chọn vào để tìm hiểu thêm...</p>
                             </div>
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <a href="CheDoAn.html">
-                                                <h2 class="fw-bolder">📊 BẢNG SO SÁNH CÁC CHẾ ĐỘ ĂN</h2>
-                                                <p>Chọn vào để tìm hiểu thêm...</p>
-                                            </a>
-                                         </div>
-                                        <img class="img-fluid" src="assets/img/harvard-healthy-plate.png" alt="Italian Trulli" style="width:400px;height:300px;">
-                                    </div>
-                                </div>
+                            <img src="assets/img/harvard-healthy-plate.png" alt="Chế Độ Ăn">
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <a href="Khoailang2.html"><h2>Giảm cân thông minh với mẹo nhỏ từ… củ khoai!</h2></a>
+                                <p>Chọn vào để tìm hiểu thêm...</p>
                             </div>
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <a href="Khoailang2.html">
-                                                <h2 class="fw-bolder">Giảm cân thông minh với mẹo nhỏ từ… củ khoai! </h2>
-                                                <p>Chọn vào để tìm hiểu thêm...</p>
-                                            </a>
-                                         </div>
-                                        <img class="img-fluid" src="assets/img/20250408_2013_Tinh Bột Kháng Khoai Lang.png" alt="Italian Trulli" style="width:400px;height:300px;">
-                                    </div>
-                                </div>
+                            <img src="assets/img/20250408_2013_Tinh Bột Kháng Khoai Lang.png" alt="Khoai lang tinh bột kháng">
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <a href="Khoailang.html"><h2>🥔🍠 Giữa Các Cách Sơ Chế Khoai, Nên Dùng Loại Nào? – So Sánh Chi Tiết!</h2></a>
+                                <p>Chọn vào để tìm hiểu thêm...</p>
                             </div>
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <a href="Khoailang.html">
-                                                <h2 class="fw-bolder">🥔🍠 Giữa Các Cách Sơ Chế Khoai, Nên Dùng Loại Nào? – So Sánh Chi Tiết! </h2>
-                                                <p>Chọn vào để tìm hiểu thêm...</p>
-                                            </a>
-                                         </div>
-                                        <img class="img-fluid" src="assets/img/khoai-lang.jpg" alt="Italian Trulli" style="width:400px;height:300px;">
-                                    </div>
-                                </div>
+                            <img src="assets/img/khoai-lang.jpg" alt="Sơ chế khoai">
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <a href="Vinhua.html"><h2>🚨 Bạn Đang Nuốt Nhựa Mỗi Ngày Mà Không Hề Biết! 🚨</h2></a>
+                                <p>Chọn vào để tìm hiểu thêm...</p>
                             </div>
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <a href="Vinhua.html">
-                                                <h2 class="fw-bolder">🚨 BẠN ĐANG NUỐT NHỰA MỖI NGÀY MÀ KHÔNG HỀ BIẾT! 🚨 </h2>
-                                                <p>Chọn vào để tìm hiểu thêm...</p>
-                                            </a>
-                                         </div>
-                                        <img class="img-fluid" src="assets/img/vinhua.jpg" alt="Italian Trulli" style="width:400px;height:300px;">
-                                    </div>
-                                </div>
+                            <img src="assets/img/vinhua.jpg" alt="Vi nhựa trong thực phẩm">
+                        </div>
+                    </div>
+                    <!-- Card 7 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <a href="HoaChatTrongSanPham.html"><h2>Hóa Chất Trong Sản Phẩm Hàng Ngày – Bạn Có Đang Tiếp Xúc?</h2></a>
+                                <p>Chọn vào để tìm hiểu thêm...</p>
                             </div>
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <a href="HoaChatTrongSanPham.html">
-                                                <h2 class="fw-bolder">HÓA CHẤT TRONG SẢN PHẨM HÀNG NGÀY – BẠN CÓ ĐANG TIẾP XÚC MỖI NGÀY MÀ KHÔNG BIẾT? ⚠️🧴</h2>
-                                                <p>Chọn vào để tìm hiểu thêm...</p>
-                                            </a>
-                                         </div>
-                                        <img class="img-fluid" src="assets/img/hoachattrongsanpham.jpeg" alt="Italian Trulli" style="width:400px;height:300px;">
-                                    </div>
-                                </div>
+                            <img src="assets/img/hoachattrongsanpham.jpeg" alt="Hóa chất trong sản phẩm">
+                        </div>
+                    </div>
+                    <!-- Card 8 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <a href="NuocDauDo.html"><h2>Nước Đậu – “Lá Chắn” Tự Nhiên Cho Hệ Hô Hấp 💨</h2></a>
+                                <p>Chọn vào để tìm hiểu thêm...</p>
                             </div>
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <a href="NuocDauDo.html">
-                                                <h2 class="fw-bolder">NƯỚC ĐẬU – “LÁ CHẮN” TỰ NHIÊN CHO HỆ HÔ HẤP 💨</h2>
-                                                <p>Chọn vào để tìm hiểu thêm...</p>
-                                            </a>
-                                         </div>
-                                        <img class="img-fluid" src="assets/img/nuocdaudo.webp" alt="Italian Trulli" style="width:400px;height:300px;">
-                                    </div>
-                                </div>
+                            <img src="assets/img/nuocdaudo.webp" alt="Nước đậu đỏ">
+                        </div>
+                    </div>
+                    <!-- Card 9 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <a href="DocToTrongCoThe.html"><h2>Những Chất Khi Chuyển Hóa Sẽ Sinh Ra Nhiều "Chất Dơ" (Độc Tố) Trong Cơ Thể 🧪🚨</h2></a>
+                                <p>Chọn vào để tìm hiểu thêm...</p>
                             </div>
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <a href="DocToTrongCoThe.html">
-                                                <h2 class="fw-bolder">Những Chất Khi Chuyển Hóa Sẽ Sinh Ra Nhiều "Chất Dơ" (Độc Tố) Trong Cơ Thể 🧪🚨</h2>
-                                                <p>Chọn vào để tìm hiểu thêm...</p>
-                                            </a>
-                                         </div>
-                                        <img class="img-fluid" src="assets/img/nhung_dau_hieu_co_the.webp" alt="Italian Trulli" style="width: 400px;height:300px;">
-                                    </div>
-                                </div>
+                            <img src="assets/img/nhung_dau_hieu_co_the.webp" alt="Độc tố trong cơ thể">
+                        </div>
+                    </div>
+                    <!-- Card 10 -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <a href="MAYLOCNUOC.html"><h2>💙 Máy lọc nước New eSpring – Những điều đáng nhớ 💙</h2></a>
+                                <p>Chọn vào để tìm hiểu thêm...</p>
                             </div>
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <a href="MAYLOCNUOC.html">
-                                                <h2 class="fw-bolder">💙Máy lọc nước New eSpring – Những điều đáng nhớ💙</h2>
-                                                <p>Chọn vào để tìm hiểu thêm...</p>
-                                            </a>
-                                         </div>
-                                        <img class="img-fluid" src="assets/img/mayloc1.jpg" alt="Italian Trulli" style="width:300px;height:300px;">
-                                    </div>
-                                </div>
+                            <img src="assets/img/mayloc1.jpg" alt="Máy lọc nước eSpring">
+                        </div>
+                    </div>
+                    <!-- Card 11: Máy lọc không khí -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <h2>Máy lọc không khí Atmosphere</h2>
+                                <p class="post-meta">
+                                    <a href="https://www.amway.com.vn/vn/p/124746">Máy lọc không khí ATMOSPHERE MINI™</a>
+                                </p>
+                                <p class="post-meta">
+                                    Link 1: <a href="https://www.youtube.com/watch?v=FFxkgavClFo">Giới Thiệu Máy Lọc Không Khí Amway Atmosphere Mini - Vu Hoang Tam</a>
+                                </p>
+                                <p class="post-meta">
+                                    Link 2: <a href="https://www.youtube.com/watch?v=HDpuBzsHh4w">Giờ mới biết có máy lọc không khí lọc được bụi siêu nhỏ 0.0024 micromet: Atmosphere Mini - Tony Phùng</a>
+                                </p>
                             </div>
-                            <!-- Project Card 2-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <h2 class="fw-bolder">Máy lọc không khí Atmosphere</h2>
-                                            <p class="post-meta">
-                                                <a href="https://www.amway.com.vn/vn/p/124746">Máy lọc không khí ATMOSPHERE MINI™</a>
-                                            </p>
-                                            <p class="post-meta">
-                                                Link 1: 
-                                                <a href="https://www.youtube.com/watch?v=FFxkgavClFo">Giới Thiệu Máy Lọc Không Khí Amway Atmosphere Mini - Vu Hoang Tam</a>
-                                            </p>
-                                            <p class="post-meta">
-                                                Link 2: 
-                                                <a href="https://www.youtube.com/watch?v=HDpuBzsHh4w">Giờ mới biết có máy lọc không khí lọc được bụi siêu nhỏ 0.0024 micromet: Atmosphere Mini - Tony Phùng</a>
-                                            </p>
-                                        </div>
-                                        <img class="img-fluid" src="assets/img/maylockhongkhi1.jpeg" alt="Italian Trulli" style="width:300px;height:300px;">
-                                    </div>
-                                </div>
+                            <img src="assets/img/maylockhongkhi1.jpeg" alt="Máy lọc không khí Atmosphere">
+                        </div>
+                    </div>
+                    <!-- Card 12: FFIT Mentor -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <h2>FFIT Mentor: Những câu chuyện giảm cân</h2>
+                                <p>Coming soon ...</p>
                             </div>
-                            <!-- End Project Card 2-->
-                            <!-- Project Card 2-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <h2 class="fw-bolder">FFIT Mentor: Những câu chuyện giảm cân</h2>
-                                            <p>comming soon ...</p>
-                                        </div>
-                                        <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
-                                    </div>
-                                </div>
+                            <img src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
+                        </div>
+                    </div>
+                    <!-- Card 13: Next Item -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <h2>Next item</h2>
+                                <p>Coming soon ...</p>
                             </div>
-                            <!-- End Project Card 2-->
-                            <!-- Project Card 2-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <h2 class="fw-bolder">Next item</h2>
-                                            <p>comming soon ...</p>
-                                        </div>
-                                        <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Project Card 2-->
+                            <img src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- Call to action section-->
-            <section class="py-5 bg-gradient-primary-to-secondary text-white">
-                <div class="container px-5 my-5">
-                    <div class="text-center">
-                        <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
-                        <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">Contact me</a>
-                    </div>
-                </div>
-            </section>
-        </main>
-         <!-- Footer-->
-         <footer class="bg-white py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="small text-center text-muted fst-italic">Copyright &copy; YEN HAI TRAN</div>
+            </div>
+        </section>
+        <!-- Call to action section-->
+        <section class="py-5 bg-gradient-primary-to-secondary text-white">
+            <div class="container px-5 my-5">
+                <div class="text-center">
+                    <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
+                    <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">Contact me</a>
                 </div>
             </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+        </section>
+    </main>
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="small text-center text-muted fst-italic">Copyright &copy; YEN HAI TRAN</div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
 </html>
