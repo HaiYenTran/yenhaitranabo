@@ -73,7 +73,7 @@
             color: #009986;
             margin-bottom: 6px;
         }
-        .btn-back {
+        .btn-back, .btn-mentor {
             display: inline-block;
             margin-bottom: 18px;
             padding: 9px 20px;
@@ -85,9 +85,15 @@
             font-size: 1.01em;
             cursor: pointer;
             text-decoration: none;
+            margin-right: 14px;
         }
-        .btn-back:hover {
-            background: linear-gradient(90deg,#0d7b57 90%,#28e4c3 100%);
+        .btn-mentor {
+            background: linear-gradient(90deg,#62d882 85%,#acf9cc 100%);
+            color: #086a38;
+        }
+        .btn-back:hover, .btn-mentor:hover {
+            opacity: 0.85;
+            box-shadow: 0 2px 14px #19be8f24;
         }
         /* Lightbox styles */
         .lightbox-bg {
@@ -128,11 +134,78 @@
             .gallery img {max-width: 96vw;}
             .lightbox-img {max-width: 99vw;}
         }
+        .ffit-intro {
+            background: #f8fbff;
+            border-radius: 11px;
+            padding: 24px 15px;
+            box-shadow: 0 2px 12px #82daf811;
+            margin-bottom: 28px;
+        }
+        .ffit-intro h3 {
+            color: #0d6efd;
+            font-weight: 700;
+            margin: 0 0 7px 0;
+        }
+        .ffit-intro .btn {
+            background: linear-gradient(90deg,#f857a6,#ff5858);
+            color: #fff;
+            font-weight: 600;
+            border-radius: 24px;
+            padding: 8px 25px;
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .ffit-intro .btn:hover {
+            background: linear-gradient(90deg,#ff5858,#f857a6);
+            color: #fff;
+        }
+        .choose {
+            text-align: center;
+            margin-bottom: 25px;
+        }
     </style>
 </head>
+<!-- Nút về đầu trang -->
+<button id="goTopBtn" title="Về đầu trang" style="
+    position: fixed;
+    right: 24px;
+    bottom: 32px;
+    z-index: 99999;
+    background: linear-gradient(90deg,#00b897,#42e6c2);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 2px 16px #0099863b;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    cursor: pointer;
+    transition: background 0.2s;
+">
+    ↑
+</button>
+<script>
+    // Ẩn/hiện nút khi cuộn trang
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('goTopBtn');
+        if (window.scrollY > 300) btn.style.display = 'flex';
+        else btn.style.display = 'none';
+    });
+    // Click để về đầu trang
+    document.getElementById('goTopBtn').onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+</script>
 <body>
     <div class="container">
-        <a href="index.html" class="btn-back">&larr; Quay về Trang chủ</a>
+        <div class="choose">
+            <a href="index.html" class="btn-back">&larr; Quay về Trang chủ</a>
+            <a href="khoffit.html" class="btn-mentor">Kho mentor F.FIT giảm cân thành công</a>
+        </div>
         <h1>F.FIT – Phương pháp giảm mỡ khoa học</h1>
         <div class="desc">
             F.FIT là phương pháp giảm mỡ khoa học và hiệu quả dựa trên sự hiểu biết về dinh dưỡng từ các thức ăn chúng ta thu nạp vào người, đồng thời hiểu cơ chế chuyển hóa trong cơ thể để điều tiết dinh dưỡng bữa ăn hợp lý, đủ chất và hiệu quả.
@@ -146,10 +219,10 @@
             </ol>
         </div>
         <!-- Section dẫn tới nhật ký cá nhân My F.FIT -->
-        <div class="ffit-intro mb-4" style="background: #f8fbff; border-radius: 11px; padding: 24px 15px; box-shadow: 0 2px 12px #82daf811;">
-            <h3 style="color:#0d6efd; font-weight:700;"><i class="fas fa-user-check"></i> Nhật ký My F.FIT cá nhân</h3>
+        <div class="ffit-intro mb-4">
+            <h3><i class="fas fa-user-check"></i> Nhật ký My F.FIT cá nhân</h3>
             <p>Hành trình thay đổi thực sự của mình – theo dõi kết quả, lưu giữ hình ảnh từng giai đoạn, truyền cảm hứng cho chính bạn.</p>
-            <a href="myfit.html" class="btn" style="margin-left:2px;background:linear-gradient(90deg,#f857a6,#ff5858);color:#fff;font-weight:600; border-radius:24px; padding:8px 25px;">Xem hành trình My F.FIT cá nhân →</a>
+            <a href="myfit.html" class="btn">Xem hành trình My F.FIT cá nhân →</a>
         </div>
         <div class="gallery-title">Thư viện hình ảnh F.FIT (slide minh họa – tài liệu chia sẻ)</div>
         <div class="gallery" id="ffitGallery">
@@ -163,56 +236,38 @@
             <div class="lightbox-caption" id="lightboxCaption"></div>
         </div>
     </div>
+    <!-- FontAwesome for icon -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
     <script>
-        // Danh sách các số ảnh cần bỏ qua
-        const skip = [2,3,4,6,12,17,19,53];
-        const galleryDiv = document.getElementById('ffitGallery');
-        for(let i = 1; i <= 176; i++) {
-            if (skip.includes(i)) continue;
+        // Danh sách các file ảnh cần hiển thị
+        const imgList = [
+            130, 132, 131, 143, 170, 175, 176, 155, 136, 133, 91, 70, 52, 8
+        ];
+        // Tạo HTML cho gallery
+        const gallery = document.getElementById('ffitGallery');
+        imgList.forEach(function(num, idx) {
             let img = document.createElement('img');
-            img.src = `assets/img/ffit/${i}.png`;
-            img.alt = `F.FIT Slide #${i}`;
-            img.style.cursor = "pointer";
-            img.setAttribute('data-num', i);
-            let wrap = document.createElement('div');
-            wrap.style.display = 'flex';
-            wrap.style.flexDirection = 'column';
-            wrap.style.alignItems = 'center';
-            // Số thứ tự nhỏ bên dưới ảnh
-            let num = document.createElement('div');
-            num.className = "img-num";
-            num.innerText = `#${i}`;
-            wrap.appendChild(img);
-            wrap.appendChild(num);
-            galleryDiv.appendChild(wrap);
+            img.src = `assets/img/ffit/${num}.png`;
+            img.alt = `F.FIT Slide #${num}`;
+            img.loading = "lazy";
+            img.style.background = "#eafcf5";
+            img.onclick = function() {
+                openLightbox(img.src, `Hình minh họa #${num}`);
+            };
+            gallery.appendChild(img);
+        });
+
+        // Lightbox
+        function openLightbox(src, caption) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxCaption').innerText = caption;
+            document.getElementById('lightboxBg').classList.add('active');
         }
-
-        // Lightbox function
-        const lightboxBg = document.getElementById('lightboxBg');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxCaption = document.getElementById('lightboxCaption');
-
-        galleryDiv.addEventListener('click', function(e) {
-            if (e.target.tagName === 'IMG') {
-                lightboxImg.src = e.target.src;
-                lightboxCaption.textContent = e.target.alt + " (#" + e.target.getAttribute('data-num') + ")";
-                lightboxBg.classList.add('active');
-                document.body.style.overflow = "hidden";
-                lightboxBg.focus();
-            }
-        });
-        // Đóng lightbox khi click ra ngoài ảnh hoặc nhấn Esc
-        lightboxBg.addEventListener('click', function(e) {
-            if (e.target === lightboxBg) {
-                lightboxBg.classList.remove('active');
-                document.body.style.overflow = "";
-            }
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === "Escape") {
-                lightboxBg.classList.remove('active');
-                document.body.style.overflow = "";
-            }
+        document.getElementById('lightboxBg').onclick = function(e) {
+            if (e.target === this) this.classList.remove('active');
+        };
+        window.addEventListener('keydown', function(e){
+            if(e.key === "Escape") document.getElementById('lightboxBg').classList.remove('active');
         });
     </script>
 </body>
