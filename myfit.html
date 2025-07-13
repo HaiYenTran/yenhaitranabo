@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My F.FIT Progress - Yen Tran</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        body { background: #f7fafc; font-family: 'Open Sans', Arial, sans-serif;}
+        .section-title { font-size:1.8rem; color:#1646a0; font-weight: bold; margin-bottom: 22px;}
+        .fit-card { background: #fff; border-radius: 18px; box-shadow:0 3px 16px #bdd8f8aa; padding:26px 20px 18px 20px; margin-bottom: 32px;}
+        .table-fit th, .table-fit td { text-align: center; vertical-align: middle;}
+        .table-fit th { background:#e4ecfb;}
+        .table-fit { border-radius: 12px; overflow: hidden; margin-bottom: 0;}
+        .current-form-row { gap:12px; margin-bottom: 10px;}
+        .gallery-flex { display: flex; flex-wrap: wrap; gap: 16px; margin: 0 -8px; justify-content: flex-start;}
+        .gallery-item { width: calc(50% - 16px); background: #fff; border-radius: 12px; overflow: hidden; box-shadow:0 2px 12px #dde6fb9e; position: relative; margin-bottom: 12px; cursor: pointer;}
+        .gallery-item img { width: 100%; height: auto; border-radius: 12px; transition: transform .15s;}
+        .gallery-item img:hover { transform: scale(1.04);}
+        .remove-btn {
+            position: absolute; top:6px; right:10px;
+            background: #ff7373; color: #fff; border: none;
+            border-radius: 50%; width:28px; height:28px; font-size: 1.3em;
+            font-weight: bold; line-height: 26px; cursor: pointer; z-index:3;
+        }
+        /* Modal */
+        #imgModal { display: none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.77); align-items:center; justify-content:center; z-index: 99;}
+        #imgModal img { max-width: 95vw; max-height: 90vh; border-radius:12px; box-shadow:0 8px 32px #555;}
+        #imgModal .close-modal {
+            position:absolute; top:2.5%; right:3.5%;
+            font-size: 2.2em; color: #fff; cursor: pointer; font-weight: bold; z-index: 999;
+        }
+        /* Responsive */
+        @media (max-width: 800px){
+            .gallery-item { width: 100%;}
+            .fit-card { padding: 14px 4vw;}
+        }
+        .upload-zone {margin: 14px 0 24px 0;}
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <h2 class="section-title text-center">Hành trình F.FIT của tôi</h2>
+        <div class="fit-card">
+            <h5 class="mb-2">Thông tin giảm cân (6/5/2024 &rarr; 6/7/2024):</h5>
+            <div class="table-responsive">
+                <table class="table table-fit table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Chỉ số</th>
+                            <th>Bắt đầu</th>
+                            <th>Kết thúc</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Chiều cao (cm)</td><td>146</td><td>146</td></tr>
+                        <tr><td>Vòng eo (cm)</td><td>82</td><td>73</td></tr>
+                        <tr><td>Cân nặng (kg)</td><td>61.6</td><td>54</td></tr>
+                        <tr><td>Khối lượng cơ (kg)</td><td>20.1</td><td>19.3</td></tr>
+                        <tr><td>Khối lượng mỡ (kg)</td><td>24.4</td><td>18.3</td></tr>
+                        <tr><td>% mỡ</td><td>39.6</td><td>33.9</td></tr>
+                        <tr><td>BMI</td><td>27.4</td><td>24</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="fit-card mb-4">
+            <h5 class="mb-2">Thông số hiện tại <span id="current-date">(1/7/2025)</span>:</h5>
+            <form id="updateCurrentInfo">
+                <div class="row current-form-row">
+                    <div class="col-6 col-md-3"><input type="number" step="0.1" name="weight" id="weight" class="form-control" placeholder="Cân nặng (kg)" required></div>
+                    <div class="col-6 col-md-3"><input type="number" step="0.1" name="muscle" id="muscle" class="form-control" placeholder="Khối lượng cơ (kg)" required></div>
+                    <div class="col-6 col-md-3"><input type="number" step="0.1" name="fat" id="fat" class="form-control" placeholder="Khối lượng mỡ (kg)" required></div>
+                    <div class="col-6 col-md-3"><input type="number" step="0.1" name="percentfat" id="percentfat" class="form-control" placeholder="% mỡ" required></div>
+                </div>
+                <div class="row current-form-row">
+                    <div class="col-6 col-md-3"><input type="number" step="0.1" name="bmi" id="bmi" class="form-control" placeholder="BMI" required></div>
+                    <div class="col-6 col-md-5"><input type="date" name="date" id="date" class="form-control" placeholder="Ngày"></div>
+                    <div class="col-6 col-md-4">
+                        <button type="submit" class="btn btn-success w-100">Lưu thông tin</button>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table table-fit table-bordered align-middle mt-2 mb-0">
+                    <thead>
+                        <tr>
+                            <th>Ngày</th>
+                            <th>Cân nặng (kg)</th>
+                            <th>Khối lượng cơ (kg)</th>
+                            <th>Khối lượng mỡ (kg)</th>
+                            <th>% mỡ</th>
+                            <th>BMI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="current-info-row">
+                            <td id="info-date">1/7/2025</td>
+                            <td id="info-weight">51.9</td>
+                            <td id="info-muscle">19.9</td>
+                            <td id="info-fat">15.3</td>
+                            <td id="info-percentfat">29.5</td>
+                            <td id="info-bmi">13.1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="fit-card">
+            <h5 class="mb-3">Ảnh tiến trình</h5>
+            <!-- Upload zone -->
+            <div class="upload-zone">
+                <input type="file" id="imgUpload" accept="image/*" multiple style="display:none;">
+                <button class="btn btn-primary" onclick="document.getElementById('imgUpload').click();"><i class="fa fa-upload"></i> Upload ảnh mới</button>
+            </div>
+            <div id="gallery-flex" class="gallery-flex"></div>
+        </div>
+    </div>
+
+    <!-- Modal hiển thị ảnh lớn -->
+    <div id="imgModal" onclick="this.style.display='none'">
+        <span class="close-modal" onclick="document.getElementById('imgModal').style.display='none';event.stopPropagation()">&times;</span>
+        <img id="modalImg" src="" alt="Ảnh lớn">
+    </div>
+
+    <script>
+        // Ảnh upload sẽ được lưu vào localStorage
+        function getImgList() {
+            let arr = [];
+            try{ arr = JSON.parse(localStorage.getItem('myfit_imgs')||'[]'); }catch{}
+            return Array.isArray(arr)?arr:[];
+        }
+        function saveImgList(list) {
+            localStorage.setItem('myfit_imgs', JSON.stringify(list));
+        }
+
+        // Xử lý upload
+        document.getElementById('imgUpload').onchange = function(e){
+            let files = e.target.files;
+            if(!files.length) return;
+            let arr = getImgList();
+            let count = 0;
+            Array.from(files).forEach(file=>{
+                let reader = new FileReader();
+                reader.onload = function(evt){
+                    arr.unshift({
+                        type:'upload', name:file.name, data: evt.target.result, time: Date.now()
+                    });
+                    saveImgList(arr);
+                    renderGallery();
+                }
+                reader.readAsDataURL(file);
+            });
+        };
+
+        function renderGallery() {
+            let uploaded = getImgList(); // chỉ là ảnh upload
+            uploaded.sort((a,b) => (b.time||0)-(a.time||0)); // mới nhất đầu
+            // Danh sách ảnh hệ thống 1-16.jpg
+            let sysImgs = [];
+            for (let i=1; i<=16; i++) sysImgs.push({type:'sys', name:i+'.jpg'});
+            // Kết quả cuối: [ảnh upload..., ảnh hệ thống...]
+            let imgs = [...uploaded, ...sysImgs];
+
+            let g = document.getElementById('gallery-flex');
+            g.innerHTML = '';
+            for(let idx=0; idx<imgs.length; idx++) {
+                let wrap = document.createElement('div');
+                wrap.className = 'gallery-item';
+                let img = document.createElement('img');
+                if(imgs[idx].type==='sys'){
+                    img.src = 'assets/img/MyF.FIT/' + imgs[idx].name;
+                    img.alt = `Ảnh số ${imgs[idx].name}`;
+                } else {
+                    img.src = imgs[idx].data;
+                    img.alt = 'Upload ' + (imgs[idx].name||'');
+                }
+                img.onclick = function(e){
+                    document.getElementById('modalImg').src = this.src;
+                    document.getElementById('imgModal').style.display = 'flex';
+                    event.stopPropagation();
+                }
+                wrap.appendChild(img);
+
+                // Nút xóa cho ảnh upload
+                if(imgs[idx].type!=='sys'){
+                    let rm = document.createElement('button');
+                    rm.className = 'remove-btn';
+                    rm.innerHTML = '&times;';
+                    rm.title = 'Xóa ảnh này';
+                    rm.onclick = function(ev){
+                        ev.stopPropagation();
+                        if(confirm('Bạn có chắc muốn xóa ảnh này?')){
+                            let arr = getImgList().filter(x=>x!==imgs[idx]);
+                            saveImgList(arr);
+                            renderGallery();
+                        }
+                    }
+                    wrap.appendChild(rm);
+                }
+                g.appendChild(wrap);
+            }
+        }
+
+        // ----------- Hiện, cập nhật thông tin hiện tại
+        function loadCurrentInfo(){
+            let v = JSON.parse(localStorage.getItem('myfit_cur') || '{}');
+            // Giá trị mặc định
+            let info = {
+                date: v.date||'2025-07-01',
+                weight: v.weight||51.9,
+                muscle: v.muscle||19.9,
+                fat: v.fat||15.3,
+                percentfat: v.percentfat||29.5,
+                bmi: v.bmi||13.1
+            };
+            // Form
+            document.getElementById('weight').value = info.weight;
+            document.getElementById('muscle').value = info.muscle;
+            document.getElementById('fat').value = info.fat;
+            document.getElementById('percentfat').value = info.percentfat;
+            document.getElementById('bmi').value = info.bmi;
+            document.getElementById('date').value = info.date;
+            // Bảng hiển thị
+            let d = info.date||'2025-07-01';
+            document.getElementById('current-date').innerText = formatDate(d);
+            document.getElementById('info-date').innerText = formatDate(d);
+            document.getElementById('info-weight').innerText = info.weight;
+            document.getElementById('info-muscle').innerText = info.muscle;
+            document.getElementById('info-fat').innerText = info.fat;
+            document.getElementById('info-percentfat').innerText = info.percentfat;
+            document.getElementById('info-bmi').innerText = info.bmi;
+        }
+        function formatDate(s){
+            if(!s) return '';
+            let dt = new Date(s);
+            if(dt.getFullYear()<2000) return s;
+            return `${dt.getDate()}/${dt.getMonth()+1}/${dt.getFullYear()}`;
+        }
+        document.getElementById('updateCurrentInfo').onsubmit = function(e){
+            e.preventDefault();
+            let obj = {
+                date: document.getElementById('date').value || (new Date()).toISOString().substring(0,10),
+                weight: document.getElementById('weight').value,
+                muscle: document.getElementById('muscle').value,
+                fat: document.getElementById('fat').value,
+                percentfat: document.getElementById('percentfat').value,
+                bmi: document.getElementById('bmi').value,
+            };
+            localStorage.setItem('myfit_cur', JSON.stringify(obj));
+            loadCurrentInfo();
+        };
+
+        // --- Load khi vào trang
+        loadCurrentInfo();
+        renderGallery();
+
+        // Đóng modal khi click ngoài ảnh
+        document.getElementById('imgModal').onclick = function(){ this.style.display='none'; };
+        document.getElementById('modalImg').onclick = function(ev){ ev.stopPropagation(); }
+    </script>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/0e2498450d.js" crossorigin="anonymous"></script>
+</body>
+</html>

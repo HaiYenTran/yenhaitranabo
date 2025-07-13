@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F.FIT – Phương pháp giảm mỡ khoa học</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #253947;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 32px 24px 30px 24px;
+            border-radius: 12px;
+            box-shadow: 0 6px 32px rgba(60,64,67,0.09);
+        }
+        h1 {
+            color: #00b897;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .desc {
+            font-size: 1.08em;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        .why {
+            background: #e6fff8;
+            border-left: 6px solid #27c398;
+            padding: 18px 24px 10px 24px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 1.04em;
+        }
+        .why ol {margin: 0 0 0 18px; padding: 0;}
+        .gallery-title {
+            color: #0c7f6b;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 32px 0 18px 0;
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            justify-content: center;
+        }
+        .gallery img {
+            max-width: 220px;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(44,130,105,0.12);
+            background: #f6fbfa;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: box-shadow .23s, transform .16s;
+        }
+        .gallery img:hover {
+            box-shadow: 0 4px 32px rgba(30,100,80,0.18);
+            transform: scale(1.03);
+        }
+        .img-num {
+            text-align: center;
+            font-size: 0.98em;
+            color: #009986;
+            margin-bottom: 6px;
+        }
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 9px 20px;
+            background: linear-gradient(90deg,#1cae80 80%,#7debc2 100%);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 24px;
+            font-size: 1.01em;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-back:hover {
+            background: linear-gradient(90deg,#0d7b57 90%,#28e4c3 100%);
+        }
+        /* Lightbox styles */
+        .lightbox-bg {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(22, 32, 40, 0.85);
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-bg.active {
+            display: flex;
+        }
+        .lightbox-img-wrap {
+            max-width: 92vw;
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lightbox-img {
+            border-radius: 14px;
+            max-width: 92vw;
+            max-height: 80vh;
+            box-shadow: 0 8px 36px rgba(0,0,0,0.18);
+        }
+        .lightbox-caption {
+            color: #fff;
+            font-size: 1.05em;
+            margin-top: 13px;
+            text-align: center;
+            text-shadow: 1px 2px 6px rgba(40,40,40,0.27);
+        }
+        @media (max-width: 700px) {
+            .container {padding: 8px 1vw;}
+            .gallery {gap: 12px;}
+            .gallery img {max-width: 96vw;}
+            .lightbox-img {max-width: 99vw;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="btn-back">&larr; Quay về Trang chủ</a>
+        <h1>F.FIT – Phương pháp giảm mỡ khoa học</h1>
+        <div class="desc">
+            F.FIT là phương pháp giảm mỡ khoa học và hiệu quả dựa trên sự hiểu biết về dinh dưỡng từ các thức ăn chúng ta thu nạp vào người, đồng thời hiểu cơ chế chuyển hóa trong cơ thể để điều tiết dinh dưỡng bữa ăn hợp lý, đủ chất và hiệu quả.
+        </div>
+        <div class="why">
+            <b>Vì sao nên dùng F.FIT:</b>
+            <ol>
+                <li>Phương pháp dựa trên khoa học về dinh dưỡng.</li>
+                <li>Giúp bạn hiểu rõ cơ thể mình. Sau khi "tốt nghiệp", bạn có thể tự duy trì dựa trên kiến thức đã học mà không tái cân "vù vù" như các phương pháp khác.</li>
+                <li>Sử dụng sản phẩm chất lượng cao, hữu cơ, không dùng nguyên liệu biến đổi gen, không hóa chất, phân bón, hay thuốc trừ sâu.</li>
+            </ol>
+        </div>
+        <!-- Section dẫn tới nhật ký cá nhân My F.FIT -->
+        <div class="ffit-intro mb-4" style="background: #f8fbff; border-radius: 11px; padding: 24px 15px; box-shadow: 0 2px 12px #82daf811;">
+            <h3 style="color:#0d6efd; font-weight:700;"><i class="fas fa-user-check"></i> Nhật ký My F.FIT cá nhân</h3>
+            <p>Hành trình thay đổi thực sự của mình – theo dõi kết quả, lưu giữ hình ảnh từng giai đoạn, truyền cảm hứng cho chính bạn.</p>
+            <a href="myfit.html" class="btn" style="margin-left:2px;background:linear-gradient(90deg,#f857a6,#ff5858);color:#fff;font-weight:600; border-radius:24px; padding:8px 25px;">Xem hành trình My F.FIT cá nhân →</a>
+        </div>
+        <div class="gallery-title">Thư viện hình ảnh F.FIT (slide minh họa – tài liệu chia sẻ)</div>
+        <div class="gallery" id="ffitGallery">
+            <!-- Ảnh sẽ được load bằng JS bên dưới -->
+        </div>
+    </div>
+    <!-- Lightbox for viewing big images -->
+    <div class="lightbox-bg" id="lightboxBg" tabindex="-1">
+        <div class="lightbox-img-wrap">
+            <img src="" alt="F.FIT Slide lớn" class="lightbox-img" id="lightboxImg">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+    <script>
+        // Danh sách các số ảnh cần bỏ qua
+        const skip = [2,3,4,6,12,17,19,53];
+        const galleryDiv = document.getElementById('ffitGallery');
+        for(let i = 1; i <= 176; i++) {
+            if (skip.includes(i)) continue;
+            let img = document.createElement('img');
+            img.src = `assets/img/ffit/${i}.png`;
+            img.alt = `F.FIT Slide #${i}`;
+            img.style.cursor = "pointer";
+            img.setAttribute('data-num', i);
+            let wrap = document.createElement('div');
+            wrap.style.display = 'flex';
+            wrap.style.flexDirection = 'column';
+            wrap.style.alignItems = 'center';
+            // Số thứ tự nhỏ bên dưới ảnh
+            let num = document.createElement('div');
+            num.className = "img-num";
+            num.innerText = `#${i}`;
+            wrap.appendChild(img);
+            wrap.appendChild(num);
+            galleryDiv.appendChild(wrap);
+        }
+
+        // Lightbox function
+        const lightboxBg = document.getElementById('lightboxBg');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+
+        galleryDiv.addEventListener('click', function(e) {
+            if (e.target.tagName === 'IMG') {
+                lightboxImg.src = e.target.src;
+                lightboxCaption.textContent = e.target.alt + " (#" + e.target.getAttribute('data-num') + ")";
+                lightboxBg.classList.add('active');
+                document.body.style.overflow = "hidden";
+                lightboxBg.focus();
+            }
+        });
+        // Đóng lightbox khi click ra ngoài ảnh hoặc nhấn Esc
+        lightboxBg.addEventListener('click', function(e) {
+            if (e.target === lightboxBg) {
+                lightboxBg.classList.remove('active');
+                document.body.style.overflow = "";
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                lightboxBg.classList.remove('active');
+                document.body.style.overflow = "";
+            }
+        });
+    </script>
+</body>
+</html>
