@@ -6,7 +6,12 @@
     <meta name="description" content="Blog về phát triển bản thân, sức khỏe, tư duy sống tích cực của Trần Hải Yến" />
     <meta name="author" content="Yen Tran" />
     <title>Personal Blog - Yen Tran</title>
-    <!-- Favicon -->
+    <!-- Open Graph Meta for preview -->
+    <meta property="og:title" content="Personal Blog - Yen Tran" />
+    <meta property="og:description" content="Trang chia sẻ về phát triển bản thân, sức khỏe, tư duy sống tích cực của Trần Hải Yến." />
+    <meta property="og:image" content="https://haiyentran.github.io/yenhaitranabo/assets/img/avatar_yen.jpg" />
+    <meta property="og:url" content="https://haiyentran.github.io/yenhaitranabo/index.html" />
+    <meta property="og:type" content="website" />
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -20,6 +25,33 @@
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             background: #fafbfc;
+        }
+        .header-avatar-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 14px;
+            margin-bottom: 0px;
+        }
+        .header-avatar {
+            width: 92px;
+            height: 92px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #00b894;
+            box-shadow: 0 4px 24px #09af9152;
+            background: #fff;
+            margin-bottom: 6px;
+        }
+        .header-avatar-name {
+            color: #00b894;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        @media (max-width: 600px) {
+            .header-avatar { width: 63px; height: 63px;}
+            .header-avatar-name { font-size: 0.98em;}
         }
         .site-heading h1 {
             font-weight: 800;
@@ -68,7 +100,6 @@
             border-top: 1.5px dashed #d0d6df;
             margin: 22px 0;
         }
-        /* F.FIT Section */
         .ffit-section {
             background: linear-gradient(95deg, #e1fff8 75%, #d2f7ed 100%);
             border-left: 7px solid #00b894;
@@ -145,40 +176,6 @@
         }
     </style>
 </head>
-<!-- Nút về đầu trang -->
-<button id="goTopBtn" title="Về đầu trang" style="
-    position: fixed;
-    right: 24px;
-    bottom: 32px;
-    z-index: 99999;
-    background: linear-gradient(90deg,#00b897,#42e6c2);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    box-shadow: 0 2px 16px #0099863b;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 2em;
-    cursor: pointer;
-    transition: background 0.2s;
-">
-    ↑
-</button>
-<script>
-    // Ẩn/hiện nút khi cuộn trang
-    window.addEventListener('scroll', function() {
-        var btn = document.getElementById('goTopBtn');
-        if (window.scrollY > 300) btn.style.display = 'flex';
-        else btn.style.display = 'none';
-    });
-    // Click để về đầu trang
-    document.getElementById('goTopBtn').onclick = function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-</script>
 <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
@@ -208,6 +205,10 @@
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="site-heading py-4">
                         <h1>TRAN HAI YEN</h1>
+                        <div class="header-avatar-wrap">
+                            <img src="assets/img/avatar_yen.jpg" class="header-avatar" alt="Avatar Yen Tran"/>
+                            <!-- <div class="header-avatar-name">Trần Hải Yến</div> -->
+                        </div>
                         <span class="subheading">Lan tỏa giá trị sống tích cực.</span>
                     </div>
                 </div>
@@ -218,7 +219,6 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-
                 <!-- F.FIT Section (section mới đặt đầu trang) -->
                 <section class="ffit-section mb-4">
                     <img src="assets/img/ffit/1.png" alt="F.FIT Slide minh họa" />
@@ -235,8 +235,6 @@
                         <a href="ffit_gallery.html" class="btn">Xem Gallery F.FIT →</a>
                     </div>
                 </section>
-                <!-- End F.FIT Section -->
-
                 <!-- Các bài post sẽ nằm bên dưới -->
                 <div class="post-preview">
                     <a href="2024LOOKBACK.html">
