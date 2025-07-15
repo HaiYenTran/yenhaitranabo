@@ -89,10 +89,73 @@
         .desc-blk strong {
             color: #0e9047;
         }
+        /* Password overlay */
+        #passwordOverlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(24, 41, 42, 0.87);
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #passwordBox {
+            background: #fff;
+            padding: 34px 32px 22px 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 38px #00998611;
+            min-width: 290px;
+            text-align: center;
+            max-width: 90vw;
+        }
+        #passwordBox h2 {
+            color: #178542;
+            margin-bottom: 17px;
+        }
+        #passwordInput {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1.4px solid #11b398;
+            font-size: 1.12em;
+            margin-bottom: 13px;
+            width: 75%;
+        }
+        #submitBtn {
+            background: linear-gradient(90deg,#1cae80 80%,#7debc2 100%);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 16px;
+            padding: 9px 32px;
+            font-size: 1em;
+            margin-top: 6px;
+            cursor: pointer;
+        }
+        #submitBtn:hover {
+            background: linear-gradient(90deg,#11b369 90%,#3be4c1 100%);
+        }
+        #wrongPwd {
+            color: #e65151;
+            font-size: 1.01em;
+            margin-top: 12px;
+            display: none;
+        }
+        .pwd-info {
+            margin-top:16px;
+            color:#25ad82;
+            font-size:1.03em;
+            background:#e6fff3;
+            border-radius:8px;
+            padding:10px 8px;
+        }
         /* Responsive */
         @media (max-width: 900px) {
             .gallery-item { width: 100%; }
             .ffit-card { padding: 16px 3vw; }
+        }
+        @media (max-width: 700px) {
+            #passwordBox {padding: 17px 7vw;}
         }
     </style>
 </head>
@@ -131,7 +194,21 @@
     };
 </script>
 <body>
-    <div class="container py-4">
+    <!-- Password Overlay -->
+    <div id="passwordOverlay">
+        <form id="passwordBox" onsubmit="return false;">
+            <h2>Bảo mật: Nhập mật khẩu để truy cập</h2>
+            <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autofocus />
+            <br>
+            <button id="submitBtn" type="submit">Vào trang</button>
+            <div id="wrongPwd">Mật khẩu không đúng. Vui lòng thử lại.</div>
+            <div class="pwd-info">
+                Nếu bạn chưa có mật khẩu, hãy liên hệ admin hoặc người đã gửi link để được cung cấp thông tin truy cập.
+            </div>
+        </form>
+    </div>
+
+    <div class="container py-4" id="mainContent" style="display:none;">
         <h2 class="section-title">F.FIT – Hành trình thay đổi vóc dáng & sức khỏe</h2>
         
         <div class="desc-blk mb-4">
@@ -185,11 +262,37 @@
     </div>
 
     <script>
-        // Hiển thị ảnh hệ thống 1.jpg --> 16.jpg, 2 hình trên 1 hàng, từ nhỏ tới lớn
+        // Password logic
+        const PASSWORD = "2025";
+        const overlay = document.getElementById('passwordOverlay');
+        const mainContent = document.getElementById('mainContent');
+        const input = document.getElementById('passwordInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const wrong = document.getElementById('wrongPwd');
+        function unlockPage() {
+            overlay.style.display = "none";
+            mainContent.style.display = "block";
+            document.body.style.overflow = "";
+        }
+        submitBtn.onclick = function() {
+            if (input.value === PASSWORD) {
+                unlockPage();
+            } else {
+                wrong.style.display = "block";
+                input.value = "";
+                input.focus();
+            }
+        };
+        input.addEventListener('keyup', function(e) {
+            if(e.key === "Enter") submitBtn.click();
+        });
+        input.oninput = function() { wrong.style.display = "none"; };
+
+        // Hiển thị ảnh hệ thống 1.jpg --> 14.jpg, 2 hình trên 1 hàng, từ nhỏ tới lớn
         function renderGallery() {
             let g = document.getElementById('gallery-flex');
             g.innerHTML = '';
-            for (let i = 1; i <= 16; i++) {
+            for (let i = 1; i <= 14; i++) {
                 let wrap = document.createElement('div');
                 wrap.className = 'gallery-item';
                 let img = document.createElement('img');
@@ -205,7 +308,12 @@
                 g.appendChild(wrap);
             }
         }
-        renderGallery();
+        // Sau khi unlock mới render gallery
+        submitBtn.addEventListener('click', function() {
+            if (input.value === PASSWORD) {
+                setTimeout(renderGallery, 10);
+            }
+        });
 
         document.getElementById('imgModal').onclick = function(){ this.style.display='none'; };
         document.getElementById('modalImg').onclick = function(ev){ ev.stopPropagation(); }
