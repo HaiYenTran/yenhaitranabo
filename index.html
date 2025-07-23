@@ -43,15 +43,8 @@
             background: #fff;
             margin-bottom: 6px;
         }
-        .header-avatar-name {
-            color: #00b894;
-            font-weight: 700;
-            font-size: 1.1em;
-            margin-bottom: 8px;
-        }
         @media (max-width: 600px) {
             .header-avatar { width: 63px; height: 63px;}
-            .header-avatar-name { font-size: 0.98em;}
         }
         .site-heading h1 {
             font-weight: 800;
@@ -111,10 +104,23 @@
             align-items: center;
             gap: 18px;
         }
+        /* Cập nhật kích thước ảnh F.FIT cho cân đối */
         .ffit-section img {
-            max-width: 110px;
+            width: 84px;
+            max-width: 30vw;
+            max-height: 95px;
+            object-fit: contain;
             border-radius: 14px;
             box-shadow: 0 4px 24px #09af9154;
+            margin-right: 6px;
+        }
+        @media (max-width: 600px) {
+            .ffit-section img {
+                width: 55px;
+                max-width: 22vw;
+                max-height: 62px;
+                margin-right: 0;
+            }
         }
         .ffit-section .desc {
             flex: 1;
@@ -146,33 +152,54 @@
             filter: brightness(0.93);
             color: #fff;
         }
+        /* --- Demo section --- */
+        .demo-section {
+            background: linear-gradient(96deg, #f1fbf8 70%, #e1fef4 100%);
+            border-left: 7px solid #1cae80;
+            box-shadow: 0 4px 20px #31bfa714;
+            border-radius: 16px;
+            margin: 32px 0 28px 0;
+            padding: 20px 18px 18px 24px;
+        }
+        .demo-section h2 {
+            color: #10a579;
+            font-size: 1.16em;
+            font-weight: 700;
+            margin-bottom: 11px;
+            letter-spacing: 0.5px;
+        }
+        .demo-list {
+            margin: 0; padding: 0; list-style: none;
+            display: flex; flex-wrap: wrap; gap: 18px 30px;
+        }
+        .demo-list li {
+            font-size: 1.05em;
+            margin-bottom: 5px;
+        }
+        .demo-list a {
+            color: #0d967c;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 6px 16px 6px 8px;
+            background: #f0fff9;
+            border-radius: 18px;
+            transition: background 0.18s;
+            box-shadow: 0 2px 10px #51e2b40b;
+        }
+        .demo-list a:hover {
+            background: #c7f7de;
+            color: #07795c;
+        }
         @media (max-width: 768px) {
-            .site-heading h1 {
-                font-size: 2rem;
-            }
-            .container, .container > .row, .container > .row > .col-md-10 {
-                padding-left: 5px !important;
-                padding-right: 5px !important;
-            }
-            .post-preview {
-                padding: 18px 6px 12px 12px;
-            }
-            .post-title, .post-subtitle {
-                text-align: left;
-                font-size: 1em;
-            }
-            .ffit-section {
-                flex-direction: column;
-                gap: 12px;
-                padding: 16px 6px 10px 6px;
-            }
-            .ffit-section img {
-                max-width: 70px;
-            }
-            .ffit-section h2 {
-                font-size: 1em;
-                margin-bottom: 6px;
-            }
+            .site-heading h1 { font-size: 2rem; }
+            .container, .container > .row, .container > .row > .col-md-10 { padding-left: 5px !important; padding-right: 5px !important; }
+            .post-preview { padding: 18px 6px 12px 12px; }
+            .post-title, .post-subtitle { text-align: left; font-size: 1em; }
+            .ffit-section { flex-direction: column; gap: 12px; padding: 16px 6px 10px 6px;}
+            .ffit-section img { max-width: 70px; }
+            .ffit-section h2 { font-size: 1em; margin-bottom: 6px;}
+            .demo-section { padding: 14px 5vw 14px 5vw; }
+            .demo-list { gap: 13px 0; flex-direction: column;}
         }
     </style>
 </head>
@@ -207,7 +234,6 @@
                         <h1>TRAN HAI YEN</h1>
                         <div class="header-avatar-wrap">
                             <img src="assets/img/avatar_yen.jpg" class="header-avatar" alt="Avatar Yen Tran"/>
-                            <!-- <div class="header-avatar-name">Trần Hải Yến</div> -->
                         </div>
                         <span class="subheading">Lan tỏa giá trị sống tích cực.</span>
                     </div>
@@ -244,7 +270,7 @@
                         </div>
                     </a>
                     <div class="post-meta">
-                        Posted by <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> on March 17, 2025
+                        Posted by <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> on March 20, 2045
                     </div>
                 </div>
                 <hr class="my-4" />
@@ -299,6 +325,16 @@
                     </div>
                 </div>
                 <hr class="my-4" />
+
+                <!-- DEMO SẢN PHẨM SECTION -->
+                <section class="demo-section">
+                    <h2>🧪 DEMO SẢN PHẨM – TRẢI NGHIỆM THỰC TẾ</h2>
+                    <ul class="demo-list">
+                        <li><a href="demoSanPham.html">Trang tổng hợp các demo sản phẩm →</a></li>
+                    </ul>
+                </section>
+                <!-- End DEMO SẢN PHẨM SECTION -->
+
                 <!-- Pager-->
                 <div class="d-flex justify-content-end mb-4">
                     <a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a>

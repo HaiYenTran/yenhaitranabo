@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minh Hoạ Kem Đánh Răng Glister – Amway</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <style>
+        body { background: #f8fcfb; font-family: 'Segoe UI', Arial, sans-serif; margin:0; }
+        .container {
+            max-width: 780px; margin: 36px auto 0 auto;
+            background: #fff; border-radius: 18px;
+            box-shadow: 0 6px 38px #40bda91b;
+            padding: 34px 24px 30px 24px;
+        }
+        h1 { color: #179788; font-size: 2em; font-weight: 800; text-align: center; margin-bottom: 22px;}
+        h2 { color: #0b826f; font-size: 1.21em; font-weight: 700; margin-top: 34px;}
+        .highlight { background: #e9fff7; padding: 10px 16px; border-left: 6px solid #49e1c4; border-radius: 10px; margin-bottom: 18px;}
+        .step-title {color: #19b085; font-weight: 600; font-size: 1.09em;}
+        ul,ol {margin-bottom: 0.8em;}
+        .result-blk { background: #f8fffa; border-left: 5px solid #0eb586; margin-top: 8px; margin-bottom: 12px; border-radius: 10px; padding: 8px 14px;}
+        .compare-table {
+            width: 100%; border-collapse: collapse; font-size: 1.07em; margin: 8px 0 12px 0;
+        }
+        .compare-table th, .compare-table td {
+            border: 1px solid #e8f8ea;
+            padding: 6px 12px;
+            text-align: left;
+        }
+        .compare-table th {
+            background: #e4fce5; color: #179b6e; font-weight: 700;
+        }
+        .note { font-size: 0.99em; color: #4fa671; font-style: italic; margin: 8px 0 0 0;}
+        .conclude { background: #f5fff2; border-radius: 10px; border-left: 6px solid #ffd233; color: #607732; font-weight: 500; padding: 15px 16px 12px 22px; margin-top: 28px; font-size: 1.11em;}
+        .contact-info { margin-top:20px; font-size:1.03em; background:#e6fff3; border-radius:8px; color:#20b986; padding:10px 8px;}
+        .youtube-link {
+            display: flex; align-items: center; justify-content: center;
+            margin: 28px auto 0 auto; max-width: 420px;
+        }
+        .youtube-btn {
+            display: flex; align-items: center; gap: 9px;
+            background: #0d8ecf;
+            color: #fff;
+            padding: 13px 26px 13px 18px;
+            font-weight: bold;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 32px;
+            text-decoration: none;
+            box-shadow: 0 2px 18px #0493be15;
+            transition: background 0.15s, filter 0.16s;
+        }
+        .youtube-btn:hover {
+            background: #14669a;
+            filter: brightness(1.03);
+            color: #fff;
+            text-decoration: none;
+        }
+        .youtube-btn i {
+            font-size: 2em;
+            margin-right: 4px;
+            color: #fff;
+        }
+        @media (max-width:600px){
+            .container{padding:13px 1vw;}
+            h1{font-size:1.14em;}
+            .youtube-link .youtube-btn {padding: 10px 8vw 10px 10px; font-size: 1em;}
+            .compare-table th,.compare-table td{padding:4px 6px;}
+        }
+        /* Password overlay */
+        #passwordOverlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(24, 41, 42, 0.87);
+            z-index: 999999;
+            display: flex; align-items: center; justify-content: center;
+        }
+        #passwordBox {
+            background: #fff; padding: 32px 28px 18px 28px;
+            border-radius: 14px; box-shadow: 0 4px 38px #00998611;
+            min-width: 270px; text-align: center; max-width: 92vw;
+        }
+        #passwordBox h2 { color: #00b897; margin-bottom: 14px;}
+        #passwordInput {
+            padding: 8px 16px; border-radius: 8px; border: 1.3px solid #11b398;
+            font-size: 1.14em; margin-bottom: 13px; width: 76%;
+        }
+        #submitBtn {
+            background: linear-gradient(90deg,#1cae80 80%,#7debc2 100%);
+            color: #fff; font-weight: 600; border: none;
+            border-radius: 16px; padding: 8px 28px;
+            font-size: 1em; margin-top: 5px; cursor: pointer;
+        }
+        #submitBtn:hover {
+            background: linear-gradient(90deg,#0da273 90%,#28e4c3 100%);
+        }
+        #wrongPwd {
+            color: #e65151; font-size: 1.01em; margin-top: 12px; display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+<div id="passwordOverlay" style="display:flex;">
+    <form id="passwordBox" onsubmit="return false;">
+        <h2>Bảo mật: Nhập mật khẩu để xem nội dung</h2>
+        <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autofocus />
+        <br>
+        <button id="submitBtn" type="submit">Vào trang</button>
+        <div id="wrongPwd">Mật khẩu không đúng. Vui lòng thử lại.</div>
+        <div class="contact-info">
+            Nếu bạn chưa có mật khẩu, hãy liên hệ <b>admin</b> hoặc người đã chia sẻ link này để được cung cấp thông tin truy cập.
+        </div>
+    </form>
+</div>
+
+<div class="container" id="mainContent" style="display:none;">
+    <h1>🪥 Minh Hoạ Kem Đánh Răng Glister – Amway</h1>
+    <div class="highlight">
+        <b>Glister Amway</b> là kem đánh răng nổi tiếng toàn cầu – giúp sạch mảng bám, bảo vệ nướu, tái khoáng men răng, loại bỏ mùi hôi & hạn chế chảy máu chân răng. <br>
+        Không chứa chất độn gây hại như tinh bột, bột đá.<br>
+        Công nghệ <b>Sylodent™</b> độc quyền với các hạt nhẵn hình cầu – làm sạch nhẹ nhàng mà không gây mòn men răng.
+    </div>
+
+    <h2>1. 📌 Thí nghiệm so sánh tinh bột</h2>
+    <div>
+        <span class="step-title">Mục tiêu:</span> So sánh sự có mặt của tinh bột giữa Glister và kem đánh răng phổ thông.
+        <ol>
+            <li>Chuẩn bị 3 ly nước, cho gạo vào từng ly.</li>
+            <li>Ly A: cho thêm vài giọt iốt – màu chuyển xanh đen (có tinh bột).</li>
+            <li>Ly B: cho thêm kem đánh răng phổ thông + iốt – chuyển màu sẫm do kem chứa tinh bột.</li>
+            <li>Ly C: cho thêm Glister + iốt – vẫn giữ nguyên màu iốt (không tinh bột).</li>
+        </ol>
+        <div class="result-blk">
+            <b>Kết quả:</b> Kem đánh răng thông thường đổi màu do chứa tinh bột, Glister không đổi màu – không chứa tinh bột, không tạo mảng bám trên răng.
+        </div>
+    </div>
+
+    <h2>2. 🪨 Thí nghiệm kiểm tra bột đá, độ mài mòn</h2>
+    <div>
+        <span class="step-title">Mục tiêu:</span> Minh hoạ bột đá trong kem đánh răng phổ thông làm mòn răng – Glister không gây tổn thương men răng.
+        <ol>
+            <li>Đặt 2 loại kem đánh răng lên bề mặt hộp giấy.</li>
+            <li>Dùng lực và thời gian như nhau để chà lên giấy.</li>
+            <li>Lau sạch và quan sát.</li>
+        </ol>
+        <div class="result-blk">
+            <b>Kết quả:</b>
+            <ul>
+                <li>Kem đánh răng ngoài thị trường: vùng giấy bị bào mòn, mô phỏng hiện tượng mòn chân răng, gây ê buốt, chảy máu chân răng lâu dài.</li>
+                <li><b>Glister</b>: vùng giấy gần như không thay đổi – nhờ tinh thể Sylodent hình cầu, không sắc nhọn, không gây tổn thương men răng.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="note">
+        <b>Lưu ý:</b> Dùng bột đá/bột đá vôi/bột thạch cao là để tăng trọng, giảm giá thành, gây tổn hại răng miệng về lâu dài.
+    </div>
+
+    <h2>3. 🪥 Cách dùng đúng</h2>
+    <ul>
+        <li><b>Glister:</b> chỉ cần 1 hạt bắp cho mỗi lần – tiết kiệm, mỗi tuýp dùng được 700 lần. 2 người dùng kéo dài 6 tháng!</li>
+        <li><b>Có thêm Canxi & Magiê</b> giúp tái khoáng men răng, ngừa ê buốt & sâu răng.</li>
+        <li>Nên kết hợp bàn chải Glister: lông bo tròn, trợ lực giảm chà xát – bảo vệ nướu răng.</li>
+    </ul>
+    <table class="compare-table">
+        <tr>
+            <th>Tiêu chí</th>
+            <th>Glister Amway</th>
+            <th>Kem đánh răng phổ thông</th>
+        </tr>
+        <tr>
+            <td>Chất tẩy rửa</td>
+            <td>Sylodent™ (hạt hình cầu) – sạch sâu, không bào mòn</td>
+            <td>Bột đá, bột thạch cao, tinh bột</td>
+        </tr>
+        <tr>
+            <td>Chống chảy máu chân răng</td>
+            <td>Hiệu quả (không gây viêm nướu, bảo vệ lợi)</td>
+            <td>Thường xuyên gặp do tổn thương bởi chất mài mòn</td>
+        </tr>
+        <tr>
+            <td>Khả năng tái khoáng men răng</td>
+            <td>Có (Canxi, Magiê)</td>
+            <td>Không</td>
+        </tr>
+            <td>Tiết kiệm</td>
+            <td>1 tuýp dùng 6 tháng/2 người</td>
+            <td>Tiêu hao nhanh hơn nhiều</td>
+        </tr>
+    </table>
+
+    <div class="conclude">
+        <b>💡 Kết luận:</b><br>
+        <b>Glister</b> không chỉ là kem đánh răng. Đó là sự bảo vệ toàn diện, giúp bạn và gia đình thay đổi thói quen răng miệng, ngừa sâu răng, ngừa ê buốt, tiết kiệm tối đa.
+    </div>
+
+    <div class="youtube-link">
+        <a class="youtube-btn" href="https://www.youtube.com/watch?v=DSHLiRklHvg" target="_blank" rel="noopener">
+            <i class="fab fa-youtube"></i> Xem minh hoạ video thực tế trên YouTube
+        </a>
+    </div>
+</div>
+
+<script>
+    // Password logic
+    const PASSWORD = "2025";
+    const overlay = document.getElementById('passwordOverlay');
+    const mainContent = document.getElementById('mainContent');
+    const input = document.getElementById('passwordInput');
+    const submitBtn = document.getElementById('submitBtn');
+    const wrong = document.getElementById('wrongPwd');
+
+    function unlockPage() {
+        overlay.style.display = "none";
+        mainContent.style.display = "block";
+        document.body.style.overflow = "";
+    }
+    submitBtn.onclick = function() {
+        if (input.value === PASSWORD) {
+            unlockPage();
+        } else {
+            wrong.style.display = "block";
+            input.value = "";
+            input.focus();
+        }
+    };
+    input.addEventListener('keyup', function(e) {
+        if(e.key === "Enter") submitBtn.click();
+    });
+    input.oninput = function() { wrong.style.display = "none"; };
+</script>
+</body>
+</html>

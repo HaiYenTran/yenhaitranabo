@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minh Hoạ Sản Phẩm: LOC Đa Năng – Amway</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <style>
+        body { background: #f5fafb; font-family: 'Segoe UI', Arial, sans-serif; margin:0; }
+        .container {
+            max-width: 780px; margin: 34px auto 0 auto;
+            background: #fff; border-radius: 18px;
+            box-shadow: 0 6px 38px #38c2c11a;
+            padding: 34px 24px 26px 24px;
+        }
+        h1 { color: #1689ad; font-size: 2em; font-weight: 800; text-align: center; margin-bottom: 22px;}
+        h2 { color: #1a8c55; font-size: 1.13em; font-weight: 700; margin-top: 32px;}
+        .highlight { background: #e7f8ff; padding: 10px 16px; border-left: 6px solid #40bad7; border-radius: 10px; margin-bottom: 18px;}
+        .ingredients {
+            background: #ecfaed;
+            border-left: 6px solid #28b269;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            padding: 12px 18px 7px 18px;
+            color: #158d54;
+            font-size: 1.07em;
+        }
+        .video-wrap {
+            text-align: center;
+            margin: 30px 0 22px 0;
+        }
+        .video-wrap iframe {
+            width: 96%; max-width: 500px; aspect-ratio: 16/9; border-radius: 12px;
+            box-shadow: 0 6px 32px #1689ad25;
+            border: none;
+        }
+        ul,ol {margin-bottom: 0.85em;}
+        .result-blk { background: #f4fff7; border-left: 5px solid #15b992; margin-top: 8px; margin-bottom: 13px; border-radius: 10px; padding: 8px 14px;}
+        .conclude { background: #f9f6ea; border-radius: 10px; border-left: 6px solid #fad157; color: #866a1f; font-weight: 500; padding: 14px 14px 10px 18px; margin-top: 26px; font-size: 1.13em;}
+        .contact-info { margin-top:20px; font-size:1.03em; background:#e6fff3; border-radius:8px; color:#189bb6; padding:10px 8px;}
+        .box {
+            background: #e6fcec;
+            border-left: 7px solid #44ca82;
+            border-radius: 12px;
+            margin-top: 24px;
+            padding: 17px 14px 12px 18px;
+        }
+        .box-title {
+            color: #178942; font-size: 1.09em; font-weight: bold; margin-bottom: 5px;
+        }
+        @media (max-width:600px){
+            .container{padding:13px 1vw;}
+            h1{font-size:1.13em;}
+            .video-wrap iframe {max-width: 98vw;}
+        }
+        /* Password overlay */
+        #passwordOverlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(24, 41, 42, 0.87);
+            z-index: 999999;
+            display: flex; align-items: center; justify-content: center;
+        }
+        #passwordBox {
+            background: #fff; padding: 32px 28px 18px 28px;
+            border-radius: 14px; box-shadow: 0 4px 38px #00998611;
+            min-width: 270px; text-align: center; max-width: 92vw;
+        }
+        #passwordBox h2 { color: #00b897; margin-bottom: 14px;}
+        #passwordInput {
+            padding: 8px 16px; border-radius: 8px; border: 1.3px solid #11b398;
+            font-size: 1.14em; margin-bottom: 13px; width: 76%;
+        }
+        #submitBtn {
+            background: linear-gradient(90deg,#1cae80 80%,#7debc2 100%);
+            color: #fff; font-weight: 600; border: none;
+            border-radius: 16px; padding: 8px 28px;
+            font-size: 1em; margin-top: 5px; cursor: pointer;
+        }
+        #submitBtn:hover {
+            background: linear-gradient(90deg,#0da273 90%,#28e4c3 100%);
+        }
+        #wrongPwd {
+            color: #e65151; font-size: 1.01em; margin-top: 12px; display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="passwordOverlay">
+    <form id="passwordBox" onsubmit="return false;">
+        <h2>Bảo mật: Nhập mật khẩu để xem nội dung</h2>
+        <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autofocus />
+        <br>
+        <button id="submitBtn" type="submit">Vào trang</button>
+        <div id="wrongPwd">Mật khẩu không đúng. Vui lòng thử lại.</div>
+        <div class="contact-info">
+            Nếu bạn chưa có mật khẩu, hãy liên hệ <b>admin</b> hoặc người đã chia sẻ link này để được cung cấp thông tin truy cập.
+        </div>
+    </form>
+</div>
+<div class="container" id="mainContent" style="display:none;">
+    <h1>🧽 Minh Hoạ Sản Phẩm:<br>LOC Đa Năng – Amway</h1>
+    <div class="highlight">
+        Sản phẩm <b>tẩy rửa đa năng</b> – 1 chai thay thế toàn bộ hóa chất vệ sinh trong nhà.<br>
+        Công nghệ BioQuest & chứng nhận <b>Safer Choice (EPA)</b>: bảo vệ da tay & môi trường. 
+    </div>
+    <div class="ingredients">
+        <b>Thành phần nổi bật:</b> <br>
+        - <b>Dầu dừa</b>: Giúp bóc tách vết bẩn, tẩy sạch mà vẫn dịu nhẹ cho da tay.<br>
+        - <b>Lô hội</b>: Dưỡng da, giúp tay không bị khô rát khi tiếp xúc trực tiếp.<br>
+        - Công nghệ sinh học <b>BioQuest</b> (enzym thực vật) & các chất hoạt động bề mặt phân huỷ sinh học.
+    </div>
+    <div class="video-wrap">
+        <b>🎬 Xem minh hoạ thực tế sản phẩm tại đây:</b><br>
+        <iframe src="https://www.youtube.com/embed/r6slv1y96hs" allowfullscreen></iframe>
+    </div>
+    <h2>1. Vì sao nên chọn LOC?</h2>
+    <ul>
+        <li>Thay thế nhiều sản phẩm: lau kính, lau sàn, rửa xe, cọ toilet...</li>
+        <li>Công nghệ sinh học <b>BioQuest</b> bóc tách vết bẩn mạnh mẽ nhưng lành tính.</li>
+        <li>Chứng nhận <b>Safer Choice – EPA Hoa Kỳ</b> (Việt Nam hiếm sản phẩm đạt chuẩn này).</li>
+    </ul>
+    <h2>2. Minh hoạ – Trải nghiệm thực tế</h2>
+    <ol>
+        <li>Chai chiếc để minh hoạ: <b>tiếp xúc da tay không nóng rát, không ửng đỏ</b> – hoàn toàn an toàn.</li>
+        <li>Vết bẩn cứng đầu, khó chịu, thậm chí là xi đánh giày – <b>LOC</b> tiếp xúc, vết bẩn <b>loan ra và chỉ cần lau nhẹ là sạch bong</b>.</li>
+        <li>Mùi hương dịu nhẹ, không còn cảm giác hắc, khó chịu như hóa chất thường.</li>
+        <li>Dùng khăn cực bẩn, nhúng vào tô nước với LOC – <b>vết bẩn tự trôi tuột mà không cần vò mạnh</b>.</li>
+        <li>Lặp lại nhiều lần – khăn được làm sạch dần, không cần vò/vắt nhiều.</li>
+        <li><b>LOC dùng đa năng:</b> lau sàn, mặt bàn, mặt bếp, kính, rửa xe, vệ sinh toilet...</li>
+    </ol>
+    <div class="result-blk">
+        <b>Kết quả thực tế:</b> <br>
+        Da tay không hề bị hại dù tiếp xúc lâu.<br>
+        Vết bẩn được bóc tách và rửa trôi nhanh – an toàn, sạch sẽ, tiện lợi.
+    </div>
+    <div class="box">
+        <div class="box-title">Hướng dẫn sử dụng:</div>
+        <ul>
+            <li>Pha loãng tỉ lệ 1:9 với bình pha (1 phần LOC + 9 phần nước sạch).</li>
+            <li>Bình xịt có <b>khóa an toàn</b> & 2 chế độ: tia hoặc bọt – linh hoạt, tiện dụng.</li>
+            <li>Giá 158.000đ/chai gốc, có thể pha ra 10 chai (~15.000đ/chai dùng thực tế).</li>
+        </ul>
+    </div>
+    <div class="box" style="background:#f4fdff;border-color:#54bee5;">
+        <div class="box-title">Ưu điểm vượt trội:</div>
+        <ul>
+            <li>Giảm lượng chai nhựa thải ra môi trường (nhựa tự phân huỷ).</li>
+            <li>Chỉ cần 1 sản phẩm – <b>thay thế mọi hóa chất tẩy rửa</b> trong nhà.</li>
+            <li><b>An toàn tuyệt đối cho da tay, bảo vệ sức khỏe & môi trường</b>.</li>
+        </ul>
+    </div>
+    <div class="conclude">
+        <b>💡 Kết luận:</b><br>
+        <b>LOC Amway</b> – Tẩy rửa đa năng, siêu an toàn cho cả nhà, là lựa chọn xanh – tiết kiệm – thông minh cho gia đình hiện đại.
+    </div>
+</div>
+<script>
+    // Password logic
+    const PASSWORD = "2025";
+    const overlay = document.getElementById('passwordOverlay');
+    const mainContent = document.getElementById('mainContent');
+    const input = document.getElementById('passwordInput');
+    const submitBtn = document.getElementById('submitBtn');
+    const wrong = document.getElementById('wrongPwd');
+    function unlockPage() {
+        overlay.style.display = "none";
+        mainContent.style.display = "block";
+        document.body.style.overflow = "";
+    }
+    submitBtn.onclick = function() {
+        if (input.value === PASSWORD) {
+            unlockPage();
+        } else {
+            wrong.style.display = "block";
+            input.value = "";
+            input.focus();
+        }
+    };
+    input.addEventListener('keyup', function(e) {
+        if(e.key === "Enter") submitBtn.click();
+    });
+    input.oninput = function() { wrong.style.display = "none"; };
+</script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minh Hoạ Sản Phẩm: Nước Rửa Chén Dish Drops – Amway</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <style>
+        body { background: #f5fdf8; font-family: 'Segoe UI', Arial, sans-serif; margin:0; }
+        .container {
+            max-width: 780px; margin: 34px auto 0 auto;
+            background: #fff; border-radius: 18px;
+            box-shadow: 0 6px 38px #50e1c71c;
+            padding: 34px 24px 26px 24px;
+        }
+        h1 { color: #11916d; font-size: 2em; font-weight: 800; text-align: center; margin-bottom: 22px;}
+        h2 { color: #178f5d; font-size: 1.23em; font-weight: 700; margin-top: 32px;}
+        .step-title {color: #19b085; font-weight: 600; font-size: 1.1em;}
+        ul,ol {margin-bottom: 0.8em;}
+        .highlight { background: #e6fff7; padding: 10px 16px; border-left: 6px solid #37d99a; border-radius: 10px; margin-bottom: 18px;}
+        .checklist li {margin-bottom: 7px;}
+        .result-blk { background: #effffa; border-left: 5px solid #19b085; margin-top: 8px; margin-bottom: 12px; border-radius: 10px; padding: 8px 14px;}
+        .feature-blk {
+            background: #f2fcf6;
+            border-left: 6px solid #32b795;
+            border-radius: 10px;
+            margin: 16px 0 22px 0;
+            padding: 12px 19px 10px 18px;
+            color: #127c56;
+            font-size: 1.07em;
+        }
+        .conclude { background: #fff5de; border-radius: 10px; border-left: 6px solid #ffd233; color: #735801; font-weight: 500; padding: 14px 14px 10px 18px; margin-top: 28px; font-size: 1.12em;}
+        .contact-info { margin-top:20px; font-size:1.03em; background:#e6fff3; border-radius:8px; color:#20b986; padding:10px 8px;}
+        .youtube-link {
+            display: flex; align-items: center; justify-content: center;
+            margin: 30px auto 0 auto; max-width: 420px;
+        }
+        .youtube-btn {
+            display: flex; align-items: center; gap: 9px;
+            background: #ff5555;
+            color: #fff;
+            padding: 14px 26px 14px 18px;
+            font-weight: bold;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 32px;
+            text-decoration: none;
+            box-shadow: 0 2px 18px #f7797912;
+            transition: background 0.15s, filter 0.16s;
+        }
+        .youtube-btn:hover {
+            background: #e42626;
+            filter: brightness(1.03);
+            color: #fff;
+            text-decoration: none;
+        }
+        .youtube-btn i {
+            font-size: 2em;
+            margin-right: 4px;
+            color: #fff;
+        }
+        .eco-cert {
+            background: #e3f9fd;
+            color: #176b62;
+            border-left: 6px solid #2ec2bb;
+            font-size: 1.06em;
+            border-radius: 8px;
+            padding: 10px 13px 8px 16px;
+            margin-bottom: 20px;
+        }
+        .compare-table {
+            width: 100%; border-collapse: collapse; font-size: 1.06em; margin-top: 8px; margin-bottom: 12px;
+        }
+        .compare-table th, .compare-table td {
+            border: 1px solid #e8f8ea;
+            padding: 6px 12px;
+            text-align: left;
+        }
+        .compare-table th {
+            background: #e4fce5; color: #179b6e; font-weight: 700;
+        }
+        .tip {
+            background: #f7ffef;
+            border-left: 6px solid #bce47a;
+            border-radius: 8px;
+            color: #527f26;
+            padding: 9px 13px 7px 16px;
+            font-size: 1.03em;
+            margin: 12px 0 18px 0;
+        }
+        /* Password overlay */
+        #passwordOverlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(24, 41, 42, 0.87);
+            z-index: 999999;
+            display: flex; align-items: center; justify-content: center;
+        }
+        #passwordBox {
+            background: #fff; padding: 32px 28px 18px 28px;
+            border-radius: 14px; box-shadow: 0 4px 38px #00998611;
+            min-width: 270px; text-align: center; max-width: 92vw;
+        }
+        #passwordBox h2 { color: #00b897; margin-bottom: 14px;}
+        #passwordInput {
+            padding: 8px 16px; border-radius: 8px; border: 1.3px solid #11b398;
+            font-size: 1.14em; margin-bottom: 13px; width: 76%;
+        }
+        #submitBtn {
+            background: linear-gradient(90deg,#1cae80 80%,#7debc2 100%);
+            color: #fff; font-weight: 600; border: none;
+            border-radius: 16px; padding: 8px 28px;
+            font-size: 1em; margin-top: 5px; cursor: pointer;
+        }
+        #submitBtn:hover {
+            background: linear-gradient(90deg,#0da273 90%,#28e4c3 100%);
+        }
+        #wrongPwd {
+            color: #e65151; font-size: 1.01em; margin-top: 12px; display: none;
+        }
+        @media (max-width:600px){
+            .container{padding:13px 1vw;}
+            h1{font-size:1.13em;}
+            .youtube-link .youtube-btn {padding: 11px 10vw 11px 12px; font-size: 1em;}
+            .compare-table th,.compare-table td{padding:4px 6px;}
+        }
+    </style>
+    <!-- Font Awesome icon (YouTube icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+<div id="passwordOverlay" style="display:flex;">
+    <form id="passwordBox" onsubmit="return false;">
+        <h2>Bảo mật: Nhập mật khẩu để xem nội dung</h2>
+        <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autofocus />
+        <br>
+        <button id="submitBtn" type="submit">Vào trang</button>
+        <div id="wrongPwd">Mật khẩu không đúng. Vui lòng thử lại.</div>
+        <div class="contact-info">
+            Nếu bạn chưa có mật khẩu, hãy liên hệ <b>admin</b> hoặc người đã chia sẻ link này để được cung cấp thông tin truy cập.
+        </div>
+    </form>
+</div>
+
+<div class="container" id="mainContent" style="display:none;">
+    <h1>💧 Minh Hoạ Sản Phẩm:<br> Nước Rửa Chén Dish Drops – Amway</h1>
+
+    <div class="feature-blk">
+        <b>Amway Dish Drops™</b> – Sản phẩm rửa chén đậm đặc cao cấp nhập khẩu, bán chạy toàn cầu. <br>
+        <b>Xuất xứ:</b> Mỹ (Amway US). <br>
+        <b>Được kiểm nghiệm da liễu & đạt nhiều tiêu chuẩn quốc tế:</b>
+        <ul>
+            <li><b>Chứng nhận Safer Choice</b> (EPA Hoa Kỳ – chỉ dành cho sản phẩm cực kỳ an toàn, thân thiện môi trường).</li>
+            <li>Công nghệ phân hủy sinh học hoàn toàn, bảo vệ hệ sinh thái nước.</li>
+            <li>Không chứa phosphate, không chất tẩy mạnh, không màu nhân tạo, không thử nghiệm trên động vật.</li>
+        </ul>
+    </div>
+
+    <div class="highlight">
+        <b>1. 📌 Giới thiệu sản phẩm</b> <br>
+        Nước rửa chén là sản phẩm chúng ta dùng hằng ngày.<br>
+        <b>Dish Drops của Amway</b> khác biệt ở thành phần thiên nhiên, thân thiện sức khoẻ & môi trường:
+        <ul class="checklist">
+            <li><b>Dầu dừa</b>: Làm sạch vết bẩn, dầu mỡ nhanh chóng, bảo vệ màng lipid da tay.</li>
+            <li><b>Lô hội</b>: Dưỡng ẩm, làm dịu & không gây khô rát, phù hợp cả da nhạy cảm.</li>
+            <li><b>Tía tô</b>: Khử mùi tanh tự nhiên, diệt khuẩn & an toàn cho thực phẩm.</li>
+        </ul>
+        <span style="color:#20b986;">✅ Đặc biệt: Dùng được để rửa rau, củ, quả an toàn, không lưu dư lượng hoá chất.</span>
+    </div>
+
+    <div class="eco-cert">
+        <b>Sản phẩm đã đạt chứng nhận Safer Choice từ EPA Hoa Kỳ – một trong những tiêu chuẩn khắt khe nhất về an toàn sinh học & sức khỏe gia đình.</b>
+        <br>Thành phần tự nhiên, dễ dàng phân huỷ sinh học – thân thiện tuyệt đối với môi trường nước, an toàn cho septic tank (bể tự hoại).
+    </div>
+
+    <h2>2. 🧪 Thí nghiệm 1: So sánh với nước rửa chén thông thường</h2>
+    <div>
+        <b>Mục tiêu:</b> So sánh độ sạch & tồn dư chất tẩy giữa Dish Drops & sản phẩm đại trà.
+        <span class="step-title"><br>Các bước thực hiện:</span>
+        <ol>
+            <li>Nhỏ dầu vào 2 cái muỗng.</li>
+            <li>Nhỏ nước rửa chén (1 bên là Dish Drops, 1 bên là sản phẩm phổ biến) vào từng muỗng.</li>
+            <li>Dùng 2 tay chà rửa song song 2 muỗng.</li>
+            <li>Nhúng từng tay vào 2 ly nước riêng biệt.</li>
+        </ol>
+        <div class="result-blk">
+            <b>Kết quả:</b>
+            <table class="compare-table">
+                <tr>
+                    <th></th>
+                    <th>Dish Drops Amway</th>
+                    <th>Nước rửa chén phổ thông</th>
+                </tr>
+                <tr>
+                    <td>Độ sạch</td>
+                    <td>Trong vắt, sạch nhanh, dầu mỡ tách hoàn toàn</td>
+                    <td>Còn kết tủa, rửa lâu & có thể còn dầu</td>
+                </tr>
+                <tr>
+                    <td>Tồn dư chất tẩy</td>
+                    <td>Không còn – nước trong, chỉ lớp váng dầu dừa nổi nhẹ</td>
+                    <td>Nước đục, có kết tủa, tồn dư chất tẩy rửa hóa học</td>
+                </tr>
+                <tr>
+                    <td>An toàn cho da tay</td>
+                    <td>Không khô rát, không kích ứng, nhiều người bị dị ứng dùng vẫn ổn</td>
+                    <td>Có thể gây khô nứt, kích ứng, hại lớp lipid da</td>
+                </tr>
+                <tr>
+                    <td>An toàn môi trường</td>
+                    <td>Phân huỷ hoàn toàn – không ô nhiễm nguồn nước</td>
+                    <td>Chứa hoá chất khó phân huỷ, lâu ngày gây nghẹt đường ống, ô nhiễm</td>
+                </tr>
+            </table>
+        </div>
+        <div class="tip"><b>Mẹo:</b> Có thể dùng Dish Drops để ngâm rửa bình sữa, đồ ăn dặm trẻ em, không gây tồn dư hóa chất độc hại.</div>
+    </div>
+
+    <h2>3. 🥦 Thí nghiệm 2: Rửa rau – củ – quả (VD: bông cải xanh)</h2>
+    <div>
+        <span class="step-title">Các bước:</span>
+        <ol>
+            <li>Đổ nước thường vào bông cải → nước trượt khỏi bề mặt do lớp nhũ dầu tự nhiên.</li>
+            <li>So sánh 2 cách rửa:
+                <ul>
+                    <li>Một bên dùng muối</li>
+                    <li>Một bên dùng Dish Drops (pha loãng)</li>
+                </ul>
+            </li>
+            <li>Đưa bông cải vào dung dịch tương ứng, khuấy đều, ngâm như nhau.</li>
+        </ol>
+        <div class="result-blk">
+            <b>Kết quả:</b>
+            <ul>
+                <li><b>Bên muối:</b> nước vẫn trượt qua, không làm sạch lớp nhũ dầu tự nhiên, còn tồn dư thuốc BVTV.</li>
+                <li><b>Bên Dish Drops:</b> giữ lại nước, thấm đều bề mặt → rửa sạch bụi bẩn, thuốc bảo vệ thực vật và dư lượng sáp tự nhiên.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>4. Thí nghiệm 3: Khả năng tạo bọt</h2>
+    <div>
+        <span class="step-title">Các bước:</span>
+        <ol>
+            <li>Nhỏ Dish Drops vào tô nước.</li>
+            <li>Dùng tay bóp miếng xốp tạo bọt.</li>
+        </ol>
+        <div class="result-blk">
+            <b>Giải thích:</b>
+            <ul>
+                <li>Sản phẩm sinh học – không tạo bọt hoá học quá mức như chất tẩy thông thường.</li>
+                <li>Bọt tạo nhờ thao tác (bóp, chà xát) – rửa sạch mà không tồn dư hóa chất tạo bọt, bảo vệ da tay.</li>
+                <li>Nước trơn tuột, không để lại cảm giác nhờn nhớt như nước rửa chén thường.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>5. 🧴 Giải thích về sản phẩm đậm đặc – cách pha</h2>
+    <div>
+        <ul>
+            <li><b>Dish Drops</b> được đóng chai dạng đậm đặc (concentrated) để tiết kiệm & giảm chai nhựa.</li>
+            <li>Pha theo tỉ lệ: <b>1 phần Dish Drops + 3~4 phần nước sạch</b> (có thể pha loãng hơn nếu rửa thực phẩm).</li>
+        </ul>
+        <b>Cách pha & lợi ích:</b>
+        <ul>
+            <li>1 chai Dish Drops 1L (~202.000đ) → pha được ~10 chai nhỏ (100ml/chai) sử dụng dần.</li>
+            <li>Sau pha: chỉ ~20.000đ/chai dùng, tiết kiệm hơn rất nhiều so với hàng hóa học đại trà.</li>
+            <li>An toàn khi rửa thực phẩm, bình sữa, đồ ăn dặm em bé.</li>
+        </ul>
+        <div class="tip">
+            <b>Lưu ý:</b> Dùng lượng vừa đủ (1-2 giọt cho 1 chậu bát), tránh lãng phí và bảo vệ môi trường.
+        </div>
+    </div>
+
+    <div class="conclude">
+        <b>💡 Kết luận:</b><br>
+        <b>Dish Drops Amway</b> không chỉ là nước rửa chén. Đó là giải pháp xanh – bảo vệ sức khỏe cả nhà, bảo vệ môi trường, và tiết kiệm chi phí lâu dài.
+        <br><b>Lựa chọn hàng đầu cho gia đình hiện đại, an toàn và thông minh.</b>
+    </div>
+
+    <!-- Nút YouTube -->
+    <div class="youtube-link">
+        <a class="youtube-btn" href="https://www.youtube.com/watch?v=tEq6o39os7o" target="_blank" rel="noopener">
+            <i class="fab fa-youtube"></i> Xem minh hoạ video thực tế trên YouTube
+        </a>
+    </div>
+</div>
+
+<script>
+    // Password logic
+    const PASSWORD = "2025";
+    const overlay = document.getElementById('passwordOverlay');
+    const mainContent = document.getElementById('mainContent');
+    const input = document.getElementById('passwordInput');
+    const submitBtn = document.getElementById('submitBtn');
+    const wrong = document.getElementById('wrongPwd');
+
+    function unlockPage() {
+        overlay.style.display = "none";
+        mainContent.style.display = "block";
+        document.body.style.overflow = "";
+    }
+    submitBtn.onclick = function() {
+        if (input.value === PASSWORD) {
+            unlockPage();
+        } else {
+            wrong.style.display = "block";
+            input.value = "";
+            input.focus();
+        }
+    };
+    input.addEventListener('keyup', function(e) {
+        if(e.key === "Enter") submitBtn.click();
+    });
+    input.oninput = function() { wrong.style.display = "none"; };
+</script>
+</body>
+</html>
