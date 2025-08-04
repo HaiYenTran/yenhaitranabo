@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bí Quyết Giảm Cân Lành Mạnh – Sống Khỏe Mỗi Ngày</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <style>
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: linear-gradient(108deg,#e6fff7 55%,#fff5e1 100%);
+      margin: 0; padding: 0;
+    }
+    .main-wrap {
+      max-width: 880px;
+      margin: 38px auto;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 46px #00b89414;
+      padding: 38px 24px 38px 24px;
+    }
+    h1 {
+      color: #00b894;
+      font-weight: 900;
+      text-align: center;
+      font-size: 2.25em;
+      margin-bottom: 10px;
+      letter-spacing: 1.2px;
+    }
+    .subtitle {
+      color: #fe9948;
+      font-size: 1.23em;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 26px;
+    }
+    .desc-intro {
+      font-size: 1.18em;
+      background: linear-gradient(93deg,#f4fff9 70%,#ffefd6 100%);
+      border-radius: 18px;
+      color: #26735f;
+      padding: 20px 20px 14px 22px;
+      margin-bottom: 22px;
+      border-left: 8px solid #00b894;
+      box-shadow: 0 2px 12px #00b89414;
+    }
+    .key-list {
+      margin: 18px 0 0 0; padding: 0;
+      list-style: none;
+    }
+    .key-list li {
+      font-size: 1.09em;
+      color: #246c63;
+      margin: 0 0 12px 0;
+      display: flex; align-items: flex-start; gap:10px;
+    }
+    .key-list i {
+      color: #ffb347;
+      margin-top: 4px;
+      font-size: 1.18em;
+      flex-shrink: 0;
+    }
+    .menu-section {
+      margin: 36px 0 34px 0;
+      background: #f5fff9;
+      border-radius: 19px;
+      border-left: 6px solid #00b894;
+      box-shadow: 0 2px 12px #00b8940c;
+      padding: 27px 14px 17px 22px;
+    }
+    .menu-section h2 {
+      color: #00b894;
+      font-size: 1.16em;
+      margin-top:0;margin-bottom:11px;font-weight:700;
+    }
+    .menu-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 0; padding: 0;
+    }
+    .menu-link {
+      flex: 1 1 240px;
+      background: linear-gradient(96deg,#f1fff9 70%,#fff5e4 100%);
+      border: 2.2px solid #00b89422;
+      border-radius: 16px;
+      color: #24825b;
+      font-size: 1.06em;
+      font-weight: 600;
+      padding: 18px 15px 13px 15px;
+      box-shadow: 0 2px 9px #00b8940a;
+      text-decoration: none;
+      transition: box-shadow 0.16s, color 0.13s, border-color 0.15s;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 4px;
+      position: relative;
+    }
+    .menu-link:hover {
+      color: #fff;
+      background: linear-gradient(97deg,#00b894 70%,#fea240 100%);
+      border-color: #00b894;
+      box-shadow: 0 4px 22px #00b89424;
+      transform: translateY(-2px) scale(1.02);
+    }
+    .menu-link i {
+      font-size: 1.3em;
+      color: #fe9948;
+      flex-shrink: 0;
+      transition: color 0.13s;
+    }
+    .menu-link:hover i {
+      color: #fff;
+    }
+    .cover-img-wrap {
+      text-align: center;
+      margin: 28px 0 18px 0;
+    }
+    .cover-img {
+      max-width: 330px; width:97%; border-radius:19px; box-shadow: 0 2px 28px #00b89413;
+    }
+    .author-blk {
+      background: #eafff8;
+      color: #009e82;
+      border-radius: 12px;
+      font-size: 1.05em;
+      padding: 16px 13px 12px 13px;
+      margin: 26px 0 13px 0;
+      border-left: 7px solid #fea240;
+    }
+    .soft-call {
+      margin: 38px auto 0 auto;
+      background: linear-gradient(97deg,#e6fff7 75%,#fff5e4 100%);
+      border-radius: 14px;
+      color: #246c63;
+      font-size: 1.12em;
+      text-align: center;
+      max-width: 460px;
+      padding: 18px 13px 14px 13px;
+      box-shadow: 0 1px 9px #00b89411;
+    }
+    .soft-call a {
+      display: inline-block;
+      color: #fff;
+      background: linear-gradient(90deg,#00b894,#fea240 90%);
+      padding: 12px 24px;
+      font-weight: 700;
+      border-radius: 23px;
+      font-size: 1.08em;
+      text-decoration: none;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      box-shadow: 0 1px 10px #00b89419;
+      transition: filter 0.12s;
+    }
+    .soft-call a:hover { filter: brightness(0.92);}
+    @media (max-width:700px){
+      .main-wrap{padding:8px 2vw;}
+      .menu-grid{flex-direction:column; gap:7px;}
+      .cover-img{max-width:97vw;}
+      .menu-link{padding:15px 9px 10px 10px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="main-wrap">
+    <h1>BÍ QUYẾT GIẢM CÂN LÀNH MẠNH</h1>
+    <div class="subtitle">10+ bí mật vàng giúp bạn chinh phục cân nặng, trẻ hóa cơ thể &amp; duy trì sức khỏe bền vững</div>
+
+    <div class="cover-img-wrap">
+      <img src="assets/img/cover_giamcan.png" alt="Minh họa năng lượng tích cực, vận động, thực phẩm tươi" class="cover-img"/>
+    </div>
+
+    <div class="desc-intro">
+      Bạn từng nghĩ giảm cân là phải kiêng khem, nhịn ăn khổ sở?<br>
+      Hành trình thay đổi bản thân thực ra có thể bắt đầu nhẹ nhàng hơn bạn tưởng!
+      <br><br>
+      Mình đã tổng hợp lại những chủ đề thực tế, dễ áp dụng nhất từ chính trải nghiệm của mình – dành cho bất cứ ai muốn giảm cân lành mạnh, giữ vóc dáng cân đối, nâng cao chất lượng sống mà không cần ép buộc, không cần quá nhiều thời gian, cực kỳ phù hợp cho người bận rộn:
+      <ul class="key-list">
+        <li><i class="fas fa-balance-scale"></i> Giảm cân khoa học, không cần “chịu đựng”</li>
+        <li><i class="fas fa-brain"></i> Kiểm soát cơn thèm ăn, loại bỏ thói quen xấu dễ mắc phải</li>
+        <li><i class="fas fa-shoe-prints"></i> Vận động chỉ 10 phút mỗi ngày, vẫn thay đổi vóc dáng rõ rệt</li>
+        <li><i class="fas fa-bed"></i> Ngủ sâu – bí quyết giảm cân thầm lặng mà hiệu quả cực cao</li>
+        <li><i class="fas fa-dna"></i> Chăm sóc đường ruột để giảm cân bền vững, tăng miễn dịch</li>
+        <li><i class="fas fa-fire-alt"></i> Duy trì động lực & xây dựng lối sống khỏe dài lâu</li>
+        <li><i class="fas fa-utensils"></i> Thực đơn mẫu, mẹo nhỏ cực tiện lợi cho người siêu bận rộn</li>
+        <li><i class="fas fa-plus-circle"></i> Và còn nhiều kiến thức thực tế khác đang chờ bạn khám phá!</li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+      <h2><i class="fas fa-list-ul"></i> Truy cập từng chủ đề:</h2>
+      <div class="menu-grid">
+        <a class="menu-link" href="digital_5yeutoquyetdinhgiamcan.html"><i class="fas fa-star"></i> 5 yếu tố quyết định giảm cân</a>
+        <a class="menu-link" href="digital_taisaophaigiamcan.html"><i class="fas fa-heartbeat"></i> Tại sao phải giảm cân?</a>
+        <a class="menu-link" href="digital_giamcanlanhmanh.html"><i class="fas fa-leaf"></i> Giảm cân lành mạnh</a>
+        <a class="menu-link" href="digital_thoiquenxau.html"><i class="fas fa-exclamation-triangle"></i> Thói quen xấu</a>
+        <a class="menu-link" href="digital_theman.html"><i class="fas fa-cookie-bite"></i> Kiểm soát cơn thèm ăn</a>
+        <a class="menu-link" href="digital_dinhduong.html"><i class="fas fa-apple-alt"></i> Dinh dưỡng & giải pháp</a>
+        <a class="menu-link" href="digital_10phutthaydoi.html"><i class="fas fa-running"></i> 10 phút thay đổi</a>
+        <a class="menu-link" href="digital_giacngu.html"><i class="fas fa-bed"></i> Ngủ sâu giảm cân</a>
+        <a class="menu-link" href="digital_hevisinh.html"><i class="fas fa-dna"></i> Chăm sóc đường ruột</a>
+        <a class="menu-link" href="digital_duytridongluc.html"><i class="fas fa-fire-alt"></i> Duy trì động lực</a>
+      </div>
+    </div>
+
+    <div class="author-blk">
+      <b>Tác giả:</b> Chuyên gia Dinh dưỡng (hoặc điền tên bạn)<br>
+      Dành cho bất kỳ ai muốn giảm cân, giữ dáng, sống khỏe mạnh, tích cực và chủ động – ở bất kỳ độ tuổi nào.<br>
+      <span style="color:#e17d14;font-weight:600;">Hành trình làm mới bản thân luôn bắt đầu từ một thói quen nhỏ!</span>
+    </div>
+
+    <div class="soft-call">
+      <div>
+        <i class="fas fa-hand-holding-heart" style="color:#00b894;font-size:1.25em;"></i><br>
+        Nếu bạn muốn được tư vấn cá nhân hóa, hoặc chưa biết bắt đầu từ đâu,<br>
+        bạn có thể nhẹ nhàng đặt hẹn để cùng khám phá lộ trình phù hợp nhất:
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSclfUUwaSha4yUm9nWuQARceyDBu68ZhvuZRfa_F22WFAcTjA/viewform" target="_blank" rel="noopener">
+        Đặt lịch tư vấn 1-1 riêng cho bạn
+      </a>
+    </div>
+  </div>
+</body>
+</html>

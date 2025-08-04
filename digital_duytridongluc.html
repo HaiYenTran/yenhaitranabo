@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duy trì động lực giảm cân – Sống khỏe mỗi ngày</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <style>
+    body {
+      background: linear-gradient(115deg,#e5fffb 0%, #f7fff7 50%, #fffaf6 100%);
+      font-family: 'Open Sans', Arial, sans-serif;
+      margin: 0; padding: 0;
+      min-height: 100vh;
+    }
+    /* Quay về trang bìa */
+    .btn-back-home {
+      display: inline-block;
+      margin: 20px;
+      background: linear-gradient(90deg, #00b894 70%, #fea240 100%);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 26px;
+      font-size: 1em;
+      padding: 8px 20px;
+      text-decoration: none;
+      box-shadow: 0 2px 14px #00b89419;
+      transition: background 0.14s, filter 0.13s;
+    }
+    .btn-back-home i { margin-right: 6px; }
+    /* Container chính */
+    .main-container {
+      max-width: 820px;
+      margin: 0 auto 40px auto;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 8px 42px #00b89414;
+      padding: 36px 24px;
+      position: relative;
+    }
+    h1 {
+      color: #00b894;
+      font-size: 2.1em;
+      text-align: center;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+      font-weight: 900;
+    }
+    .intro {
+      background: linear-gradient(90deg,#d1fff3 70%,#ffd9b7 100%);
+      border-left: 8px solid #00b894;
+      border-radius: 15px;
+      padding: 18px 20px;
+      color: #19806d;
+      font-size: 1.13em;
+      margin-bottom: 32px;
+    }
+    .section {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+    .section-icon {
+      flex-shrink: 0;
+      font-size: 2.3em;
+      color: #ffb300;
+      background: #e6fff8;
+      border-radius: 50%;
+      width: 54px; height: 54px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 14px #0db89a11;
+    }
+    .section-content {
+      flex: 1;
+    }
+    .section-content h2 {
+      margin: 0 0 4px 0;
+      color: #0ab27a;
+      font-size: 1.17em;
+      font-weight: 700;
+    }
+    .section-content ul {
+      margin: 0 0 0 1.3em;
+      padding: 0;
+      color: #38434b;
+      font-size: 1.04em;
+      line-height: 1.7;
+    }
+    .tip {
+      background: linear-gradient(90deg,#fffde9 60%,#ffeabf 100%);
+      border-left: 7px solid #ffd233;
+      border-radius: 12px;
+      color: #846404;
+      font-size: 1.1em;
+      padding: 12px 18px;
+      margin: 28px 0 20px 0;
+      box-shadow: 0 1px 7px #ffd23312;
+    }
+    .success-story {
+      background: linear-gradient(93deg, #fafffd 85%, #e9ffe7 100%);
+      border-left: 6px solid #00b894;
+      border-radius: 13px;
+      padding: 16px 17px 11px 20px;
+      margin: 35px 0 6px 0;
+      color: #175a43;
+      box-shadow: 0 2px 8px #0ab27a0e;
+      font-size: 1.09em;
+    }
+    .pdf-btn {
+      display: block;
+      background: linear-gradient(90deg,#00b894,#26ffbe 100%);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 27px;
+      padding: 13px 36px;
+      font-size: 1.12em;
+      border: none;
+      box-shadow: 0 2px 12px #00b89424;
+      margin: 38px auto 0 auto;
+      cursor: pointer;
+      transition: filter 0.13s;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+    .pdf-btn:hover { filter:brightness(0.96);}
+
+    /* Nút về đầu trang */
+    #goTopBtn {
+      position: fixed;
+      right: 24px;
+      bottom: 32px;
+      z-index: 99999;
+      background: linear-gradient(90deg,#00b894,#fea240);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      box-shadow: 0 2px 16px #00b8942a;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #goTopBtn:hover {
+      background: linear-gradient(90deg, #00916e, #ffb954);
+    }
+
+    @media (max-width: 650px){
+      .main-container{padding:20px 2vw;}
+      h1{font-size:1.25em;}
+      .section{flex-direction:column; gap:10px;}
+      .section-icon {margin-bottom:8px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Nút Quay về trang bìa -->
+  <a href="digital_index.html" class="btn-back-home">
+    <i class="fas fa-arrow-left"></i> Quay về trang bìa
+  </a>
+
+  <div class="main-container">
+    <h1>Duy trì động lực giảm cân dài lâu<br><span style="font-size:0.64em;color:#f9a602;font-weight:500;">Sống khỏe mỗi ngày</span></h1>
+    <div class="intro">
+      Giảm cân không khó bằng việc <b>duy trì động lực</b> và giữ cân bền vững. Nhiều người thành công rồi lại “tái béo”, hoặc nản lòng vì tiến trình chậm lại.<br> 
+      <b>Đây là những “chiến thuật” mình áp dụng – và chưa bao giờ muốn bỏ cuộc!</b>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section">
+      <div class="section-icon"><i class="fas fa-bullseye"></i></div>
+      <div class="section-content">
+        <h2>Đặt mục tiêu thực tế & chia nhỏ từng bước</h2>
+        <ul>
+          <li>Mỗi tuần chỉ cần giảm 0,3–0,5kg hoặc mặc vừa lại áo cũ cũng là thành công nhỏ.</li>
+          <li>Ghi lại số đo, cân nặng, cảm xúc, hình ảnh mỗi tuần để tự hào và tiếp tục.</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Section 2 -->
+    <div class="section">
+      <div class="section-icon"><i class="fas fa-users"></i></div>
+      <div class="section-content">
+        <h2>Tìm bạn đồng hành & nhóm hỗ trợ</h2>
+        <ul>
+          <li>Có người cùng đi, động viên – vượt qua lúc muốn bỏ cuộc dễ dàng hơn.</li>
+          <li>Mỗi cột mốc nhỏ nên tự thưởng – không cần bằng đồ ăn, có thể là xem phim, dã ngoại, sách mới.</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Section 3 -->
+    <div class="section">
+      <div class="section-icon"><i class="fas fa-heartbeat"></i></div>
+      <div class="section-content">
+        <h2>Chấp nhận cả lúc chững cân – Đừng bỏ cuộc</h2>
+        <ul>
+          <li>Có tuần cân không nhích – quan trọng là <b>kiên trì</b>, không bỏ cuộc, vì đó là bí quyết thành công lâu dài.</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Section 4 -->
+    <div class="section">
+      <div class="section-icon"><i class="fas fa-apple-alt"></i></div>
+      <div class="section-content">
+        <h2>Xây dựng lối sống khỏe mạnh – Hạnh phúc mỗi ngày</h2>
+        <ul>
+          <li><b>Ăn uống lành mạnh:</b> Không ép bản thân quá mức, không chạy theo trend cực đoan. Ưu tiên thực phẩm tươi, đủ nhóm chất, hạn chế đồ đóng gói sẵn.</li>
+          <li><b>Vận động:</b> Chọn môn mình thích – đi bộ, yoga, nhảy… Duy trì đều đặn, kể cả vận động nhỏ trong ngày.</li>
+          <li><b>Ngủ đủ, quản lý stress:</b> Thiền, hít thở sâu, viết nhật ký biết ơn. Dành thời gian cho bản thân, yêu thương chính mình nhiều hơn.</li>
+          <li><b>Đặt mục tiêu nơi dễ thấy:</b> Gắn lên bàn, gương, điện thoại, luôn nhắc nhở bản thân hướng về sức khỏe.</li>
+          <li><b>Thất bại là bình thường:</b> Ăn lỡ bữa, bỏ tập một buổi cũng không sao, chỉ cần quay lại ngày hôm sau.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tip">
+      <i class="fas fa-lightbulb" style="color:#ffd233;"></i>
+      <b>Gợi ý:</b> Duy trì động lực lâu dài không phải là gồng ép bản thân – mà là xây dựng từng thói quen nhỏ, sống tích cực mỗi ngày.
+    </div>
+    <div class="success-story">
+      <b>Chia sẻ thật:</b><br>
+      Và thật may, mình đã có một “bí quyết nhỏ” giúp duy trì lối sống này đều đặn, không áp lực – đó là <b>F.FIT</b>.<br>
+      Nếu bạn muốn biết cách mình giữ động lực và sống khỏe với F.FIT như thế nào, đón chờ các bài tiếp theo nhé!<br>
+      Hoặc chỉ cần inbox cho mình nếu bạn tò mò và muốn thử luôn!
+    </div>
+
+    <button class="pdf-btn" onclick="downloadPDF()">
+      <i class="fas fa-file-download"></i> Tải trang này dưới dạng PDF
+    </button>
+  </div>
+
+  <!-- Nút Về đầu trang -->
+  <button id="goTopBtn" title="Về đầu trang">↑</button>
+
+  <!-- html2pdf.js để xuất PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    // export PDF
+    function downloadPDF() {
+      const el = document.querySelector('.main-container');
+      const opt = {
+        margin:       [0.4, 0.3],
+        filename:     'DuyTriDongLucGiamCan.pdf',
+        image:        { type: 'jpeg', quality: 0.97 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(el).save();
+    }
+    // hiển thị nút "Về đầu trang"
+    window.addEventListener('scroll', () => {
+      document.getElementById('goTopBtn').style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+    document.getElementById('goTopBtn').onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Những Thói Quen Xấu “Ngầm” Phá Hủy Nỗ Lực Giảm Cân</title>
+    <link rel="icon" href="assets/favicon.ico"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <style>
+        body { background: #f5fff6; font-family: 'Open Sans', Arial, sans-serif; margin:0; padding:0;}
+        .container {
+            max-width: 820px; margin: 34px auto 32px auto;
+            background: #fff; border-radius: 18px;
+            box-shadow: 0 6px 32px #37d99a14;
+            padding: 34px 18px 28px 18px;
+            position: relative;
+        }
+        .btn-back-home {
+            display: inline-block;
+            margin: 7px 0 17px 10px;
+            background: linear-gradient(90deg, #00b894 70%, #fea240 100%);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 26px;
+            font-size: 1.02em;
+            padding: 10px 24px;
+            text-decoration: none;
+            box-shadow: 0 2px 14px #00b89419;
+            transition: background 0.14s, filter 0.13s;
+            border: none;
+        }
+        .btn-back-home:hover {
+            background: linear-gradient(90deg,#00a381,#fd8503 100%);
+            filter: brightness(0.97);
+            color: #fff;
+        }
+        .btn-back-home i {
+            margin-right: 7px;
+            font-size: 1.14em;
+        }
+        h1 {
+            color: #00b894; font-size: 1.45em; text-align: center; font-weight: 800;
+            margin-bottom: 18px;
+        }
+        .desc-lead {
+            text-align: center; font-size: 1.09em; margin-bottom: 23px; color: #1d725d;
+        }
+        .columns-flex {
+            display: flex; gap: 26px; justify-content: center;
+            margin-bottom: 28px; flex-wrap: wrap;
+        }
+        .col-block {
+            flex:1 1 270px; min-width: 220px; max-width: 360px;
+            padding: 21px 18px 13px 18px; border-radius: 16px;
+        }
+        .bad-habits {
+            background: #fff6f6;
+            border-left: 7px solid #ff6868;
+            box-shadow: 0 2px 10px #ffe1e1;
+        }
+        .good-habits {
+            background: #eafff4;
+            border-left: 7px solid #1cae80;
+            box-shadow: 0 2px 10px #c7f7de;
+        }
+        .block-title {
+            display: flex; align-items: center; gap: 10px;
+            font-weight: bold; font-size: 1.1em; margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .bad-habits .block-title { color: #ff4747;}
+        .good-habits .block-title { color: #1cae80;}
+        ul.checklist {
+            list-style: none; padding:0; margin:0;
+        }
+        ul.checklist li {
+            margin-bottom: 10px; font-size: 1.03em; padding-left: 0;
+            display: flex; align-items: flex-start; gap: 7px;
+        }
+        .bad-habits li::before {
+            content: "✗";
+            color: #ff4747; font-size: 1.2em; font-weight: bold;
+        }
+        .good-habits li::before {
+            content: "✓";
+            color: #1cae80; font-size: 1.15em; font-weight: bold;
+        }
+        .divider-v {
+            width: 3px; background: linear-gradient(180deg,#c7f7de 10%,#ffe6e6 90%);
+            min-height: 170px; border-radius: 2px; margin: 0 8px;
+        }
+        .section {
+            margin-bottom: 19px;
+        }
+        .highlight {
+            background: #fffadd; color: #938c10;
+            border-left: 6px solid #ffdc5a; border-radius: 10px;
+            padding: 16px 18px 10px 20px; margin: 28px 0 13px 0;
+            font-size: 1.09em;
+        }
+        .tips {
+            background: #eaffed; color: #128860;
+            padding: 12px 17px 8px 15px; border-radius: 9px;
+            border-left: 6px solid #1cae80; margin-bottom: 16px;
+            margin-top: 13px;
+        }
+        .next-article {
+            text-align: center; font-size:1.07em; margin-top: 24px; color: #8c41b6;
+        }
+        /* Nút về đầu trang */
+        #goTopBtn {
+            position: fixed;
+            right: 24px;
+            bottom: 32px;
+            z-index: 99999;
+            background: linear-gradient(90deg,#00b894,#fea240);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            box-shadow: 0 2px 16px #00b8942a;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #goTopBtn:hover {
+            background: linear-gradient(90deg, #00916e, #ffb954);
+            color: #fff;
+        }
+        @media (max-width:700px) {
+            .container{padding:9px 1vw;}
+            h1{font-size:1.1em;}
+            .columns-flex {flex-direction:column;gap:0;}
+            .divider-v{display:none;}
+            .col-block{max-width:100%;margin-bottom:16px;}
+        }
+    </style>
+</head>
+<body>
+<a href="digital_index.html" class="btn-back-home">
+    <i class="fas fa-arrow-left"></i> Quay lại trang bìa
+</a>
+<div class="container">
+    <h1>
+        Những <span style="color:#ff4b2b;">THÓI QUEN XẤU</span> đang phá hủy nỗ lực giảm cân của bạn
+        <div style="font-size:0.97em;font-weight:400; color:#207863; margin-top:3px;">
+            (Và điều mình đã thay đổi nhờ một “bí quyết nhỏ”)
+        </div>
+    </h1>
+    <div class="desc-lead">
+        Đôi khi bạn rất nỗ lực mà cân vẫn “lì lợm”?<br>
+        Hãy xem lại: Có thể những thói quen nhỏ dưới đây đang ngầm cản trở kết quả!
+    </div>
+    <div class="columns-flex">
+        <div class="col-block bad-habits">
+            <div class="block-title"><span>🚫</span>Thói quen xấu cản giảm cân</div>
+            <ul class="checklist">
+                <li>Ăn quá nhanh, không nhai kỹ – ăn nhiều mà không biết no.</li>
+                <li>Bỏ bữa sáng, tối lại ăn bù.</li>
+                <li>Ăn vặt, ăn khuya – snack, trà sữa, đồ chiên…</li>
+                <li>Uống nước ngọt, nước ép đóng chai, trà sữa quá nhiều.</li>
+                <li>Lười vận động, ngồi một chỗ quá lâu.</li>
+                <li>Ngủ không đủ, thức khuya – hormone rối loạn, càng thèm ăn hơn.</li>
+                <li>Ăn theo cảm xúc, giải tỏa stress bằng đồ ăn.</li>
+                <li>Ăn ngoài liên tục, khó kiểm soát dầu, đường, muối.</li>
+                <li>Thiếu nước – dễ nhầm khát với đói, tìm đồ ăn vặt.</li>
+                <li>Không kiểm soát khẩu phần, ăn bát to, “gắp đầy cho chắc”.</li>
+            </ul>
+        </div>
+        <div class="divider-v"></div>
+        <div class="col-block good-habits">
+            <div class="block-title"><span>🌱</span>Thay đổi tích cực – thói quen tốt</div>
+            <ul class="checklist">
+                <li>Ăn chậm, nhai kỹ, tập trung vào bữa ăn.</li>
+                <li>Không bỏ bữa sáng, chọn món thuần Việt nhiều rau.</li>
+                <li>Chuẩn bị sẵn trái cây, hạt, sữa chua không đường cho bữa phụ.</li>
+                <li>Thay nước ngọt, trà sữa bằng nước lọc/trà xanh.</li>
+                <li>Thêm vận động nhỏ: đi bộ sau ăn, vươn vai mỗi tiếng.</li>
+                <li>Ngủ đủ giấc, không cầm điện thoại trước khi ngủ.</li>
+                <li>Quản lý cảm xúc: viết nhật ký, gọi bạn bè, đi dạo.</li>
+                <li>Ưu tiên nấu ăn tại nhà, kiểm soát lượng dầu, đường, muối.</li>
+                <li>Dùng bát nhỏ, chia phần, uống đủ nước cả ngày.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="section highlight">
+        <b>Bí quyết:</b> 
+        <ul style="margin-left:0.9em;">
+            <li>Lên thực đơn tuần, mua sắm hợp lý, luôn có rau củ trong tủ.</li>
+            <li>Duy trì thể dục đều đặn, ít nhất 30 phút/ngày (có thể chia nhỏ).</li>
+            <li>Ngủ đủ 7-8 tiếng giúp kiểm soát hormone & cảm giác đói.</li>
+            <li>Đặt mục tiêu nhỏ, theo dõi tiến trình, tự thưởng lành mạnh.</li>
+        </ul>
+    </div>
+    <div class="tips">
+        <b>Bí quyết nhỏ:</b> Khi thay đổi từng thói quen nhỏ, kết hợp thêm “trợ thủ” F.FIT, giảm cân sẽ nhẹ nhàng và bền vững hơn rất nhiều!
+    </div>
+    <div class="next-article">
+        Đừng quá áp lực – hãy bắt đầu từ thói quen nhỏ nhất.<br>
+        <b>Nếu tò mò về F.FIT – inbox hoặc chờ bài tới nhé!</b>
+    </div>
+</div>
+<!-- Nút về đầu trang -->
+<button id="goTopBtn" title="Về đầu trang">↑</button>
+<script>
+    // Hiện nút về đầu trang khi cuộn xuống
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('goTopBtn');
+        if (window.scrollY > 300) btn.style.display = 'flex';
+        else btn.style.display = 'none';
+    });
+    // Click để về đầu trang
+    document.getElementById('goTopBtn').onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+</script>
+</body>
+</html>

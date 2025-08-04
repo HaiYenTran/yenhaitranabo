@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng tổng hợp Dinh dưỡng & Giải pháp</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <!-- FontAwesome cho icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <style>
+        body {
+            background: #f5fff6;
+            font-family: 'Open Sans', Arial, sans-serif;
+            margin: 0; padding: 0;
+        }
+        h1 {
+            color: #00b894;
+            text-align: center;
+            margin-top: 36px;
+            margin-bottom: 22px;
+            font-size: 2em;
+        }
+        .btn-back-home {
+            display: inline-block;
+            margin: 18px 0 2px 28px;
+            background: linear-gradient(90deg, #00b894 70%, #fea240 100%);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 26px;
+            font-size: 1.04em;
+            padding: 10px 24px;
+            text-decoration: none;
+            box-shadow: 0 2px 14px #00b89419;
+            transition: background 0.14s, filter 0.13s;
+            border: none;
+        }
+        .btn-back-home:hover {
+            background: linear-gradient(90deg,#00a381,#fd8503 100%);
+            filter: brightness(0.97);
+            color: #fff;
+        }
+        .btn-back-home i {
+            margin-right: 7px;
+            font-size: 1.14em;
+        }
+        .table-wrap {
+            max-width: 1000px;
+            margin: 0 auto 34px auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 38px #09af9151;
+            padding: 18px 12px 20px 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+            background: #fff;
+            font-size: 1.06em;
+        }
+        th, td {
+            border: 1px solid #baf4db;
+            padding: 9px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: #b7eede;
+            color: #098265;
+            font-weight: bold;
+        }
+        .title-row th {
+            background: #84d6b5;
+            color: #fff;
+            font-size: 1.08em;
+            border-radius: 5px 5px 0 0;
+            border-bottom: 2.5px solid #5ed4a0;
+        }
+        .block-header {
+            background: linear-gradient(90deg, #5ed4a0 60%, #baf7dc 100%);
+            color: #085c3b;
+            font-weight: bold;
+            font-size: 1.14em;
+            border-radius: 7px 7px 0 0;
+            text-align: center;
+            padding: 10px 0 9px 0;
+            border: 1.6px solid #59c59f;
+        }
+        tr.section-space td, tr.section-space th { 
+            padding: 8px 1px; border: none; background: transparent; height: 2px;
+        }
+        tr:last-child td, tr:last-child th { border-bottom: none;}
+        @media (max-width: 900px) {
+            .table-wrap {padding: 5px 0.8vw;}
+            table { font-size: 0.96em; }
+            th,td { padding: 7px 4px;}
+        }
+        .btn-download {
+            display: inline-block;
+            background: linear-gradient(90deg,#00b894,#26ffbe);
+            color: #fff; font-weight: 600; font-size: 1.07em;
+            border-radius: 23px;
+            padding: 12px 26px; margin: 20px auto 36px auto;
+            box-shadow: 0 2px 10px #0db89a12;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-download:hover { filter: brightness(0.93);}
+        /* Popup mua hàng */
+        #buyPopup {display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(16,32,34,0.89); z-index:99999; align-items:center; justify-content:center;}
+        #buyPopupBox {
+            background:#fff; max-width: 420px; width:95vw;
+            padding:48px 22px 28px 22px;
+            border-radius:16px; box-shadow:0 8px 40px #25c3a766;
+            position:relative; text-align:left;
+        }
+        #buyPopupBox h2 { color:#00b894; font-size:1.17em; margin-top:0;}
+        #buyPopupBox ul {color:#167d5a; font-size:1.07em; padding-left:17px;}
+        #buyPopupBox .close-btn {
+            position:absolute; top:13px; right:16px;
+            background:transparent; border:none;
+            font-size:1.6em;
+            color:#00b894;
+            cursor:pointer; font-weight:600;
+            z-index: 1;
+        }
+        .khnpp-link {
+            display:inline-block; background: linear-gradient(90deg,#00b894,#31ce53 90%);
+            color:#fff; font-weight: 600; font-size:1.13em; border-radius:22px; padding:13px 36px;
+            text-decoration: none; box-shadow:0 2px 14px #12d49320;
+            margin:12px 0 3px 0; transition:filter 0.16s;
+            text-align:center;
+        }
+        .khnpp-link:hover { background:#0ec67b; color:#fff;}
+        .note { color:#5e605e; font-size:0.97em; margin:10px 0 3px 0;}
+        .product-list-mini {padding-left:0; list-style:none; margin:18px 0 0 0;}
+        .product-list-mini li {margin-bottom:12px;}
+        .product-list-mini a {color:#049871; text-decoration:underline;}
+        /* Nút mua hàng */
+        #openPopupBuy {
+            background: linear-gradient(90deg, #00b894, #38ffb8 90%);
+            color: #fff; font-weight: 700; font-size: 1.09em; border: none;
+            border-radius: 24px; padding: 12px 28px; margin: 14px auto 45px auto;
+            box-shadow: 0 2px 14px #0db89a12; cursor:pointer; transition: filter 0.14s;
+            display:block;
+        }
+        #openPopupBuy:hover {filter:brightness(0.96);}
+        /* Link table */
+        a {color:#098265; text-decoration:underline;}
+        /* Nút về đầu trang */
+        .go-top-btn {
+            position: fixed;
+            right: 24px;
+            bottom: 32px;
+            z-index: 99999;
+            background: linear-gradient(90deg,#00b894,#fea240);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            box-shadow: 0 2px 16px #00b8942a;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .go-top-btn:hover {
+            background: linear-gradient(90deg, #00916e, #ffb954);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <a href="digital_index.html" class="btn-back-home">
+      <i class="fas fa-arrow-left"></i> Quay lại trang bìa
+    </a>
+    <h1>Bảng tổng hợp Dinh dưỡng &amp; Giải pháp</h1>
+    <div class="table-wrap" id="export-area">
+        <table>
+            <tr><th colspan="3" class="block-header">DINH DƯỠNG</th></tr>
+            <tr class="title-row"><th>Vấn đề</th><th>Mô tả/Tình huống</th><th>Khuyến nghị bổ sung</th></tr>
+            <tr><td rowspan="2">Thực phẩm rỗng</td><td>Nhiều thực phẩm rỗng (ngọt, ít vi chất)</td>
+                <td>
+                    <a href="https://www.amway.com.vn/vn/p/110170" target="_blank">Vitamin tổng hợp</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/120571" target="_blank">Men vi sinh</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/102736" target="_blank">Chất xơ</a>
+                </td>
+            </tr>
+            <tr><td>Ít rau củ, trái cây</td>
+                <td>
+                    <a href="https://www.amway.com.vn/vn/p/110170" target="_blank">Vitamin tổng hợp</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/109745" target="_blank">Vitamin C</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/110176" target="_blank">Vitamin B-complex</a>
+                </td>
+            </tr>
+            <tr><td>Không ăn cá biển</td>
+                <td>Thiếu Omega-3</td>
+                <td><a href="https://www.amway.com.vn/vn/p/126136" target="_blank">Omega-3</a></td>
+            </tr>
+            <tr><td>Ăn chay (thiếu đa dạng)</td>
+                <td>Ăn chay đơn điệu, thiếu đa dạng đạm động vật</td>
+                <td>
+                    <a href="https://www.amway.com.vn/vn/p/102046" target="_blank">Sắt</a>, Kẽm, Vitamin B12
+                </td>
+            </tr>
+            <tr><td>Không uống sữa</td>
+                <td>Không bổ sung sữa hoặc thay thế không phù hợp</td>
+                <td>
+                    <a href="https://www.amway.com.vn/vn/p/124537" target="_blank">Canxi</a>, Vitamin D
+                </td>
+            </tr>
+            <tr><td>Thiếu/thừa năng lượng</td>
+                <td>Đạm, đường, béo không hợp lý hoặc thiếu kiểm soát</td>
+                <td>
+                    Thực phẩm dinh dưỡng y học, 
+                    <a href="https://www.amway.com.vn/vn/p/110170" target="_blank">Vitamin tổng hợp</a>
+                </td>
+            </tr>
+            <tr><td>Chán ăn, không ngon miệng</td>
+                <td>Ăn ít, không thấy đói, vị giác kém</td>
+                <td>Kẽm, <a href="https://www.amway.com.vn/vn/p/110170" target="_blank">Vitamin tổng hợp</a>, Vitamin B1</td>
+            </tr>
+            <tr><td>Ăn nhanh, thèm ngọt</td>
+                <td>Ăn nhanh, thèm đồ ngọt, ăn nhiều carbohydrate</td>
+                <td>
+                    <a href="https://www.amway.com.vn/vn/p/120571" target="_blank">Men vi sinh</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/102736" target="_blank">Chất xơ hòa tan</a>, Crom
+                </td>
+            </tr>
+            <tr class="section-space"><td colspan="3"></td></tr>
+            <tr><th colspan="3" class="block-header">VẬN ĐỘNG</th></tr>
+            <tr class="title-row"><th>Vấn đề</th><th>Mô tả/Tình huống</th><th>Khuyến nghị bổ sung</th></tr>
+            <tr><td>Không tiếp xúc ánh nắng</td>
+                <td>Làm việc văn phòng, trong nhà, ít ra ngoài</td>
+                <td>Vitamin D3 (<a href="https://www.amway.com.vn/vn/p/124537" target="_blank">Canxi Magie D</a>)</td>
+            </tr>
+            <tr class="section-space"><td colspan="3"></td></tr>
+            <tr><th colspan="3" class="block-header">GIẤC NGỦ</th></tr>
+            <tr class="title-row"><th>Vấn đề</th><th>Mô tả/Tình huống</th><th>Khuyến nghị bổ sung</th></tr>
+            <tr><td>Ngủ không sâu, khó ngủ</td>
+                <td>Căng thẳng, thay đổi nhịp sinh học, mất ngủ mãn tính</td>
+                <td>Magie, Vitamin B6, Melatonin, chiết xuất hoa cúc</td>
+            </tr>
+            <tr class="section-space"><td colspan="3"></td></tr>
+            <tr><th colspan="3" class="block-header">TINH THẦN</th></tr>
+            <tr class="title-row"><th>Vấn đề</th><th>Mô tả/Tình huống</th><th>Khuyến nghị bổ sung</th></tr>
+            <tr><td>Stress, căng thẳng thường xuyên</td>
+                <td>Áp lực công việc, học tập, gia đình, stress kéo dài</td>
+                <td>
+                    Magie, 
+                    <a href="https://www.amway.com.vn/vn/p/110176" target="_blank">Vitamin B-complex</a>,
+                    Vitamin B6, 
+                    <a href="https://www.amway.com.vn/vn/p/102736" target="_blank">Chất xơ hòa tan</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/120571" target="_blank">Men vi sinh</a>,
+                    Ashwagandha
+                </td>
+            </tr>
+            <tr class="section-space"><td colspan="3"></td></tr>
+            <tr><th colspan="3" class="block-header">BỆNH LÝ KHÁC / TRIỆU CHỨNG LÂM SÀNG</th></tr>
+            <tr class="title-row"><th>Vấn đề</th><th>Mô tả/Tình huống</th><th>Khuyến nghị bổ sung</th></tr>
+            <tr><td>Da/niêm mạc/tóc/móng</td>
+                <td>Da xanh, niêm nhợt, móng tóc yếu</td>
+                <td>
+                    <a href="https://www.amway.com.vn/vn/p/102046" target="_blank">Sắt</a>, Kẽm, Biotin (B7), 
+                    <a href="https://www.amway.com.vn/vn/p/110170" target="_blank">Vitamin tổng hợp</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/109745" target="_blank">Vitamin C</a>
+                </td>
+            </tr>
+            <tr><td>Hô hấp</td>
+                <td>Nhiễm trùng hô hấp tái đi tái lại</td>
+                <td>
+                    Kẽm, 
+                    <a href="https://www.amway.com.vn/vn/p/109745" target="_blank">Vitamin C</a>, 
+                    Vitamin D, 
+                    <a href="https://www.amway.com.vn/vn/p/120571" target="_blank">Men vi sinh</a>
+                </td>
+            </tr>
+            <tr><td>Tiêu hóa</td>
+                <td>Rối loạn tiêu hóa, kém hấp thu, táo bón, trào ngược</td>
+                <td>
+                    <a href="https://www.amway.com.vn/vn/p/120571" target="_blank">Men vi sinh</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/102736" target="_blank">Chất xơ hòa tan</a>, 
+                    enzyme tiêu hóa, magie, chiết xuất cam thảo
+                </td>
+            </tr>
+            <tr><td>Cơ xương khớp</td>
+                <td>Thoái hóa khớp, đau nhức cơ, loãng xương</td>
+                <td>
+                    Canxi, Vitamin D, 
+                    <a href="https://www.amway.com.vn/vn/p/104664" target="_blank">Glucosamine</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/119293" target="_blank">Collagen peptide</a>, 
+                    MSM, Kẽm, Kali
+                </td>
+            </tr>
+            <tr><td>Khác</td>
+                <td>Mệt mỏi, mất tập trung, da khô, rụng tóc, đề kháng kém</td>
+                <td>
+                    <a href="https://www.amway.com.vn/vn/p/110176" target="_blank">B-complex</a>, 
+                    CoQ10, 
+                    <a href="https://www.amway.com.vn/vn/p/102046" target="_blank">Sắt</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/119293" target="_blank">Collagen peptide</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/109745" target="_blank">Vitamin C</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/426100" target="_blank">Vitamin E</a>, 
+                    Omega-3, Ginkgo biloba
+                </td>
+            </tr>
+            <tr class="section-space"><td colspan="3"></td></tr>
+            <tr><th colspan="3" class="block-header">XÉT NGHIỆM</th></tr>
+            <tr class="title-row"><th>Vấn đề</th><th>Mô tả/Tình huống</th><th>Khuyến nghị bổ sung</th></tr>
+            <tr><td>Thiếu vitamin, khoáng chất</td>
+                <td>Đã xét nghiệm và phát hiện thiếu: Vitamin D, Sắt, Kẽm, B12, Canxi...</td>
+                <td>
+                    <a href="https://www.amway.com.vn/vn/p/110170" target="_blank">Vitamin tổng hợp</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/124537" target="_blank">Canxi</a>, 
+                    <a href="https://www.amway.com.vn/vn/p/102046" target="_blank">Sắt</a>, Kẽm, B12
+                </td>
+            </tr>
+        </table>
+        <button class="btn-download" onclick="downloadPDF()">Tải bảng này dưới dạng PDF</button>
+    </div>
+    <!-- Nút popup mua hàng -->
+    <button id="openPopupBuy">Tôi muốn mua sản phẩm chính hãng</button>
+    <!-- BEGIN POPUP MUA HÀNG -->
+    <div id="buyPopup">
+        <div id="buyPopupBox">
+            <button class="close-btn" onclick="closeBuyPopup()" aria-label="Đóng popup">&times;</button>
+            <h2>Hướng dẫn mua sản phẩm Amway chính hãng</h2>
+            <ul>
+                <li>Bạn cần <b>tạo tài khoản khách hàng ưu tiên (KHNPP)</b> miễn phí để mua hàng với giá ưu đãi và nhận hỗ trợ tốt nhất.</li>
+                <li>Click vào nút bên dưới để đăng ký KHNPP bằng mã giới thiệu – <b>nhanh, bảo mật, không cam kết ràng buộc.</b></li>
+                <li>Sau khi có tài khoản, hãy đăng nhập và mua hàng như các trang thương mại điện tử.</li>
+                <li>Nếu cần hỗ trợ thêm, vui lòng liên hệ người chia sẻ trang này!</li>
+            </ul>
+            <div style="text-align:center;">
+                <a href="https://www.amway.com.vn/vn/r/vng3rrj6" target="_blank" class="khnpp-link">Tạo tài khoản mua hàng tại đây</a>
+            </div>
+            <div class="note">
+                <b>Lưu ý:</b> Tài khoản của bạn sẽ liên kết trực tiếp với người hướng dẫn để hỗ trợ chăm sóc.<br>
+                <span style="color:#138972;">Chúc bạn mua sắm an toàn và hài lòng với sản phẩm Amway!</span>
+            </div>
+            <ul class="product-list-mini">
+                <li><a href="https://www.amway.com.vn/vn/p/110415" target="_blank">Nutrilite Protein</a></li>
+                <li><a href="https://www.amway.com.vn/vn/p/110170" target="_blank">Nutrilite Double X</a></li>
+                <li><a href="https://www.amway.com.vn/vn/p/126136" target="_blank">Nutrilite Omega-3</a></li>
+                <li><a href="https://www.amway.com.vn/vn/p/118180" target="_blank">Dish Drops</a></li>
+                <li><a href="https://www.amway.com.vn/vn/p/110481" target="_blank">Nước giặt SA8</a></li>
+                <li><a href="https://www.amway.com.vn/vn/p/110488" target="_blank">Nước tẩy rửa đa năng L.O.C</a></li>
+                <li><a href="https://www.amway.com.vn/vn/p/121527" target="_blank">Kem đánh răng Glister</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- END POPUP MUA HÀNG -->
+    <!-- Nút về đầu trang -->
+    <button id="goTopBtn" title="Về đầu trang" class="go-top-btn">↑</button>
+    <!-- html2pdf CDN for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function downloadPDF() {
+            const el = document.getElementById('export-area');
+            const opt = {
+                margin: [0.45, 0.27, 0.44, 0.27],
+                filename: 'BangTongHop_DinhDuong_GiaiPhap.pdf',
+                image: { type: 'jpeg', quality: 0.97 },
+                html2canvas: { scale: 2, scrollY: 0 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(el).save();
+        }
+        // Popup mua hàng logic
+        function closeBuyPopup() {
+            document.getElementById('buyPopup').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        document.getElementById('openPopupBuy').onclick = function(){
+            document.getElementById('buyPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        };
+        document.addEventListener('keydown', function(e){
+            if(e.key==='Escape') closeBuyPopup();
+        });
+        // Nút quay lại đầu trang
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('goTopBtn');
+            if (window.scrollY > 300) btn.style.display = 'flex';
+            else btn.style.display = 'none';
+        });
+        document.getElementById('goTopBtn').onclick = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+</body>
+</html>

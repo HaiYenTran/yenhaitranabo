@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>10 phút mỗi ngày – Thay đổi sức khỏe & cân nặng</title>
+    <link rel="icon" href="assets/favicon.ico"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <style>
+        body { background: #f5fff6; font-family: 'Open Sans', Arial, sans-serif; margin:0; padding:0;}
+        .container {
+            max-width: 750px; margin: 36px auto 30px auto;
+            background: #fff; border-radius: 18px;
+            box-shadow: 0 6px 38px #37d99a1b;
+            padding: 32px 20px 28px 20px;
+            position: relative;
+        }
+        .btn-back-home {
+            display: inline-block;
+            margin: 7px 0 17px 10px;
+            background: linear-gradient(90deg, #00b894 70%, #fea240 100%);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 26px;
+            font-size: 1.02em;
+            padding: 10px 24px;
+            text-decoration: none;
+            box-shadow: 0 2px 14px #00b89419;
+            transition: background 0.14s, filter 0.13s;
+            border: none;
+        }
+        .btn-back-home:hover {
+            background: linear-gradient(90deg,#00a381,#fd8503 100%);
+            filter: brightness(0.97);
+            color: #fff;
+        }
+        .btn-back-home i {
+            margin-right: 7px;
+            font-size: 1.14em;
+        }
+        h1 {
+            color: #00b894; font-size: 1.38em; text-align: center; font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .lead {
+            text-align: center; font-size: 1.13em; color: #1d725d; margin-bottom: 18px;
+        }
+        .highlight-num {
+            font-size: 3.7em; color: #01b986; font-weight: 900;
+            display: block; text-align: center; margin-bottom: 7px; line-height: 1;
+            letter-spacing: 2px;
+        }
+        .benefit-block, .routine-block, .motivate-block {
+            background: #eafff4;
+            border-left: 7px solid #1cae80;
+            border-radius: 14px;
+            box-shadow: 0 2px 10px #c7f7de33;
+            padding: 18px 18px 13px 20px;
+            margin-bottom: 22px;
+        }
+        .benefit-block h2, .routine-block h2, .motivate-block h2 {
+            color: #16926b; font-size: 1.1em; font-weight: bold; margin-top: 0; margin-bottom: 10px;
+        }
+        ul, ol {margin-bottom: 0.7em;}
+        .exercise-list li, .motivate-list li {
+            margin-bottom: 6px;
+        }
+        .exercise-list li::before {
+            content: "🏃‍♂️";
+            margin-right: 6px;
+        }
+        .routine-list li::before {
+            content: "•";
+            margin-right: 6px;
+            color: #00b894;
+        }
+        .motivate-list li::before {
+            content: "✔";
+            margin-right: 6px;
+            color: #00b894;
+            font-size: 1.13em;
+        }
+        .infographic {
+            width:100%; max-width: 470px; display: block; margin: 30px auto 20px auto;
+            border-radius: 18px; box-shadow: 0 2px 16px #b3f0d525;
+        }
+        .note {
+            background: #fffadd; color: #938c10; border-left: 6px solid #ffdc5a;
+            border-radius: 10px; padding: 13px 18px 10px 18px; margin: 21px 0 15px 0; font-size: 1.09em;
+        }
+        .fcallout {
+            background: #eaffed; color: #128860;
+            padding: 12px 17px 8px 15px; border-radius: 9px;
+            border-left: 6px solid #1cae80; margin-bottom: 9px; margin-top: 13px;
+        }
+        /* Nút về đầu trang */
+        #goTopBtn {
+            position: fixed;
+            right: 24px;
+            bottom: 32px;
+            z-index: 99999;
+            background: linear-gradient(90deg,#00b894,#fea240);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            box-shadow: 0 2px 16px #00b8942a;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #goTopBtn:hover {
+            background: linear-gradient(90deg, #00916e, #ffb954);
+            color: #fff;
+        }
+        @media (max-width:700px) {
+            .container{padding:9px 1vw;}
+            .highlight-num{font-size:2.2em;}
+            .infographic{max-width:97vw;}
+        }
+    </style>
+</head>
+<body>
+<a href="digital_index.html" class="btn-back-home">
+    <i class="fas fa-arrow-left"></i> Quay lại trang bìa
+</a>
+<div class="container">
+    <h1>10 phút mỗi ngày – Thay đổi sức khỏe & cân nặng rõ rệt</h1>
+    <div class="highlight-num">10’</div>
+    <div class="lead">
+        Chỉ cần <b>10 phút vận động mỗi ngày</b> – bạn sẽ bất ngờ với sự thay đổi về sức khỏe, vóc dáng và tinh thần.
+    </div>
+    <img class="infographic" src="assets/img/10phut_change.png" alt="Infographic 10 phút thay đổi sức khỏe"/>
+    <div class="benefit-block">
+        <h2>Lợi ích chỉ với 10 phút/ngày:</h2>
+        <ul>
+            <li><b>Cải thiện trao đổi chất, hỗ trợ đốt mỡ</b>: Tăng nhịp tim, kích hoạt đốt năng lượng suốt ngày.</li>
+            <li><b>Giảm nguy cơ bệnh mãn tính</b>: Ổn định huyết áp, giảm tiểu đường, béo phì, tim mạch.</li>
+            <li><b>Tăng sức khoẻ tim mạch, xương khớp</b>: Các hệ cơ quan được “làm mới”.</li>
+            <li><b>Giảm stress, tăng tinh thần</b>: Giải phóng endorphin, ngủ ngon, vui vẻ hơn.</li>
+            <li><b>Duy trì vóc dáng</b>: Kiểm soát cân nặng nhẹ nhàng, không áp lực.</li>
+        </ul>
+    </div>
+    <div class="routine-block">
+        <h2>Các bài tập đơn giản – Không cần dụng cụ</h2>
+        <ul class="exercise-list">
+            <li>Jumping Jack: Nhảy dang tay chân (30 giây x 3)</li>
+            <li>Squat: Ngồi xuống đứng lên (15 lần x 2-3)</li>
+            <li>Chống đẩy (push-up): Thảm hoặc tường (10-15 lần)</li>
+            <li>Plank: Giữ thẳng người trên khuỷu tay (20-30 giây x 2-3)</li>
+            <li>Gập bụng nhẹ: Nằm gập lên xuống (10-15 lần)</li>
+        </ul>
+        <ul class="routine-list" style="margin-top:13px;">
+            <li>Hoặc thử: Yoga (Mèo-Bò, Rắn Hổ Mang, Chó Úp Mặt), giãn cơ, xoay vai, nâng gối…</li>
+            <li>Mẹo: Bật nhạc yêu thích, làm theo video YouTube 10 phút để “lấy đà” mỗi ngày!</li>
+        </ul>
+    </div>
+    <div class="motivate-block">
+        <h2>Cách duy trì động lực, dù lịch bận rộn:</h2>
+        <ul class="motivate-list">
+            <li>Chọn thời điểm cố định: Sáng sau ngủ dậy hoặc chiều tối.</li>
+            <li>Cam kết thật nhỏ: chỉ 10 phút/ngày, không áp lực!</li>
+            <li>Ghi vào lịch, đặt báo thức nhắc nhẹ.</li>
+            <li>Tập cùng người thân/bạn bè – vừa tập vừa tám, niềm vui tăng gấp đôi.</li>
+            <li>Tự thưởng mỗi tuần đủ 10 phút/ngày.</li>
+            <li>Theo dõi cảm giác: đo số đo, cân nặng, hoặc chỉ ghi chú mỗi ngày cảm thấy thế nào.</li>
+        </ul>
+    </div>
+    <div class="note">
+        <b>Chỉ 10 phút/ngày, bạn sẽ cảm nhận cơ thể và tinh thần thay đổi rõ rệt chỉ sau vài tuần!</b>
+    </div>
+    <div class="fcallout">
+        Bạn biết không? <b>Một “bí quyết nhỏ” đã giúp mình duy trì đều thói quen này – đó là F.FIT.</b><br>
+        Đừng bỏ lỡ các bài tới để khám phá F.FIT, hoặc <b>inbox</b> nếu muốn biết ngay vì sao F.FIT lại giúp duy trì động lực cực tốt!
+    </div>
+</div>
+<!-- Nút về đầu trang -->
+<button id="goTopBtn" title="Về đầu trang">↑</button>
+<script>
+    // Hiện nút về đầu trang khi cuộn xuống
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('goTopBtn');
+        if (window.scrollY > 300) btn.style.display = 'flex';
+        else btn.style.display = 'none';
+    });
+    // Click để về đầu trang
+    document.getElementById('goTopBtn').onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+</script>
+</body>
+</html>
