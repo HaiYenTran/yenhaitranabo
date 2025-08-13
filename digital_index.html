@@ -7,214 +7,11 @@
   <link rel="icon" href="assets/favicon.ico" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <style>
-    /* --- Popup overlay styles --- */
-    #authOverlay {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.7);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 9999;
-    }
-    #authBox {
-      background: #fff; padding: 24px; border-radius: 12px;
-      width: 90%; max-width: 380px; text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-    #authBox h2 { color: #00b894; margin-bottom: 16px; }
-    .method-select { margin-bottom: 16px; }
-    .method-select label { margin-right: 12px; cursor: pointer; }
-    .input-group { margin-bottom: 12px; display: none; }
-    .input-group.active { display: block; }
-    .input-group input {
-      width: 100%; padding: 10px; border: 1px solid #ccc;
-      border-radius: 6px; font-size: 1em;
-    }
-    #authBtn {
-      background: linear-gradient(90deg,#00b894,#26ffbe);
-      color: #fff; padding: 10px 0; width: 100%;
-      border: none; border-radius: 6px; font-size: 1em;
-      cursor: pointer; transition: filter .2s;
-    }
-    #authBtn:hover { filter: brightness(0.9); }
-    #authError {
-      color: #e74c3c; font-size: 0.9em;
-      display: none; margin-top: 8px;
-    }
-    /* Password banner */
-    #passwordBanner {
-      display: none;
-      background: #fff8e1; color: #b38f00;
-      text-align: center; padding: 10px; font-size: 1em;
-      border-bottom: 2px solid #ffe08a;
-    }
-    /* Hide main until auth */
-    .main-wrap { display: none; }
-
-    /* --- Main page CSS --- */
-    body {
-      font-family: 'Open Sans', Arial, sans-serif;
-      background: linear-gradient(108deg,#e6fff7 55%,#fff5e1 100%);
-      margin: 0; padding: 0;
-    }
-    .main-wrap {
-      max-width: 880px; margin: 20px auto; padding: 20px;
-      background: #fff; border-radius: 24px;
-      box-shadow: 0 8px 46px #00b89414;
-    }
-    h1 { color: #00b894; text-align: center; font-size: 2.25em; font-weight: 900; margin-bottom: 10px; }
-    .subtitle { color: #fe9948; text-align: center; font-size: 1.23em; margin-bottom: 26px; }
-    .desc-intro {
-      font-size: 1.18em;
-      background: linear-gradient(93deg,#f4fff9 70%,#ffefd6 100%);
-      border-radius: 18px; color: #26735f; padding: 20px 22px; margin-bottom: 22px;
-      border-left: 8px solid #00b894; box-shadow: 0 2px 12px #00b89414;
-    }
-    .key-list { list-style: none; padding: 0; margin: 18px 0 0; }
-    .key-list li {
-      display: flex; gap: 10px; margin-bottom: 12px;
-      color: #246c63; font-size: 1.09em;
-    }
-    .key-list i { color: #ffb347; font-size: 1.18em; margin-top: 4px; }
-    .menu-section {
-      margin: 36px 0 34px; background: #f5fff9; border-radius: 19px;
-      border-left: 6px solid #00b894; padding: 27px 22px 17px;
-      box-shadow: 0 2px 12px #00b8940c;
-    }
-    .menu-section h2 {
-      color: #00b894; font-size: 1.16em; margin: 0 0 11px;
-      font-weight: 700; display: flex; align-items: center; gap: 8px;
-    }
-    .menu-grid { display: flex; flex-wrap: wrap; gap: 16px; }
-    .menu-link {
-      flex: 1 1 240px;
-      background: linear-gradient(96deg,#f1fff9 70%,#fff5e4 100%);
-      border: 2.2px solid #00b89422; border-radius: 16px;
-      color: #24825b; font-size: 1.06em; font-weight: 600;
-      padding: 18px 15px; text-decoration: none;
-      display: flex; align-items: center; gap: 10px;
-      transition: all .15s;
-    }
-    .menu-link:hover {
-      background: linear-gradient(97deg,#00b894 70%,#fea240 100%);
-      color: #fff; border-color: #00b894;
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 4px 22px #00b89424;
-    }
-    .menu-link i { color: #fe9948; font-size: 1.3em; }
-    .cover-img-wrap { text-align: center; margin: 28px 0 18px; }
-    .cover-img {
-      max-width: 330px; width: 97%; border-radius: 19px;
-      box-shadow: 0 2px 28px #00b89413;
-    }
-    .author-blk {
-      background: #eafff8; color: #009e82; border-radius: 12px;
-      padding: 16px; margin: 26px 0; border-left: 7px solid #fea240;
-      font-size: 1.05em;
-    }
-    .soft-call {
-      margin: 38px auto 0; background: linear-gradient(97deg,#e6fff7 75%,#fff5e4 100%);
-      border-radius: 14px; color: #246c63; font-size: 1.12em;
-      text-align: center; max-width: 460px; padding: 18px;
-      box-shadow: 0 1px 9px #00b89411;
-    }
-    .soft-call a {
-      display: inline-block; color: #fff;
-      background: linear-gradient(90deg,#00b894,#fea240);
-      padding: 12px 24px; border-radius: 23px; margin-top: 10px;
-      font-weight: 700; text-decoration: none;
-      box-shadow: 0 1px 10px #00b89419; transition: filter .12s;
-    }
-    .soft-call a:hover { filter: brightness(0.92); }
-
-    @media (max-width:700px){
-      .main-wrap { padding: 16px; }
-      .menu-grid { flex-direction: column; }
-      .cover-img { max-width: 97vw; }
-    }
+    /* (--- keep your existing CSS unchanged ---) */
   </style>
 </head>
 <body>
-
-  <!-- One-time password banner -->
-  <div id="passwordBanner">
-    Mật khẩu cho lần mở “một lần nữa”: <b>toiyeusongxanh</b>
-  </div>
-
-  <!-- Authentication Overlay -->
-  <div id="authOverlay">
-    <div id="authBox">
-      <h2>Chọn cách truy cập</h2>
-      <div class="method-select">
-        <label><input type="radio" name="method" value="password" checked> Mật khẩu</label>
-        <label><input type="radio" name="method" value="email"> Email</label>
-        <label><input type="radio" name="method" value="phone"> Số ĐT</label>
-      </div>
-      <div id="group-password" class="input-group active">
-        <input id="inp-password" type="password" placeholder="Nhập mật khẩu…" />
-      </div>
-      <div id="group-email" class="input-group">
-        <input id="inp-email" type="email" placeholder="you@mail.com" />
-      </div>
-      <div id="group-phone" class="input-group">
-        <input id="inp-phone" type="tel" placeholder="0123456789" />
-      </div>
-      <button id="authBtn">Xác nhận</button>
-      <div id="authError">Vui lòng nhập đúng định dạng.</div>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="main-wrap">
-    <h1>BÍ QUYẾT GIẢM CÂN LÀNH MẠNH</h1>
-    <div class="subtitle">10+ bí mật vàng giúp bạn chinh phục cân nặng, trẻ hóa cơ thể &amp; duy trì sức khỏe bền vững</div>
-
-    <div class="cover-img-wrap">
-      <img src="assets/img/cover_giamcan.png" alt="Cover" class="cover-img"/>
-    </div>
-
-    <div class="desc-intro">
-      Bạn từng nghĩ giảm cân là phải kiêng khem, nhịn ăn khổ sở?<br>
-      Hành trình thay đổi bản thân thực ra có thể bắt đầu nhẹ nhàng hơn bạn tưởng!
-      <ul class="key-list">
-        <li><i class="fas fa-balance-scale"></i> Giảm cân khoa học, không cần “chịu đựng”</li>
-        <li><i class="fas fa-brain"></i> Kiểm soát thèm ăn, loại bỏ thói quen xấu</li>
-        <li><i class="fas fa-shoe-prints"></i> Vận động chỉ 10 phút mỗi ngày</li>
-        <li><i class="fas fa-bed"></i> Ngủ sâu – bí quyết giảm cân thầm lặng</li>
-        <li><i class="fas fa-dna"></i> Chăm sóc đường ruột để giảm cân bền vững</li>
-        <li><i class="fas fa-fire-alt"></i> Duy trì động lực & xây dựng lối sống khỏe</li>
-        <li><i class="fas fa-utensils"></i> Thực đơn mẫu, mẹo nhỏ tiện lợi</li>
-        <li><i class="fas fa-plus-circle"></i> …và còn nhiều hơn nữa!</li>
-      </ul>
-    </div>
-
-    <div class="menu-section">
-      <h2><i class="fas fa-list-ul"></i> Truy cập từng chủ đề:</h2>
-      <div class="menu-grid">
-        <a class="menu-link" href="digital_5yeutoquyetdinhgiamcan.html"><i class="fas fa-star"></i> 5 yếu tố</a>
-        <a class="menu-link" href="digital_taisaophaigiamcan.html"><i class="fas fa-heartbeat"></i> Tại sao phải giảm cân?</a>
-        <a class="menu-link" href="digital_giamcanlanhmanh.html"><i class="fas fa-leaf"></i> Giảm cân lành mạnh</a>
-        <a class="menu-link" href="digital_thoiquenxau.html"><i class="fas fa-exclamation-triangle"></i> Thói quen xấu</a>
-        <a class="menu-link" href="digital_theman.html"><i class="fas fa-cookie-bite"></i> Kiểm soát thèm ăn</a>
-        <a class="menu-link" href="digital_dinhduong.html"><i class="fas fa-apple-alt"></i> Dinh dưỡng & giải pháp</a>
-        <a class="menu-link" href="digital_10phutthaydoi.html"><i class="fas fa-running"></i> 10 phút thay đổi</a>
-        <a class="menu-link" href="digital_giacngu.html"><i class="fas fa-bed"></i> Ngủ sâu giảm cân</a>
-        <a class="menu-link" href="digital_hevisinh.html"><i class="fas fa-dna"></i> Chăm sóc đường ruột</a>
-        <a class="menu-link" href="digital_duytridongluc.html"><i class="fas fa-fire-alt"></i> Duy trì động lực</a>
-      </div>
-    </div>
-
-    <div class="author-blk">
-      <b>Tác giả:</b> Chuyên gia Dinh dưỡng<br>
-      Dành cho tất cả ai muốn giảm cân, giữ dáng và sống khỏe!
-    </div>
-
-    <div class="soft-call">
-      <i class="fas fa-hand-holding-heart" style="font-size:1.25em;color:#00b894;"></i><br>
-      Muốn tư vấn 1-1?<br>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSclfUUwaSha4yUm9nWuQARceyDBu68ZhvuZRfa_F22WFAcTjA/viewform" target="_blank">
-        Đặt lịch tư vấn
-      </a>
-    </div>
-  </div>
+  <!-- (--- keep your existing HTML content unchanged ---) -->
 
   <script>
     // Helpers
@@ -237,6 +34,9 @@
     const grpPwd    = document.getElementById('group-password');
     const grpEmail  = document.getElementById('group-email');
     const grpPhone  = document.getElementById('group-phone');
+
+    // === GAS_URL: paste your Apps Script Web App URL here ===
+    const GAS_URL = 'REPLACE_WITH_YOUR_WEB_APP_URL';
 
     // Switch inputs on method change
     Array.from(methods).forEach(r=>{
@@ -276,13 +76,19 @@
         let reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         let rePhone = /^\d{9,15}$/;
         if((method==='email'&&reEmail.test(val))||(method==='phone'&&rePhone.test(val))){
-          // Submit to FormSubmit
-          let action = 'https://formsubmit.co/jennatranabo@gmail.com';
-          let fd = new FormData();
-          fd.append(method, val);
-          fd.append('_subject','Truy cập index');
-          await fetch(action,{ method:'POST', body: fd });
-          // set cookie
+          // === Send to Google Apps Script Web App ===
+          try {
+            const fd = new FormData();
+            fd.append('contact', val);
+            fd.append('method', method);
+            fd.append('page', location.pathname);
+            // Apps Script doesn't include CORS headers by default → use no-cors
+            await fetch(GAS_URL, { method:'POST', mode:'no-cors', body: fd });
+          } catch (e) {
+            console.warn('Submit to GAS failed (ignored):', e);
+          }
+
+          // Grant access regardless of response visibility in no-cors mode
           setCookie('access_granted','1',30);
           overlay.style.display='none';
           mainWrap.style.display='block';
