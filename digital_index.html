@@ -8,37 +8,29 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <style>
     /* --- Popup overlay styles --- */
-    #authOverlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.7);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 9999;
-    }
-    #authBox {
-      background: #fff; padding: 24px; border-radius: 12px;
-      width: 90%; max-width: 380px; text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
+    #authOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+      display: flex; align-items: center; justify-content: center; z-index: 9999; }
+    #authBox { background: #fff; padding: 24px; border-radius: 12px;
+      width: 90%; max-width: 380px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
     #authBox h2 { color: #00b894; margin-bottom: 16px; }
     .method-select { margin-bottom: 16px; }
     .method-select label { margin-right: 12px; cursor: pointer; }
     .input-group { margin-bottom: 12px; display: none; }
     .input-group.active { display: block; }
-    .input-group input {
-      width: 100%; padding: 10px; border: 1px solid #ccc;
-      border-radius: 6px; font-size: 1em;
-    }
-    #authBtn {
-      background: linear-gradient(90deg,#00b894,#26ffbe);
-      color: #fff; padding: 10px 0; width: 100%;
-      border: none; border-radius: 6px; font-size: 1em;
-      cursor: pointer; transition: filter .2s;
-    }
+    .input-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 1em; }
+    #authBtn { background: linear-gradient(90deg,#00b894,#26ffbe); color: #fff; padding: 10px 0; width: 100%;
+      border: none; border-radius: 6px; font-size: 1em; cursor: pointer; transition: filter .2s; }
     #authBtn:hover { filter: brightness(0.9); }
     #authError { color: #e74c3c; font-size: 0.9em; display: none; margin-top: 8px; }
 
     /* Ẩn nội dung chính cho tới khi xác thực */
     .main-wrap { display: none; }
+
+    /* Thông báo nhỏ sau khi vào trang */
+    .notice-mini {
+      display: none; margin: 14px 0 6px; padding: 8px 12px; border-radius: 10px;
+      background: #fff8e1; color: #8a6d00; border: 1px solid #ffe08a; font-size: .95em; text-align: center;
+    }
 
     /* --- Main page CSS --- */
     body { font-family: 'Open Sans', Arial, sans-serif; background: linear-gradient(108deg,#e6fff7 55%,#fff5e1 100%); margin: 0; padding: 0; }
@@ -66,7 +58,7 @@
 </head>
 <body>
 
-  <!-- Authentication Overlay (luôn hiện khi vào trang) -->
+  <!-- Authentication Overlay: luôn hiển thị khi vào trang -->
   <div id="authOverlay">
     <div id="authBox">
       <h2>Chọn cách truy cập</h2>
@@ -91,6 +83,11 @@
 
   <!-- Main Content -->
   <div class="main-wrap">
+    <!-- Thông báo nhỏ sau khi vào trang -->
+    <div id="postLoginNotice" class="notice-mini">
+      Liên hệ chủ kênh để nhận mật khẩu cho lần đăng nhập sau.
+    </div>
+
     <h1>BÍ QUYẾT GIẢM CÂN LÀNH MẠNH</h1>
     <div class="subtitle">10+ bí mật vàng giúp bạn chinh phục cân nặng, trẻ hóa cơ thể &amp; duy trì sức khỏe bền vững</div>
 
@@ -157,6 +154,7 @@
     // UI refs
     const overlay   = document.getElementById('authOverlay');
     const mainWrap  = document.querySelector('.main-wrap');
+    const notice    = document.getElementById('postLoginNotice');
     const errMsg    = document.getElementById('authError');
     const btn       = document.getElementById('authBtn');
     const methods   = document.getElementsByName('method');
@@ -165,7 +163,7 @@
     const grpPhone  = document.getElementById('group-phone');
 
     // Dán URL /exec của Apps Script tại đây
-    const GAS_URL = 'https://script.google.com/macros/s/AKfycbx9dwPyQlMXjwpV6KE1HILljzrEiAdusQaCEZDUuiS8o63JsihqbzbnLr93cABAkVhJ/exec';
+    const GAS_URL = 'REPLACE_WITH_YOUR_WEB_APP_URL';
 
     // Chuyển UI theo method
     function updateUI(){
@@ -201,6 +199,12 @@
       return true;
     }
 
+    function showPage(){
+      overlay.style.display = 'none';
+      mainWrap.style.display = 'block';
+      notice.style.display = 'block'; // hiện thông báo nhỏ
+    }
+
     // Xử lý xác thực
     btn.addEventListener('click', ()=>{
       errMsg.style.display='none';
@@ -208,19 +212,15 @@
 
       if (method === 'password') {
         const pwd = document.getElementById('inp-password').value.trim();
-        if (pwd === 'toiyeusongxanh') {
-          overlay.style.display = 'none';
-          mainWrap.style.display = 'block';
-        } else {
-          errMsg.textContent = 'Mật khẩu không đúng.'; errMsg.style.display = 'block';
-        }
+        if (pwd === 'toiyeusongxanh') { showPage(); }
+        else { errMsg.textContent = 'Mật khẩu không đúng.'; errMsg.style.display = 'block'; }
         return;
       }
 
       if (method === 'email') {
         const email = document.getElementById('inp-email').value.trim();
         if (!isEmail(email)) { errMsg.textContent = 'Email không hợp lệ.'; errMsg.style.display = 'block'; return; }
-        if (submitToGAS(email, 'email')) { overlay.style.display = 'none'; mainWrap.style.display = 'block'; }
+        if (submitToGAS(email, 'email')) showPage();
         return;
       }
 
@@ -228,7 +228,7 @@
         const phoneRaw = document.getElementById('inp-phone').value.trim();
         if (!isPhone(phoneRaw)) { errMsg.textContent = 'Số điện thoại không hợp lệ.'; errMsg.style.display = 'block'; return; }
         const phoneDigits = phoneRaw.replace(/[^0-9]/g,''); // chuẩn hóa để lưu
-        if (submitToGAS(phoneDigits, 'phone')) { overlay.style.display = 'none'; mainWrap.style.display = 'block'; }
+        if (submitToGAS(phoneDigits, 'phone')) showPage();
         return;
       }
     });
