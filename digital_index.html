@@ -35,111 +35,44 @@
       cursor: pointer; transition: filter .2s;
     }
     #authBtn:hover { filter: brightness(0.9); }
-    #authError {
-      color: #e74c3c; font-size: 0.9em;
-      display: none; margin-top: 8px;
-    }
+    #authError { color: #e74c3c; font-size: 0.9em; display: none; margin-top: 8px; }
+
     /* Password banner */
-    #passwordBanner {
-      display: none;
-      background: #fff8e1; color: #b38f00;
-      text-align: center; padding: 10px; font-size: 1em;
-      border-bottom: 2px solid #ffe08a;
-    }
+    #passwordBanner { display: none; background: #fff8e1; color: #b38f00; text-align: center; padding: 10px; font-size: 1em; border-bottom: 2px solid #ffe08a; }
+
     /* Hide main until auth */
     .main-wrap { display: none; }
 
     /* --- Main page CSS --- */
-    body {
-      font-family: 'Open Sans', Arial, sans-serif;
-      background: linear-gradient(108deg,#e6fff7 55%,#fff5e1 100%);
-      margin: 0; padding: 0;
-    }
-    .main-wrap {
-      max-width: 880px; margin: 20px auto; padding: 20px;
-      background: #fff; border-radius: 24px;
-      box-shadow: 0 8px 46px #00b89414;
-    }
+    body { font-family: 'Open Sans', Arial, sans-serif; background: linear-gradient(108deg,#e6fff7 55%,#fff5e1 100%); margin: 0; padding: 0; }
+    .main-wrap { max-width: 880px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 24px; box-shadow: 0 8px 46px #00b89414; }
     h1 { color: #00b894; text-align: center; font-size: 2.25em; font-weight: 900; margin-bottom: 10px; }
     .subtitle { color: #fe9948; text-align: center; font-size: 1.23em; margin-bottom: 26px; }
-    .desc-intro {
-      font-size: 1.18em;
-      background: linear-gradient(93deg,#f4fff9 70%,#ffefd6 100%);
-      border-radius: 18px; color: #26735f; padding: 20px 22px; margin-bottom: 22px;
-      border-left: 8px solid #00b894; box-shadow: 0 2px 12px #00b89414;
-    }
+    .desc-intro { font-size: 1.18em; background: linear-gradient(93deg,#f4fff9 70%,#ffefd6 100%); border-radius: 18px; color: #26735f; padding: 20px 22px; margin-bottom: 22px; border-left: 8px solid #00b894; box-shadow: 0 2px 12px #00b89414; }
     .key-list { list-style: none; padding: 0; margin: 18px 0 0; }
-    .key-list li {
-      display: flex; gap: 10px; margin-bottom: 12px;
-      color: #246c63; font-size: 1.09em;
-    }
+    .key-list li { display: flex; gap: 10px; margin-bottom: 12px; color: #246c63; font-size: 1.09em; }
     .key-list i { color: #ffb347; font-size: 1.18em; margin-top: 4px; }
-    .menu-section {
-      margin: 36px 0 34px; background: #f5fff9; border-radius: 19px;
-      border-left: 6px solid #00b894; padding: 27px 22px 17px;
-      box-shadow: 0 2px 12px #00b8940c;
-    }
-    .menu-section h2 {
-      color: #00b894; font-size: 1.16em; margin: 0 0 11px;
-      font-weight: 700; display: flex; align-items: center; gap: 8px;
-    }
+    .menu-section { margin: 36px 0 34px; background: #f5fff9; border-radius: 19px; border-left: 6px solid #00b894; padding: 27px 22px 17px; box-shadow: 0 2px 12px #00b8940c; }
+    .menu-section h2 { color: #00b894; font-size: 1.16em; margin: 0 0 11px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
     .menu-grid { display: flex; flex-wrap: wrap; gap: 16px; }
-    .menu-link {
-      flex: 1 1 240px;
-      background: linear-gradient(96deg,#f1fff9 70%,#fff5e4 100%);
-      border: 2.2px solid #00b89422; border-radius: 16px;
-      color: #24825b; font-size: 1.06em; font-weight: 600;
-      padding: 18px 15px; text-decoration: none;
-      display: flex; align-items: center; gap: 10px;
-      transition: all .15s;
-    }
-    .menu-link:hover {
-      background: linear-gradient(97deg,#00b894 70%,#fea240 100%);
-      color: #fff; border-color: #00b894;
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 4px 22px #00b89424;
-    }
+    .menu-link { flex: 1 1 240px; background: linear-gradient(96deg,#f1fff9 70%,#fff5e4 100%); border: 2.2px solid #00b89422; border-radius: 16px; color: #24825b; font-size: 1.06em; font-weight: 600; padding: 18px 15px; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: all .15s; }
+    .menu-link:hover { background: linear-gradient(97deg,#00b894 70%,#fea240 100%); color: #fff; border-color: #00b894; transform: translateY(-2px) scale(1.02); box-shadow: 0 4px 22px #00b89424; }
     .menu-link i { color: #fe9948; font-size: 1.3em; }
     .cover-img-wrap { text-align: center; margin: 28px 0 18px; }
-    .cover-img {
-      max-width: 330px; width: 97%; border-radius: 19px;
-      box-shadow: 0 2px 28px #00b89413;
-    }
-    .author-blk {
-      background: #eafff8; color: #009e82; border-radius: 12px;
-      padding: 16px; margin: 26px 0; border-left: 7px solid #fea240;
-      font-size: 1.05em;
-    }
-    .soft-call {
-      margin: 38px auto 0; background: linear-gradient(97deg,#e6fff7 75%,#fff5e4 100%);
-      border-radius: 14px; color: #246c63; font-size: 1.12em;
-      text-align: center; max-width: 460px; padding: 18px;
-      box-shadow: 0 1px 9px #00b89411;
-    }
-    .soft-call a {
-      display: inline-block; color: #fff;
-      background: linear-gradient(90deg,#00b894,#fea240);
-      padding: 12px 24px; border-radius: 23px; margin-top: 10px;
-      font-weight: 700; text-decoration: none;
-      box-shadow: 0 1px 10px #00b89419; transition: filter .12s;
-    }
+    .cover-img { max-width: 330px; width: 97%; border-radius: 19px; box-shadow: 0 2px 28px #00b89413; }
+    .author-blk { background: #eafff8; color: #009e82; border-radius: 12px; padding: 16px; margin: 26px 0; border-left: 7px solid #fea240; font-size: 1.05em; }
+    .soft-call { margin: 38px auto 0; background: linear-gradient(97deg,#e6fff7 75%,#fff5e4 100%); border-radius: 14px; color: #246c63; font-size: 1.12em; text-align: center; max-width: 460px; padding: 18px; box-shadow: 0 1px 9px #00b89411; }
+    .soft-call a { display: inline-block; color: #fff; background: linear-gradient(90deg,#00b894,#fea240); padding: 12px 24px; border-radius: 23px; margin-top: 10px; font-weight: 700; text-decoration: none; box-shadow: 0 1px 10px #00b89419; transition: filter .12s; }
     .soft-call a:hover { filter: brightness(0.92); }
 
-    @media (max-width:700px){
-      .main-wrap { padding: 16px; }
-      .menu-grid { flex-direction: column; }
-      .cover-img { max-width: 97vw; }
-    }
+    @media (max-width:700px){ .main-wrap { padding: 16px; } .menu-grid { flex-direction: column; } .cover-img { max-width: 97vw; } }
   </style>
 </head>
 <body>
-
   <!-- One-time password banner -->
-  <div id="passwordBanner">
-    Mật khẩu cho lần mở “một lần nữa”: <b>toiyeusongxanh</b>
-  </div>
+  <div id="passwordBanner">Mật khẩu cho lần mở “một lần nữa”: <b>toiyeusongxanh</b></div>
 
-  <!-- Authentication Overlay -->
+  <!-- Authentication Overlay (THIS IS THE FORM YOU ENTER EMAIL/PHONE OR PASSWORD) -->
   <div id="authOverlay">
     <div id="authBox">
       <h2>Chọn cách truy cập</h2>
@@ -193,7 +126,7 @@
         <a class="menu-link" href="digital_taisaophaigiamcan.html"><i class="fas fa-heartbeat"></i> Tại sao phải giảm cân?</a>
         <a class="menu-link" href="digital_giamcanlanhmanh.html"><i class="fas fa-leaf"></i> Giảm cân lành mạnh</a>
         <a class="menu-link" href="digital_thoiquenxau.html"><i class="fas fa-exclamation-triangle"></i> Thói quen xấu</a>
-        <a class="menu-link" href="digital_theman.html"><i class="fas a-cookie-bite"></i> Kiểm soát thèm ăn</a>
+        <a class="menu-link" href="digital_theman.html"><i class="fas fa-cookie-bite"></i> Kiểm soát thèm ăn</a>
         <a class="menu-link" href="digital_dinhduong.html"><i class="fas fa-apple-alt"></i> Dinh dưỡng & giải pháp</a>
         <a class="menu-link" href="digital_10phutthaydoi.html"><i class="fas fa-running"></i> 10 phút thay đổi</a>
         <a class="menu-link" href="digital_giacngu.html"><i class="fas fa-bed"></i> Ngủ sâu giảm cân</a>
@@ -210,9 +143,7 @@
     <div class="soft-call">
       <i class="fas fa-hand-holding-heart" style="font-size:1.25em;color:#00b894;"></i><br>
       Muốn tư vấn 1-1?<br>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSclfUUwaSha4yUm9nWuQARceyDBu68ZhvuZRfa_F22WFAcTjA/viewform" target="_blank">
-        Đặt lịch tư vấn
-      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSclfUUwaSha4yUm9nWuQARceyDBu68ZhvuZRfa_F22WFAcTjA/viewform" target="_blank">Đặt lịch tư vấn</a>
     </div>
   </div>
 
@@ -236,11 +167,13 @@
         let [k,v]=c.split('='); return k===name?decodeURIComponent(v):r;
       },'');
     }
+    function delCookie(name){ document.cookie = name+'=; Max-Age=0; path=/'; }
+
     const ACCESS_KEY='access_granted';
     function hasAccess(){
       if(getCookie(ACCESS_KEY)==='1') return true;
-      try { if(localStorage.getItem(ACCESS_KEY)==='1') return true; } catch(_){}
-      try { if(sessionStorage.getItem(ACCESS_KEY)==='1') return true; } catch(_){}
+      try { if(localStorage.getItem(ACCESS_KEY)==='1') return true; } catch(_){ }
+      try { if(sessionStorage.getItem(ACCESS_KEY)==='1') return true; } catch(_){ }
       return false;
     }
     function showContent(){
@@ -252,22 +185,27 @@
       if (mainWrap) mainWrap.style.display='block';
     }
     function grantAccess(days=30){
-      try { localStorage.setItem(ACCESS_KEY,'1'); } catch(_){}
-      try { sessionStorage.setItem(ACCESS_KEY,'1'); } catch(_){}
+      try { localStorage.setItem(ACCESS_KEY,'1'); } catch(_){ }
+      try { sessionStorage.setItem(ACCESS_KEY,'1'); } catch(_){ }
       setCookie(ACCESS_KEY,'1',days);
       showContent();
     }
+    function clearAccess(){
+      try { localStorage.removeItem(ACCESS_KEY); } catch(_){ }
+      try { sessionStorage.removeItem(ACCESS_KEY); } catch(_){ }
+      delCookie(ACCESS_KEY);
+    }
 
-    // ====== UI refs ======
-    const errMsg    = document.getElementById('authError');
-    const btn       = document.getElementById('authBtn');
+    // === GAS_URL: your Apps Script Web App URL (must end with /exec) ===
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbz_uPB_OjExRDcu9cRtP8a6ulXE3G9SDfAhlh7WrDTzEwHkIeqAq-VJsRPvenSWrpBs/exec';
+
+    // Switch inputs based on selected method
     const methods   = document.getElementsByName('method');
     const grpPwd    = document.getElementById('group-password');
     const grpEmail  = document.getElementById('group-email');
     const grpPhone  = document.getElementById('group-phone');
-
-    // === GAS_URL: your Apps Script Web App URL (must end with /exec) ===
-    const GAS_URL = 'https://script.google.com/macros/s/AKfycbz_uPB_OjExRDcu9cRtP8a6ulXE3G9SDfAhlh7WrDTzEwHkIeqAq-VJsRPvenSWrpBs/exec';
+    const errMsg    = document.getElementById('authError');
+    const btn       = document.getElementById('authBtn');
 
     function syncMethodUI(){
       const sel = document.querySelector('input[name="method"]:checked').value;
@@ -278,17 +216,18 @@
     }
     Array.from(methods).forEach(r=> r.addEventListener('change', syncMethodUI));
 
-    // On load: allow bypass via ?access=1 and restore access state
+    // On load: allow bypass via ?access=1, reset via ?reset=1
     window.addEventListener('DOMContentLoaded', ()=>{
       const params = new URLSearchParams(location.search);
-      if (params.get('access')==='1') {
-        try { sessionStorage.setItem(ACCESS_KEY,'1'); } catch(_){}
-      }
+      if (params.get('reset')==='1') clearAccess();
       document.getElementById('hiddenPage').value = location.pathname;
 
       if (hasAccess()) {
         showContent();
       } else {
+        // Ensure overlay is visible when no access
+        document.getElementById('authOverlay').style.display = 'flex';
+        document.querySelector('.main-wrap').style.display = 'none';
         syncMethodUI();
       }
     });
@@ -331,7 +270,6 @@
       form.action = GAS_URL;   // ensure correct URL
       form.submit();
 
-      // Grant access
       grantAccess(30);
     });
   </script>
