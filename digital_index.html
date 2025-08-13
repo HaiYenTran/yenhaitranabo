@@ -217,17 +217,40 @@
   </div>
 
   <script>
-    // Helpers
+    // ====== Cookie + Storage helpers ======
     function setCookie(name,val,days){
+      const isHttps = location.protocol === 'https:';
       let d=new Date(); d.setTime(d.getTime()+days*864e5);
-      document.cookie=`${name}=${encodeURIComponent(val)};expires=${d.toUTCString()};path=/`;
+      document.cookie=`${name}=${encodeURIComponent(val)};expires=${d.toUTCString()};path=/;SameSite=Lax${isHttps?';Secure':''}`;
     }
     function getCookie(name){
       return document.cookie.split('; ').reduce((r,c)=>{
         let [k,v]=c.split('='); return k===name?decodeURIComponent(v):r;
       },'');
     }
+    const ACCESS_KEY = 'access_granted';
+    function hasAccess(){
+      if (getCookie(ACCESS_KEY)==='1') return true;
+      try { if (localStorage.getItem(ACCESS_KEY)==='1') return true; } catch(_){}
+      try { if (sessionStorage.getItem(ACCESS_KEY)==='1') return true; } catch(_){}
+      return false;
+    }
+    function showContent(){
+      const overlay   = document.getElementById('authOverlay');
+      const mainWrap  = document.querySelector('.main-wrap');
+      const banner    = document.getElementById('passwordBanner');
+      if (banner) banner.style.display='block';
+      if (overlay) overlay.style.display='none';
+      if (mainWrap) mainWrap.style.display='block';
+    }
+    function grantAccess(days=30){
+      try { localStorage.setItem(ACCESS_KEY,'1'); } catch(_){}
+      try { sessionStorage.setItem(ACCESS_KEY,'1'); } catch(_){}
+      setCookie(ACCESS_KEY,'1',days);
+      showContent();
+    }
 
+    // ====== UI refs ======
     const overlay   = document.getElementById('authOverlay');
     const mainWrap  = document.querySelector('.main-wrap');
     const banner    = document.getElementById('passwordBanner');
@@ -241,6 +264,7 @@
     // === GAS_URL: paste your Apps Script Web App URL here ===
     const GAS_URL = 'REPLACE_WITH_YOUR_WEB_APP_URL';
 
+    // Switch inputs based on selected method
     function syncMethodUI(){
       const sel = document.querySelector('input[name="method"]:checked').value;
       grpPwd.classList.toggle('active', sel==='password');
@@ -250,13 +274,16 @@
     }
     Array.from(methods).forEach(r=> r.addEventListener('change', syncMethodUI));
 
-    // On load: if cookie present, show content
+    // On load: allow bypass via ?access=1 and restore access state
     window.addEventListener('DOMContentLoaded', ()=>{
-      syncMethodUI();
-      if(getCookie('access_granted')==='1'){
-        banner.style.display='block';
-        overlay.style.display='none';
-        mainWrap.style.display='block';
+      const params = new URLSearchParams(location.search);
+      if (params.get('access')==='1') {
+        try { sessionStorage.setItem(ACCESS_KEY,'1'); } catch(_){}
+      }
+      if (hasAccess()) {
+        showContent();
+      } else {
+        syncMethodUI();
       }
     });
 
@@ -268,25 +295,27 @@
       if(method==='password'){
         const pwd = document.getElementById('inp-password').value.trim();
         if(pwd==='toiyeusongxanh'){
-          setCookie('access_granted','1',30);
-          overlay.style.display='none';
-          mainWrap.style.display='block';
-          banner.style.display='block';
+          grantAccess(30);
         } else {
           errMsg.textContent='Mật khẩu không đúng.'; errMsg.style.display='block';
         }
         return;
       }
 
+      // Email/Phone path
       const val = method==='email'
         ? document.getElementById('inp-email').value.trim()
         : document.getElementById('inp-phone').value.trim();
+
       const reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const rePhone = /^\d{9,15}$/;
-
       const valid = (method==='email' && reEmail.test(val)) || (method==='phone' && rePhone.test(val));
-      if(!valid){ errMsg.textContent='Vui lòng nhập đúng định dạng.'; errMsg.style.display='block'; return; }
+      if(!valid){
+        errMsg.textContent='Vui lòng nhập đúng định dạng.'; errMsg.style.display='block';
+        return;
+      }
 
+      // Send to Google Apps Script Web App
       try {
         if(!GAS_URL || GAS_URL.includes('REPLACE_WITH_YOUR_WEB_APP_URL')){
           console.warn('GAS_URL not set — data will not be recorded.');
@@ -295,7 +324,7 @@
           fd.append('contact', val);
           fd.append('method', method);
           fd.append('page', location.pathname);
-          // Apps Script lacks CORS headers → use no-cors
+          // Apps Script doesn't add CORS headers by default → use no-cors
           await fetch(GAS_URL, { method:'POST', mode:'no-cors', body: fd });
         }
       } catch (e) {
@@ -303,10 +332,7 @@
       }
 
       // Grant access regardless of response visibility in no-cors mode
-      setCookie('access_granted','1',30);
-      overlay.style.display='none';
-      mainWrap.style.display='block';
-      banner.style.display='block';
+      grantAccess(30);
     });
   </script>
 </body>
