@@ -193,7 +193,7 @@
         <a class="menu-link" href="digital_taisaophaigiamcan.html"><i class="fas fa-heartbeat"></i> Tại sao phải giảm cân?</a>
         <a class="menu-link" href="digital_giamcanlanhmanh.html"><i class="fas fa-leaf"></i> Giảm cân lành mạnh</a>
         <a class="menu-link" href="digital_thoiquenxau.html"><i class="fas fa-exclamation-triangle"></i> Thói quen xấu</a>
-        <a class="menu-link" href="digital_theman.html"><i class="fas fa-cookie-bite"></i> Kiểm soát thèm ăn</a>
+        <a class="menu-link" href="digital_theman.html"><i class="fas a-cookie-bite"></i> Kiểm soát thèm ăn</a>
         <a class="menu-link" href="digital_dinhduong.html"><i class="fas fa-apple-alt"></i> Dinh dưỡng & giải pháp</a>
         <a class="menu-link" href="digital_10phutthaydoi.html"><i class="fas fa-running"></i> 10 phút thay đổi</a>
         <a class="menu-link" href="digital_giacngu.html"><i class="fas fa-bed"></i> Ngủ sâu giảm cân</a>
@@ -216,6 +216,14 @@
     </div>
   </div>
 
+  <!-- Hidden form + iframe to POST to Apps Script without CORS/navigation -->
+  <form id="gasForm" action="REPLACE_WITH_YOUR_WEB_APP_URL" method="POST" target="gasFrame" style="display:none">
+    <input type="hidden" name="contact" id="hiddenContact">
+    <input type="hidden" name="method"  id="hiddenMethod">
+    <input type="hidden" name="page"    id="hiddenPage">
+  </form>
+  <iframe name="gasFrame" id="gasFrame" style="display:none"></iframe>
+
   <script>
     // ====== Cookie + Storage helpers ======
     function setCookie(name,val,days){
@@ -228,11 +236,11 @@
         let [k,v]=c.split('='); return k===name?decodeURIComponent(v):r;
       },'');
     }
-    const ACCESS_KEY = 'access_granted';
+    const ACCESS_KEY='access_granted';
     function hasAccess(){
-      if (getCookie(ACCESS_KEY)==='1') return true;
-      try { if (localStorage.getItem(ACCESS_KEY)==='1') return true; } catch(_){}
-      try { if (sessionStorage.getItem(ACCESS_KEY)==='1') return true; } catch(_){}
+      if(getCookie(ACCESS_KEY)==='1') return true;
+      try { if(localStorage.getItem(ACCESS_KEY)==='1') return true; } catch(_){}
+      try { if(sessionStorage.getItem(ACCESS_KEY)==='1') return true; } catch(_){}
       return false;
     }
     function showContent(){
@@ -251,9 +259,6 @@
     }
 
     // ====== UI refs ======
-    const overlay   = document.getElementById('authOverlay');
-    const mainWrap  = document.querySelector('.main-wrap');
-    const banner    = document.getElementById('passwordBanner');
     const errMsg    = document.getElementById('authError');
     const btn       = document.getElementById('authBtn');
     const methods   = document.getElementsByName('method');
@@ -261,10 +266,9 @@
     const grpEmail  = document.getElementById('group-email');
     const grpPhone  = document.getElementById('group-phone');
 
-    // === GAS_URL: paste your Apps Script Web App URL here ===
-    const GAS_URL = 'REPLACE_WITH_YOUR_WEB_APP_URL';
+    // === GAS_URL: your Apps Script Web App URL (must end with /exec) ===
+    const GAS_URL = 'https://script.google.com/macros/s/AKfycbz_uPB_OjExRDcu9cRtP8a6ulXE3G9SDfAhlh7WrDTzEwHkIeqAq-VJsRPvenSWrpBs/exec';
 
-    // Switch inputs based on selected method
     function syncMethodUI(){
       const sel = document.querySelector('input[name="method"]:checked').value;
       grpPwd.classList.toggle('active', sel==='password');
@@ -280,6 +284,8 @@
       if (params.get('access')==='1') {
         try { sessionStorage.setItem(ACCESS_KEY,'1'); } catch(_){}
       }
+      document.getElementById('hiddenPage').value = location.pathname;
+
       if (hasAccess()) {
         showContent();
       } else {
@@ -288,7 +294,7 @@
     });
 
     // Handle authentication
-    btn.addEventListener('click', async ()=>{
+    btn.addEventListener('click', ()=>{
       errMsg.style.display='none';
       const method = document.querySelector('input[name="method"]:checked').value;
 
@@ -310,28 +316,22 @@
       const reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const rePhone = /^\d{9,15}$/;
       const valid = (method==='email' && reEmail.test(val)) || (method==='phone' && rePhone.test(val));
-      if(!valid){
-        errMsg.textContent='Vui lòng nhập đúng định dạng.'; errMsg.style.display='block';
+      if(!valid){ errMsg.textContent='Vui lòng nhập đúng định dạng.'; errMsg.style.display='block'; return; }
+
+      // Submit to Apps Script Web App via hidden form (no CORS, no navigation)
+      if(!GAS_URL || GAS_URL.includes('REPLACE_WITH_YOUR_WEB_APP_URL')){
+        console.warn('GAS_URL not set — data will not be recorded.');
+        grantAccess(30);
         return;
       }
+      const form = document.getElementById('gasForm');
+      document.getElementById('hiddenContact').value = val;
+      document.getElementById('hiddenMethod').value  = method;
+      document.getElementById('hiddenPage').value    = location.pathname;
+      form.action = GAS_URL;   // ensure correct URL
+      form.submit();
 
-      // Send to Google Apps Script Web App
-      try {
-        if(!GAS_URL || GAS_URL.includes('REPLACE_WITH_YOUR_WEB_APP_URL')){
-          console.warn('GAS_URL not set — data will not be recorded.');
-        } else {
-          const fd = new FormData();
-          fd.append('contact', val);
-          fd.append('method', method);
-          fd.append('page', location.pathname);
-          // Apps Script doesn't add CORS headers by default → use no-cors
-          await fetch(GAS_URL, { method:'POST', mode:'no-cors', body: fd });
-        }
-      } catch (e) {
-        console.warn('Submit to GAS failed (ignored):', e);
-      }
-
-      // Grant access regardless of response visibility in no-cors mode
+      // Grant access
       grantAccess(30);
     });
   </script>
