@@ -176,12 +176,12 @@
     Array.from(methods).forEach(r => r.addEventListener('change', updateUI));
 
     // Luôn yêu cầu nhập mỗi lần vào
-    window.addEventListener('DOMContentLoaded', ()=>{
-      overlay.style.display = 'flex';
-      mainWrap.style.display = 'none';
-      document.getElementById('hiddenPage').value = location.pathname;
-      updateUI();
-    });
+    //window.addEventListener('DOMContentLoaded', ()=>{
+    //  overlay.style.display = 'flex';
+    //  mainWrap.style.display = 'none';
+    //  document.getElementById('hiddenPage').value = location.pathname;
+    //  updateUI();
+    //});
 
     // Gửi tới Apps Script bằng form ẩn (tránh CORS)
     function submitToGAS(contact, method){
