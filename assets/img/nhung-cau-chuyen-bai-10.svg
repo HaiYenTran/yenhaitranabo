@@ -1,0 +1,22 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#EAF6FF"/>
+  <rect y="420" width="1200" height="380" fill="#B9E3A1"/>
+  <path d="M0 450C150 420 300 520 450 490C600 460 750 360 900 420C1050 480 1200 420 1200 420V800H0V450Z" fill="#9ED18A"/>
+  <circle cx="980" cy="150" r="70" fill="#FFD36B"/>
+  <path d="M220 470C220 380 310 320 420 320H720C840 320 940 390 940 480V520C940 610 860 680 760 680H420C310 680 220 610 220 520V470Z" fill="#C9784C" stroke="#9E5A38" stroke-width="8"/>
+  <ellipse cx="860" cy="450" rx="90" ry="70" fill="#C9784C" stroke="#9E5A38" stroke-width="8"/>
+  <ellipse cx="900" cy="420" rx="22" ry="16" fill="#2F2F2F"/>
+  <ellipse cx="930" cy="425" rx="14" ry="10" fill="#2F2F2F"/>
+  <circle cx="885" cy="420" r="8" fill="#FFFFFF"/>
+  <path d="M840 390C820 360 790 350 760 350" stroke="#9E5A38" stroke-width="10" stroke-linecap="round"/>
+  <path d="M910 370C935 340 970 330 1000 340" stroke="#9E5A38" stroke-width="10" stroke-linecap="round"/>
+  <rect x="320" y="640" width="70" height="120" rx="18" fill="#9E5A38"/>
+  <rect x="440" y="640" width="70" height="120" rx="18" fill="#9E5A38"/>
+  <rect x="620" y="640" width="70" height="120" rx="18" fill="#9E5A38"/>
+  <rect x="740" y="640" width="70" height="120" rx="18" fill="#9E5A38"/>
+  <path d="M260 520C220 540 210 590 230 640" stroke="#2F2F2F" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="330" cy="380" r="18" fill="#F5E0D0" opacity="0.6"/>
+  <circle cx="520" cy="360" r="16" fill="#F5E0D0" opacity="0.6"/>
+  <circle cx="650" cy="400" r="20" fill="#F5E0D0" opacity="0.6"/>
+  <circle cx="780" cy="370" r="14" fill="#F5E0D0" opacity="0.6"/>
+</svg>
