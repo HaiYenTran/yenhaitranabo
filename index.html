@@ -152,6 +152,24 @@
             filter: brightness(0.93);
             color: #fff;
         }
+        .story-section {
+            background: linear-gradient(95deg, #fff3e4 70%, #ffe1c4 100%);
+            border-left-color: #ff8f3d;
+            box-shadow: 0 4px 24px #ffb56a54;
+        }
+        .story-section h2 {
+            color: #ff7a1a;
+        }
+        .story-section .btn {
+            background: linear-gradient(90deg,#ff8f3d,#ffb25a);
+        }
+        .story-clickable {
+            cursor: pointer;
+        }
+        .story-clickable:focus {
+            outline: 3px solid #ffb25a;
+            outline-offset: 4px;
+        }
         /* --- Demo section --- */
         .demo-section {
             background: linear-gradient(96deg, #f1fbf8 70%, #e1fef4 100%);
@@ -294,6 +312,21 @@
                             <li>Sản phẩm hữu cơ, chất lượng cao, an toàn cho sức khỏe.</li>
                         </ul>
                         <a href="ffit_gallery.html" class="btn">Xem Gallery F.FIT →</a>
+                    </div>
+                </section>
+                <section class="ffit-section story-section story-clickable mb-4" role="link" tabindex="0"
+                    onclick="window.location.href='nhung-cau-chuyen.html';"
+                    onkeydown="if(event.key === 'Enter' || event.key === ' ') { window.location.href='nhung-cau-chuyen.html'; }">
+                    <img src="assets/img/post-sample-image.jpg" alt="Những câu chuyện quanh tôi" />
+                    <div class="desc">
+                        <h2>Những câu chuyện quanh tôi</h2>
+                        <div>Những câu chuyện quanh tôi, có thể bạn thấy mình trong đó.</div>
+                        <ul>
+                            <li>Những lát cắt đời thường gần gũi, chân thật và nhiều cảm hứng.</li>
+                            <li>Góc nhìn trải nghiệm để bạn soi thấy chính mình.</li>
+                            <li>Chuỗi bài viết sẽ được cập nhật liên tục.</li>
+                        </ul>
+                        <a href="nhung-cau-chuyen.html" class="btn">Đọc ngay →</a>
                     </div>
                 </section>
                 <!-- GỬI TÔI CỦA TƯƠNG LAI - CHAP 2 SECTION -->
