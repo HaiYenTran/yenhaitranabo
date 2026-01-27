@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Nhân viên ngân hàng làm Amway</title>
+  <desc id="desc">Ảnh minh họa cho câu chuyện nhân viên ngân hàng làm Amway, nguồn Facebook nhân vật.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff4e6" />
+      <stop offset="100%" stop-color="#ffe1c1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <rect x="80" y="80" width="1040" height="640" rx="40" fill="#ffffff" stroke="#ffb56a" stroke-width="4" />
+  <g fill="#ff7a1a" font-family="'Plus Jakarta Sans', Arial, sans-serif">
+    <text x="140" y="220" font-size="54" font-weight="700">NHÂN VIÊN NGÂN HÀNG LÀM AMWAY</text>
+    <text x="140" y="300" font-size="30" font-weight="600">Hành trình của Hoa (Bông) - nguồn Facebook nhân vật</text>
+    <text x="140" y="380" font-size="26" fill="#555">Liên kết bài gốc: facebook.com/share/p/17qYhM7n5j</text>
+  </g>
+  <g fill="#ff9f4a">
+    <circle cx="200" cy="540" r="70" opacity="0.3" />
+    <circle cx="980" cy="560" r="90" opacity="0.25" />
+    <circle cx="860" cy="200" r="50" opacity="0.2" />
+  </g>
+</svg>
