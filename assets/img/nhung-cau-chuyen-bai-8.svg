@@ -1,0 +1,33 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff2e6" />
+      <stop offset="100%" stop-color="#ffe0c7" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)" />
+  <rect x="70" y="70" width="1060" height="535" rx="28" fill="#ffffff" stroke="#ffb56a" stroke-width="4" />
+  <circle cx="220" cy="250" r="90" fill="#ffe8d6" stroke="#ff8f3d" stroke-width="6" />
+  <path d="M165 310C190 270 250 270 275 310" stroke="#ff8f3d" stroke-width="8" stroke-linecap="round" />
+  <circle cx="195" cy="230" r="10" fill="#ff8f3d" />
+  <circle cx="245" cy="230" r="10" fill="#ff8f3d" />
+  <rect x="340" y="180" width="720" height="48" rx="12" fill="#fff2e6" />
+  <rect x="340" y="250" width="680" height="36" rx="12" fill="#fff2e6" />
+  <rect x="340" y="300" width="640" height="36" rx="12" fill="#fff2e6" />
+  <rect x="340" y="350" width="600" height="36" rx="12" fill="#fff2e6" />
+  <text x="340" y="160" fill="#ff7a1a" font-size="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700">
+    Câu chuyện Cô Tém - Thái Lan
+  </text>
+  <text x="340" y="215" fill="#7a4a2e" font-size="22" font-family="'Plus Jakarta Sans', sans-serif">
+    Từ tận cùng nghèo khó, cô tìm thấy hy vọng và đổi đời.
+  </text>
+  <text x="340" y="280" fill="#7a4a2e" font-size="22" font-family="'Plus Jakarta Sans', sans-serif">
+    Ước mơ - chăm chỉ - học hỏi - bền bỉ mỗi ngày.
+  </text>
+  <text x="340" y="345" fill="#7a4a2e" font-size="22" font-family="'Plus Jakarta Sans', sans-serif">
+    Amway - cơ hội kinh doanh dành cho người có ước mơ.
+  </text>
+  <text x="70" y="620" fill="#ff7a1a" font-size="18" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600">
+    Ảnh minh họa cho bài viết mới nhất trong chuỗi “Những câu chuyện quanh tôi”.
+  </text>
+</svg>
