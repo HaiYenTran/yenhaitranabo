@@ -10667,6 +10667,14 @@ footer {
   padding-bottom: 3rem;
 }
 
+footer .site-tagline {
+  color: #00b894;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
 header.masthead {
   position: relative;
   margin-bottom: 3rem;
