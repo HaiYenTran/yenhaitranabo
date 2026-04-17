@@ -22,6 +22,11 @@
     .menu-link { flex: 1 1 240px; background: linear-gradient(96deg,#f1fff9 70%,#fff5e4 100%); border: 2.2px solid #00b89422; border-radius: 16px; color: #24825b; font-size: 1.06em; font-weight: 600; padding: 18px 15px; text-decoration: none; display: flex; align-items: center; gap: 10px; transition: all .15s; }
     .menu-link:hover { background: linear-gradient(97deg,#00b894 70%,#fea240 100%); color: #fff; border-color: #00b894; transform: translateY(-2px) scale(1.02); box-shadow: 0 4px 22px #00b89424; }
     .menu-link i { color: #fe9948; font-size: 1.3em; }
+    .quick-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 14px; }
+    .nav-btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; border-radius: 999px; padding: 10px 16px; font-size: 0.95em; transition: transform .15s, filter .15s; }
+    .nav-btn.home { color: #fff; background: linear-gradient(90deg,#00b894,#00a27f); }
+    .nav-btn.top { color: #246c63; background: #eafff8; border: 1px solid #b4ebdd; }
+    .nav-btn:hover { transform: translateY(-1px); filter: brightness(0.97); }
     .cover-img-wrap { text-align: center; margin: 28px 0 18px; }
     .cover-img { max-width: 330px; width: 97%; border-radius: 19px; box-shadow: 0 2px 28px #00b89413; }
     .author-blk { background: #eafff8; color: #009e82; border-radius: 12px; padding: 16px; margin: 26px 0; border-left: 7px solid #fea240; font-size: 1.05em; }
@@ -31,10 +36,15 @@
     @media (max-width:700px){ .main-wrap { padding: 16px; } .menu-grid { flex-direction: column; } .cover-img { max-width: 97vw; } }
   </style>
 </head>
-<body>
+<body id="top">
 
   <!-- Main Content -->
   <div class="main-wrap">
+    <div class="quick-nav">
+      <a class="nav-btn home" href="index.html"><i class="fas fa-arrow-left"></i> Về trang chủ</a>
+      <a class="nav-btn top" href="#top"><i class="fas fa-arrow-up"></i> Lên đầu trang</a>
+    </div>
+
     <h1>BÍ QUYẾT GIẢM CÂN LÀNH MẠNH</h1>
     <div class="subtitle">10+ bí mật vàng giúp bạn chinh phục cân nặng, trẻ hóa cơ thể &amp; duy trì sức khỏe bền vững</div>
 
@@ -84,6 +94,11 @@
       Muốn tư vấn 1-1?<br>
       Hãy liên hệ với chủ kênh hoặc người đã chia sẻ link này để được giải đáp thắc mắc, nhận tư vấn dinh dưỡng đầy đủ và đồng hành dễ dàng hơn trên hành trình sống khỏe.<br>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSclfUUwaSha4yUm9nWuQARceyDBu68ZhvuZRfa_F22WFAcTjA/viewform" target="_blank">Đặt lịch tư vấn</a>
+    </div>
+
+    <div class="quick-nav" style="margin-top:24px;">
+      <a class="nav-btn home" href="index.html"><i class="fas fa-arrow-left"></i> Về trang chủ</a>
+      <a class="nav-btn top" href="#top"><i class="fas fa-arrow-up"></i> Lên đầu trang</a>
     </div>
   </div>
 
