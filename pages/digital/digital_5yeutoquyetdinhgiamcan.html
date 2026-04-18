@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Yếu Tố Then Chốt Giảm Cân Bền Vững & Khỏe Mạnh</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <style>
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            background: #f5fff6;
+            margin: 0; padding: 0;
+        }
+        .container {
+            max-width: 740px;
+            margin: 38px auto 24px auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 38px #33e3aa19;
+            padding: 32px 24px 34px 24px;
+            position: relative;
+        }
+        h1 {
+            color: #00b894;
+            font-size: 2em;
+            font-weight: 800;
+            margin-top: 0;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .intro {
+            background: linear-gradient(90deg, #e1fff8 65%, #dafbe7 100%);
+            border-left: 7px solid #00b894;
+            color: #188c67;
+            border-radius: 12px;
+            padding: 14px 22px 11px 19px;
+            font-size: 1.13em;
+            margin-bottom: 23px;
+        }
+        .chart-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 18px 0 32px 0;
+            flex-direction: column;
+        }
+        .chart-title {
+            color: #11b989;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 1.07em;
+        }
+        .factor-block {
+            background: #eafff7;
+            border-left: 6px solid #1dc995;
+            border-radius: 10px;
+            margin-bottom: 22px;
+            padding: 14px 17px 7px 17px;
+            box-shadow: 0 2px 14px #36dfb921;
+        }
+        .factor-block h2 {
+            margin: 0 0 8px 0;
+            font-size: 1.16em;
+            color: #00855c;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+        .factor-block ul {
+            margin-top: 5px;
+            margin-bottom: 8px;
+            padding-left: 23px;
+        }
+        .factor-block li {
+            margin-bottom: 5px;
+        }
+        .factor-block strong {
+            color: #05a979;
+        }
+        .summary {
+            background: linear-gradient(90deg,#e4fbe7 60%,#eafffa 100%);
+            border-left: 6px solid #00b894;
+            color: #20754b;
+            border-radius: 10px;
+            font-size: 1.09em;
+            padding: 19px 20px 10px 20px;
+            margin-top: 32px;
+        }
+        .btn-download {
+            display: inline-block;
+            background: linear-gradient(90deg,#00b894,#26ffbe);
+            color: #fff; font-weight: 600; font-size: 1.07em;
+            border-radius: 23px;
+            padding: 12px 26px; margin: 0 auto 24px auto;
+            box-shadow: 0 2px 10px #0db89a12;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            transition: filter 0.14s;
+            margin-left: 50%; transform: translateX(-50%);
+        }
+        .btn-download:hover { filter: brightness(0.93);}
+        .btn-back-home {
+            display: inline-block;
+            margin: 18px 0 2px 18px;
+            background: linear-gradient(90deg, #00b894 70%, #fea240 100%);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 26px;
+            font-size: 1.02em;
+            padding: 10px 24px;
+            text-decoration: none;
+            box-shadow: 0 2px 14px #00b89419;
+            transition: background 0.14s, filter 0.13s;
+            border: none;
+        }
+        .btn-back-home:hover {
+            background: linear-gradient(90deg,#00a381,#fd8503 100%);
+            filter: brightness(0.97);
+            color: #fff;
+        }
+        .btn-back-home i {
+            margin-right: 7px;
+            font-size: 1.14em;
+        }
+        /* Nút về đầu trang */
+        .go-top-btn {
+            position: fixed;
+            right: 24px;
+            bottom: 32px;
+            z-index: 99999;
+            background: linear-gradient(90deg,#00b894,#fea240);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            box-shadow: 0 2px 16px #00b8942a;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .go-top-btn:hover {
+            background: linear-gradient(90deg, #00916e, #ffb954);
+            color: #fff;
+        }
+        @media (max-width:600px){
+            .container{padding:12px 2vw;}
+            h1{font-size:1.18em;}
+            .intro, .summary {padding:9px 7vw;}
+            .chart-section {padding-left: 0; padding-right: 0;}
+            .btn-download {width: 100%; font-size: 1em;}
+        }
+    </style>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- html2pdf CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- FontAwesome CDN cho icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+    <a href="digital_index.html" class="btn-back-home">
+        <i class="fas fa-arrow-left"></i> Quay lại trang bìa
+    </a>
+    <div class="container" id="download-area">
+        <button class="btn-download" onclick="downloadPDF()">Tải về PDF</button>
+        <h1>5 Yếu Tố Then Chốt Giảm Cân Bền Vững & Khỏe Mạnh</h1>
+        <div class="intro">
+            Để giảm cân hiệu quả, không tăng lại (“yo-yo”), bạn cần đồng thời kiểm soát 5 yếu tố sau:<br>
+            <b>Dinh dưỡng</b>, <b>Vận động</b>, <b>Giấc ngủ</b>, <b>Tinh thần</b>, <b>Bệnh lý nền</b>.
+        </div>
+        <!-- Biểu đồ minh hoạ -->
+        <div class="chart-section">
+            <div class="chart-title">Tỷ lệ vai trò các yếu tố trong hành trình giảm cân</div>
+            <canvas id="pieChart" width="230" height="230" aria-label="Biểu đồ 5 yếu tố giảm cân" role="img"></canvas>
+        </div>
+        <div class="factor-block">
+            <h2>1. 🥗 Dinh dưỡng (Chế độ ăn)</h2>
+            <ul>
+                <li><b>Quyết định 60-70% thành công giảm cân.</b></li>
+                <li>Kiểm soát tổng năng lượng nạp, ưu tiên thức ăn tươi, ít tinh bột xấu, nhiều chất xơ, đủ đạm, giảm đường/mỡ.</li>
+                <li>Ăn đúng giờ, không bỏ bữa, kiểm soát khẩu phần hợp lý.</li>
+                <li>Thực đơn cần phù hợp cơ địa, tuổi tác & sức khỏe.</li>
+            </ul>
+        </div>
+        <div class="factor-block">
+            <h2>2. 🏃‍♂️ Vận động (Tập luyện)</h2>
+            <ul>
+                <li>Đốt cháy năng lượng dư, tăng trao đổi chất, duy trì khối cơ (giảm mỡ mà không mất cơ).</li>
+                <li>Cardio (đi bộ nhanh, chạy, đạp xe…), tập sức mạnh, vận động nhẹ đều hỗ trợ giảm cân.</li>
+                <li><b>Lý tưởng:</b> Tập tối thiểu 150 phút/tuần, kết hợp cardio & tập cơ.</li>
+            </ul>
+        </div>
+        <div class="factor-block">
+            <h2>3. 😴 Giấc ngủ</h2>
+            <ul>
+                <li>Ngủ không đủ/thiếu sâu giấc làm rối loạn hormone (leptin, ghrelin), tăng thèm ăn, giảm trao đổi chất, dễ tăng mỡ.</li>
+                <li>Ngủ đủ 7-8h/ngày, ngủ đúng giờ giúp kiểm soát cân nặng và cảm xúc tốt hơn.</li>
+            </ul>
+        </div>
+        <div class="factor-block">
+            <h2>4. 🧘‍♀️ Tinh thần, tâm lý</h2>
+            <ul>
+                <li>Stress, lo âu, buồn chán → dễ ăn uống mất kiểm soát (“stress eating”, ăn vặt, ăn đêm…), tăng cân.</li>
+                <li>Tinh thần tích cực, lạc quan giúp duy trì quyết tâm, kiểm soát cảm xúc & hành vi ăn uống.</li>
+            </ul>
+        </div>
+        <div class="factor-block">
+            <h2>5. 🩺 Bệnh lý nền (Sức khỏe tổng thể)</h2>
+            <ul>
+                <li>Một số bệnh lý (suy giáp, tiểu đường, rối loạn chuyển hóa, đa nang buồng trứng, dùng thuốc đặc trị…) khiến giảm cân khó khăn hơn.</li>
+                <li>Cần điều trị ổn định bệnh lý, <b>tham khảo chuyên gia/bác sĩ</b> để có kế hoạch phù hợp.</li>
+            </ul>
+        </div>
+        <div class="summary">
+            <b>Tóm tắt:</b><br>
+            <ul>
+                <li>Dinh dưỡng là yếu tố quyết định, nhưng <b>vận động, ngủ, tinh thần và sức khỏe nền</b> đều phải đi cùng nếu muốn giảm cân bền vững, không “yo-yo”.</li>
+                <li>Đừng chỉ tập trung ăn kiêng hay tập nặng mà bỏ qua giấc ngủ/tinh thần. <b>Đôi khi điều chỉnh giấc ngủ hoặc giảm stress lại giúp giảm cân dễ hơn!</b></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Nút về đầu trang -->
+    <button id="goTopBtn" title="Về đầu trang" class="go-top-btn">↑</button>
+    <script>
+        // Pie chart các yếu tố giảm cân (tham khảo tỷ lệ phổ biến)
+        const ctx = document.getElementById('pieChart').getContext('2d');
+        let chart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [
+                    'Dinh dưỡng (65%)',
+                    'Vận động (15%)',
+                    'Giấc ngủ (8%)',
+                    'Tinh thần (7%)',
+                    'Bệnh lý nền (5%)'
+                ],
+                datasets: [{
+                    data: [65, 15, 8, 7, 5],
+                    backgroundColor: [
+                        '#00b894',    // Dinh dưỡng (chủ đạo xanh lá)
+                        '#2ecc71',    // Vận động (xanh lá nhạt)
+                        '#fcd87a',    // Giấc ngủ (vàng nhạt)
+                        '#8fd8e6',    // Tinh thần (xanh nước biển nhạt)
+                        '#b2bec3'     // Bệnh lý nền (xám nhạt)
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: false,
+                plugins: {
+                    legend: {position: 'bottom', labels: {font:{size:14}}},
+                    tooltip: {enabled: true}
+                }
+            }
+        });
+
+        // PDF export (ẩn nút tải khi export)
+        function downloadPDF() {
+            const btn = document.querySelector('.btn-download');
+            btn.style.display = 'none';
+
+            // Chuyển canvas về hình ảnh để xuất vào PDF
+            const canvas = document.getElementById('pieChart');
+            const imgData = canvas.toDataURL("image/png");
+
+            // Clone node vùng tải về
+            const area = document.getElementById('download-area').cloneNode(true);
+
+            // Thay canvas thành img trong bản in
+            const chartDiv = area.querySelector('.chart-section');
+            chartDiv.querySelector('canvas').remove();
+            let img = document.createElement('img');
+            img.src = imgData;
+            img.alt = 'Biểu đồ 5 yếu tố giảm cân';
+            img.style.maxWidth = "200px";
+            img.style.display = "block";
+            img.style.margin = "0 auto 14px auto";
+            chartDiv.insertBefore(img, chartDiv.firstChild.nextSibling);
+
+            html2pdf().set({
+                margin: [0.3, 0.15],
+                filename: '5yeuto-giamcan-ben-vung.pdf',
+                image: { type: 'jpeg', quality: 0.97 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            }).from(area).save().then(() => {
+                btn.style.display = 'inline-block';
+            });
+        }
+
+        // Nút quay lại đầu trang
+        window.addEventListener('scroll', function() {
+            var btn = document.getElementById('goTopBtn');
+            if (window.scrollY > 300) btn.style.display = 'flex';
+            else btn.style.display = 'none';
+        });
+        document.getElementById('goTopBtn').onclick = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+    <footer class="border-top">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="small text-center text-muted fst-italic">Healthy made simple</div>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; YEN HAI TRAN</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
