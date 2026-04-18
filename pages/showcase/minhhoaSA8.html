@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minh Hoạ Sản Phẩm: Nước Giặt Đậm Đặc SA8 – Amway</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <style>
+        body { background: #f5fdf8; font-family: 'Segoe UI', Arial, sans-serif; margin:0; }
+        .container {
+            max-width: 760px; margin: 34px auto 0 auto;
+            background: #fff; border-radius: 18px;
+            box-shadow: 0 6px 38px #50e1c71c;
+            padding: 34px 24px 26px 24px;
+        }
+        h1 { color: #138172; font-size: 2em; font-weight: 800; text-align: center; margin-bottom: 22px;}
+        h2 { color: #178f5d; font-size: 1.16em; font-weight: 700; margin-top: 30px;}
+        .highlight { background: #eafff5; padding: 10px 16px; border-left: 6px solid #4cd28f; border-radius: 10px; margin-bottom: 18px;}
+        ul,ol {margin-bottom: 0.85em;}
+        .result-blk { background: #f5fff6; border-left: 5px solid #19b085; margin-top: 8px; margin-bottom: 13px; border-radius: 10px; padding: 8px 14px;}
+        .conclude { background: #fff5de; border-radius: 10px; border-left: 6px solid #ffd233; color: #735801; font-weight: 500; padding: 14px 14px 10px 18px; margin-top: 28px; font-size: 1.13em;}
+        .contact-info { margin-top:20px; font-size:1.03em; background:#e6fff3; border-radius:8px; color:#20b986; padding:10px 8px;}
+        .youtube-link {
+            display: flex; align-items: center; justify-content: center;
+            margin: 30px auto 0 auto; max-width: 420px;
+        }
+        .youtube-btn {
+            display: flex; align-items: center; gap: 9px;
+            background: #ff5555;
+            color: #fff;
+            padding: 14px 26px 14px 18px;
+            font-weight: bold;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 32px;
+            text-decoration: none;
+            box-shadow: 0 2px 18px #f7797912;
+            transition: background 0.15s, filter 0.16s;
+        }
+        .youtube-btn:hover {
+            background: #e42626;
+            filter: brightness(1.03);
+            color: #fff;
+            text-decoration: none;
+        }
+        .youtube-btn i {
+            font-size: 2em;
+            margin-right: 4px;
+            color: #fff;
+        }
+        /* Password overlay */
+        #passwordOverlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(24, 41, 42, 0.87);
+            z-index: 999999;
+            display: flex; align-items: center; justify-content: center;
+        }
+        #passwordBox {
+            background: #fff; padding: 32px 28px 18px 28px;
+            border-radius: 14px; box-shadow: 0 4px 38px #00998611;
+            min-width: 270px; text-align: center; max-width: 92vw;
+        }
+        #passwordBox h2 { color: #00b897; margin-bottom: 14px;}
+        #passwordInput {
+            padding: 8px 16px; border-radius: 8px; border: 1.3px solid #11b398;
+            font-size: 1.14em; margin-bottom: 13px; width: 76%;
+        }
+        #submitBtn {
+            background: linear-gradient(90deg,#1cae80 80%,#7debc2 100%);
+            color: #fff; font-weight: 600; border: none;
+            border-radius: 16px; padding: 8px 28px;
+            font-size: 1em; margin-top: 5px; cursor: pointer;
+        }
+        #submitBtn:hover {
+            background: linear-gradient(90deg,#0da273 90%,#28e4c3 100%);
+        }
+        #wrongPwd {
+            color: #e65151; font-size: 1.01em; margin-top: 12px; display: none;
+        }
+        @media (max-width:600px){
+            .container{padding:13px 1vw;}
+            h1{font-size:1.13em;}
+            .youtube-link .youtube-btn {padding: 11px 10vw 11px 12px; font-size: 1em;}
+        }
+    </style>
+    <!-- Font Awesome icon (YouTube icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+<div id="passwordOverlay">
+    <form id="passwordBox" onsubmit="return false;">
+        <h2>Bảo mật: Nhập mật khẩu để xem nội dung</h2>
+        <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autofocus />
+        <br>
+        <button id="submitBtn" type="submit">Vào trang</button>
+        <div id="wrongPwd">Mật khẩu không đúng. Vui lòng thử lại.</div>
+        <div class="contact-info">
+            Nếu bạn chưa có mật khẩu, hãy liên hệ <b>admin</b> hoặc người đã chia sẻ link này để được cung cấp thông tin truy cập.
+        </div>
+    </form>
+</div>
+
+<div class="container" id="mainContent" style="display:none;">
+    <h1>🧺 Minh Hoạ Sản Phẩm:<br> Nước Giặt Đậm Đặc SA8 – Amway</h1>
+    <div class="highlight">
+        <b>Thành phần tự nhiên</b>, giúp giữ màu quần áo, chống ăn mòn kim loại và chống rỉ sét từ các cúc quần áo kim loại.
+    </div>
+    <h2>1. Minh hoạ vết bẩn và nguyên tắc tẩy rửa</h2>
+    <ol>
+        <li>Vẽ lên tấm vải trắng bằng bút bi (vết bẩn khó tẩy).</li>
+        <li>Thông thường dùng chất tẩy rửa mạnh sẽ làm mòn sợi vải, dễ phai màu, lâu ngày bị rách.</li>
+        <li>Dùng SA8 nhỏ trực tiếp lên vết bẩn cứng đầu, đồ thường chỉ cần bỏ vào máy giặt hoặc giặt tay như bình thường.</li>
+        <li><b>Nguyên tắc:</b> SA8 sử dụng enzym để bóc tách vết bẩn, không phải chất tẩy rửa mạnh – cần thời gian để tác động, không làm hại sợi vải.</li>
+    </ol>
+    <div class="result-blk">
+        <b>Kết quả:</b> <br>
+        <ul>
+            <li>Không chứa phụ gia, không chất tẩy rửa mạnh.</li>
+            <li>Bảo vệ sợi vải, giữ màu, không làm mòn quần áo.</li>
+            <li>An toàn cho da tay, không gây kích ứng.</li>
+        </ul>
+    </div>
+
+    <h2>2. Minh hoạ với sản phẩm ngoài thị trường</h2>
+    <ol>
+        <li>2 ly nước: 1 bên là SA8, 1 bên là bột giặt thị trường.</li>
+        <li>Khuấy đều: bột giặt không tan hết, bám lên quần áo, để lại cặn và bột giấy.</li>
+        <li>Bên SA8: dung dịch trong, không lợn cợn, không cặn giấy.</li>
+        <li>Dùng quỳ tím kiểm tra bazo mạnh: Bột giặt thị trường đổi màu (bazơ cao, tẩy mạnh, dễ mòn vải, gây viêm da tay); SA8 không đổi màu, dịu nhẹ nhờ thành phần thiên nhiên và enzym.</li>
+    </ol>
+    <div class="result-blk">
+        <b>Kết quả:</b><br>
+        SA8 giúp bảo vệ quần áo, an toàn cho da tay, không gây mòn vải, không lưu cặn bẩn như bột giặt thông thường.
+    </div>
+
+    <h2>3. Quay lại thí nghiệm ban đầu</h2>
+    <ol>
+        <li>Vò vết bẩn đã nhỏ SA8 với ít nước – vết bẩn phai dần và biến mất hoàn toàn.</li>
+    </ol>
+
+    <h2>4. Trải nghiệm và kinh tế</h2>
+    <ul>
+        <li>Sản phẩm có <b>3 tầng hương</b> công nghệ nước hoa cao cấp.</li>
+        <li>Đậm đặc, dùng 3/4 nắp cho 1 lần giặt (6-7kg quần áo).</li>
+        <li>1 chai SA8 dùng được 66 lần (~3-4 tháng dùng/tuần 3 lần).</li>
+        <li>Tiết kiệm, an toàn cho gia đình có trẻ nhỏ và người già.</li>
+        <li>Giá chỉ 275k/chai (~4-5k cho 1 lần giặt).</li>
+    </ul>
+
+    <div class="conclude">
+        <b>💡 Kết luận:</b><br>
+        SA8 không chỉ là nước giặt – là giải pháp bảo vệ sợi vải, màu sắc quần áo và sức khoẻ cho gia đình bạn.
+    </div>
+
+    <!-- Nút YouTube -->
+    <div class="youtube-link">
+        <a class="youtube-btn" href="https://www.youtube.com/watch?v=o-M6ZtMamlM" target="_blank" rel="noopener">
+            <i class="fab fa-youtube"></i> Xem minh hoạ video thực tế trên YouTube
+        </a>
+    </div>
+</div>
+
+<script>
+    // Password logic
+    const PASSWORD = "2025";
+    const overlay = document.getElementById('passwordOverlay');
+    const mainContent = document.getElementById('mainContent');
+    const input = document.getElementById('passwordInput');
+    const submitBtn = document.getElementById('submitBtn');
+    const wrong = document.getElementById('wrongPwd');
+
+    function unlockPage() {
+        overlay.style.display = "none";
+        mainContent.style.display = "block";
+        document.body.style.overflow = "";
+    }
+    submitBtn.onclick = function() {
+        if (input.value === PASSWORD) {
+            unlockPage();
+        } else {
+            wrong.style.display = "block";
+            input.value = "";
+            input.focus();
+        }
+    };
+    input.addEventListener('keyup', function(e) {
+        if(e.key === "Enter") submitBtn.click();
+    });
+    input.oninput = function() { wrong.style.display = "none"; };
+</script>
+    <footer class="border-top">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="small text-center text-muted fst-italic">Healthy made simple</div>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; YEN HAI TRAN</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

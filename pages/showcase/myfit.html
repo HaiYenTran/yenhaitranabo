@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F.FIT - Hành trình thay đổi của tôi</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            background: #f5fff6;
+            font-family: 'Open Sans', Arial, sans-serif;
+        }
+        .section-title {
+            font-size: 2.1rem;
+            color: #178542;
+            font-weight: bold;
+            margin-bottom: 26px;
+            text-align: center;
+            letter-spacing: 1.5px;
+        }
+        .ffit-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 18px #74d09d1a;
+            padding: 30px 24px 22px 24px;
+            margin-bottom: 32px;
+            border: 1.5px solid #c2eedb;
+        }
+        .table-compare th, .table-compare td {
+            text-align: center;
+            vertical-align: middle;
+            font-size: 1.13em;
+        }
+        .table-compare th {
+            background: #c7f7de;
+            color: #12793d;
+        }
+        .table-compare tr:last-child td, .table-compare tr:last-child th {
+            border-bottom: none;
+        }
+        .table-compare td, .table-compare th {
+            border-right: 1px solid #e8f6ed;
+        }
+        .table-compare td:last-child, .table-compare th:last-child {
+            border-right: none;
+        }
+        .gallery-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-start;
+            margin: 0 -10px;
+        }
+        .gallery-item {
+            width: calc(50% - 20px);
+            background: #e7faee;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 14px #bbeed6a9;
+            position: relative;
+            margin-bottom: 14px;
+            cursor: pointer;
+            border: 2.5px solid #b3eebf;
+            transition: box-shadow .15s, border-color .18s;
+        }
+        .gallery-item img {
+            width: 100%; height: auto; border-radius: 12px; transition: transform .17s;
+        }
+        .gallery-item:hover { box-shadow: 0 8px 40px #71c6856e; border-color:#5ad770;}
+        .gallery-item img:hover { transform: scale(1.04);}
+        #imgModal { display: none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.77); align-items:center; justify-content:center; z-index: 99;}
+        #imgModal img { max-width: 95vw; max-height: 90vh; border-radius:14px; box-shadow:0 8px 32px #555;}
+        #imgModal .close-modal {
+            position:absolute; top:2.5%; right:3.5%;
+            font-size: 2.2em; color: #fff; cursor: pointer; font-weight: bold; z-index: 999;
+        }
+        .desc-blk {
+            background: linear-gradient(90deg, #d6ffd9, #eafef3 90%);
+            border-radius: 18px;
+            color: #16753c;
+            font-size: 1.15em;
+            font-weight: 400;
+            margin: 0 auto 30px auto;
+            padding: 24px 20px 18px 26px;
+            border-left: 7px solid #31ce53;
+            max-width: 700px;
+        }
+        .desc-blk strong {
+            color: #0e9047;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 9px 20px;
+            background: linear-gradient(90deg,#1cae80 80%,#7debc2 100%);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 24px;
+            font-size: 1.01em;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-back:hover {
+            background: linear-gradient(90deg,#0d7b57 90%,#28e4c3 100%);
+        }
+        /* Password overlay */
+        #passwordOverlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(24, 41, 42, 0.87);
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #passwordBox {
+            background: #fff;
+            padding: 34px 32px 22px 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 38px #00998611;
+            min-width: 290px;
+            text-align: center;
+            max-width: 90vw;
+        }
+        #passwordBox h2 {
+            color: #178542;
+            margin-bottom: 17px;
+        }
+        #passwordInput {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1.4px solid #11b398;
+            font-size: 1.12em;
+            margin-bottom: 13px;
+            width: 75%;
+        }
+        #submitBtn {
+            background: linear-gradient(90deg,#1cae80 80%,#7debc2 100%);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 16px;
+            padding: 9px 32px;
+            font-size: 1em;
+            margin-top: 6px;
+            cursor: pointer;
+        }
+        #submitBtn:hover {
+            background: linear-gradient(90deg,#11b369 90%,#3be4c1 100%);
+        }
+        #wrongPwd {
+            color: #e65151;
+            font-size: 1.01em;
+            margin-top: 12px;
+            display: none;
+        }
+        .pwd-info {
+            margin-top:16px;
+            color:#25ad82;
+            font-size:1.03em;
+            background:#e6fff3;
+            border-radius:8px;
+            padding:10px 8px;
+        }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .gallery-item { width: 100%; }
+            .ffit-card { padding: 16px 3vw; }
+        }
+        @media (max-width: 700px) {
+            #passwordBox {padding: 17px 7vw;}
+        }
+    </style>
+</head>
+<!-- Nút về đầu trang -->
+<button id="goTopBtn" title="Về đầu trang" style="
+    position: fixed;
+    right: 24px;
+    bottom: 32px;
+    z-index: 99999;
+    background: linear-gradient(90deg,#00b897,#42e6c2);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 2px 16px #0099863b;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    cursor: pointer;
+    transition: background 0.2s;
+">
+    ↑
+</button>
+<script>
+    // Ẩn/hiện nút khi cuộn trang
+    window.addEventListener('scroll', function() {
+        var btn = document.getElementById('goTopBtn');
+        if (window.scrollY > 300) btn.style.display = 'flex';
+        else btn.style.display = 'none';
+    });
+    // Click để về đầu trang
+    document.getElementById('goTopBtn').onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+</script>
+<body>
+    <!-- Password Overlay -->
+    <div id="passwordOverlay">
+        <form id="passwordBox" onsubmit="return false;">
+            <h2>Bảo mật: Nhập mật khẩu để truy cập</h2>
+            <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autofocus />
+            <br>
+            <button id="submitBtn" type="submit">Vào trang</button>
+            <div id="wrongPwd">Mật khẩu không đúng. Vui lòng thử lại.</div>
+            <div class="pwd-info">
+                Nếu bạn chưa có mật khẩu, hãy liên hệ admin hoặc người đã gửi link để được cung cấp thông tin truy cập.
+            </div>
+        </form>
+    </div>
+
+    <div class="container py-4" id="mainContent" style="display:none;">
+        <a href="ffit_gallery.html" class="btn-back">&larr; Quay lại Thư viện F.FIT</a>
+        <h2 class="section-title">F.FIT – Hành trình thay đổi vóc dáng & sức khỏe</h2>
+        
+        <div class="desc-blk mb-4">
+            <strong>F.FIT</strong> là phương pháp giảm mỡ khoa học dựa trên dinh dưỡng & hiểu chuyển hoá cơ thể, giúp bạn thiết kế bữa ăn hợp lý, đủ chất & hiệu quả.<br><br>
+            <b>Vì sao nên dùng F.FIT?</b>
+            <ul>
+                <li>🔬 <b>Dựa trên khoa học về dinh dưỡng</b></li>
+                <li>💡 Giúp hiểu rõ cơ thể, dễ duy trì sau chương trình, không tái cân nhanh</li>
+                <li>🌱 <b>Sản phẩm chất lượng, hữu cơ, không GMO, không hoá chất</b></li>
+            </ul>
+            <div style="text-align: right;">
+                <a href="ffit_gallery.html" style="color:#178542;font-weight:bold;">→ Xem bộ ảnh F.FIT tại đây</a>
+            </div>
+        </div>
+
+        <div class="ffit-card">
+            <h5 class="mb-2" style="color:#178542;font-weight:bold;">So sánh thông số</h5>
+            <div class="table-responsive">
+                <table class="table table-compare table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Chỉ số</th>
+                            <th>6/5/2024 <br><span style="color:#868e96;">(Bắt đầu)</span></th>
+                            <th>6/7/2024 <br><span style="color:#178542;font-weight:bold;">(Kết thúc)</span></th>
+                            <th>01/07/2025 <br><span style="color:#22ba5a;">(Hiện tại)</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Chiều cao (cm)</td><td>146</td><td>146</td><td>146</td></tr>
+                        <tr><td>Vòng eo (cm)</td><td>82</td><td>73</td><td>71</td></tr>
+                        <tr><td>Cân nặng (kg)</td><td>61.6</td><td>54</td><td>51.9</td></tr>
+                        <tr><td>Khối lượng cơ (kg)</td><td>20.1</td><td>19.3</td><td>19.9</td></tr>
+                        <tr><td>Khối lượng mỡ (kg)</td><td>24.4</td><td>18.3</td><td>15.3</td></tr>
+                        <tr><td>% mỡ</td><td>39.6</td><td>33.9</td><td>29.5</td></tr>
+                        <tr><td>BMI</td><td>27.4</td><td>24</td><td>23.1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="ffit-card">
+            <h5 class="mb-3" style="color:#178542;font-weight:bold;">Tiến trình hình ảnh (2024 – 2025)</h5>
+            <div id="gallery-flex" class="gallery-flex"></div>
+        </div>
+    </div>
+
+    <!-- Modal hiển thị ảnh lớn -->
+    <div id="imgModal" onclick="this.style.display='none'">
+        <span class="close-modal" onclick="document.getElementById('imgModal').style.display='none';event.stopPropagation()">&times;</span>
+        <img id="modalImg" src="" alt="Ảnh lớn">
+    </div>
+
+    <script>
+        // Password logic
+        const PASSWORD = "2025";
+        const overlay = document.getElementById('passwordOverlay');
+        const mainContent = document.getElementById('mainContent');
+        const input = document.getElementById('passwordInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const wrong = document.getElementById('wrongPwd');
+        function unlockPage() {
+            overlay.style.display = "none";
+            mainContent.style.display = "block";
+            document.body.style.overflow = "";
+        }
+        submitBtn.onclick = function() {
+            if (input.value === PASSWORD) {
+                unlockPage();
+            } else {
+                wrong.style.display = "block";
+                input.value = "";
+                input.focus();
+            }
+        };
+        input.addEventListener('keyup', function(e) {
+            if(e.key === "Enter") submitBtn.click();
+        });
+        input.oninput = function() { wrong.style.display = "none"; };
+
+        // Hiển thị ảnh hệ thống 1.jpg --> 14.jpg, 2 hình trên 1 hàng, từ nhỏ tới lớn
+        function renderGallery() {
+            let g = document.getElementById('gallery-flex');
+            g.innerHTML = '';
+            for (let i = 1; i <= 14; i++) {
+                let wrap = document.createElement('div');
+                wrap.className = 'gallery-item';
+                let img = document.createElement('img');
+                img.src = 'assets/img/MyF.FIT/' + i + '.jpg';
+                img.alt = 'F.FIT progress ' + i;
+                img.onerror = function(){ this.parentElement.style.display='none'; };
+                img.onclick = function(ev){
+                    document.getElementById('modalImg').src = this.src;
+                    document.getElementById('imgModal').style.display = 'flex';
+                    ev.stopPropagation();
+                }
+                wrap.appendChild(img);
+                g.appendChild(wrap);
+            }
+        }
+        // Sau khi unlock mới render gallery
+        submitBtn.addEventListener('click', function() {
+            if (input.value === PASSWORD) {
+                setTimeout(renderGallery, 10);
+            }
+        });
+
+        document.getElementById('imgModal').onclick = function(){ this.style.display='none'; };
+        document.getElementById('modalImg').onclick = function(ev){ ev.stopPropagation(); }
+    </script>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/0e2498450d.js" crossorigin="anonymous"></script>
+    <footer class="border-top">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="small text-center text-muted fst-italic">Healthy made simple</div>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; YEN HAI TRAN</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
