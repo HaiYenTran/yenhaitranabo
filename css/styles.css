@@ -10567,6 +10567,8 @@ blockquote {
   color: #6c757d;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap");
+
 .btn {
   letter-spacing: 0.0625em;
 }
@@ -10593,10 +10595,11 @@ blockquote {
   z-index: 1030;
   border-bottom: 1px solid #dee2e6;
   background-color: #fff;
-  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Manrope", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 #mainNav .navbar-brand {
   font-weight: 800;
+  font-family: "Manrope", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 #mainNav .navbar-toggler {
   font-size: 0.75rem;
@@ -10605,16 +10608,17 @@ blockquote {
   text-transform: uppercase;
 }
 #mainNav .navbar-nav > li.nav-item > a.nav-link {
-  font-size: 0.75rem;
+  font-size: 0.79rem;
   font-weight: 800;
   letter-spacing: 0.0625em;
-  text-transform: uppercase;
+  text-transform: none;
+  font-family: "Manrope", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* === Main menu refresh: modern tab/pill style across all pages === */
 #mainNav .navbar-brand,
 .navbar .navbar-brand .fw-bolder {
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
 }
 #mainNav .navbar-nav,
 .navbar .navbar-nav.ms-auto {
