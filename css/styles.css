@@ -10610,6 +10610,47 @@ blockquote {
   letter-spacing: 0.0625em;
   text-transform: uppercase;
 }
+
+/* === Main menu refresh: modern tab/pill style across all pages === */
+#mainNav .navbar-brand,
+.navbar .navbar-brand .fw-bolder {
+  letter-spacing: 0.08em;
+}
+#mainNav .navbar-nav,
+.navbar .navbar-nav.ms-auto {
+  gap: 0.35rem;
+}
+#mainNav .navbar-nav > li.nav-item > a.nav-link,
+.navbar .navbar-nav > li.nav-item > a.nav-link {
+  border-radius: 999px;
+  padding: 0.55rem 1rem !important;
+  line-height: 1;
+  transition: all 0.22s ease;
+  border: 1px solid transparent;
+}
+#mainNav .navbar-nav > li.nav-item > a.nav-link:hover,
+#mainNav .navbar-nav > li.nav-item > a.nav-link:focus,
+.navbar .navbar-nav > li.nav-item > a.nav-link:hover,
+.navbar .navbar-nav > li.nav-item > a.nav-link:focus {
+  transform: translateY(-1px);
+  background: rgba(0, 184, 148, 0.12);
+  border-color: rgba(0, 184, 148, 0.28);
+  color: #00856c;
+}
+#mainNav .navbar-nav > li.nav-item > a.nav-link.active,
+.navbar .navbar-nav > li.nav-item > a.nav-link.active {
+  background: linear-gradient(135deg, #00b894 0%, #22c1c3 100%);
+  color: #fff !important;
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(0, 184, 148, 0.22);
+}
+@media (max-width: 991.98px) {
+  #mainNav .navbar-nav > li.nav-item > a.nav-link,
+  .navbar .navbar-nav > li.nav-item > a.nav-link {
+    margin-bottom: 0.35rem;
+    width: fit-content;
+  }
+}
 @media (min-width: 992px) {
   #mainNav {
     border-bottom: 1px solid transparent;
