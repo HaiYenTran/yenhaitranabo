@@ -28,11 +28,10 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const footerCopyright = document.querySelector('footer .text-center.text-muted.fst-italic');
-    if (footerCopyright && !footerCopyright.parentElement.querySelector('.site-tagline')) {
-        const tagline = document.createElement('div');
-        tagline.className = 'small text-center text-muted fst-italic site-tagline';
-        tagline.textContent = 'Healthy made simple';
-        footerCopyright.parentElement.insertBefore(tagline, footerCopyright);
-    }
+    const footerTaglines = document.querySelectorAll('footer .small.text-muted.fst-italic, footer .small.text-center.text-muted.fst-italic');
+    footerTaglines.forEach((tagline) => {
+        if (tagline.textContent && tagline.textContent.trim().toLowerCase() === 'healthy made simple') {
+            tagline.remove();
+        }
+    });
 });
