@@ -30,8 +30,31 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const footerTaglines = document.querySelectorAll('footer .small.text-muted.fst-italic, footer .small.text-center.text-muted.fst-italic');
     footerTaglines.forEach((tagline) => {
-        if (tagline.textContent && tagline.textContent.trim().toLowerCase() === 'healthy made simple') {
-            tagline.remove();
+        if (!tagline.textContent || tagline.textContent.trim().toLowerCase() !== 'momoshare') {
+            return;
         }
+
+        const existingFacebookLink = tagline.parentElement?.querySelector('.footer-facebook-link');
+        const existingHealthyMadeSimple = tagline.parentElement?.querySelector('.footer-healthy-made-simple');
+        if (existingFacebookLink) existingFacebookLink.remove();
+        if (existingHealthyMadeSimple) existingHealthyMadeSimple.remove();
+
+        const facebookWrapper = document.createElement('div');
+        facebookWrapper.className = 'small text-center text-muted footer-facebook-link';
+
+        const facebookLink = document.createElement('a');
+        facebookLink.href = 'https://www.facebook.com/haiyen.tran2';
+        facebookLink.target = '_blank';
+        facebookLink.rel = 'noopener noreferrer';
+        facebookLink.setAttribute('aria-label', 'Facebook profile link');
+        facebookLink.textContent = '📘 Facebook';
+
+        facebookWrapper.appendChild(facebookLink);
+        tagline.insertAdjacentElement('beforebegin', facebookWrapper);
+
+        const healthyMadeSimple = document.createElement('div');
+        healthyMadeSimple.className = 'small text-center text-muted footer-healthy-made-simple';
+        healthyMadeSimple.textContent = 'HEALTHY MADE SIMPLE';
+        tagline.insertAdjacentElement('beforebegin', healthyMadeSimple);
     });
 });
