@@ -57,6 +57,59 @@
             color: #444;
             margin-top: 8px;
         }
+        .transform-banner {
+            position: relative;
+            min-height: 260px;
+            overflow: hidden;
+            color: #fff;
+            background:
+                radial-gradient(circle at 82% 28%, rgba(76, 222, 128, 0.9) 0 8%, transparent 9%),
+                radial-gradient(circle at 72% 42%, rgba(239, 68, 68, 0.9) 0 9%, transparent 10%),
+                radial-gradient(circle at 88% 52%, rgba(236, 72, 153, 0.85) 0 10%, transparent 11%),
+                linear-gradient(135deg, #ff9f1c 0%, #ff4f93 34%, #5345c8 69%, #0396ff 100%);
+        }
+        .transform-banner::after {
+            content: "";
+            position: absolute;
+            inset: auto -8% -32% -8%;
+            height: 48%;
+            background: rgba(9, 38, 80, 0.45);
+            border-radius: 50% 50% 0 0;
+            transform: rotate(-2deg);
+        }
+        .transform-banner-content {
+            position: relative;
+            z-index: 1;
+            padding: 42px 40px;
+        }
+        .transform-banner-title {
+            font-size: clamp(2.4rem, 7vw, 5.6rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.06em;
+        }
+        .transform-banner-meta {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            align-items: center;
+            margin-top: 32px;
+            padding: 12px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(4px);
+            font-weight: 700;
+        }
+        .transform-banner-note {
+            position: absolute;
+            z-index: 1;
+            left: 24px;
+            bottom: 18px;
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
         @media (max-width: 768px) {
             .container {
                 padding: 0 8px !important;
@@ -103,24 +156,41 @@
                 </div>
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-11 col-xl-9 col-xxl-8">
-                        <!-- Event Card Example -->
-                        <a href="events_transform01Dec.html" class="event-link">
-                            <div class="card card-event shadow border-0 rounded-4 mb-4">
-                                <div class="card-body p-4">
-                                    <div class="event-date-place mb-3">
-                                        <div class="event-title">Transform 03</div>
-                                        <div class="small fw-bolder mb-1"><i class="fas fa-calendar-alt"></i> 08:30 - 17:00 | 01/12/2024</div>
-                                        <div class="small text-muted"><i class="fas fa-map-marker-alt"></i> Amway Center, 410BCD Nguyễn Thị Minh Khai, Q3, Tp.HCM</div>
-                                    </div>
-                                    <div class="event-details fw-bold">𝐓𝐑𝐀𝐍𝐒𝐅𝐎𝐑𝐌 𝐓𝐎𝐃𝐀𝐘, 𝐓𝐇𝐑𝐈𝐕𝐄 𝐓𝐎𝐌𝐎𝐑𝐑𝐎𝐖</div>
-                                    <div class="event-desc">
-                                        Nếu bạn là một nhân viên văn phòng hay quản lý cấp trung, mỗi ngày tất bật với công việc và gia đình, thì đừng lo, bạn không cô đơn đâu!
+                        <!-- Transform 07 Event -->
+                        <div class="card card-event shadow border-0 rounded-4 mb-4">
+                            <div class="transform-banner rounded-top-4" role="img" aria-label="Transform 07 event banner">
+                                <div class="transform-banner-content">
+                                    <div class="transform-banner-title">Transform 07</div>
+                                    <div class="transform-banner-meta">
+                                        <span>8:30 - 17:30 · Chủ Nhật 07.06.2026</span>
+                                        <span>Sảnh Lotus Ballroom · Khách sạn RAMANA</span>
                                     </div>
                                 </div>
+                                <div class="transform-banner-note">*Lưu ý: Ấn phẩm này không có giá trị vào cổng</div>
                             </div>
-                        </a>
-                        <!-- End Event Card Example -->
-                        <!-- Thêm event mới (copy lại block trên, đổi link/nội dung) nếu cần -->
+                            <div class="card-body p-4">
+                                <div class="event-date-place mb-3">
+                                    <div class="event-title">TRANSFORM 07: TRANSFORM TODAY, THRIVE TOMORROW</div>
+                                    <div class="small fw-bolder mb-1"><i class="fas fa-calendar-alt"></i> 8:30 - 17:30, Chủ Nhật | 07/06/2026</div>
+                                    <div class="small text-muted"><i class="fas fa-map-marker-alt"></i> Sảnh Lotus Ballroom (Lầu 1), Khách sạn RAMANA - 323 Lê Văn Sỹ, P. Nhiêu Lộc, Tp. Hồ Chí Minh</div>
+                                </div>
+                                <div class="event-details fw-bold mb-3">Người đi trước luôn nhìn thấy cơ hội trước đám đông.</div>
+                                <div class="event-desc">
+                                    <p>Trong khi nhiều người vẫn còn nghĩ Amway chỉ là bán hàng hay nghề tay trái, thì đã có những người âm thầm xây dựng hệ thống, cộng đồng và nguồn thu nhập bền vững trên quy mô toàn cầu.</p>
+                                    <p>TRANSFORM là một sự kiện được tạo ra cho những người làm kinh doanh, quản lý, lãnh đạo và những ai sẵn sàng nhìn vượt khỏi những định kiến cũ.</p>
+                                    <p>Không phải ai cũng phù hợp với sự kiện này. Và đó chính là lý do nó có giá trị.</p>
+                                    <p class="fw-bold mb-0">Số lượng chỗ ngồi giới hạn. Hãy đăng ký ngay giữ chỗ.</p>
+                                </div>
+                                <div class="ratio ratio-16x9 rounded-4 overflow-hidden mt-4">
+                                    <iframe src="https://www.youtube.com/embed/Hi7URWN2L0w" title="TRANSFORM 07 video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2 mt-3">
+                                    <a class="btn btn-primary" href="contact.html">Đăng ký giữ chỗ</a>
+                                    <a class="btn btn-outline-primary" href="https://youtu.be/Hi7URWN2L0w?si=HPke307CV5zcGOz8" target="_blank" rel="noopener noreferrer">Xem video trên YouTube</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Transform 07 Event -->
                     </div>
                 </div>
             </div>
