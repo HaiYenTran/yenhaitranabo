@@ -47,7 +47,9 @@ window.addEventListener('DOMContentLoaded', () => {
         facebookLink.target = '_blank';
         facebookLink.rel = 'noopener noreferrer';
         facebookLink.setAttribute('aria-label', 'Facebook profile link');
-        facebookLink.textContent = '📘 Facebook';
+        const facebookIcon = document.createElement('i');
+        facebookIcon.className = 'fab fa-facebook-f';
+        facebookLink.appendChild(facebookIcon);
 
         facebookWrapper.appendChild(facebookLink);
         tagline.insertAdjacentElement('beforebegin', facebookWrapper);
