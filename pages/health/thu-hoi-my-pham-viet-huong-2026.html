@@ -107,48 +107,6 @@
         .spray::before { content: ""; position: absolute; top: -18px; left: 7px; width: 28px; height: 18px; border: 3px solid #174ea6; background: #fff; border-radius: 8px 8px 0 0; }
         .product-card h3 { margin-top: 0; color: var(--vh-red); font-size: 1.18rem; }
         .source-list a, .recall-table a { color: var(--vh-blue); font-weight: 700; }
-
-        .official-list-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 18px;
-            margin: 22px 0 30px;
-        }
-        .official-list-card {
-            background: #fff;
-            border: 1px solid var(--vh-border);
-            border-radius: 18px;
-            padding: 12px;
-            box-shadow: 0 10px 30px rgba(15,35,55,.08);
-        }
-        .official-list-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            border: 1px solid #edf1f5;
-            display: block;
-        }
-        .official-list-card figcaption {
-            color: var(--vh-muted);
-            font-size: .9rem;
-            margin-top: 8px;
-            text-align: center;
-        }
-        .lookup-visual {
-            display: inline-flex;
-            min-width: 92px;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border: 1px solid #cbd5e1;
-            border-radius: 14px;
-            padding: 8px 10px;
-            background: linear-gradient(140deg, #ffffff, #eef4ff);
-            color: var(--vh-blue);
-            font-weight: 800;
-        }
-        .lookup-visual .lookup-emoji { font-size: 1.45rem; line-height: 1; }
-        .lookup-visual small { display: block; font-size: .75rem; color: var(--vh-muted); font-weight: 700; }
         .table-tools {
             background: #fff;
             border: 1px solid var(--vh-border);
@@ -164,7 +122,7 @@
             font-size: 1rem;
         }
         .table-responsive { overflow-x: auto; border-radius: 16px; box-shadow: 0 10px 30px rgba(15,35,55,.08); }
-        .recall-table { width: 100%; min-width: 880px; border-collapse: collapse; background: #fff; }
+        .recall-table { width: 100%; min-width: 760px; border-collapse: collapse; background: #fff; }
         .recall-table th, .recall-table td { padding: 14px; border-bottom: 1px solid #edf1f5; vertical-align: top; }
         .recall-table th { background: #173b73; color: #fff; text-align: left; }
         .recall-table tr:hover td { background: #f8fbff; }
@@ -285,6 +243,84 @@
                         </div>
                     </section>
 
+                    <section aria-labelledby="table-title">
+                        <h2 id="table-title" class="section-heading">Bảng tra cứu nhanh một số sản phẩm trong danh mục</h2>
+                        <p>Bảng dưới đây nhập lại các sản phẩm đầu danh mục được công khai trong bài tổng hợp của Thư Viện Pháp Luật. Với danh sách đầy đủ 511 sản phẩm, vui lòng mở công văn/PDF nguồn ở phần cuối trang.</p>
+                        <div class="table-tools">
+                            <label for="productSearch"><strong>Tìm nhanh:</strong></label>
+                            <input id="productSearch" type="search" placeholder="Nhập tên sản phẩm, số công bố hoặc nhóm sản phẩm..." />
+                        </div>
+                        <div class="table-responsive">
+                            <table class="recall-table" id="recallTable">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Số tiếp nhận Phiếu công bố</th>
+                                        <th>Nhóm nhận diện</th>
+                                        <th>Gợi ý đối chiếu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1</td><td>Sữa tắm Mộc Tâm</td><td>8813/21/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Kiểm tra chai/lọ sữa tắm, tên Mộc Tâm và số công bố trên nhãn.</td></tr>
+                                    <tr><td>2</td><td>Whitening Serum</td><td>9416/21/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Đối chiếu lọ tinh chất/serum làm sáng da.</td></tr>
+                                    <tr><td>3</td><td>Tảo Biển</td><td>9553/21/CBMP-HN</td><td><span class="badge-type">Chăm sóc da</span></td><td>Kiểm tra sản phẩm có tên Tảo Biển trên nhãn chính hoặc nhãn phụ.</td></tr>
+                                    <tr><td>4</td><td>Sữa rửa mặt ngừa mụn</td><td>10049/21/CBMP-HN</td><td><span class="badge-type">Sữa rửa mặt</span></td><td>Đối chiếu tuýp/chai sữa rửa mặt dành cho da mụn.</td></tr>
+                                    <tr><td>5</td><td>Acne Body</td><td>10050/21/CBMP-HN</td><td><span class="badge-type">Body</span></td><td>Kiểm tra sản phẩm chăm sóc cơ thể có chữ Acne Body.</td></tr>
+                                    <tr><td>6</td><td>Tinh chất chấm mụn</td><td>10051/21/CBMP-HN</td><td><span class="badge-type">Chấm mụn</span></td><td>Thường là lọ nhỏ/đầu chấm; đối chiếu tên và số công bố.</td></tr>
+                                    <tr><td>7</td><td>Toner ngừa mụn</td><td>10052/21/CBMP-HN</td><td><span class="badge-type">Toner</span></td><td>Kiểm tra chai toner cho da mụn.</td></tr>
+                                    <tr><td>8</td><td>Tinh chất sáng da</td><td>10060/21/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Đối chiếu sản phẩm tinh chất/serum sáng da.</td></tr>
+                                    <tr><td>9</td><td>Kem mụn mờ thâm</td><td>10061/21/CBMP-HN</td><td><span class="badge-type">Kem mụn</span></td><td>Kiểm tra tuýp/hũ kem trị mụn, mờ thâm.</td></tr>
+                                    <tr><td>10</td><td>Sun Cream</td><td>10687/21/CBMP-HN</td><td><span class="badge-type">Chống nắng</span></td><td>Đối chiếu kem chống nắng có tên Sun Cream.</td></tr>
+                                    <tr><td>11</td><td>Nước tài lộc</td><td>11594/22/CBMP-HN</td><td><span class="badge-type">Nước hoa/xịt</span></td><td>Kiểm tra sản phẩm dạng nước/xịt có tên tương ứng.</td></tr>
+                                    <tr><td>12</td><td>Sữa tắm tài lộc</td><td>11595/22/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Đối chiếu chai sữa tắm có tên Tài Lộc.</td></tr>
+                                    <tr><td>13</td><td>Serum 9 Days</td><td>11726/22/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Kiểm tra lọ serum ghi 9 Days.</td></tr>
+                                    <tr><td>14</td><td>Tinh chất nám</td><td>12058/22/CBMP-HN</td><td><span class="badge-type">Serum nám</span></td><td>Đối chiếu sản phẩm tinh chất hỗ trợ chăm sóc vùng nám.</td></tr>
+                                    <tr><td>15</td><td>Kem dưỡng</td><td>12171/22/CBMP-HN</td><td><span class="badge-type">Kem dưỡng</span></td><td>Kiểm tra hũ/tuýp kem dưỡng và số công bố.</td></tr>
+                                    <tr><td>16</td><td>Serum hôi nách</td><td>12348/22/CBMP-HN</td><td><span class="badge-type">Khử mùi</span></td><td>Đối chiếu sản phẩm chăm sóc vùng dưới cánh tay.</td></tr>
+                                    <tr><td>17</td><td>Dầu gội phủ bạc</td><td>12349/22/CBMP-HN</td><td><span class="badge-type">Dầu gội</span></td><td>Kiểm tra chai/gói dầu gội phủ bạc.</td></tr>
+                                    <tr><td>18</td><td>Curcumin Mask</td><td>12710/22/CBMP-HN</td><td><span class="badge-type">Mặt nạ</span></td><td>Đối chiếu mặt nạ/kem mask có chữ Curcumin Mask.</td></tr>
+                                    <tr><td>19</td><td>Serum tái tạo da X2</td><td>12574/22/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Kiểm tra sản phẩm tinh chất tái tạo da X2.</td></tr>
+                                    <tr><td>20</td><td>Xịt thơm miệng</td><td>13729/22/CBMP-HN</td><td><span class="badge-type">Xịt</span></td><td>Đối chiếu chai xịt thơm miệng.</td></tr>
+                                    <tr><td>21</td><td>Meso Therapy B3 Bio</td><td>14286/22/CBMP-HN</td><td><span class="badge-type">Chăm sóc da</span></td><td>Kiểm tra sản phẩm ghi Meso Therapy B3 Bio.</td></tr>
+                                    <tr><td>22</td><td>Meso Therapy Bio</td><td>14287/22/CBMP-HN</td><td><span class="badge-type">Chăm sóc da</span></td><td>Đối chiếu tên Meso Therapy Bio.</td></tr>
+                                    <tr><td>23</td><td>Peel Bio Dr+</td><td>14509/22/CBMP-HN</td><td><span class="badge-type">Peel</span></td><td>Kiểm tra sản phẩm peel/tẩy da chết hóa học.</td></tr>
+                                    <tr><td>24</td><td>Stem Cells</td><td>14510/22/CBMP-HN</td><td><span class="badge-type">Serum/kem</span></td><td>Đối chiếu sản phẩm ghi Stem Cells.</td></tr>
+                                    <tr><td>25</td><td>Peel Bio A+</td><td>14511/22/CBMP-HN</td><td><span class="badge-type">Peel</span></td><td>Kiểm tra sản phẩm peel Bio A+.</td></tr>
+                                    <tr><td>26</td><td>Happy Gel</td><td>18175/23/CBMP-HN</td><td><span class="badge-type">Gel</span></td><td>Đối chiếu tuýp/hũ gel có tên Happy Gel.</td></tr>
+                                    <tr><td>27</td><td>Combo Vip Limited</td><td>17857/23/CBMP-HN</td><td><span class="badge-type">Combo</span></td><td>Kiểm tra bộ sản phẩm có tên Combo Vip Limited.</td></tr>
+                                    <tr><td>28</td><td>Vitamin E Lotion</td><td>18041/23/CBMP-HN</td><td><span class="badge-type">Lotion</span></td><td>Đối chiếu lotion Vitamin E.</td></tr>
+                                    <tr><td>29</td><td>Charming Lips</td><td>18069/23/CBMP-HN</td><td><span class="badge-type">Son môi</span></td><td>Kiểm tra son/sản phẩm môi ghi Charming Lips.</td></tr>
+                                    <tr><td>30</td><td>Tẩy trang</td><td>16939/23/CBMP-HN</td><td><span class="badge-type">Tẩy trang</span></td><td>Đối chiếu nước/dầu/sáp tẩy trang và số công bố.</td></tr>
+                                    <tr><td>31</td><td>Miss Coco</td><td>19485/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Kiểm tra sản phẩm có tên Miss Coco.</td></tr>
+                                    <tr><td>32</td><td>Good Girl</td><td>19486/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Đối chiếu nước hoa/sản phẩm tạo mùi Good Girl.</td></tr>
+                                    <tr><td>33</td><td>Scandal</td><td>19487/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Kiểm tra sản phẩm có tên Scandal.</td></tr>
+                                    <tr><td>34</td><td>Lady Fine</td><td>20152/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Đối chiếu sản phẩm ghi Lady Fine.</td></tr>
+                                    <tr><td>35</td><td>Melas Luxury Combo</td><td>20153/24/CBMP-HN</td><td><span class="badge-type">Combo dưỡng da</span></td><td>Kiểm tra bộ sản phẩm Melas Luxury Combo.</td></tr>
+                                    <tr><td>36</td><td>Spotless Perfect Cleanser</td><td>20365/24/CBMP-HN</td><td><span class="badge-type">Sữa rửa mặt</span></td><td>Đối chiếu tuýp/chai cleanser.</td></tr>
+                                    <tr><td>37</td><td>Melas Luxury Combo</td><td>19672/24/CBMP-HN</td><td><span class="badge-type">Combo dưỡng da</span></td><td>Cùng tên nhưng khác số công bố; cần kiểm tra số trên nhãn.</td></tr>
+                                    <tr><td>38</td><td>Sữa rửa mặt</td><td>25572/25/CBMP-HN</td><td><span class="badge-type">Sữa rửa mặt</span></td><td>Kiểm tra tên sản phẩm và số công bố vì tên khá chung.</td></tr>
+                                    <tr><td>39</td><td>Sữa tắm sáng da</td><td>20837/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Đối chiếu chai sữa tắm sáng da.</td></tr>
+                                    <tr><td>40</td><td>Dầu gội</td><td>20838/24/CBMP-HN</td><td><span class="badge-type">Dầu gội</span></td><td>Kiểm tra tên/số công bố trên chai dầu gội.</td></tr>
+                                    <tr><td>41</td><td>Dầu xả</td><td>20839/24/CBMP-HN</td><td><span class="badge-type">Dầu xả</span></td><td>Kiểm tra tên/số công bố trên chai dầu xả.</td></tr>
+                                    <tr><td>42</td><td>Sữa tắm hương nước hoa</td><td>20840/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Đối chiếu sản phẩm sữa tắm hương nước hoa.</td></tr>
+                                    <tr><td>43</td><td>Sữa tắm hương nước hoa</td><td>20732/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Cùng tên nhưng khác số công bố; kiểm tra số trên nhãn.</td></tr>
+                                    <tr><td>44</td><td>Dầu xả</td><td>20733/24/CBMP-HN</td><td><span class="badge-type">Dầu xả</span></td><td>Đối chiếu số công bố trên sản phẩm dầu xả.</td></tr>
+                                    <tr><td>45</td><td>Dầu gội</td><td>20734/24/CBMP-HN</td><td><span class="badge-type">Dầu gội</span></td><td>Đối chiếu số công bố trên sản phẩm dầu gội.</td></tr>
+                                    <tr><td>46</td><td>Spotless Perfect Toner</td><td>20735/24/CBMP-HN</td><td><span class="badge-type">Toner</span></td><td>Kiểm tra chai toner Spotless Perfect.</td></tr>
+                                    <tr><td>47</td><td>Sữa tắm sáng da</td><td>20736/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Cùng tên nhưng khác số công bố; kiểm tra kỹ mã.</td></tr>
+                                    <tr><td>48</td><td>Perfect Sun Cream</td><td>20737/24/CBMP-HN</td><td><span class="badge-type">Chống nắng</span></td><td>Đối chiếu kem chống nắng Perfect Sun Cream.</td></tr>
+                                    <tr><td>49</td><td>Spotless Perfect Remover</td><td>20738/24/CBMP-HN</td><td><span class="badge-type">Tẩy trang</span></td><td>Kiểm tra sản phẩm remover/tẩy trang.</td></tr>
+                                    <tr><td>50</td><td>Bio Lip Balm</td><td>22314/24/CBMP-HN</td><td><span class="badge-type">Son dưỡng</span></td><td>Đối chiếu son dưỡng môi Bio Lip Balm.</td></tr>
+                                    <tr><td>51</td><td>Spotless Perfect Serum</td><td>22010/24/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Kiểm tra lọ serum Spotless Perfect.</td></tr>
+                                    <tr><td>52</td><td>Bio Hydration Toner</td><td>22922/24/CBMP-HN</td><td><span class="badge-type">Toner</span></td><td>Đối chiếu toner Bio Hydration.</td></tr>
+                                    <tr><td>53</td><td>Lumi white peel</td><td>24004/25/CBMP-HN</td><td><span class="badge-type">Peel</span></td><td>Kiểm tra sản phẩm peel/tẩy da chết Lumi white peel.</td></tr>
+                                    <tr><td>54</td><td>Dark spot spotless perfect serum</td><td>24005/25/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Đối chiếu serum chăm sóc đốm nâu/thâm nám.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
                     <section aria-labelledby="actions-title">
                         <h2 id="actions-title" class="section-heading">Người dân nên làm gì?</h2>
                         <div class="action-grid">
@@ -304,106 +340,6 @@
                                 <h3>4. Theo dõi phản ứng da</h3>
                                 <p>Nếu có kích ứng, bỏng rát, mẩn đỏ hoặc dấu hiệu bất thường, nên ngưng ngay và hỏi ý kiến nhân viên y tế.</p>
                             </div>
-                        </div>
-                    </section>
-
-                    <section aria-labelledby="full-list-title">
-                        <h2 id="full-list-title" class="section-heading">Danh mục đầy đủ 511 sản phẩm theo phụ lục công văn</h2>
-                        <p>Vì danh mục chính thức có tới 511 sản phẩm, phần dưới đây nhúng các trang ảnh phụ lục công văn để người dân có thể xem đầy đủ danh sách. Bảng tra cứu nhanh có ảnh minh hoạ được đặt sau phần ảnh phụ lục này.</p>
-                        <div class="official-list-grid">
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-1.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 1, danh mục sản phẩm 1 đến 32" loading="lazy"><figcaption>Trang 1: sản phẩm 1–32</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-2.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 2, danh mục sản phẩm 33 đến 68" loading="lazy"><figcaption>Trang 2: sản phẩm 33–68</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-3.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 3, danh mục sản phẩm 69 đến 108" loading="lazy"><figcaption>Trang 3: sản phẩm 69–108</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-4.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 4, danh mục sản phẩm 109 đến 146" loading="lazy"><figcaption>Trang 4: sản phẩm 109–146</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-5.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 5, danh mục sản phẩm 147 đến 180" loading="lazy"><figcaption>Trang 5: sản phẩm 147–180</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-6.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 6" loading="lazy"><figcaption>Trang 6</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-7.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 7, danh mục sản phẩm 217 đến 250" loading="lazy"><figcaption>Trang 7: sản phẩm 217–250</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-8.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 8, danh mục sản phẩm 251 đến 290" loading="lazy"><figcaption>Trang 8: sản phẩm 251–290</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-9.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 9, danh mục sản phẩm 291 đến 328" loading="lazy"><figcaption>Trang 9: sản phẩm 291–328</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-10.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 10, danh mục sản phẩm 329 đến 361" loading="lazy"><figcaption>Trang 10: sản phẩm 329–361</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-11.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 11" loading="lazy"><figcaption>Trang 11</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-12.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 12, danh mục sản phẩm 404 đến 443" loading="lazy"><figcaption>Trang 12: sản phẩm 404–443</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-13.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 13, danh mục sản phẩm 444 đến 480" loading="lazy"><figcaption>Trang 13: sản phẩm 444–480</figcaption></figure>
-                            <figure class="official-list-card"><img src="https://cdn.thuvienphapluat.vn/phap-luat/2022-2/NVP/cv-1772-14.jpg" alt="Phụ lục Công văn 1772/QLD-MP trang 14, danh mục sản phẩm 481 đến 511" loading="lazy"><figcaption>Trang 14: sản phẩm 481–511</figcaption></figure>
-                        </div>
-                    </section>
-
-                    <section aria-labelledby="table-title">
-                        <h2 id="table-title" class="section-heading">Bảng tra cứu nhanh có ảnh minh hoạ</h2>
-                        <p>Bảng này được đặt ở cuối trang để tra nhanh các sản phẩm đầu danh mục. Cột ảnh minh hoạ dùng biểu tượng theo nhóm sản phẩm, giúp người dân phân biệt dạng sản phẩm khi đối chiếu với nhãn thật.</p>
-                        <div class="table-tools">
-                            <label for="productSearch"><strong>Tìm nhanh:</strong></label>
-                            <input id="productSearch" type="search" placeholder="Nhập tên sản phẩm, số công bố hoặc nhóm sản phẩm..." />
-                        </div>
-                        <div class="table-responsive">
-                            <table class="recall-table" id="recallTable">
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Ảnh minh hoạ</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Số tiếp nhận Phiếu công bố</th>
-                                        <th>Nhóm nhận diện</th>
-                                        <th>Gợi ý đối chiếu</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>1</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Sữa tắm"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Sữa tắm</small></div></td><td>Sữa tắm Mộc Tâm</td><td>8813/21/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Kiểm tra chai/lọ sữa tắm, tên Mộc Tâm và số công bố trên nhãn.</td></tr>
-                                    <tr><td>2</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Serum"><span class="lookup-emoji" aria-hidden="true">💧</span><small>Serum</small></div></td><td>Whitening Serum</td><td>9416/21/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Đối chiếu lọ tinh chất/serum làm sáng da.</td></tr>
-                                    <tr><td>3</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Chăm sóc da"><span class="lookup-emoji" aria-hidden="true">🫙</span><small>Da</small></div></td><td>Tảo Biển</td><td>9553/21/CBMP-HN</td><td><span class="badge-type">Chăm sóc da</span></td><td>Kiểm tra sản phẩm có tên Tảo Biển trên nhãn chính hoặc nhãn phụ.</td></tr>
-                                    <tr><td>4</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Sữa rửa mặt"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Mỹ phẩm</small></div></td><td>Sữa rửa mặt ngừa mụn</td><td>10049/21/CBMP-HN</td><td><span class="badge-type">Sữa rửa mặt</span></td><td>Đối chiếu tuýp/chai sữa rửa mặt dành cho da mụn.</td></tr>
-                                    <tr><td>5</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Body"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Body</small></div></td><td>Acne Body</td><td>10050/21/CBMP-HN</td><td><span class="badge-type">Body</span></td><td>Kiểm tra sản phẩm chăm sóc cơ thể có chữ Acne Body.</td></tr>
-                                    <tr><td>6</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Chấm mụn"><span class="lookup-emoji" aria-hidden="true">💧</span><small>Chấm mụn</small></div></td><td>Tinh chất chấm mụn</td><td>10051/21/CBMP-HN</td><td><span class="badge-type">Chấm mụn</span></td><td>Thường là lọ nhỏ/đầu chấm; đối chiếu tên và số công bố.</td></tr>
-                                    <tr><td>7</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Toner"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Toner</small></div></td><td>Toner ngừa mụn</td><td>10052/21/CBMP-HN</td><td><span class="badge-type">Toner</span></td><td>Kiểm tra chai toner cho da mụn.</td></tr>
-                                    <tr><td>8</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Serum"><span class="lookup-emoji" aria-hidden="true">💧</span><small>Serum</small></div></td><td>Tinh chất sáng da</td><td>10060/21/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Đối chiếu sản phẩm tinh chất/serum sáng da.</td></tr>
-                                    <tr><td>9</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Kem mụn"><span class="lookup-emoji" aria-hidden="true">🫙</span><small>Kem</small></div></td><td>Kem mụn mờ thâm</td><td>10061/21/CBMP-HN</td><td><span class="badge-type">Kem mụn</span></td><td>Kiểm tra tuýp/hũ kem trị mụn, mờ thâm.</td></tr>
-                                    <tr><td>10</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Chống nắng"><span class="lookup-emoji" aria-hidden="true">☀️</span><small>Chống nắng</small></div></td><td>Sun Cream</td><td>10687/21/CBMP-HN</td><td><span class="badge-type">Chống nắng</span></td><td>Đối chiếu kem chống nắng có tên Sun Cream.</td></tr>
-                                    <tr><td>11</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Nước hoa/xịt"><span class="lookup-emoji" aria-hidden="true">🌸</span><small>Mùi hương</small></div></td><td>Nước tài lộc</td><td>11594/22/CBMP-HN</td><td><span class="badge-type">Nước hoa/xịt</span></td><td>Kiểm tra sản phẩm dạng nước/xịt có tên tương ứng.</td></tr>
-                                    <tr><td>12</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Sữa tắm"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Sữa tắm</small></div></td><td>Sữa tắm tài lộc</td><td>11595/22/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Đối chiếu chai sữa tắm có tên Tài Lộc.</td></tr>
-                                    <tr><td>13</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Serum"><span class="lookup-emoji" aria-hidden="true">💧</span><small>Serum</small></div></td><td>Serum 9 Days</td><td>11726/22/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Kiểm tra lọ serum ghi 9 Days.</td></tr>
-                                    <tr><td>14</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Serum nám"><span class="lookup-emoji" aria-hidden="true">💧</span><small>Serum</small></div></td><td>Tinh chất nám</td><td>12058/22/CBMP-HN</td><td><span class="badge-type">Serum nám</span></td><td>Đối chiếu sản phẩm tinh chất hỗ trợ chăm sóc vùng nám.</td></tr>
-                                    <tr><td>15</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Kem dưỡng"><span class="lookup-emoji" aria-hidden="true">🫙</span><small>Kem</small></div></td><td>Kem dưỡng</td><td>12171/22/CBMP-HN</td><td><span class="badge-type">Kem dưỡng</span></td><td>Kiểm tra hũ/tuýp kem dưỡng và số công bố.</td></tr>
-                                    <tr><td>16</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Khử mùi"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Khử mùi</small></div></td><td>Serum hôi nách</td><td>12348/22/CBMP-HN</td><td><span class="badge-type">Khử mùi</span></td><td>Đối chiếu sản phẩm chăm sóc vùng dưới cánh tay.</td></tr>
-                                    <tr><td>17</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Dầu gội"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Dầu gội</small></div></td><td>Dầu gội phủ bạc</td><td>12349/22/CBMP-HN</td><td><span class="badge-type">Dầu gội</span></td><td>Kiểm tra chai/gói dầu gội phủ bạc.</td></tr>
-                                    <tr><td>18</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Mặt nạ"><span class="lookup-emoji" aria-hidden="true">🫙</span><small>Mask</small></div></td><td>Curcumin Mask</td><td>12710/22/CBMP-HN</td><td><span class="badge-type">Mặt nạ</span></td><td>Đối chiếu mặt nạ/kem mask có chữ Curcumin Mask.</td></tr>
-                                    <tr><td>19</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Serum"><span class="lookup-emoji" aria-hidden="true">💧</span><small>Serum</small></div></td><td>Serum tái tạo da X2</td><td>12574/22/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Kiểm tra sản phẩm tinh chất tái tạo da X2.</td></tr>
-                                    <tr><td>20</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Xịt"><span class="lookup-emoji" aria-hidden="true">💨</span><small>Xịt</small></div></td><td>Xịt thơm miệng</td><td>13729/22/CBMP-HN</td><td><span class="badge-type">Xịt</span></td><td>Đối chiếu chai xịt thơm miệng.</td></tr>
-                                    <tr><td>21</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Chăm sóc da"><span class="lookup-emoji" aria-hidden="true">🫙</span><small>Da</small></div></td><td>Meso Therapy B3 Bio</td><td>14286/22/CBMP-HN</td><td><span class="badge-type">Chăm sóc da</span></td><td>Kiểm tra sản phẩm ghi Meso Therapy B3 Bio.</td></tr>
-                                    <tr><td>22</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Chăm sóc da"><span class="lookup-emoji" aria-hidden="true">🫙</span><small>Da</small></div></td><td>Meso Therapy Bio</td><td>14287/22/CBMP-HN</td><td><span class="badge-type">Chăm sóc da</span></td><td>Đối chiếu tên Meso Therapy Bio.</td></tr>
-                                    <tr><td>23</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Peel"><span class="lookup-emoji" aria-hidden="true">🧪</span><small>Peel</small></div></td><td>Peel Bio Dr+</td><td>14509/22/CBMP-HN</td><td><span class="badge-type">Peel</span></td><td>Kiểm tra sản phẩm peel/tẩy da chết hóa học.</td></tr>
-                                    <tr><td>24</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Serum/kem"><span class="lookup-emoji" aria-hidden="true">💧</span><small>Serum</small></div></td><td>Stem Cells</td><td>14510/22/CBMP-HN</td><td><span class="badge-type">Serum/kem</span></td><td>Đối chiếu sản phẩm ghi Stem Cells.</td></tr>
-                                    <tr><td>25</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Peel"><span class="lookup-emoji" aria-hidden="true">🧪</span><small>Peel</small></div></td><td>Peel Bio A+</td><td>14511/22/CBMP-HN</td><td><span class="badge-type">Peel</span></td><td>Kiểm tra sản phẩm peel Bio A+.</td></tr>
-                                    <tr><td>26</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Gel"><span class="lookup-emoji" aria-hidden="true">🫙</span><small>Gel</small></div></td><td>Happy Gel</td><td>18175/23/CBMP-HN</td><td><span class="badge-type">Gel</span></td><td>Đối chiếu tuýp/hũ gel có tên Happy Gel.</td></tr>
-                                    <tr><td>27</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Combo"><span class="lookup-emoji" aria-hidden="true">🎁</span><small>Combo</small></div></td><td>Combo Vip Limited</td><td>17857/23/CBMP-HN</td><td><span class="badge-type">Combo</span></td><td>Kiểm tra bộ sản phẩm có tên Combo Vip Limited.</td></tr>
-                                    <tr><td>28</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Lotion"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Lotion</small></div></td><td>Vitamin E Lotion</td><td>18041/23/CBMP-HN</td><td><span class="badge-type">Lotion</span></td><td>Đối chiếu lotion Vitamin E.</td></tr>
-                                    <tr><td>29</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Son môi"><span class="lookup-emoji" aria-hidden="true">💄</span><small>Son</small></div></td><td>Charming Lips</td><td>18069/23/CBMP-HN</td><td><span class="badge-type">Son môi</span></td><td>Kiểm tra son/sản phẩm môi ghi Charming Lips.</td></tr>
-                                    <tr><td>30</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Tẩy trang"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Tẩy trang</small></div></td><td>Tẩy trang</td><td>16939/23/CBMP-HN</td><td><span class="badge-type">Tẩy trang</span></td><td>Đối chiếu nước/dầu/sáp tẩy trang và số công bố.</td></tr>
-                                    <tr><td>31</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Nước hoa"><span class="lookup-emoji" aria-hidden="true">🌸</span><small>Mùi hương</small></div></td><td>Miss Coco</td><td>19485/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Kiểm tra sản phẩm có tên Miss Coco.</td></tr>
-                                    <tr><td>32</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Nước hoa"><span class="lookup-emoji" aria-hidden="true">🌸</span><small>Mùi hương</small></div></td><td>Good Girl</td><td>19486/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Đối chiếu nước hoa/sản phẩm tạo mùi Good Girl.</td></tr>
-                                    <tr><td>33</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Nước hoa"><span class="lookup-emoji" aria-hidden="true">🌸</span><small>Mùi hương</small></div></td><td>Scandal</td><td>19487/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Kiểm tra sản phẩm có tên Scandal.</td></tr>
-                                    <tr><td>34</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Nước hoa"><span class="lookup-emoji" aria-hidden="true">🌸</span><small>Mùi hương</small></div></td><td>Lady Fine</td><td>20152/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Đối chiếu sản phẩm ghi Lady Fine.</td></tr>
-                                    <tr><td>35</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Combo dưỡng da"><span class="lookup-emoji" aria-hidden="true">🎁</span><small>Combo</small></div></td><td>Melas Luxury Combo</td><td>20153/24/CBMP-HN</td><td><span class="badge-type">Combo dưỡng da</span></td><td>Kiểm tra bộ sản phẩm Melas Luxury Combo.</td></tr>
-                                    <tr><td>36</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Sữa rửa mặt"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Mỹ phẩm</small></div></td><td>Spotless Perfect Cleanser</td><td>20365/24/CBMP-HN</td><td><span class="badge-type">Sữa rửa mặt</span></td><td>Đối chiếu tuýp/chai cleanser.</td></tr>
-                                    <tr><td>37</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Combo dưỡng da"><span class="lookup-emoji" aria-hidden="true">🎁</span><small>Combo</small></div></td><td>Melas Luxury Combo</td><td>19672/24/CBMP-HN</td><td><span class="badge-type">Combo dưỡng da</span></td><td>Cùng tên nhưng khác số công bố; cần kiểm tra số trên nhãn.</td></tr>
-                                    <tr><td>38</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Sữa rửa mặt"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Mỹ phẩm</small></div></td><td>Sữa rửa mặt</td><td>25572/25/CBMP-HN</td><td><span class="badge-type">Sữa rửa mặt</span></td><td>Kiểm tra tên sản phẩm và số công bố vì tên khá chung.</td></tr>
-                                    <tr><td>39</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Sữa tắm"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Sữa tắm</small></div></td><td>Sữa tắm sáng da</td><td>20837/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Đối chiếu chai sữa tắm sáng da.</td></tr>
-                                    <tr><td>40</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Dầu gội"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Dầu gội</small></div></td><td>Dầu gội</td><td>20838/24/CBMP-HN</td><td><span class="badge-type">Dầu gội</span></td><td>Kiểm tra tên/số công bố trên chai dầu gội.</td></tr>
-                                    <tr><td>41</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Dầu xả"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Dầu xả</small></div></td><td>Dầu xả</td><td>20839/24/CBMP-HN</td><td><span class="badge-type">Dầu xả</span></td><td>Kiểm tra tên/số công bố trên chai dầu xả.</td></tr>
-                                    <tr><td>42</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Sữa tắm"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Sữa tắm</small></div></td><td>Sữa tắm hương nước hoa</td><td>20840/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Đối chiếu sản phẩm sữa tắm hương nước hoa.</td></tr>
-                                    <tr><td>43</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Sữa tắm"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Sữa tắm</small></div></td><td>Sữa tắm hương nước hoa</td><td>20732/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Cùng tên nhưng khác số công bố; kiểm tra số trên nhãn.</td></tr>
-                                    <tr><td>44</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Dầu xả"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Dầu xả</small></div></td><td>Dầu xả</td><td>20733/24/CBMP-HN</td><td><span class="badge-type">Dầu xả</span></td><td>Đối chiếu số công bố trên sản phẩm dầu xả.</td></tr>
-                                    <tr><td>45</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Dầu gội"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Dầu gội</small></div></td><td>Dầu gội</td><td>20734/24/CBMP-HN</td><td><span class="badge-type">Dầu gội</span></td><td>Đối chiếu số công bố trên sản phẩm dầu gội.</td></tr>
-                                    <tr><td>46</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Toner"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Toner</small></div></td><td>Spotless Perfect Toner</td><td>20735/24/CBMP-HN</td><td><span class="badge-type">Toner</span></td><td>Kiểm tra chai toner Spotless Perfect.</td></tr>
-                                    <tr><td>47</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Sữa tắm"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Sữa tắm</small></div></td><td>Sữa tắm sáng da</td><td>20736/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Cùng tên nhưng khác số công bố; kiểm tra kỹ mã.</td></tr>
-                                    <tr><td>48</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Chống nắng"><span class="lookup-emoji" aria-hidden="true">☀️</span><small>Chống nắng</small></div></td><td>Perfect Sun Cream</td><td>20737/24/CBMP-HN</td><td><span class="badge-type">Chống nắng</span></td><td>Đối chiếu kem chống nắng Perfect Sun Cream.</td></tr>
-                                    <tr><td>49</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Tẩy trang"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Tẩy trang</small></div></td><td>Spotless Perfect Remover</td><td>20738/24/CBMP-HN</td><td><span class="badge-type">Tẩy trang</span></td><td>Kiểm tra sản phẩm remover/tẩy trang.</td></tr>
-                                    <tr><td>50</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Son dưỡng"><span class="lookup-emoji" aria-hidden="true">💄</span><small>Son</small></div></td><td>Bio Lip Balm</td><td>22314/24/CBMP-HN</td><td><span class="badge-type">Son dưỡng</span></td><td>Đối chiếu son dưỡng môi Bio Lip Balm.</td></tr>
-                                    <tr><td>51</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Serum"><span class="lookup-emoji" aria-hidden="true">💧</span><small>Serum</small></div></td><td>Spotless Perfect Serum</td><td>22010/24/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Kiểm tra lọ serum Spotless Perfect.</td></tr>
-                                    <tr><td>52</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Toner"><span class="lookup-emoji" aria-hidden="true">🧴</span><small>Toner</small></div></td><td>Bio Hydration Toner</td><td>22922/24/CBMP-HN</td><td><span class="badge-type">Toner</span></td><td>Đối chiếu toner Bio Hydration.</td></tr>
-                                    <tr><td>53</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Peel"><span class="lookup-emoji" aria-hidden="true">🧪</span><small>Peel</small></div></td><td>Lumi white peel</td><td>24004/25/CBMP-HN</td><td><span class="badge-type">Peel</span></td><td>Kiểm tra sản phẩm peel/tẩy da chết Lumi white peel.</td></tr>
-                                    <tr><td>54</td><td><div class="lookup-visual" aria-label="Ảnh minh hoạ nhóm Serum"><span class="lookup-emoji" aria-hidden="true">💧</span><small>Serum</small></div></td><td>Dark spot spotless perfect serum</td><td>24005/25/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Đối chiếu serum chăm sóc đốm nâu/thâm nám.</td></tr>
-                                </tbody>
-                            </table>
                         </div>
                     </section>
 
