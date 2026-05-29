@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutrilite All Plant Protein — Phân tích dinh dưỡng khách quan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1a4a2e;
+    --green-mid: #2d6a4f;
+    --green-soft: #52b788;
+    --green-pale: #d8f3dc;
+    --green-ultra: #f0faf2;
+    --amber: #e07b39;
+    --text: #1c1c1c;
+    --text-muted: #5a5a5a;
+    --text-light: #8a8a8a;
+    --border: #e0e8e2;
+    --bg: #fafcfb;
+    --white: #ffffff;
+    --serif: 'Lora', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,252,251,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+  }
+  .nav-inner {
+    max-width: 780px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 15px; color: var(--green-dark);
+    text-decoration: none; font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .nav-tag {
+    font-size: 11px; font-weight: 500;
+    background: var(--green-pale); color: var(--green-mid);
+    padding: 4px 12px; border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+
+  /* HERO */
+  .hero {
+    max-width: 780px; margin: 0 auto;
+    padding: 72px 24px 48px;
+  }
+  .hero-kicker {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 24px;
+  }
+  .kicker-line { width: 32px; height: 2px; background: var(--green-soft); }
+  .kicker-text {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--green-mid);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.25; font-weight: 600;
+    color: var(--green-dark); margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: var(--green-mid); }
+  .hero-sub {
+    font-size: 17px; color: var(--text-muted);
+    max-width: 580px; line-height: 1.7; margin-bottom: 32px;
+  }
+  .hero-meta {
+    display: flex; align-items: center; gap: 20px;
+    font-size: 13px; color: var(--text-light);
+    padding-top: 24px; border-top: 1px solid var(--border);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); }
+
+  /* QUICK FACTS BANNER */
+  .facts-banner {
+    background: var(--green-dark);
+    padding: 28px 0;
+    margin: 0 0 56px;
+  }
+  .facts-inner {
+    max-width: 780px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  }
+  .fact-item {
+    padding: 0 24px; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .fact-item:first-child { padding-left: 0; }
+  .fact-item:last-child { border-right: none; }
+  .fact-num {
+    font-family: var(--serif);
+    font-size: 28px; font-weight: 600;
+    color: var(--green-soft); display: block;
+  }
+  .fact-label { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 0.04em; }
+
+  /* MAIN CONTENT */
+  .content {
+    max-width: 780px; margin: 0 auto; padding: 0 24px 80px;
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 56px; }
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .section-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--green-pale); color: var(--green-mid);
+    font-size: 12px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section h2 {
+    font-family: var(--serif);
+    font-size: 22px; font-weight: 600; color: var(--green-dark);
+  }
+
+  p { margin-bottom: 16px; color: var(--text); }
+  p:last-child { margin-bottom: 0; }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: var(--green-ultra);
+    border-left: 3px solid var(--green-soft);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px; margin: 24px 0;
+  }
+  .highlight-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--green-mid); margin-bottom: 8px;
+  }
+  .highlight p { font-family: var(--serif); font-size: 15px; color: var(--green-dark); font-style: italic; }
+
+  /* STATS GRID */
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+    margin: 24px 0;
+  }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 20px;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .stat-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--green-pale); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .stat-info { flex: 1; }
+  .stat-val { font-size: 20px; font-weight: 500; color: var(--green-dark); line-height: 1.2; }
+  .stat-name { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  /* PDCAAS CARD */
+  .pdcaas-card {
+    background: var(--green-dark); border-radius: 16px;
+    padding: 32px; margin: 24px 0; color: white;
+    display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center;
+  }
+  .pdcaas-score-big {
+    font-family: var(--serif);
+    font-size: 80px; font-weight: 600; line-height: 1;
+    color: var(--green-soft);
+  }
+  .pdcaas-title { font-size: 18px; font-weight: 500; margin-bottom: 8px; color: white; }
+  .pdcaas-desc { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+  /* AMINO ACID TABLE */
+  .aa-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  .aa-table thead tr th {
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-light); font-weight: 500; padding: 8px 12px;
+    border-bottom: 2px solid var(--border); text-align: left;
+  }
+  .aa-table tbody tr td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .aa-table tbody tr:last-child td { border-bottom: none; }
+  .aa-table tbody tr:hover td { background: var(--green-ultra); }
+  .aa-name-col { font-weight: 500; color: var(--text); }
+  .aa-mg-col { color: var(--green-mid); font-weight: 500; }
+  .bar-cell { width: 140px; }
+  .bar-wrap { background: var(--border); border-radius: 100px; height: 6px; overflow: hidden; }
+  .bar-fill { height: 6px; border-radius: 100px; background: var(--green-soft); }
+  .tag-cell { text-align: right; }
+  .tag {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 100px; font-weight: 500;
+  }
+  .tag-bcaa { background: #dbeafe; color: #1e40af; }
+  .tag-key { background: var(--green-pale); color: var(--green-mid); }
+
+  /* TRI-BLEND */
+  .tri-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    margin: 24px 0;
+  }
+  .tri-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+  }
+  .tri-emoji { font-size: 24px; margin-bottom: 12px; display: block; }
+  .tri-name { font-size: 14px; font-weight: 500; color: var(--green-dark); margin-bottom: 8px; }
+  .tri-origin { font-size: 11px; color: var(--text-light); margin-bottom: 8px; letter-spacing: 0.03em; }
+  .tri-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+  /* COMPARISON */
+  .compare-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+  .compare-table th {
+    background: var(--green-dark); color: white;
+    padding: 12px 16px; text-align: left;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
+  }
+  .compare-table th:first-child { border-radius: 8px 0 0 0; }
+  .compare-table th:last-child { border-radius: 0 8px 0 0; }
+  .compare-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); color: var(--text); }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--bg); }
+  .compare-table .highlight-row td { font-weight: 500; background: var(--green-ultra); }
+  .yes { color: #16a34a; }
+  .no { color: #dc2626; }
+  .partial { color: #d97706; }
+
+  /* FIT BOXES */
+  .fit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+  .fit-box { border-radius: 12px; padding: 20px; }
+  .fit-box-yes { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .fit-box-no { background: #fef2f2; border: 1px solid #fecaca; }
+  .fit-box-head { font-size: 13px; font-weight: 500; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .fit-box-yes .fit-box-head { color: #15803d; }
+  .fit-box-no .fit-box-head { color: #b91c1c; }
+  .fit-list { list-style: none; }
+  .fit-list li { font-size: 13px; padding: 4px 0; display: flex; gap: 8px; line-height: 1.45; }
+  .fit-box-yes .fit-list li { color: #166534; }
+  .fit-box-no .fit-list li { color: #991b1b; }
+
+  /* DOSAGE */
+  .dosage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+  .dosage-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px;
+  }
+  .dosage-who { font-size: 12px; font-weight: 500; color: var(--green-mid); margin-bottom: 6px; }
+  .dosage-amount { font-size: 22px; font-weight: 500; color: var(--green-dark); font-family: var(--serif); }
+  .dosage-unit { font-size: 12px; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
+
+  /* CALLOUT */
+  .callout {
+    background: #fffbeb; border: 1px solid #fde68a;
+    border-radius: 10px; padding: 18px 20px; margin: 24px 0;
+    display: flex; gap: 14px;
+  }
+  .callout-icon { font-size: 20px; flex-shrink: 0; }
+  .callout-text { font-size: 14px; color: #92400e; line-height: 1.6; }
+
+  /* CONCLUSION */
+  .conclusion {
+    background: var(--green-dark); border-radius: 16px;
+    padding: 40px; margin: 40px 0; color: white;
+  }
+  .conclusion h2 {
+    font-family: var(--serif); font-size: 22px; font-weight: 600;
+    color: var(--green-soft); margin-bottom: 16px;
+  }
+  .conclusion p { color: rgba(255,255,255,0.8); font-size: 15px; line-height: 1.75; }
+
+  /* REFERENCES */
+  .refs { margin-top: 56px; padding-top: 32px; border-top: 2px solid var(--border); }
+  .refs h3 {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-light); margin-bottom: 20px;
+  }
+  .ref-list { list-style: none; }
+  .ref-list li {
+    font-size: 13px; color: var(--text-muted); padding: 8px 0;
+    border-bottom: 1px solid var(--border); display: flex; gap: 12px;
+    align-items: flex-start;
+  }
+  .ref-list li:last-child { border-bottom: none; }
+  .ref-num { color: var(--green-mid); font-weight: 500; flex-shrink: 0; min-width: 20px; }
+  .ref-list a { color: var(--green-mid); text-decoration: none; word-break: break-all; }
+  .ref-list a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    background: var(--green-dark); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 32px 24px; font-size: 12px; line-height: 1.7;
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .facts-inner { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .fact-item { border-right: none; padding: 0; }
+    .fact-item:nth-child(1), .fact-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; }
+    .pdcaas-card { grid-template-columns: 1fr; gap: 16px; }
+    .pdcaas-score-big { font-size: 60px; }
+    .tri-grid { grid-template-columns: 1fr; }
+    .fit-row { grid-template-columns: 1fr; }
+    .dosage-grid { grid-template-columns: 1fr 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Dinh dưỡng ứng dụng</a>
+    <span class="nav-tag">Phân tích khách quan</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-kicker">
+    <div class="kicker-line"></div>
+    <span class="kicker-text">Review · Protein thực vật</span>
+  </div>
+  <h1>Nutrilite All Plant Protein<br><em>Đánh giá khách quan từ<br>góc độ khoa học dinh dưỡng</em></h1>
+  <p class="hero-sub">Không phải quảng cáo, không phải "đập hộp". Đây là phân tích thành phần, hồ sơ axit amin và ý nghĩa thực tiễn của một trong những protein thực vật bán chạy nhất thế giới — để bạn tự quyết định nó có phù hợp với mình không.</p>
+  <div class="hero-meta">
+    <span>📍 Nutrilite / Amway</span>
+    <div class="dot"></div>
+    <span>🌿 100% Plant-based · Non-GMO</span>
+    <div class="dot"></div>
+    <span>🇺🇸 Made in USA</span>
+  </div>
+</header>
+
+<!-- FACTS BANNER -->
+<div class="facts-banner">
+  <div class="facts-inner">
+    <div class="fact-item">
+      <span class="fact-num">8g</span>
+      <span class="fact-label">Protein / 10g scoop</span>
+    </div>
+    <div class="fact-item">
+      <span class="fact-num">40</span>
+      <span class="fact-label">Kcal mỗi serving</span>
+    </div>
+    <div class="fact-item">
+      <span class="fact-num">1.0</span>
+      <span class="fact-label">Điểm PDCAAS (max)</span>
+    </div>
+    <div class="fact-item">
+      <span class="fact-num">9</span>
+      <span class="fact-label">EAA đầy đủ</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- SECTION 1: OVERVIEW -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <h2>Đây là loại sản phẩm gì?</h2>
+    </div>
+    <p>Nutrilite All Plant Protein Powder là một <strong>protein supplement thuần thực vật</strong> — không phải bữa ăn thay thế (meal replacement), không phải sản phẩm tăng cơ tối ưu dành cho bodybuilder. Mục đích thiết kế rất rõ: <strong>bổ sung lượng đạm thiếu hụt trong chế độ ăn hàng ngày</strong>, đặc biệt cho người không ăn hoặc ăn ít thực phẩm động vật.</p>
+    <p>Với tỉ lệ 80% protein theo khối lượng (8g protein từ 10g bột), đây là một công thức cực kỳ "sạch" — ít carb, ít béo, không đường thêm, không màu nhân tạo, không hương liệu nhân tạo, không chất bảo quản.</p>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">🧬</div>
+        <div class="stat-info">
+          <div class="stat-val">8g</div>
+          <div class="stat-name">Protein mỗi scoop 10g (tỉ lệ 80%)</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <div class="stat-info">
+          <div class="stat-val">40 kcal</div>
+          <div class="stat-name">Năng lượng rất thấp — phù hợp nhiều mục tiêu</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🌾</div>
+        <div class="stat-info">
+          <div class="stat-val">0.3g</div>
+          <div class="stat-name">Carbohydrate — gần như zero carb</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💧</div>
+        <div class="stat-info">
+          <div class="stat-val">0.5g</div>
+          <div class="stat-name">Chất béo — rất thấp, phù hợp mọi chế độ ăn</div>
+        </div>
+      </div>
+    </div>
+
+    <p>Thành phần toàn bộ chỉ gồm: <em>Soy Protein Isolate, Wheat Protein, Pea Protein, Lecithin, Silicon Dioxide.</em> Đơn giản đến mức đáng ngạc nhiên so với hầu hết sản phẩm cùng phân khúc.</p>
+  </section>
+
+  <!-- SECTION 2: PDCAAS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <h2>PDCAAS = 1.0 — Con số này có ý nghĩa gì?</h2>
+    </div>
+    <p>PDCAAS (Protein Digestibility Corrected Amino Acid Score) là thang điểm đánh giá chất lượng protein do WHO/FAO thiết lập. Điểm tối đa là 1.0, nghĩa là protein đó:</p>
+    <ul style="margin: 12px 0 16px 20px; color: var(--text);">
+      <li style="padding: 4px 0;">Chứa đầy đủ <strong>9 axit amin thiết yếu</strong> theo tỉ lệ cơ thể người cần</li>
+      <li style="padding: 4px 0;"><strong>Tiêu hóa hoàn toàn</strong> và hấp thu hiệu quả</li>
+      <li style="padding: 4px 0;">Về chất lượng ngang bằng trứng và sữa mẹ — hai nguồn protein được xem là tham chiếu</li>
+    </ul>
+
+    <div class="pdcaas-card">
+      <div class="pdcaas-score-big">1.0</div>
+      <div>
+        <div class="pdcaas-title">Điểm chất lượng protein cao nhất có thể đạt được</div>
+        <p class="pdcaas-desc">Đây không phải con số marketing. PDCAAS = 1.0 là kết quả của việc phối hợp 3 nguồn protein thực vật bù đắp lẫn nhau — một chiến lược khoa học được thiết kế chủ đích. Trứng gà đạt 1.0, casein (sữa) đạt 1.0, whey đạt 1.0. Và Nutrilite All Plant Protein cũng đạt 1.0 — hoàn toàn từ thực vật.</p>
+      </div>
+    </div>
+
+    <p>Lưu ý quan trọng: PDCAAS đánh giá <em>chất lượng</em> protein, không đánh giá <em>tốc độ hấp thu</em> hay <em>khả năng kích thích tổng hợp cơ bắp</em>. Whey isolate vẫn hơn về hai yếu tố đó nhờ hàm lượng leucine cao và hấp thu nhanh hơn. Nhưng với mục tiêu bổ sung đạm đầy đủ EAA hàng ngày, PDCAAS = 1.0 là điều quan trọng nhất.</p>
+  </section>
+
+  <!-- SECTION 3: TRI-BLEND -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <h2>Tri-blend — Tại sao cần 3 nguồn protein?</h2>
+    </div>
+    <p>Đây là điểm thú vị nhất về công thức. Mỗi nguồn protein thực vật đơn lẻ đều có "điểm yếu" về axit amin — gọi là <em>limiting amino acid</em>. Khi phối hợp đúng tỉ lệ, các nguồn bổ sung cho nhau và tạo ra hồ sơ hoàn chỉnh.</p>
+
+    <p>Tỉ lệ phối trộn được công bố chính thức trên nhãn sản phẩm: Soy Protein Isolate 82.26%, Wheat Protein 10%, Yellow Pea Protein 7.5%. Theo tài liệu chính thức từ Amway Newsroom, ba nguồn nguyên liệu đều đến từ các trang trại NutriCert™ — hệ thống trang trại hữu cơ được Nutrilite kiểm soát trực tiếp theo triết lý "Seed to Supplement": kiểm soát toàn bộ chuỗi từ hạt giống đến thành phẩm.</p>
+
+    <div class="tri-grid">
+      <div class="tri-card">
+        <span class="tri-emoji">🫘</span>
+        <div class="tri-name">Soy Protein Isolate (82.26%)</div>
+        <div class="tri-origin">Nguồn chính · NutriCert™ farms · Non-GMO</div>
+        <div class="tri-desc">Chiếm tỉ lệ lớn nhất trong công thức. Cung cấp nền EAA đầy đủ cùng soy isoflavones tự nhiên. Điểm yếu đơn lẻ: tương đối thấp methionine — được bù bởi wheat và pea protein.</div>
+      </div>
+      <div class="tri-card">
+        <span class="tri-emoji">🌾</span>
+        <div class="tri-name">Wheat Protein (10%)</div>
+        <div class="tri-origin">NutriCert™ farms · Lưu ý: chứa gluten</div>
+        <div class="tri-desc">Bổ sung glutamine và proline. Cải thiện khả năng hòa tan và texture của bột. Điểm yếu đơn lẻ: thấp lysine — được pea protein bù đắp.</div>
+      </div>
+      <div class="tri-card">
+        <span class="tri-emoji">💛</span>
+        <div class="tri-name">Yellow Pea Protein (7.5%)</div>
+        <div class="tri-origin">NutriCert™ farms · Ít gây dị ứng nhất</div>
+        <div class="tri-desc">Giàu BCAA — đặc biệt Leucine và Isoleucine. Giàu Lysine, bù đắp điểm yếu của wheat protein. Dễ tiêu hóa, là nguồn protein thực vật ngày càng được nghiên cứu nhiều.</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-label">Nguyên lý thiết kế</div>
+      <p>Giống như gạo + đậu trong bữa ăn truyền thống Việt Nam — hai nguồn bổ sung axit amin cho nhau để tạo ra protein hoàn chỉnh. Nutrilite áp dụng nguyên lý tương tự nhưng ở cấp độ phân tử, có dữ liệu khoa học kiểm chứng.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4: AMINO ACIDS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <h2>Hồ sơ 9 axit amin thiết yếu (EAA)</h2>
+    </div>
+    <p>Dữ liệu từ nhãn sản phẩm — mỗi 10g serving:</p>
+
+    <table class="aa-table">
+      <thead>
+        <tr>
+          <th>Axit amin</th>
+          <th>Lượng</th>
+          <th class="bar-cell">Tương đối</th>
+          <th class="tag-cell">Vai trò</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="aa-name-col">Phenylalanine + Tyrosine</td>
+          <td class="aa-mg-col">750 mg</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div></td>
+          <td class="tag-cell"><span class="tag tag-key">Neurotransmitter</span></td>
+        </tr>
+        <tr>
+          <td class="aa-name-col">Leucine ⭐</td>
+          <td class="aa-mg-col">660 mg</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:88%"></div></div></td>
+          <td class="tag-cell"><span class="tag tag-bcaa">BCAA · mTOR</span></td>
+        </tr>
+        <tr>
+          <td class="aa-name-col">Lysine</td>
+          <td class="aa-mg-col">510 mg</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:68%"></div></div></td>
+          <td class="tag-cell"><span class="tag tag-key">Collagen · Canxi</span></td>
+        </tr>
+        <tr>
+          <td class="aa-name-col">Valine</td>
+          <td class="aa-mg-col">400 mg</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:53%"></div></div></td>
+          <td class="tag-cell"><span class="tag tag-bcaa">BCAA · Năng lượng</span></td>
+        </tr>
+        <tr>
+          <td class="aa-name-col">Isoleucine</td>
+          <td class="aa-mg-col">390 mg</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:52%"></div></div></td>
+          <td class="tag-cell"><span class="tag tag-bcaa">BCAA · Phục hồi</span></td>
+        </tr>
+        <tr>
+          <td class="aa-name-col">Threonine</td>
+          <td class="aa-mg-col">310 mg</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:41%"></div></div></td>
+          <td class="tag-cell"><span class="tag tag-key">Miễn dịch</span></td>
+        </tr>
+        <tr>
+          <td class="aa-name-col">Methionine + Cysteine</td>
+          <td class="aa-mg-col">220 mg</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:29%"></div></div></td>
+          <td class="tag-cell"><span class="tag tag-key">Chống oxy hóa</span></td>
+        </tr>
+        <tr>
+          <td class="aa-name-col">Histidine</td>
+          <td class="aa-mg-col">210 mg</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:28%"></div></div></td>
+          <td class="tag-cell"><span class="tag tag-key">pH máu</span></td>
+        </tr>
+        <tr>
+          <td class="aa-name-col">Tryptophan</td>
+          <td class="aa-mg-col">120 mg</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:16%"></div></div></td>
+          <td class="tag-cell"><span class="tag tag-key">Serotonin · Ngủ</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-text"><strong>Lưu ý về Leucine:</strong> Leucine 660mg/scoop — quan trọng vì đây là "công tắc" kích hoạt tổng hợp protein cơ bắp (MPS) qua con đường mTOR. Ngưỡng tối ưu cho MPS là 2–3g Leucine/lần. Nếu mục tiêu là tăng cơ sau tập luyện nặng, cần dùng 3–4 scoop (30–40g bột) mỗi lần hoặc kết hợp thêm nguồn leucine khác. Với mục tiêu bổ sung đạm hàng ngày thông thường, 1–2 scoop hoàn toàn đủ.</div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: SO SANH -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <h2>So sánh với các nguồn protein phổ biến</h2>
+    </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Nguồn protein</th>
+          <th>PDCAAS</th>
+          <th>Thực vật</th>
+          <th>Lactose-free</th>
+          <th>Leucine /10g</th>
+          <th>Carb /10g</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight-row">
+          <td>🌿 Nutrilite All Plant</td>
+          <td><span class="yes">1.0 ✓</span></td>
+          <td><span class="yes">✓</span></td>
+          <td><span class="yes">✓</span></td>
+          <td>660mg</td>
+          <td>0.3g</td>
+        </tr>
+        <tr>
+          <td>🥛 Whey Isolate</td>
+          <td><span class="yes">1.0 ✓</span></td>
+          <td><span class="no">✗</span></td>
+          <td><span class="partial">Thường thấp</span></td>
+          <td>~1,100mg</td>
+          <td>~1g</td>
+        </tr>
+        <tr>
+          <td>🫘 Soy Protein đơn lẻ</td>
+          <td><span class="partial">0.91–1.0</span></td>
+          <td><span class="yes">✓</span></td>
+          <td><span class="yes">✓</span></td>
+          <td>~620mg</td>
+          <td>~1g</td>
+        </tr>
+        <tr>
+          <td>💛 Pea Protein đơn lẻ</td>
+          <td><span class="partial">0.67–0.82</span></td>
+          <td><span class="yes">✓</span></td>
+          <td><span class="yes">✓</span></td>
+          <td>~580mg</td>
+          <td>~1g</td>
+        </tr>
+        <tr>
+          <td>🌾 Wheat Protein đơn lẻ</td>
+          <td><span class="no">0.25</span></td>
+          <td><span class="yes">✓</span></td>
+          <td><span class="yes">✓</span></td>
+          <td>~490mg</td>
+          <td>~2g</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 13px; color: var(--text-light);">* Dữ liệu tổng hợp từ các nghiên cứu FAO/WHO và thông số kỹ thuật sản phẩm. Giá trị có thể thay đổi theo lô sản xuất và thị trường.</p>
+  </section>
+
+  <!-- SECTION 6: AI DUNG -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <h2>Phù hợp với ai — và liều dùng thực tế</h2>
+    </div>
+
+    <div class="fit-row">
+      <div class="fit-box fit-box-yes">
+        <div class="fit-box-head">✅ Phù hợp tốt</div>
+        <ul class="fit-list">
+          <li>✓ Người ăn chay, thuần chay (vegan)</li>
+          <li>✓ Không dung nạp lactose</li>
+          <li>✓ Người cần bổ sung đạm hàng ngày</li>
+          <li>✓ Người cao tuổi giữ khối cơ</li>
+          <li>✓ Người muốn thêm đạm vào thức ăn nấu</li>
+          <li>✓ Trẻ em thiếu đạm (theo hướng dẫn)</li>
+          <li>✓ Phụ nữ mang thai cần bổ sung protein</li>
+          <li>✓ Người phục hồi sau bệnh / phẫu thuật</li>
+        </ul>
+      </div>
+      <div class="fit-box fit-box-no">
+        <div class="fit-box-head">⚠️ Cần cân nhắc thêm</div>
+        <ul class="fit-list">
+          <li>✗ Dị ứng đậu nành hoặc gluten (lúa mì)</li>
+          <li>✗ Mục tiêu tăng cơ tối ưu sau tập nặng — cần tăng liều leucine</li>
+          <li>✗ Nguồn omega-3 (không đủ)</li>
+          <li>✗ Thay thế hoàn toàn bữa ăn chính</li>
+          <li>✗ Người cần protein nhanh hấp thu (whey vẫn tốt hơn sau tập ngay)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dosage-grid">
+      <div class="dosage-card">
+        <div class="dosage-who">🚶 Người bình thường</div>
+        <div class="dosage-amount">1–2 scoop</div>
+        <div class="dosage-unit">10–20g/ngày · Bổ sung khoảng trống đạm trong chế độ ăn</div>
+      </div>
+      <div class="dosage-card">
+        <div class="dosage-who">🏋️ Người tập luyện</div>
+        <div class="dosage-amount">2–3 scoop</div>
+        <div class="dosage-unit">20–30g/lần sau tập · Tối ưu MPS cần đủ leucine</div>
+      </div>
+      <div class="dosage-card">
+        <div class="dosage-who">👴 Người cao tuổi</div>
+        <div class="dosage-amount">1–2 scoop</div>
+        <div class="dosage-unit">Chia 2 lần/ngày · Hỗ trợ duy trì khối cơ và xương</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: DIEM THEM -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <h2>Những điểm ít ai để ý</h2>
+    </div>
+
+    <p><strong>Về soy isoflavones:</strong> Protein đậu nành trong sản phẩm tự nhiên mang theo isoflavone — một nhóm phytoestrogen. Đây không phải điều đáng lo ngại ở liều dùng thông thường (1–3 scoop/ngày). Hàng thế kỷ người châu Á ăn đậu nành mỗi ngày không có vấn đề. Tuy nhiên, người có tiền sử ung thư liên quan hormone nên tham khảo bác sĩ trước khi dùng liều cao lâu dài.</p>
+
+    <p><strong>Về Silicon Dioxide:</strong> Xuất hiện cuối danh sách thành phần với vai trò chống vón cục (anti-caking agent). Đây là phụ gia thực phẩm được FDA và EFSA công nhận an toàn, dùng phổ biến trong dược phẩm và thực phẩm bột.</p>
+
+    <p><strong>Về Lecithin:</strong> Là chất nhũ hóa tự nhiên từ đậu nành, giúp sản phẩm hòa tan đều trong nước. Không có mục đích "che giấu" hay "tăng cân". Lecithin cũng được nghiên cứu có lợi cho chức năng não.</p>
+
+    <div class="highlight">
+      <div class="highlight-label">Điểm phân biệt quan trọng</div>
+      <p>Nutrilite All Plant Protein là supplement (bổ sung), không phải meal replacement (thay thế bữa ăn). Dùng đúng vai trò này, nó rất hiệu quả. Dùng sai vai trò — như thay hoàn toàn bữa chính — thì thiếu hụt về micronutrient, chất xơ và sự đa dạng thực phẩm.</p>
+    </div>
+  </section>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    <h2>Kết luận</h2>
+    <p>Nutrilite All Plant Protein là một protein supplement được thiết kế tốt cho mục tiêu cụ thể của nó: cung cấp nguồn đạm hoàn chỉnh từ thực vật, đủ 9 EAA, PDCAAS = 1.0, thành phần cực kỳ tối giản và sạch. Tri-blend soy–wheat–pea không phải ngẫu nhiên mà là chiến lược khoa học có cơ sở.</p>
+    <br>
+    <p>Giới hạn của nó nằm ở leucine — cần dùng đủ liều nếu mục tiêu là tăng cơ tối ưu sau tập. Ngoài ra, với người muốn một nguồn đạm thuần thực vật, không biến đổi gen, không lactose, ít calorie và dễ thêm vào bất kỳ món ăn nào — đây là lựa chọn đáng xem xét nghiêm túc.</p>
+    <br>
+    <p style="font-size:13px; color: rgba(255,255,255,0.5);">⚠️ Bài viết mang tính tham khảo khoa học dinh dưỡng. Không phải lời khuyên y tế hay điều trị bệnh lý. Tham khảo chuyên gia dinh dưỡng cho kế hoạch cá nhân hóa.</p>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="refs">
+    <h3>Tài liệu tham khảo</h3>
+    <ol class="ref-list">
+      <li>
+        <span class="ref-num">1.</span>
+        <span>Amway Newsroom (2025). Nutrilite All Plant Protein: a plant-based supplement for everyone, every day — xác nhận nguồn nguyên liệu từ trang trại NutriCert™. <a href="https://news.amway.eu/nutrilite-all-plant-protein-a-plant-based-supplement-for-everyone-every-day/" target="_blank" rel="noopener">news.amway.eu</a></span>
+      </li>
+      <li>
+        <span class="ref-num">2.</span>
+        <span>Amway Official India — Nhãn sản phẩm chính thức: tỉ lệ thành phần Soy Protein Isolate 82.26%, Wheat Protein 10%, Pea Protein 7.5%. <a href="https://www.amway.in/nutrilite-all-plant-protein-powder/p/329861ID" target="_blank" rel="noopener">amway.in</a></span>
+      </li>
+      <li>
+        <span class="ref-num">3.</span>
+        <span>Amway PR Newswire (2013). Amway Introduces NUTRILITE All Plant Protein Powder — lịch sử ra đời sản phẩm và triết lý công thức. <a href="https://www.prnewswire.com/news-releases/amway-introduces-nutrilite-all-plant-protein-powder-205947281.html" target="_blank" rel="noopener">prnewswire.com</a></span>
+      </li>
+      <li>
+        <span class="ref-num">4.</span>
+        <span>WHO/FAO/UNU (1991). Protein Quality Evaluation — nền tảng khoa học cho thang điểm PDCAAS. FAO Food and Nutrition Paper 51. <a href="https://www.fao.org/3/ab492e/ab492e00.htm" target="_blank" rel="noopener">fao.org</a></span>
+      </li>
+      <li>
+        <span class="ref-num">5.</span>
+        <span>Norton, L.E., Layman, D.K. (2006). Leucine regulates translation initiation of protein synthesis in skeletal muscle after exercise. Journal of Nutrition. <a href="https://pubmed.ncbi.nlm.nih.gov/16365087/" target="_blank" rel="noopener">pubmed.ncbi.nlm.nih.gov</a></span>
+      </li>
+      <li>
+        <span class="ref-num">6.</span>
+        <span>Tang, J.E., et al. (2009). Ingestion of whey hydrolysate, casein, or soy protein isolate: effects on mixed muscle protein synthesis. Journal of Applied Physiology. <a href="https://journals.physiology.org/doi/full/10.1152/japplphysiol.00076.2009" target="_blank" rel="noopener">journals.physiology.org</a></span>
+      </li>
+      <li>
+        <span class="ref-num">7.</span>
+        <span>EFSA (2018). Scientific Opinion on the safety of silicon dioxide as a food additive. EFSA Journal. <a href="https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2018.5088" target="_blank" rel="noopener">efsa.onlinelibrary.wiley.com</a></span>
+      </li>
+      <li>
+        <span class="ref-num">8.</span>
+        <span>Amway/Nutrilite — Triết lý "Seed to Supplement", lịch sử thành lập từ 1934 bởi Carl Rehnborg. <a href="https://aim2flourish.com/innovations/seed-to-idea" target="_blank" rel="noopener">aim2flourish.com</a></span>
+      </li>
+      <li>
+        <span class="ref-num">9.</span>
+        <span>Euromonitor International — Nutrilite là thương hiệu protein supplement bán chạy nhất thế giới. Được trích dẫn trong tài liệu marketing chính thức của Amway.</span>
+      </li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>
+  <p><strong>Bài viết mang tính tham khảo khoa học dinh dưỡng.</strong><br>
+  Không phải quảng cáo thương mại, không phải lời khuyên y tế.<br>
+  Vui lòng tham khảo chuyên gia dinh dưỡng cho kế hoạch cá nhân hóa phù hợp với tình trạng sức khỏe của bạn.</p>
+</footer>
+
+</body>
+</html>
