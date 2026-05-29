@@ -60,6 +60,19 @@
     padding: 4px 12px; border-radius: 100px;
     letter-spacing: 0.04em;
   }
+  .nav-menu {
+    max-width: 780px; margin: 10px auto 0; padding: 0 24px;
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .nav-menu a {
+    font-size: 12px; color: var(--green-dark); text-decoration: none;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 100px; padding: 6px 12px;
+    transition: background 0.18s, border-color 0.18s;
+  }
+  .nav-menu a:hover {
+    background: var(--green-pale); border-color: var(--green-soft);
+  }
 
   /* HERO */
   .hero {
@@ -304,6 +317,52 @@
   .ref-list a { color: var(--green-mid); text-decoration: none; word-break: break-all; }
   .ref-list a:hover { text-decoration: underline; }
 
+  /* SERIES NAV */
+  .series-nav {
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    padding-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .series-nav a,
+  .series-nav span {
+    min-height: 74px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+  }
+  .series-nav a {
+    background: var(--white);
+    color: var(--green-dark);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .series-nav a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(82,183,136,0.2);
+  }
+  .series-nav span {
+    background: var(--green-ultra);
+    color: var(--text-light);
+  }
+  .nav-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+  }
+  .nav-title {
+    font-size: 14px;
+    line-height: 1.35;
+    font-weight: 500;
+  }
+
   /* FOOTER */
   footer {
     background: var(--green-dark); color: rgba(255,255,255,0.5);
@@ -322,6 +381,7 @@
     .fit-row { grid-template-columns: 1fr; }
     .dosage-grid { grid-template-columns: 1fr 1fr; }
     .stats-grid { grid-template-columns: 1fr; }
+    .series-nav { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -330,8 +390,15 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">Dinh dưỡng ứng dụng</a>
+    <a href="healthymeal.html#supplement-series" class="nav-logo">Dinh dưỡng ứng dụng</a>
     <span class="nav-tag">Phân tích khách quan</span>
+  </div>
+  <div class="nav-menu" aria-label="Điều hướng nhanh">
+    <a href="index.html">Trang chủ</a>
+    <a href="healthymeal.html#supplement-series">Chuỗi Supplement</a>
+    <a href="healthymeal.html">Healthy Meal</a>
+    <a href="healthylifestyle.html">Lối sống khỏe</a>
+    <a href="contact.html">Liên hệ</a>
   </div>
 </nav>
 
@@ -750,6 +817,21 @@
       </li>
     </ol>
   </div>
+
+  <nav class="series-nav" aria-label="Điều hướng chuỗi bài Supplement">
+    <span>
+      <span class="nav-label">Bài trước</span>
+      <span class="nav-title">Đây là bài đầu tiên</span>
+    </span>
+    <a href="healthymeal.html#supplement-series">
+      <span class="nav-label">Tổng hợp</span>
+      <span class="nav-title">Về Chuỗi bài Supplement</span>
+    </a>
+    <a href="protein-thuc-vat-tri-blend.html">
+      <span class="nav-label">Bài sau</span>
+      <span class="nav-title">Protein thực vật hoàn chỉnh — PDCAAS & Tri-Blend</span>
+    </a>
+  </nav>
 
 </main>
 
