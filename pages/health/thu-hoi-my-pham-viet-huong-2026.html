@@ -4,7 +4,7 @@
     <base href="../../">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Tổng hợp thông tin thu hồi 511 sản phẩm mỹ phẩm do Công ty TNHH mỹ phẩm Việt Hương sản xuất theo Công văn 1772/QLD-MP, kèm nhóm hình ảnh minh họa để người dân đối chiếu." />
+    <meta name="description" content="Tổng hợp thông tin thu hồi 511 sản phẩm mỹ phẩm do Công ty TNHH mỹ phẩm Việt Hương sản xuất theo Công văn 1772/QLD-MP, kèm bảng tra cứu nhanh có ảnh minh hoạ." />
     <meta name="author" content="Yen Tran" />
     <title>Công văn 1772/QLD-MP: Danh mục 511 mỹ phẩm Việt Hương bị thu hồi</title>
     <meta property="og:title" content="Công văn 1772/QLD-MP: Danh mục 511 mỹ phẩm Việt Hương bị thu hồi" />
@@ -46,7 +46,7 @@
             margin: 24px 0;
         }
         .quick-facts { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
-        .fact-card, .product-card, .action-card {
+        .fact-card, .product-card, .action-card, .appendix-card {
             background: var(--vh-card);
             border: 1px solid var(--vh-border);
             border-radius: 18px;
@@ -62,50 +62,53 @@
             margin-bottom: 8px;
         }
         .fact-card strong { color: var(--vh-blue); font-size: 1.06rem; }
-        .product-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-        .product-card { position: relative; overflow: hidden; }
-        .product-card::after {
-            content: "";
-            position: absolute;
-            right: -42px;
-            top: -42px;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: rgba(23,78,166,.08);
-        }
-        .product-visual {
-            width: 100%;
-            min-height: 138px;
+        .product-grid, .action-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        .product-card h3, .action-card h3 { margin-top: 0; font-size: 1.15rem; }
+        .product-card h3 { color: var(--vh-red); }
+        .action-card h3 { color: var(--vh-blue); }
+        .product-visual, .mini-visual {
             border-radius: 16px;
             background: linear-gradient(140deg, #f8fbff, #eef4ff);
             border: 1px dashed #b7c5dd;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 10px;
             color: var(--vh-blue);
             font-weight: 800;
         }
+        .product-visual {
+            width: 100%;
+            min-height: 138px;
+            margin-bottom: 16px;
+        }
+        .mini-visual {
+            width: 116px;
+            min-height: 88px;
+            padding: 8px;
+            flex-direction: column;
+            font-size: .78rem;
+            line-height: 1.15;
+            text-align: center;
+        }
+        .shape-row { display: flex; align-items: end; justify-content: center; gap: 8px; min-height: 52px; }
         .bottle, .tube, .jar, .lipstick, .dropper, .spray {
             display: inline-block;
             background: linear-gradient(180deg, #fff, #dfe9ff);
             border: 3px solid #174ea6;
             box-shadow: 0 10px 18px rgba(23,78,166,.12);
         }
-        .bottle { width: 42px; height: 96px; border-radius: 12px 12px 18px 18px; position: relative; }
-        .bottle::before { content: ""; position: absolute; top: -18px; left: 12px; width: 18px; height: 18px; border: 3px solid #174ea6; border-bottom: 0; border-radius: 7px 7px 0 0; background: #fff; }
-        .tube { width: 48px; height: 100px; border-radius: 10px 10px 24px 24px; transform: rotate(-7deg); }
-        .jar { width: 82px; height: 58px; border-radius: 16px 16px 26px 26px; position: relative; }
-        .jar::before { content: ""; position: absolute; top: -18px; left: 8px; width: 60px; height: 18px; border: 3px solid #174ea6; border-radius: 12px 12px 4px 4px; background: #fff; }
-        .lipstick { width: 32px; height: 88px; border-radius: 8px; position: relative; }
-        .lipstick::before { content: ""; position: absolute; top: -28px; left: 5px; width: 16px; height: 28px; border-radius: 12px 12px 4px 4px; background: #c62828; border: 3px solid #174ea6; }
-        .dropper { width: 38px; height: 96px; border-radius: 12px 12px 20px 20px; position: relative; }
-        .dropper::before { content: ""; position: absolute; top: -22px; left: 8px; width: 16px; height: 22px; border-radius: 12px 12px 2px 2px; background: #174ea6; }
-        .spray { width: 42px; height: 94px; border-radius: 14px 14px 20px 20px; position: relative; }
-        .spray::before { content: ""; position: absolute; top: -18px; left: 7px; width: 28px; height: 18px; border: 3px solid #174ea6; background: #fff; border-radius: 8px 8px 0 0; }
-        .product-card h3 { margin-top: 0; color: var(--vh-red); font-size: 1.18rem; }
+        .bottle { width: 32px; height: 72px; border-radius: 10px 10px 16px 16px; position: relative; }
+        .bottle::before { content: ""; position: absolute; top: -14px; left: 9px; width: 14px; height: 14px; border: 3px solid #174ea6; border-bottom: 0; border-radius: 6px 6px 0 0; background: #fff; }
+        .tube { width: 36px; height: 76px; border-radius: 10px 10px 22px 22px; transform: rotate(-7deg); }
+        .jar { width: 62px; height: 44px; border-radius: 14px 14px 24px 24px; position: relative; }
+        .jar::before { content: ""; position: absolute; top: -15px; left: 7px; width: 44px; height: 15px; border: 3px solid #174ea6; border-radius: 10px 10px 4px 4px; background: #fff; }
+        .lipstick { width: 25px; height: 64px; border-radius: 8px; position: relative; }
+        .lipstick::before { content: ""; position: absolute; top: -22px; left: 4px; width: 13px; height: 22px; border-radius: 12px 12px 4px 4px; background: #c62828; border: 3px solid #174ea6; }
+        .dropper { width: 30px; height: 70px; border-radius: 12px 12px 20px 20px; position: relative; }
+        .dropper::before { content: ""; position: absolute; top: -18px; left: 6px; width: 13px; height: 18px; border-radius: 10px 10px 2px 2px; background: #174ea6; }
+        .spray { width: 32px; height: 70px; border-radius: 14px 14px 20px 20px; position: relative; }
+        .spray::before { content: ""; position: absolute; top: -15px; left: 5px; width: 22px; height: 15px; border: 3px solid #174ea6; background: #fff; border-radius: 8px 8px 0 0; }
         .source-list a, .recall-table a { color: var(--vh-blue); font-weight: 700; }
         .table-tools {
             background: #fff;
@@ -122,7 +125,7 @@
             font-size: 1rem;
         }
         .table-responsive { overflow-x: auto; border-radius: 16px; box-shadow: 0 10px 30px rgba(15,35,55,.08); }
-        .recall-table { width: 100%; min-width: 760px; border-collapse: collapse; background: #fff; }
+        .recall-table { width: 100%; min-width: 980px; border-collapse: collapse; background: #fff; }
         .recall-table th, .recall-table td { padding: 14px; border-bottom: 1px solid #edf1f5; vertical-align: top; }
         .recall-table th { background: #173b73; color: #fff; text-align: left; }
         .recall-table tr:hover td { background: #f8fbff; }
@@ -135,12 +138,18 @@
             font-weight: 700;
             font-size: .85rem;
         }
-        .action-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-        .action-card h3 { color: var(--vh-blue); font-size: 1.15rem; }
+        .appendix-frame {
+            width: 100%;
+            min-height: 620px;
+            border: 1px solid var(--vh-border);
+            border-radius: 12px;
+            background: #fff;
+        }
         .small-note { color: var(--vh-muted); font-size: .95rem; }
         @media (max-width: 768px) {
             .product-visual { min-height: 118px; }
             .recall-table th, .recall-table td { padding: 10px; }
+            .appendix-frame { min-height: 480px; }
         }
     </style>
 </head>
@@ -172,7 +181,7 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="post-heading">
-                        <h1>⚠️ Công văn 1772/QLD-MP: 511 mỹ phẩm Việt Hương bị đình chỉ lưu hành, thu hồi toàn quốc</h1>
+                        <h1>Công văn 1772/QLD-MP: 511 mỹ phẩm Việt Hương bị đình chỉ lưu hành, thu hồi toàn quốc</h1>
                         <h2 class="subheading">Danh mục sản phẩm chăm sóc da, tóc, cơ thể, trang điểm và nước hoa bị thu hồi do không áp dụng hệ thống quản lý chất lượng CGMP-ASEAN.</h2>
                         <span class="meta">Cập nhật ngày 15/05/2026 từ thông tin công khai của Cục Quản lý Dược và Báo Bảo vệ pháp luật</span>
                     </div>
@@ -186,7 +195,7 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-11 col-lg-10 col-xl-9">
                     <div class="notice-box">
-                        <p><strong>Lưu ý quan trọng:</strong> trang này dùng để giúp người dân nhận diện nhanh theo <em>tên sản phẩm, nhóm sản phẩm và số tiếp nhận phiếu công bố</em>. Các hình bên dưới là hình minh họa theo nhóm sản phẩm, không phải ảnh chụp bao bì chính thức của từng sản phẩm. Khi cần kết luận, hãy đối chiếu trực tiếp tên sản phẩm, số công bố, đơn vị chịu trách nhiệm đưa sản phẩm ra thị trường và thông tin từ cơ quan quản lý.</p>
+                        <p><strong>Lưu ý quan trọng:</strong> danh mục theo công văn có 511 sản phẩm. Bảng tra cứu nhanh ở cuối trang chỉ là bản rút gọn để nhận diện một số tên thường gặp, không thay thế phụ lục đầy đủ. Khi cần kết luận, hãy đối chiếu trực tiếp tên sản phẩm, số công bố, đơn vị chịu trách nhiệm đưa sản phẩm ra thị trường và thông tin từ cơ quan quản lý.</p>
                     </div>
 
                     <section aria-labelledby="summary-title">
@@ -214,110 +223,28 @@
 
                     <section aria-labelledby="visual-title">
                         <h2 id="visual-title" class="section-heading">Nhận diện theo từng dòng sản phẩm thường gặp</h2>
-                        <p>Danh mục 511 sản phẩm trải rộng ở nhiều dòng mỹ phẩm. Nếu trong nhà có sản phẩm thuộc các nhóm dưới đây và thấy tên/số công bố trùng danh mục, nên tạm ngưng sử dụng để kiểm tra kỹ hơn.</p>
+                        <p>Danh mục 511 sản phẩm trải rộng ở nhiều dòng mỹ phẩm. Các hình bên dưới là minh hoạ theo dạng bao bì, không phải ảnh chụp bao bì chính thức của từng sản phẩm.</p>
                         <div class="product-grid">
                             <div class="product-card">
                                 <div class="product-visual" aria-hidden="true"><span class="bottle"></span><span class="tube"></span> Cleanser / Toner</div>
                                 <h3>Chăm sóc da cơ bản</h3>
                                 <p>Sữa rửa mặt, toner, tẩy trang, tẩy da chết, lotion, kem dưỡng, mặt nạ.</p>
-                                <p class="small-note">Ví dụ trong danh mục: Sữa rửa mặt ngừa mụn, Spotless Perfect Cleanser, Spotless Perfect Toner, Bio Hydration Toner.</p>
                             </div>
                             <div class="product-card">
                                 <div class="product-visual" aria-hidden="true"><span class="dropper"></span><span class="jar"></span> Serum / Cream</div>
                                 <h3>Serum, kem nám, kem mụn</h3>
                                 <p>Tinh chất sáng da, tinh chất nám, kem mụn mờ thâm, sản phẩm peel/tái tạo da.</p>
-                                <p class="small-note">Ví dụ trong danh mục: Whitening Serum, Tinh chất chấm mụn, Serum tái tạo da X2, Peel Bio Dr+.</p>
                             </div>
                             <div class="product-card">
                                 <div class="product-visual" aria-hidden="true"><span class="bottle"></span><span class="spray"></span> Body / Hair</div>
                                 <h3>Chăm sóc tóc và cơ thể</h3>
                                 <p>Sữa tắm, dầu gội, dầu xả, dầu gội phủ bạc, kem body, dung dịch vệ sinh.</p>
-                                <p class="small-note">Ví dụ trong danh mục: Sữa tắm Mộc Tâm, Acne Body, Dầu gội phủ bạc, Sữa tắm hương nước hoa.</p>
                             </div>
                             <div class="product-card">
                                 <div class="product-visual" aria-hidden="true"><span class="lipstick"></span><span class="spray"></span> Makeup / Perfume</div>
                                 <h3>Trang điểm và nước hoa</h3>
                                 <p>Son môi, son dưỡng, phấn nước, nước hoa và các sản phẩm tạo mùi.</p>
-                                <p class="small-note">Ví dụ trong danh mục: Charming Lips, Bio Lip Balm, Miss Coco, Good Girl, Scandal, Lady Fine.</p>
                             </div>
-                        </div>
-                    </section>
-
-                    <section aria-labelledby="table-title">
-                        <h2 id="table-title" class="section-heading">Bảng tra cứu nhanh một số sản phẩm trong danh mục</h2>
-                        <p>Bảng dưới đây nhập lại các sản phẩm đầu danh mục được công khai trong bài tổng hợp của Thư Viện Pháp Luật. Với danh sách đầy đủ 511 sản phẩm, vui lòng mở công văn/PDF nguồn ở phần cuối trang.</p>
-                        <div class="table-tools">
-                            <label for="productSearch"><strong>Tìm nhanh:</strong></label>
-                            <input id="productSearch" type="search" placeholder="Nhập tên sản phẩm, số công bố hoặc nhóm sản phẩm..." />
-                        </div>
-                        <div class="table-responsive">
-                            <table class="recall-table" id="recallTable">
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Số tiếp nhận Phiếu công bố</th>
-                                        <th>Nhóm nhận diện</th>
-                                        <th>Gợi ý đối chiếu</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>1</td><td>Sữa tắm Mộc Tâm</td><td>8813/21/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Kiểm tra chai/lọ sữa tắm, tên Mộc Tâm và số công bố trên nhãn.</td></tr>
-                                    <tr><td>2</td><td>Whitening Serum</td><td>9416/21/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Đối chiếu lọ tinh chất/serum làm sáng da.</td></tr>
-                                    <tr><td>3</td><td>Tảo Biển</td><td>9553/21/CBMP-HN</td><td><span class="badge-type">Chăm sóc da</span></td><td>Kiểm tra sản phẩm có tên Tảo Biển trên nhãn chính hoặc nhãn phụ.</td></tr>
-                                    <tr><td>4</td><td>Sữa rửa mặt ngừa mụn</td><td>10049/21/CBMP-HN</td><td><span class="badge-type">Sữa rửa mặt</span></td><td>Đối chiếu tuýp/chai sữa rửa mặt dành cho da mụn.</td></tr>
-                                    <tr><td>5</td><td>Acne Body</td><td>10050/21/CBMP-HN</td><td><span class="badge-type">Body</span></td><td>Kiểm tra sản phẩm chăm sóc cơ thể có chữ Acne Body.</td></tr>
-                                    <tr><td>6</td><td>Tinh chất chấm mụn</td><td>10051/21/CBMP-HN</td><td><span class="badge-type">Chấm mụn</span></td><td>Thường là lọ nhỏ/đầu chấm; đối chiếu tên và số công bố.</td></tr>
-                                    <tr><td>7</td><td>Toner ngừa mụn</td><td>10052/21/CBMP-HN</td><td><span class="badge-type">Toner</span></td><td>Kiểm tra chai toner cho da mụn.</td></tr>
-                                    <tr><td>8</td><td>Tinh chất sáng da</td><td>10060/21/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Đối chiếu sản phẩm tinh chất/serum sáng da.</td></tr>
-                                    <tr><td>9</td><td>Kem mụn mờ thâm</td><td>10061/21/CBMP-HN</td><td><span class="badge-type">Kem mụn</span></td><td>Kiểm tra tuýp/hũ kem trị mụn, mờ thâm.</td></tr>
-                                    <tr><td>10</td><td>Sun Cream</td><td>10687/21/CBMP-HN</td><td><span class="badge-type">Chống nắng</span></td><td>Đối chiếu kem chống nắng có tên Sun Cream.</td></tr>
-                                    <tr><td>11</td><td>Nước tài lộc</td><td>11594/22/CBMP-HN</td><td><span class="badge-type">Nước hoa/xịt</span></td><td>Kiểm tra sản phẩm dạng nước/xịt có tên tương ứng.</td></tr>
-                                    <tr><td>12</td><td>Sữa tắm tài lộc</td><td>11595/22/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Đối chiếu chai sữa tắm có tên Tài Lộc.</td></tr>
-                                    <tr><td>13</td><td>Serum 9 Days</td><td>11726/22/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Kiểm tra lọ serum ghi 9 Days.</td></tr>
-                                    <tr><td>14</td><td>Tinh chất nám</td><td>12058/22/CBMP-HN</td><td><span class="badge-type">Serum nám</span></td><td>Đối chiếu sản phẩm tinh chất hỗ trợ chăm sóc vùng nám.</td></tr>
-                                    <tr><td>15</td><td>Kem dưỡng</td><td>12171/22/CBMP-HN</td><td><span class="badge-type">Kem dưỡng</span></td><td>Kiểm tra hũ/tuýp kem dưỡng và số công bố.</td></tr>
-                                    <tr><td>16</td><td>Serum hôi nách</td><td>12348/22/CBMP-HN</td><td><span class="badge-type">Khử mùi</span></td><td>Đối chiếu sản phẩm chăm sóc vùng dưới cánh tay.</td></tr>
-                                    <tr><td>17</td><td>Dầu gội phủ bạc</td><td>12349/22/CBMP-HN</td><td><span class="badge-type">Dầu gội</span></td><td>Kiểm tra chai/gói dầu gội phủ bạc.</td></tr>
-                                    <tr><td>18</td><td>Curcumin Mask</td><td>12710/22/CBMP-HN</td><td><span class="badge-type">Mặt nạ</span></td><td>Đối chiếu mặt nạ/kem mask có chữ Curcumin Mask.</td></tr>
-                                    <tr><td>19</td><td>Serum tái tạo da X2</td><td>12574/22/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Kiểm tra sản phẩm tinh chất tái tạo da X2.</td></tr>
-                                    <tr><td>20</td><td>Xịt thơm miệng</td><td>13729/22/CBMP-HN</td><td><span class="badge-type">Xịt</span></td><td>Đối chiếu chai xịt thơm miệng.</td></tr>
-                                    <tr><td>21</td><td>Meso Therapy B3 Bio</td><td>14286/22/CBMP-HN</td><td><span class="badge-type">Chăm sóc da</span></td><td>Kiểm tra sản phẩm ghi Meso Therapy B3 Bio.</td></tr>
-                                    <tr><td>22</td><td>Meso Therapy Bio</td><td>14287/22/CBMP-HN</td><td><span class="badge-type">Chăm sóc da</span></td><td>Đối chiếu tên Meso Therapy Bio.</td></tr>
-                                    <tr><td>23</td><td>Peel Bio Dr+</td><td>14509/22/CBMP-HN</td><td><span class="badge-type">Peel</span></td><td>Kiểm tra sản phẩm peel/tẩy da chết hóa học.</td></tr>
-                                    <tr><td>24</td><td>Stem Cells</td><td>14510/22/CBMP-HN</td><td><span class="badge-type">Serum/kem</span></td><td>Đối chiếu sản phẩm ghi Stem Cells.</td></tr>
-                                    <tr><td>25</td><td>Peel Bio A+</td><td>14511/22/CBMP-HN</td><td><span class="badge-type">Peel</span></td><td>Kiểm tra sản phẩm peel Bio A+.</td></tr>
-                                    <tr><td>26</td><td>Happy Gel</td><td>18175/23/CBMP-HN</td><td><span class="badge-type">Gel</span></td><td>Đối chiếu tuýp/hũ gel có tên Happy Gel.</td></tr>
-                                    <tr><td>27</td><td>Combo Vip Limited</td><td>17857/23/CBMP-HN</td><td><span class="badge-type">Combo</span></td><td>Kiểm tra bộ sản phẩm có tên Combo Vip Limited.</td></tr>
-                                    <tr><td>28</td><td>Vitamin E Lotion</td><td>18041/23/CBMP-HN</td><td><span class="badge-type">Lotion</span></td><td>Đối chiếu lotion Vitamin E.</td></tr>
-                                    <tr><td>29</td><td>Charming Lips</td><td>18069/23/CBMP-HN</td><td><span class="badge-type">Son môi</span></td><td>Kiểm tra son/sản phẩm môi ghi Charming Lips.</td></tr>
-                                    <tr><td>30</td><td>Tẩy trang</td><td>16939/23/CBMP-HN</td><td><span class="badge-type">Tẩy trang</span></td><td>Đối chiếu nước/dầu/sáp tẩy trang và số công bố.</td></tr>
-                                    <tr><td>31</td><td>Miss Coco</td><td>19485/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Kiểm tra sản phẩm có tên Miss Coco.</td></tr>
-                                    <tr><td>32</td><td>Good Girl</td><td>19486/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Đối chiếu nước hoa/sản phẩm tạo mùi Good Girl.</td></tr>
-                                    <tr><td>33</td><td>Scandal</td><td>19487/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Kiểm tra sản phẩm có tên Scandal.</td></tr>
-                                    <tr><td>34</td><td>Lady Fine</td><td>20152/24/CBMP-HN</td><td><span class="badge-type">Nước hoa</span></td><td>Đối chiếu sản phẩm ghi Lady Fine.</td></tr>
-                                    <tr><td>35</td><td>Melas Luxury Combo</td><td>20153/24/CBMP-HN</td><td><span class="badge-type">Combo dưỡng da</span></td><td>Kiểm tra bộ sản phẩm Melas Luxury Combo.</td></tr>
-                                    <tr><td>36</td><td>Spotless Perfect Cleanser</td><td>20365/24/CBMP-HN</td><td><span class="badge-type">Sữa rửa mặt</span></td><td>Đối chiếu tuýp/chai cleanser.</td></tr>
-                                    <tr><td>37</td><td>Melas Luxury Combo</td><td>19672/24/CBMP-HN</td><td><span class="badge-type">Combo dưỡng da</span></td><td>Cùng tên nhưng khác số công bố; cần kiểm tra số trên nhãn.</td></tr>
-                                    <tr><td>38</td><td>Sữa rửa mặt</td><td>25572/25/CBMP-HN</td><td><span class="badge-type">Sữa rửa mặt</span></td><td>Kiểm tra tên sản phẩm và số công bố vì tên khá chung.</td></tr>
-                                    <tr><td>39</td><td>Sữa tắm sáng da</td><td>20837/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Đối chiếu chai sữa tắm sáng da.</td></tr>
-                                    <tr><td>40</td><td>Dầu gội</td><td>20838/24/CBMP-HN</td><td><span class="badge-type">Dầu gội</span></td><td>Kiểm tra tên/số công bố trên chai dầu gội.</td></tr>
-                                    <tr><td>41</td><td>Dầu xả</td><td>20839/24/CBMP-HN</td><td><span class="badge-type">Dầu xả</span></td><td>Kiểm tra tên/số công bố trên chai dầu xả.</td></tr>
-                                    <tr><td>42</td><td>Sữa tắm hương nước hoa</td><td>20840/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Đối chiếu sản phẩm sữa tắm hương nước hoa.</td></tr>
-                                    <tr><td>43</td><td>Sữa tắm hương nước hoa</td><td>20732/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Cùng tên nhưng khác số công bố; kiểm tra số trên nhãn.</td></tr>
-                                    <tr><td>44</td><td>Dầu xả</td><td>20733/24/CBMP-HN</td><td><span class="badge-type">Dầu xả</span></td><td>Đối chiếu số công bố trên sản phẩm dầu xả.</td></tr>
-                                    <tr><td>45</td><td>Dầu gội</td><td>20734/24/CBMP-HN</td><td><span class="badge-type">Dầu gội</span></td><td>Đối chiếu số công bố trên sản phẩm dầu gội.</td></tr>
-                                    <tr><td>46</td><td>Spotless Perfect Toner</td><td>20735/24/CBMP-HN</td><td><span class="badge-type">Toner</span></td><td>Kiểm tra chai toner Spotless Perfect.</td></tr>
-                                    <tr><td>47</td><td>Sữa tắm sáng da</td><td>20736/24/CBMP-HN</td><td><span class="badge-type">Sữa tắm</span></td><td>Cùng tên nhưng khác số công bố; kiểm tra kỹ mã.</td></tr>
-                                    <tr><td>48</td><td>Perfect Sun Cream</td><td>20737/24/CBMP-HN</td><td><span class="badge-type">Chống nắng</span></td><td>Đối chiếu kem chống nắng Perfect Sun Cream.</td></tr>
-                                    <tr><td>49</td><td>Spotless Perfect Remover</td><td>20738/24/CBMP-HN</td><td><span class="badge-type">Tẩy trang</span></td><td>Kiểm tra sản phẩm remover/tẩy trang.</td></tr>
-                                    <tr><td>50</td><td>Bio Lip Balm</td><td>22314/24/CBMP-HN</td><td><span class="badge-type">Son dưỡng</span></td><td>Đối chiếu son dưỡng môi Bio Lip Balm.</td></tr>
-                                    <tr><td>51</td><td>Spotless Perfect Serum</td><td>22010/24/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Kiểm tra lọ serum Spotless Perfect.</td></tr>
-                                    <tr><td>52</td><td>Bio Hydration Toner</td><td>22922/24/CBMP-HN</td><td><span class="badge-type">Toner</span></td><td>Đối chiếu toner Bio Hydration.</td></tr>
-                                    <tr><td>53</td><td>Lumi white peel</td><td>24004/25/CBMP-HN</td><td><span class="badge-type">Peel</span></td><td>Kiểm tra sản phẩm peel/tẩy da chết Lumi white peel.</td></tr>
-                                    <tr><td>54</td><td>Dark spot spotless perfect serum</td><td>24005/25/CBMP-HN</td><td><span class="badge-type">Serum</span></td><td>Đối chiếu serum chăm sóc đốm nâu/thâm nám.</td></tr>
-                                </tbody>
-                            </table>
                         </div>
                     </section>
 
@@ -350,7 +277,40 @@
                             <li><a href="https://thuvienphapluat.vn/banan/tin-tuc/cong-van-so-1772qldmp-danh-sach-511-san-pham-my-pham-bi-thu-hoi-do-cong-ty-viet-huong-san-xuat-21776" target="_blank" rel="noopener">Thư Viện Pháp Luật: Công văn số 1772/QLD-MP và danh sách sản phẩm đầu danh mục</a>.</li>
                             <li><a href="https://cdn.thuvienphapluat.vn/uploads/DanLuat-BanAn/2026/4/1772_QLD_MP_signed.pdf" target="_blank" rel="noopener">Tải Công văn 1772/QLD-MP năm 2026 để xem danh sách đầy đủ 511 sản phẩm</a>.</li>
                         </ul>
-                        <p class="small-note">Trang này sẽ tiếp tục được cập nhật nếu có thêm ảnh bao bì chính thức hoặc thông báo bổ sung từ cơ quan quản lý.</p>
+                    </section>
+
+                    <section aria-labelledby="appendix-title">
+                        <h2 id="appendix-title" class="section-heading">Danh mục đầy đủ 511 sản phẩm theo phụ lục công văn</h2>
+                        <div class="appendix-card">
+                            <p>Phần này được đưa xuống gần cuối trang để người đọc xem danh mục đầy đủ trước khi dùng bảng tra cứu nhanh. Nếu khung PDF không hiển thị trên thiết bị của bạn, hãy mở trực tiếp liên kết công văn ở phần nguồn tham khảo.</p>
+                            <object class="appendix-frame" data="https://cdn.thuvienphapluat.vn/uploads/DanLuat-BanAn/2026/4/1772_QLD_MP_signed.pdf#page=2" type="application/pdf">
+                                <p>Không hiển thị được PDF trong trình duyệt này. <a href="https://cdn.thuvienphapluat.vn/uploads/DanLuat-BanAn/2026/4/1772_QLD_MP_signed.pdf" target="_blank" rel="noopener">Mở công văn 1772/QLD-MP</a>.</p>
+                            </object>
+                        </div>
+                    </section>
+
+                    <section aria-labelledby="table-title">
+                        <h2 id="table-title" class="section-heading">Bảng tra cứu nhanh có ảnh minh hoạ</h2>
+                        <p>Bảng này chỉ nhập lại một số sản phẩm tiêu biểu/đầu danh mục để tra cứu nhanh. Cột ảnh minh hoạ giúp phân biệt dạng sản phẩm khi đối chiếu nhãn thật, nhưng không phải ảnh bao bì chính thức.</p>
+                        <div class="table-tools">
+                            <label for="productSearch"><strong>Tìm nhanh:</strong></label>
+                            <input id="productSearch" type="search" placeholder="Nhập tên sản phẩm, số công bố hoặc nhóm sản phẩm..." />
+                        </div>
+                        <div class="table-responsive">
+                            <table class="recall-table" id="recallTable">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Ảnh minh hoạ</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Số tiếp nhận Phiếu công bố</th>
+                                        <th>Nhóm nhận diện</th>
+                                        <th>Gợi ý đối chiếu</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
                     </section>
                 </div>
             </div>
@@ -368,6 +328,86 @@
         </div>
     </footer>
     <script>
+        const visualMap = {
+            bath: { label: 'Sữa tắm', shapes: ['bottle', 'spray'] },
+            serum: { label: 'Serum', shapes: ['dropper', 'jar'] },
+            skin: { label: 'Chăm sóc da', shapes: ['tube', 'jar'] },
+            cleanser: { label: 'Sữa rửa mặt', shapes: ['tube', 'bottle'] },
+            hair: { label: 'Tóc', shapes: ['bottle', 'tube'] },
+            spray: { label: 'Xịt / nước hoa', shapes: ['spray', 'bottle'] },
+            lips: { label: 'Son môi', shapes: ['lipstick'] },
+            gel: { label: 'Gel / combo', shapes: ['jar', 'tube'] }
+        };
+        const products = [
+            [1, 'bath', 'Sữa tắm Mộc Tâm', '8813/21/CBMP-HN', 'Sữa tắm', 'Kiểm tra chai/lọ sữa tắm, tên Mộc Tâm và số công bố trên nhãn.'],
+            [2, 'serum', 'Whitening Serum', '9416/21/CBMP-HN', 'Serum', 'Đối chiếu lọ tinh chất/serum làm sáng da.'],
+            [3, 'skin', 'Tảo Biển', '9553/21/CBMP-HN', 'Chăm sóc da', 'Kiểm tra sản phẩm có tên Tảo Biển trên nhãn chính hoặc nhãn phụ.'],
+            [4, 'cleanser', 'Sữa rửa mặt ngừa mụn', '10049/21/CBMP-HN', 'Sữa rửa mặt', 'Đối chiếu tuýp/chai sữa rửa mặt dành cho da mụn.'],
+            [5, 'bath', 'Acne Body', '10050/21/CBMP-HN', 'Body', 'Kiểm tra sản phẩm chăm sóc cơ thể có chữ Acne Body.'],
+            [6, 'serum', 'Tinh chất chấm mụn', '10051/21/CBMP-HN', 'Chấm mụn', 'Thường là lọ nhỏ/đầu chấm; đối chiếu tên và số công bố.'],
+            [7, 'skin', 'Toner ngừa mụn', '10052/21/CBMP-HN', 'Toner', 'Kiểm tra chai toner cho da mụn.'],
+            [8, 'serum', 'Tinh chất sáng da', '10060/21/CBMP-HN', 'Serum', 'Đối chiếu sản phẩm tinh chất/serum sáng da.'],
+            [9, 'skin', 'Kem mụn mờ thâm', '10061/21/CBMP-HN', 'Kem mụn', 'Kiểm tra tuýp/hũ kem trị mụn, mờ thâm.'],
+            [10, 'skin', 'Sun Cream', '10687/21/CBMP-HN', 'Chống nắng', 'Đối chiếu kem chống nắng có tên Sun Cream.'],
+            [11, 'spray', 'Nước tài lộc', '11594/22/CBMP-HN', 'Nước hoa/xịt', 'Kiểm tra sản phẩm dạng nước/xịt có tên tương ứng.'],
+            [12, 'bath', 'Sữa tắm tài lộc', '11595/22/CBMP-HN', 'Sữa tắm', 'Đối chiếu chai sữa tắm có tên Tài Lộc.'],
+            [13, 'serum', 'Serum 9 Days', '11726/22/CBMP-HN', 'Serum', 'Kiểm tra lọ serum ghi 9 Days.'],
+            [14, 'serum', 'Tinh chất nám', '12058/22/CBMP-HN', 'Serum nám', 'Đối chiếu sản phẩm tinh chất hỗ trợ chăm sóc vùng nám.'],
+            [15, 'skin', 'Kem dưỡng', '12171/22/CBMP-HN', 'Kem dưỡng', 'Kiểm tra hũ/tuýp kem dưỡng và số công bố.'],
+            [16, 'serum', 'Serum hôi nách', '12348/22/CBMP-HN', 'Khử mùi', 'Đối chiếu sản phẩm chăm sóc vùng dưới cánh tay.'],
+            [17, 'hair', 'Dầu gội phủ bạc', '12349/22/CBMP-HN', 'Dầu gội', 'Kiểm tra chai/gói dầu gội phủ bạc.'],
+            [18, 'skin', 'Curcumin Mask', '12710/22/CBMP-HN', 'Mặt nạ', 'Đối chiếu mặt nạ/kem mask có chữ Curcumin Mask.'],
+            [19, 'serum', 'Serum tái tạo da X2', '12574/22/CBMP-HN', 'Serum', 'Kiểm tra sản phẩm tinh chất tái tạo da X2.'],
+            [20, 'spray', 'Xịt thơm miệng', '13729/22/CBMP-HN', 'Xịt', 'Đối chiếu chai xịt thơm miệng.'],
+            [21, 'skin', 'Meso Therapy B3 Bio', '14286/22/CBMP-HN', 'Chăm sóc da', 'Kiểm tra sản phẩm ghi Meso Therapy B3 Bio.'],
+            [22, 'skin', 'Meso Therapy Bio', '14287/22/CBMP-HN', 'Chăm sóc da', 'Đối chiếu tên Meso Therapy Bio.'],
+            [23, 'skin', 'Peel Bio Dr+', '14509/22/CBMP-HN', 'Peel', 'Kiểm tra sản phẩm peel/tẩy da chết hóa học.'],
+            [24, 'serum', 'Stem Cells', '14510/22/CBMP-HN', 'Serum/kem', 'Đối chiếu sản phẩm ghi Stem Cells.'],
+            [25, 'skin', 'Peel Bio A+', '14511/22/CBMP-HN', 'Peel', 'Kiểm tra sản phẩm peel Bio A+.'],
+            [26, 'gel', 'Happy Gel', '18175/23/CBMP-HN', 'Gel', 'Đối chiếu tuýp/hũ gel có tên Happy Gel.'],
+            [27, 'gel', 'Combo Vip Limited', '17857/23/CBMP-HN', 'Combo', 'Kiểm tra bộ sản phẩm có tên Combo Vip Limited.'],
+            [28, 'skin', 'Vitamin E Lotion', '18041/23/CBMP-HN', 'Lotion', 'Đối chiếu lotion Vitamin E.'],
+            [29, 'lips', 'Charming Lips', '18069/23/CBMP-HN', 'Son môi', 'Kiểm tra son/sản phẩm môi ghi Charming Lips.'],
+            [30, 'skin', 'Tẩy trang', '16939/23/CBMP-HN', 'Tẩy trang', 'Đối chiếu nước/dầu/sáp tẩy trang và số công bố.'],
+            [31, 'spray', 'Miss Coco', '19485/24/CBMP-HN', 'Nước hoa', 'Kiểm tra sản phẩm có tên Miss Coco.'],
+            [32, 'spray', 'Good Girl', '19486/24/CBMP-HN', 'Nước hoa', 'Đối chiếu nước hoa/sản phẩm tạo mùi Good Girl.'],
+            [33, 'spray', 'Scandal', '19487/24/CBMP-HN', 'Nước hoa', 'Kiểm tra sản phẩm có tên Scandal.'],
+            [34, 'spray', 'Lady Fine', '20152/24/CBMP-HN', 'Nước hoa', 'Đối chiếu sản phẩm ghi Lady Fine.'],
+            [35, 'gel', 'Melas Luxury Combo', '20153/24/CBMP-HN', 'Combo dưỡng da', 'Kiểm tra bộ sản phẩm Melas Luxury Combo.'],
+            [36, 'cleanser', 'Spotless Perfect Cleanser', '20365/24/CBMP-HN', 'Sữa rửa mặt', 'Đối chiếu tuýp/chai cleanser.'],
+            [37, 'gel', 'Melas Luxury Combo', '19672/24/CBMP-HN', 'Combo dưỡng da', 'Cùng tên nhưng khác số công bố; cần kiểm tra số trên nhãn.'],
+            [38, 'cleanser', 'Sữa rửa mặt', '25572/25/CBMP-HN', 'Sữa rửa mặt', 'Kiểm tra tên sản phẩm và số công bố vì tên khá chung.'],
+            [39, 'bath', 'Sữa tắm sáng da', '20837/24/CBMP-HN', 'Sữa tắm', 'Đối chiếu chai sữa tắm sáng da.'],
+            [40, 'hair', 'Dầu gội', '20838/24/CBMP-HN', 'Dầu gội', 'Kiểm tra tên/số công bố trên chai dầu gội.'],
+            [41, 'hair', 'Dầu xả', '20839/24/CBMP-HN', 'Dầu xả', 'Kiểm tra tên/số công bố trên chai dầu xả.'],
+            [42, 'bath', 'Sữa tắm hương nước hoa', '20840/24/CBMP-HN', 'Sữa tắm', 'Đối chiếu sản phẩm sữa tắm hương nước hoa.'],
+            [43, 'bath', 'Sữa tắm hương nước hoa', '20732/24/CBMP-HN', 'Sữa tắm', 'Cùng tên nhưng khác số công bố; kiểm tra số trên nhãn.'],
+            [44, 'hair', 'Dầu xả', '20733/24/CBMP-HN', 'Dầu xả', 'Đối chiếu số công bố trên sản phẩm dầu xả.'],
+            [45, 'hair', 'Dầu gội', '20734/24/CBMP-HN', 'Dầu gội', 'Đối chiếu số công bố trên sản phẩm dầu gội.'],
+            [46, 'skin', 'Spotless Perfect Toner', '20735/24/CBMP-HN', 'Toner', 'Kiểm tra chai toner Spotless Perfect.'],
+            [47, 'bath', 'Sữa tắm sáng da', '20736/24/CBMP-HN', 'Sữa tắm', 'Cùng tên nhưng khác số công bố; kiểm tra kỹ mã.'],
+            [48, 'skin', 'Perfect Sun Cream', '20737/24/CBMP-HN', 'Chống nắng', 'Đối chiếu kem chống nắng Perfect Sun Cream.'],
+            [49, 'skin', 'Spotless Perfect Remover', '20738/24/CBMP-HN', 'Tẩy trang', 'Kiểm tra sản phẩm remover/tẩy trang.'],
+            [50, 'lips', 'Bio Lip Balm', '22314/24/CBMP-HN', 'Son dưỡng', 'Đối chiếu son dưỡng môi Bio Lip Balm.'],
+            [51, 'serum', 'Spotless Perfect Serum', '22010/24/CBMP-HN', 'Serum', 'Kiểm tra lọ serum Spotless Perfect.'],
+            [52, 'skin', 'Bio Hydration Toner', '22922/24/CBMP-HN', 'Toner', 'Đối chiếu toner Bio Hydration.'],
+            [53, 'skin', 'Lumi white peel', '24004/25/CBMP-HN', 'Peel', 'Kiểm tra sản phẩm peel/tẩy da chết Lumi white peel.'],
+            [54, 'serum', 'Dark spot spotless perfect serum', '24005/25/CBMP-HN', 'Serum', 'Đối chiếu serum chăm sóc đốm nâu/thâm nám.']
+        ];
+        function visualCell(type) {
+            const visual = visualMap[type] || visualMap.skin;
+            const shapes = visual.shapes.map((shape) => '<span class="' + shape + '"></span>').join('');
+            return '<div class="mini-visual" aria-label="Ảnh minh hoạ ' + visual.label + '"><div class="shape-row" aria-hidden="true">' + shapes + '</div><span>' + visual.label + '</span></div>';
+        }
+        function escapeText(value) {
+            return String(value).replace(/[&<>"']/g, function (char) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char];
+            });
+        }
+        const tableBody = document.querySelector('#recallTable tbody');
+        tableBody.innerHTML = products.map(function (item) {
+            return '<tr><td>' + item[0] + '</td><td>' + visualCell(item[1]) + '</td><td>' + escapeText(item[2]) + '</td><td>' + escapeText(item[3]) + '</td><td><span class="badge-type">' + escapeText(item[4]) + '</span></td><td>' + escapeText(item[5]) + '</td></tr>';
+        }).join('');
         const productSearch = document.getElementById('productSearch');
         const tableRows = Array.from(document.querySelectorAll('#recallTable tbody tr'));
         productSearch.addEventListener('input', function () {
