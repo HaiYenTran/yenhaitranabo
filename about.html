@@ -1,215 +1,595 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Personal Blog - Yen Tran</title>
+    <meta name="description" content="Giới thiệu Yen Tran - hành trình truyền cảm hứng sống khỏe, phát triển bản thân và kiến tạo cuộc sống chủ động." />
+    <meta name="author" content="Yen Tran" />
+    <title>Giới thiệu | Yen Tran</title>
+    <meta property="og:title" content="Giới thiệu | Yen Tran" />
+    <meta property="og:description" content="Tìm thấy lẽ sống, phát triển toàn diện và lan tỏa giá trị tích cực đến cộng đồng." />
+    <meta property="og:type" content="profile" />
+    <meta property="og:image" content="https://haiyentran.github.io/yenhaitranabo/assets/img/avatar_yen.jpg" />
+
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+
     <style>
+        :root {
+            --about-ink: #17332a;
+            --about-muted: #62736b;
+            --about-green: #18785a;
+            --about-green-dark: #0b4d38;
+            --about-mint: #e9f7f0;
+            --about-cream: #fbf8f0;
+            --about-gold: #d7a34c;
+            --about-border: #dce9e2;
+            --about-white: #fff;
+        }
+
         body {
-            font-family: 'Open Sans', sans-serif;
             margin: 0;
-            padding: 0;
-            background: #f6f7fb;
+            background: var(--about-cream);
+            color: var(--about-ink);
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.75;
         }
-        .page-heading h1,
-        .page-heading .subheading {
+
+        #mainNav {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1030;
+            border-bottom: 1px solid rgba(255,255,255,.16);
+            background: rgba(8,55,40,.22);
+            backdrop-filter: blur(10px);
+        }
+
+        #mainNav .navbar-brand,
+        #mainNav .nav-link {
+            color: rgba(255,255,255,.9);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        #mainNav .navbar-brand { padding: 18px 0; font-size: 1.15rem; letter-spacing: .08em; }
+        #mainNav .nav-link { position: relative; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+        #mainNav .nav-link:hover,
+        #mainNav .nav-link:focus,
+        #mainNav .nav-link.active { color: #fff; }
+
+        #mainNav .nav-link.active::after {
+            position: absolute;
+            right: .75rem;
+            bottom: .55rem;
+            left: .75rem;
+            height: 2px;
+            border-radius: 999px;
+            background: #78dfb8;
+            content: "";
+        }
+
+        #mainNav .navbar-toggler {
+            border-color: rgba(255,255,255,.45);
             color: #fff;
-            text-shadow: 1px 2px 10px rgba(30,30,30,0.55);
+            font-size: .82rem;
+            font-weight: 700;
         }
-        .page-heading {
-            padding-top: 48px;
+
+        .about-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 150px 0 92px;
+            background:
+                linear-gradient(118deg, rgba(7,51,37,.97), rgba(21,111,82,.82)),
+                url('assets/img/about-bg.jpg') center/cover;
+            color: #fff;
         }
-        .page-heading .subheading {
+
+        .about-hero::after {
+            position: absolute;
+            right: -120px;
+            bottom: -160px;
+            width: 430px;
+            height: 430px;
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 50%;
+            box-shadow: 0 0 0 66px rgba(255,255,255,.04);
+            content: "";
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0,1fr) 330px;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            padding: 7px 14px;
+            border: 1px solid rgba(255,255,255,.3);
+            border-radius: 999px;
+            background: rgba(255,255,255,.12);
+            font-size: .8rem;
+            font-weight: 800;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+        }
+
+        .about-hero h1 {
+            margin: 0 0 16px;
+            color: #fff;
+            font-family: 'Lora', serif;
+            font-size: clamp(2rem,6vw,4rem);
+            line-height: 1.02;
+            white-space: nowrap;
+        }
+
+        .hero-tagline {
+            margin: 0 0 18px;
+            color: #dff7ec;
+            font-family: 'Lora', serif;
+            font-size: clamp(1.25rem,3vw,1.7rem);
+            font-style: italic;
+        }
+
+        .about-hero .hero-description {
+            max-width: 690px;
+            margin: 0;
+            color: rgba(255,255,255,.86);
+            font-size: 1.06rem;
+        }
+
+        .portrait-card {
+            position: relative;
+            justify-self: end;
+            width: 300px;
+            padding: 14px;
+            border: 1px solid rgba(255,255,255,.28);
+            border-radius: 34px;
+            background: rgba(255,255,255,.12);
+            box-shadow: 0 24px 60px rgba(0,0,0,.23);
+            backdrop-filter: blur(12px);
+        }
+
+        .portrait-card img {
             display: block;
-            margin-top: 10px;
-            font-size: 1.2rem;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 25px;
+            object-fit: cover;
         }
-        .page-heading .subheading:last-child {
-            color: #ffe08a !important;
-            font-size: 1.1rem;
-        }
-        .about-block {
+
+        .portrait-note {
+            position: absolute;
+            right: -14px;
+            bottom: 26px;
+            padding: 9px 14px;
+            border-radius: 999px;
             background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 4px 32px rgba(60,64,67,0.07);
-            margin-bottom: 36px;
-            padding: 32px 28px 24px 28px;
+            color: var(--about-green-dark);
+            box-shadow: 0 12px 28px rgba(0,0,0,.18);
+            font-size: .8rem;
+            font-weight: 800;
         }
-        .about-block h3 {
-            color: #e26a2c;
-            margin-top: 20px;
+
+        .about-main { padding: 72px 0 86px; }
+
+        .ikigai-panel {
+            display: grid;
+            grid-template-columns: .78fr 1.22fr;
+            align-items: center;
+            gap: 38px;
+            margin-bottom: 64px;
+            padding: 38px;
+            border: 1px solid var(--about-border);
+            border-radius: 28px;
+            background: #fff;
+            box-shadow: 0 18px 50px rgba(18,70,51,.08);
         }
-        .about-block strong, .about-block span[style*="font-weight: bold"] {
-            color: #d2691e;
-        }
-        .about-cta {
-            background: linear-gradient(90deg, #ff7e5f, #feb47b);
-            border-radius: 18px;
-            padding: 30px 16px;
-            margin-top: 40px;
-            text-align: center;
+
+        .ikigai-mark {
+            display: flex;
+            min-height: 240px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            border-radius: 22px;
+            background: linear-gradient(145deg,var(--about-green-dark),var(--about-green));
             color: #fff;
+            text-align: center;
         }
-        .about-cta .btn {
-            margin-top: 18px;
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
-            font-weight: bold;
-            font-size: 1.08rem;
-            border-radius: 30px;
-            border: none;
-            transition: background .15s;
+
+        .ikigai-mark i { margin-bottom: 14px; color: #f3cf82; font-size: 2.5rem; }
+        .ikigai-mark strong { font-family: 'Lora',serif; font-size: 2rem; }
+        .ikigai-mark span { color: rgba(255,255,255,.78); font-size: .92rem; }
+
+        .ikigai-copy .section-label,
+        .section-heading .section-label {
+            color: var(--about-green);
+            font-size: .8rem;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
         }
-        .about-cta .btn:hover {
-            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+
+        .ikigai-copy h2,
+        .section-heading h2,
+        .reflection-copy h2,
+        .journey-cta h2 {
+            margin: 9px 0 15px;
+            color: var(--about-ink);
+            font-family: 'Lora',serif;
+        }
+
+        .ikigai-copy p { margin: 0; color: var(--about-muted); font-size: 1.06rem; }
+        .ikigai-copy blockquote {
+            margin: 22px 0 0;
+            padding-left: 20px;
+            border-left: 4px solid var(--about-gold);
+            color: var(--about-green-dark);
+            font-family: 'Lora',serif;
+            font-size: 1.18rem;
+            font-weight: 700;
+        }
+
+        .section-heading { max-width: 760px; margin: 0 auto 34px; text-align: center; }
+        .section-heading h2 { font-size: clamp(2rem,4vw,2.8rem); }
+        .section-heading p { margin: 0; color: var(--about-muted); }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(6,minmax(0,1fr));
+            gap: 18px;
+            margin-bottom: 64px;
+        }
+
+        .pillar-card {
+            grid-column: span 2;
+            padding: 25px;
+            border: 1px solid var(--about-border);
+            border-radius: 21px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(18,70,51,.06);
+        }
+
+        .pillar-card:nth-child(4) { grid-column: 2 / span 2; }
+        .pillar-card:nth-child(5) { grid-column: 4 / span 2; }
+
+        .pillar-icon {
+            display: inline-flex;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 17px;
+            border-radius: 15px;
+            background: var(--about-mint);
+            color: var(--about-green);
+            font-size: 1.25rem;
+        }
+
+        .pillar-card h3 { margin: 0 0 10px; font-size: 1.12rem; }
+        .pillar-card h3 small { display: block; margin-top: 3px; color: var(--about-muted); font-size: .72rem; font-weight: 600; }
+        .pillar-card p { margin: 0; color: var(--about-muted); font-size: .94rem; }
+
+        .reflection-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 48px;
+            margin-bottom: 64px;
+            padding: 40px;
+            border-radius: 28px;
+            background: var(--about-green-dark);
+            color: #fff;
+            box-shadow: 0 18px 50px rgba(11,77,56,.2);
+        }
+
+        .reflection-copy h2 { color: #fff; font-size: 2rem; }
+        .reflection-copy p { margin: 0; color: rgba(255,255,255,.78); }
+        .reflection-list { display: grid; gap: 12px; }
+        .reflection-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 16px;
+            background: rgba(255,255,255,.08);
+        }
+        .reflection-item i { margin-top: 5px; color: #f2cf84; }
+        .reflection-item strong { display: block; }
+        .reflection-item span { color: rgba(255,255,255,.7); font-size: .9rem; }
+
+        .success-formula {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 11px;
+            margin: 26px 0 0;
+        }
+
+        .formula-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border: 1px solid var(--about-border);
+            border-radius: 999px;
+            background: #fff;
+            color: var(--about-green-dark);
+            font-size: .9rem;
+            font-weight: 700;
+        }
+
+        .journey-cta {
+            padding: 42px;
+            border-radius: 28px;
+            background: linear-gradient(135deg,#edf9f3,#fff6e4);
+            text-align: center;
+        }
+
+        .journey-cta h2 { font-size: clamp(1.8rem,4vw,2.6rem); }
+        .journey-cta p { max-width: 680px; margin: 0 auto; color: var(--about-muted); }
+        .survey-cta {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0,1.2fr) minmax(250px,.8fr);
+            gap: 34px;
+            align-items: center;
+            overflow: hidden;
+            padding: 42px;
+            border-radius: 28px;
+            background: linear-gradient(135deg,#0b4d38,#18785a);
+            color: #fff;
+            box-shadow: 0 18px 50px rgba(11,77,56,.2);
+        }
+        .survey-cta::after {
+            content: '';
+            position: absolute;
+            right: -90px;
+            bottom: -120px;
+            width: 290px;
+            height: 290px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.06);
+        }
+        .survey-cta .section-label { color: #f2cf84; }
+        .survey-cta h2 { margin: 8px 0 12px; color: #fff; font-size: clamp(1.9rem,4vw,2.7rem); }
+        .survey-cta p { margin: 0; color: rgba(255,255,255,.78); }
+        .survey-points { position: relative; z-index: 1; display: grid; gap: 12px; }
+        .survey-point {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 13px 15px;
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 14px;
+            background: rgba(255,255,255,.1);
+            font-size: .92rem;
+            font-weight: 700;
+        }
+        .survey-point i { color: #f2cf84; }
+        .survey-cta .about-btn { background: #fff; color: var(--about-green-dark) !important; box-shadow: none; }
+        .about-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            margin-top: 24px;
+            padding: 13px 21px;
+            border-radius: 999px;
+            background: var(--about-green);
             color: #fff !important;
-            box-shadow: 0 2px 10px #e26a2c77;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 10px 24px rgba(24,120,90,.22);
         }
+
+        .about-footer { padding: 34px 0; background: #f5f8f6; color: var(--about-muted); font-size: .9rem; }
+        .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+        .footer-inner p { margin: 0; }
+        .footer-link { color: var(--about-green-dark); font-weight: 700; text-decoration: none; }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: minmax(0,1fr) 260px; gap: 36px; }
+            .portrait-card { width: 250px; }
+            .pillar-card { grid-column: span 3; }
+            .pillar-card:nth-child(4), .pillar-card:nth-child(5) { grid-column: span 3; }
+        }
+
         @media (max-width: 768px) {
-            .about-block {
-                padding: 16px 7px 10px 7px;
-            }
-            .about-block h3, .about-block p {
-                font-size: 1.05rem;
-            }
-            .page-heading {
-                padding-top: 24px;
-            }
-            .page-heading h1 {
-                font-size: 2rem;
-            }
-            .page-heading .subheading {
-                font-size: 1.08rem;
-            }
+            #mainNav { background: rgba(8,55,40,.97); }
+            #mainNav .navbar-collapse { padding-bottom: 14px; }
+            #mainNav .nav-link { padding: 10px 0 !important; }
+            #mainNav .nav-link.active::after { right: auto; bottom: 5px; left: 0; width: 34px; }
+            .about-hero { padding: 118px 0 66px; }
+            .hero-grid,
+            .ikigai-panel,
+            .reflection-panel,
+            .survey-cta { grid-template-columns: 1fr; }
+            .portrait-card { justify-self: start; width: min(250px,72vw); }
+            .about-main { padding: 50px 0 64px; }
+            .ikigai-panel,
+            .reflection-panel,
+            .survey-cta,
+            .journey-cta { padding: 24px; }
+            .about-hero h1 { font-size: clamp(2rem,10vw,3.2rem); }
+            .pillar-grid { grid-template-columns: 1fr; }
+            .pillar-card,
+            .pillar-card:nth-child(4),
+            .pillar-card:nth-child(5) { grid-column: auto; }
+            .footer-inner { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="index.html">YEN TRAN</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu <i class="fas fa-bars"></i>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Mở hoặc đóng trình đơn">
+                Trình đơn <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4 active" href="index.html">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Giới thiệu</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="events.html">Sự kiện</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthylifestyle.html">Lối sống khỏe</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthymeal.html">Bữa ăn lành mạnh</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="passiveincome.html">Thu nhập thụ động</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Liên hệ</a></li>
-
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="digital_index.html">Sản phầm số</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4 active" aria-current="page" href="about.html">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="events.html">Sự kiện</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthylifestyle.html">Lối sống khỏe</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthymeal.html">Bữa ăn lành mạnh</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="passiveincome.html">Thu nhập thụ động</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="digital_index.html">Sản phẩm số</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- Page Header-->
-    <header class="masthead" style="background-image: url('assets/img/about-bg.jpg')">
-        <div class="container position-relative px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <div class="page-heading text-center">
-                        <h1>TRAN HAI YEN</h1>
-                        <span class="subheading">Tìm thấy lẽ sống – Ý nghĩa cuộc đời</span>
-                        <span class="subheading">Ikigai: “Truyền cảm hứng sống khỏe, phát triển bản thân và tạo thu nhập thụ động qua dinh dưỡng, công nghệ & cộng đồng.”</span>
-                    </div>
+
+    <header class="about-hero">
+        <div class="container px-4 px-lg-5">
+            <div class="hero-grid">
+                <div>
+                    <span class="hero-eyebrow"><i class="fas fa-seedling"></i> Câu chuyện của tôi</span>
+                    <h1>TRAN HAI YEN</h1>
+                    <p class="hero-tagline">Tìm thấy lẽ sống - Ý nghĩa cuộc đời</p>
+                    <p class="hero-description">Tôi tin một cuộc sống ý nghĩa được tạo nên khi chúng ta khỏe hơn mỗi ngày, không ngừng trưởng thành và dùng hành trình của mình để truyền cảm hứng cho người khác.</p>
+                </div>
+                <div class="portrait-card">
+                    <img src="assets/img/avatar_yen.jpg" alt="Yen Tran" width="480" height="480" />
+                    <span class="portrait-note">Sống khỏe · Sống chủ động</span>
                 </div>
             </div>
         </div>
     </header>
-    <!-- Main Content-->
-    <main class="mb-4">
+
+    <main class="about-main">
         <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    
-                    <div class="about-block">
-                        <h3><i class="fas fa-heartbeat"></i> SỨC KHỎE THỂ CHẤT (Healthy Body)</h3>
-                        <p>Hãy để bản thân bạn trải nghiệm và cảm nhận sự thay đổi đầu tiên. Sau đó, đừng ngần ngại chia sẻ hành trình của mình, lan tỏa nguồn cảm hứng đến những người xung quanh.</p>
-                        <p><strong>Bởi thành công của bạn – chính là động lực của họ!</strong></p>
-                    </div>
-                    
-                    <div class="about-block">
-                        <h3><i class="fas fa-users"></i> KẾT NỐI CỘNG ĐỒNG (Community Connection)</h3>
-                        <p>Sống trong một cộng đồng truyền cảm hứng giúp bạn duy trì tư duy tích cực và góc nhìn lạc quan. Bạn luôn có động lực và sự đồng hành của những người đồng đội, <span style="color: #ff8c00; font-weight: bold;">✨ cùng chinh phục các mục tiêu và vươn tới thành công!</span></p>
-                    </div>
-                    
-                    <div class="about-block">
-                        <h3><i class="fas fa-seedling"></i> PHÁT TRIỂN BẢN THÂN (Personal Growth)</h3>
-                        <p>Phát triển tư duy và hoàn thiện tính cách để trở thành phiên bản tốt hơn của chính mình. Không ngừng rèn luyện bản thân, tạo ra sự thay đổi tích cực, và từng bước tiến tới thành công cùng đội nhóm.</p>
-                    </div>
-                    
-                    <div class="about-block">
-                        <h3><i class="fas fa-piggy-bank"></i> SỨC KHỎE TÀI CHÍNH (Financial Wellbeing)</h3>
-                        <p><span style="color: #008000;">Công việc giúp biến ước mơ thành hiện thực.</span> Đây không chỉ là hành trình xây dựng sự nghiệp mà còn là cơ hội để đồng hành và giúp đỡ mọi người đạt được thành công trong cuộc sống.</p>
-                    </div>
-                    
-                    <div class="about-block">
-                        <h3><i class="fas fa-globe-asia"></i> BẢO VỆ HÀNH TINH (Healthy Planet)</h3>
-                        <p><span style="color: #008000;">Gieo trồng – Sản xuất – Tái tạo.</span> Là cách vừa kiến tạo giá trị bản thân, vừa chung tay bảo vệ hành tinh này.</p>
-                    </div>
-                    
-                    <div class="about-block">
-                        <h3><i class="fas fa-rocket"></i> CÔNG THỨC THÀNH CÔNG</h3>
-                        <ul>
-                            <li>✔ <span style="color: #ff4500;">Vóc dáng đẹp, sức khỏe tốt.</span></li>
-                            <li>✔ <span style="color: #ff4500;">Lối sống lành mạnh.</span></li>
-                            <li>✔ <span style="color: #ff4500;">Sống cuộc đời theo cách của bạn.</span></li>
-                        </ul>
-                        <p><strong>👉 Hãy biến mong muốn thành hành động!</strong></p>
-                        <p><span style="color: #ff0000; font-weight: bold;">🔥 Và hành động quyết tâm để biến ước mơ thành hiện thực! 🔥</span></p>
-                    </div>
-                    
-                    <div class="about-block">
-                        <h3><i class="fas fa-eye"></i> NHÌN LẠI CHÍNH MÌNH</h3>
-                        <ul>
-                            <li>🔍 <strong>Nhìn lại chính mình</strong> – Để hiểu mình là ai, đang ở đâu, và muốn gì.</li>
-                            <li>❤️ <strong>Nhìn vào trái tim</strong> – Để lắng nghe những khát khao, đam mê và giá trị thật sự.</li>
-                            <li>🚶‍♂️ <strong>Để thấy lối đi</strong> – Khi tâm trí rõ ràng, con đường phía trước cũng trở nên sáng tỏ.</li>
-                        </ul>
-                        <p><span style="color: #008000; font-weight: bold;">🌿 Hãy dành một chút thời gian cho chính mình. Nhìn sâu hơn, cảm nhận nhiều hơn, và bước đi vững vàng hơn. ✨</span></p>
-                    </div>
-                    
-                    <div class="about-block about-cta">
-                        <h3><i class="fas fa-hand-point-right"></i> Bạn có đang tìm kiếm con đường cho riêng mình?</h3>
-                        <p>Hãy bắt đầu bằng cách đặt lịch tư vấn 1-1 để tìm ra hướng đi phù hợp với bạn!</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSep2B6Wbti9RsxE9GuAl2G5sWZUXyptfc0v57WWOgM-bAGPoQ/viewform?usp=header"
-                            class="btn text-white px-4 py-2"
-                            target="_blank">
-                            <i class="fas fa-calendar-check me-2"></i> ĐẶT HẸN TƯ VẤN 1-1
-                        </a>
-                    </div>
-                    
+            <section class="ikigai-panel" aria-labelledby="ikigai-title">
+                <div class="ikigai-mark">
+                    <i class="fas fa-compass"></i>
+                    <strong>IKIGAI</strong>
+                    <span>Lý do để thức dậy mỗi sáng</span>
                 </div>
-            </div>
+                <div class="ikigai-copy">
+                    <span class="section-label">Điều tôi theo đuổi</span>
+                    <h2 id="ikigai-title">Lan tỏa một cuộc sống khỏe mạnh và chủ động</h2>
+                    <p>Hành trình của tôi kết nối dinh dưỡng, công nghệ và cộng đồng để giúp mỗi người chăm sóc sức khỏe, phát triển bản thân và từng bước tạo thêm quyền lựa chọn cho tương lai.</p>
+                    <blockquote>“Truyền cảm hứng sống khỏe, phát triển bản thân và tạo thu nhập thụ động qua dinh dưỡng, công nghệ &amp; cộng đồng.”</blockquote>
+                </div>
+            </section>
+
+            <section aria-labelledby="pillars-title">
+                <div class="section-heading">
+                    <span class="section-label">Năm trụ cột</span>
+                    <h2 id="pillars-title">Một cuộc sống phát triển toàn diện</h2>
+                    <p>Không chỉ là khỏe hơn hay thành công hơn, mà là xây dựng sự cân bằng từ bên trong và lan tỏa giá trị ra xung quanh.</p>
+                </div>
+                <div class="pillar-grid">
+                    <article class="pillar-card">
+                        <span class="pillar-icon"><i class="fas fa-heart-pulse"></i></span>
+                        <h3>Sức khỏe thể chất <small>Healthy Body</small></h3>
+                        <p>Tự mình trải nghiệm sự thay đổi, rồi dùng chính hành trình chân thật ấy để truyền cảm hứng cho người khác.</p>
+                    </article>
+                    <article class="pillar-card">
+                        <span class="pillar-icon"><i class="fas fa-people-group"></i></span>
+                        <h3>Kết nối cộng đồng <small>Community Connection</small></h3>
+                        <p>Một cộng đồng tích cực mang đến sự đồng hành, động lực và sức mạnh để cùng nhau chinh phục mục tiêu.</p>
+                    </article>
+                    <article class="pillar-card">
+                        <span class="pillar-icon"><i class="fas fa-arrow-trend-up"></i></span>
+                        <h3>Phát triển bản thân <small>Personal Growth</small></h3>
+                        <p>Rèn luyện tư duy, hoàn thiện tính cách và mỗi ngày tiến gần hơn đến phiên bản tốt nhất của chính mình.</p>
+                    </article>
+                    <article class="pillar-card">
+                        <span class="pillar-icon"><i class="fas fa-chart-line"></i></span>
+                        <h3>Sức khỏe tài chính <small>Financial Wellbeing</small></h3>
+                        <p>Xây dựng sự nghiệp không chỉ để hiện thực hóa ước mơ, mà còn tạo cơ hội giúp người khác cùng thành công.</p>
+                    </article>
+                    <article class="pillar-card">
+                        <span class="pillar-icon"><i class="fas fa-earth-asia"></i></span>
+                        <h3>Bảo vệ hành tinh <small>Healthy Planet</small></h3>
+                        <p>Gieo trồng, sản xuất và tái tạo có trách nhiệm để kiến tạo giá trị mà vẫn gìn giữ hành tinh cho tương lai.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="reflection-panel" aria-labelledby="reflection-title">
+                <div class="reflection-copy">
+                    <h2 id="reflection-title">Mọi thay đổi đều bắt đầu từ việc nhìn lại chính mình</h2>
+                    <p>Khi tâm trí rõ ràng và trái tim được lắng nghe, con đường phía trước cũng dần hiện ra.</p>
+                    <div class="success-formula" aria-label="Công thức thành công">
+                        <span class="formula-chip"><i class="fas fa-heart"></i> Sức khỏe tốt</span>
+                        <span class="formula-chip"><i class="fas fa-leaf"></i> Sống lành mạnh</span>
+                        <span class="formula-chip"><i class="fas fa-star"></i> Sống theo cách của bạn</span>
+                    </div>
+                </div>
+                <div class="reflection-list">
+                    <div class="reflection-item">
+                        <i class="fas fa-magnifying-glass"></i>
+                        <div><strong>Nhìn lại chính mình</strong><span>Hiểu mình là ai, đang ở đâu và thực sự mong muốn điều gì.</span></div>
+                    </div>
+                    <div class="reflection-item">
+                        <i class="fas fa-heart"></i>
+                        <div><strong>Nhìn vào trái tim</strong><span>Lắng nghe khát khao, đam mê và những giá trị quan trọng nhất.</span></div>
+                    </div>
+                    <div class="reflection-item">
+                        <i class="fas fa-route"></i>
+                        <div><strong>Chọn một lối đi</strong><span>Biến mong muốn thành hành động và kiên trì đưa ước mơ thành hiện thực.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="survey-cta" aria-labelledby="survey-title">
+                <div>
+                    <span class="section-label">Khảo sát định hướng</span>
+                    <h2 id="survey-title">Khám phá cơ hội phù hợp với bạn</h2>
+                    <p>Dành khoảng 3 phút chia sẻ về cuộc sống hiện tại, mong muốn và rào cản của bạn. Yến sẽ đọc kỹ và liên hệ để cùng bạn nhìn ra hướng đi phù hợp.</p>
+                    <a href="khao-sat-co-hoi.html" class="about-btn">
+                        <i class="fas fa-clipboard-list"></i> Bắt đầu khảo sát
+                    </a>
+                </div>
+                <div class="survey-points" aria-label="Thông tin khảo sát">
+                    <div class="survey-point"><i class="fas fa-clock"></i> Chỉ mất khoảng 3 phút</div>
+                    <div class="survey-point"><i class="fas fa-lock"></i> Thông tin được giữ riêng tư</div>
+                    <div class="survey-point"><i class="fas fa-comments"></i> Phản hồi trực tiếp qua Zalo</div>
+                </div>
+            </section>
+
+            <section class="journey-cta" aria-labelledby="journey-title">
+                <span class="section-label">Bắt đầu từ hôm nay</span>
+                <h2 id="journey-title">Bạn có đang tìm kiếm con đường cho riêng mình?</h2>
+                <p>Một cuộc trò chuyện chân thành có thể giúp bạn nhìn rõ hơn nguồn lực hiện tại, điều đang vướng và bước tiếp theo phù hợp.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSep2B6Wbti9RsxE9GuAl2G5sWZUXyptfc0v57WWOgM-bAGPoQ/viewform?usp=header"
+                    class="about-btn" target="_blank" rel="noopener">
+                    <i class="fas fa-calendar-check"></i> Đặt hẹn tư vấn 1-1
+                </a>
+            </section>
         </div>
     </main>
-      <!-- Footer-->
-      <footer class="border-top">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-<div class="small text-center text-muted fst-italic">MoMoShare</div>
 
-                    <div class="small text-center text-muted fst-italic">Copyright &copy; YEN HAI TRAN</div>
-                </div>
+    <footer class="about-footer border-top">
+        <div class="container px-4 px-lg-5">
+            <div class="footer-inner">
+                <p>MoMoShare · Copyright &copy; YEN HAI TRAN</p>
+                <a class="footer-link" href="contact.html">Kết nối cùng Yen Tran <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </footer>
-    <!-- Bootstrap core JS-->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
 </body>
