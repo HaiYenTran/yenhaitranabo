@@ -1,261 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <base href="../../">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Healthy Lifestyle - Personal Blog of Yen Tran" />
-    <meta name="author" content="Yen Tran" />
-    <title>Healthy Lifestyle | Yen Tran</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;900&amp;display=swap" rel="stylesheet" />
-    <!-- Bootstrap icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap) -->
-    <link href="css/styles.css" rel="stylesheet" />
-
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f8f9fa;
-        }
-        .container {
-            max-width: 950px;
-            margin: auto;
-            padding: 32px 14px 0 14px;
-        }
-        .display-5 {
-            font-weight: 800;
-            letter-spacing: -1px;
-            color: #0064d2;
-        }
-        .card-list {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-        .card {
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 4px 24px #0064d230;
-            border-left: 5px solid #0064d2;
-            margin-bottom: 28px;
-            transition: box-shadow 0.16s, border-color 0.18s;
-        }
-        .card:hover {
-            box-shadow: 0 8px 40px #0064d23a;
-            border-left-color: #33a1f8;
-        }
-        .card-body {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 18px;
-            padding: 32px 22px;
-        }
-        .card-title {
-            font-size: 1.18em;
-            font-weight: 700;
-            color: #0d1727;
-            margin-bottom: 7px;
-        }
-        .card-title a {
-            text-decoration: none;
-            color: #0064d2;
-            transition: color 0.16s;
-        }
-        .card-title a:hover { color: #0855b2; text-decoration: underline;}
-        .card p {
-            color: #555;
-            margin-bottom: 0;
-            font-size: 1.05em;
-        }
-        .card.coming-soon {
-            background: #f5f5f8;
-            border-left: 5px dashed #ccc;
-            box-shadow: none;
-        }
-        .card.coming-soon .card-body {
-            padding: 26px 16px;
-            color: #aaa;
-        }
-        .img-fluid {
-            max-width: 120px;
-            min-width: 80px;
-            margin-left: 20px;
-            border-radius: 10px;
-        }
-        @media (max-width: 900px) {
-            .container { max-width: 99vw; }
-        }
-        @media (max-width: 700px) {
-            .container { padding: 8px 1vw; }
-            .card-body { flex-direction: column; padding: 22px 7px;}
-            .img-fluid { margin-left: 0; max-width: 100%; margin-top: 10px;}
-        }
-    </style>
+<base href="../../">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Lối sống khỏe và chủ động cùng Yen Tran: sức khỏe, vận động, tuổi thọ khỏe mạnh và lựa chọn tiêu dùng an toàn.">
+<meta name="author" content="Yen Tran">
+<title>Lối sống khỏe và chủ động | Yen Tran</title>
+<meta property="og:title" content="Lối sống khỏe và chủ động | Yen Tran">
+<meta property="og:description" content="Những góc nhìn và trải nghiệm thực tế giúp bạn sống khỏe, hiểu cơ thể và chủ động hơn mỗi ngày.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.ico">
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<style>
+:root{--ink:#17332a;--muted:#63736c;--green:#18785a;--deep:#0b4d38;--mint:#e8f6ef;--cream:#fbf8f0;--gold:#e8c16f;--border:#dce8e2}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Open Sans',sans-serif}.container{width:min(1120px,calc(100% - 40px));margin:auto}
+#mainNav{position:absolute;top:0;right:0;left:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.16);background:rgba(6,51,36,.28);backdrop-filter:blur(12px)}
+#mainNav .navbar-brand,#mainNav .nav-link{color:#fff!important}#mainNav .navbar-brand{padding:18px 0;font-size:1.12rem;font-weight:800;letter-spacing:.08em}#mainNav .nav-link{position:relative;font-size:.72rem;font-weight:700;text-transform:uppercase}#mainNav .nav-link.active:after{position:absolute;right:.75rem;bottom:13px;left:.75rem;height:2px;background:var(--gold);content:''}.navbar-toggler{border-color:rgba(255,255,255,.45);color:#fff!important}
+.hero{position:relative;overflow:hidden;padding:150px 0 92px;background:linear-gradient(135deg,rgba(5,55,38,.96),rgba(24,120,90,.89)),url('assets/img/Lifespan_VS_Healthspan.jpg') center/cover;color:#fff}
+.hero:before{position:absolute;top:-130px;right:-80px;width:390px;height:390px;border-radius:50%;background:rgba(255,255,255,.06);content:''}.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:60px;align-items:end}.eyebrow{display:inline-flex;gap:8px;align-items:center;margin-bottom:20px;padding:7px 14px;border:1px solid rgba(255,255,255,.27);border-radius:999px;background:rgba(255,255,255,.1);font-size:.75rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.hero h1{max-width:720px;margin:0 0 18px;font-family:'Lora',serif;font-size:clamp(2.65rem,6vw,5.1rem);line-height:1.02}.hero-copy{max-width:650px;margin:0;color:rgba(255,255,255,.82);font-size:1.05rem;line-height:1.75}.hero-note{padding:25px;border:1px solid rgba(255,255,255,.22);border-radius:24px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px)}.hero-note strong{display:block;margin-bottom:8px;color:var(--gold);font-family:'Lora',serif;font-size:1.3rem}.hero-note p{margin:0;color:rgba(255,255,255,.8);line-height:1.65}
+main{padding:70px 0 86px}.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:30px}.section-label{color:var(--green);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.section-head h2{max-width:620px;margin:7px 0 0;font-family:'Lora',serif;font-size:clamp(2rem,4vw,3rem)}.section-head p{max-width:430px;margin:0;color:var(--muted);line-height:1.7}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:70px}.pillar{padding:22px;border:1px solid var(--border);border-radius:18px;background:#fff}.pillar-icon{display:grid;width:42px;height:42px;margin-bottom:15px;border-radius:13px;background:var(--mint);color:var(--green);place-items:center}.pillar h3{margin:0 0 7px;font-size:1rem}.pillar p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.55}
+.featured{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.story{display:grid;grid-template-columns:180px 1fr;overflow:hidden;border:1px solid var(--border);border-radius:22px;background:#fff;box-shadow:0 12px 30px rgba(20,70,50,.07);transition:.2s}.story:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(20,70,50,.12)}.story-image{min-height:230px;background:var(--mint) center/cover}.story-body{display:flex;flex-direction:column;padding:24px}.story-meta{margin-bottom:9px;color:var(--green);font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.story h3{margin:0 0 10px;font-family:'Lora',serif;font-size:1.25rem;line-height:1.35}.story p{margin:0 0 18px;color:var(--muted);font-size:.86rem;line-height:1.65}.story a{margin-top:auto;color:var(--deep);font-size:.82rem;font-weight:800;text-decoration:none}.story-alert{grid-column:1/-1;grid-template-columns:280px 1fr}.story-alert .story-image{background-image:linear-gradient(135deg,#9e4b41,#db776a);position:relative}.story-alert .story-image:after{position:absolute;inset:0;display:grid;color:#fff;font-size:3rem;content:'⚠';place-items:center}
+.cta{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;margin-top:68px;padding:38px 42px;border-radius:28px;background:linear-gradient(135deg,var(--deep),var(--green));color:#fff}.cta h2{margin:0 0 9px;font-family:'Lora',serif;font-size:clamp(1.8rem,4vw,2.7rem)}.cta p{max-width:690px;margin:0;color:rgba(255,255,255,.76);line-height:1.7}.cta-btn{display:inline-flex;gap:8px;align-items:center;padding:13px 20px;border-radius:999px;background:#fff;color:var(--deep)!important;font-weight:800;text-decoration:none;white-space:nowrap}
+footer{padding:32px 0;border-top:1px solid var(--border);background:#f3f7f5;color:var(--muted);font-size:.85rem}.footer-inner{display:flex;justify-content:space-between;gap:20px}.footer-inner p{margin:0}.to-top{position:fixed;right:22px;bottom:24px;z-index:30;display:none;width:46px;height:46px;border:0;border-radius:50%;background:var(--green);color:#fff;box-shadow:0 8px 22px rgba(11,77,56,.28);cursor:pointer}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-note{max-width:580px}.pillars{grid-template-columns:repeat(2,1fr)}.featured{grid-template-columns:1fr}.story-alert{grid-column:auto}.story-alert,.story{grid-template-columns:190px 1fr}.cta{grid-template-columns:1fr;justify-items:start}}
+@media(max-width:768px){#mainNav{background:rgba(7,57,40,.98)}#mainNav .navbar-collapse{padding-bottom:15px}#mainNav .nav-link{padding:10px 0!important}#mainNav .nav-link.active:after{right:auto;bottom:5px;left:0;width:35px}.hero{padding:126px 0 68px}.section-head{display:block}.section-head p{margin-top:14px}.story,.story-alert{grid-template-columns:1fr}.story-image{min-height:190px}.cta{padding:27px}.footer-inner{flex-direction:column}.container{width:min(100% - 28px,1120px)}}
+@media(max-width:520px){.pillars{grid-template-columns:1fr}.hero h1{font-size:2.55rem}}
+</style>
 </head>
-<!-- Nút về đầu trang -->
-<button id="goTopBtn" title="Về đầu trang" style="
-    position: fixed;
-    right: 24px;
-    bottom: 32px;
-    z-index: 99999;
-    background: linear-gradient(90deg,#00b897,#42e6c2);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    box-shadow: 0 2px 16px #0099863b;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 2em;
-    cursor: pointer;
-    transition: background 0.2s;
-">
-    ↑
-</button>
+<body>
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">YEN TRAN</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Mở trình đơn">Trình đơn <i class="fas fa-bars"></i></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto py-3 py-lg-0">
+        <li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="index.html">Trang chủ</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="about.html">Giới thiệu</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="events.html">Sự kiện</a></li>
+        <li class="nav-item"><a class="nav-link active px-lg-2 py-lg-4" href="healthylifestyle.html" aria-current="page">Lối sống khỏe</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="healthymeal.html">Bữa ăn lành mạnh</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="passiveincome.html">Thu nhập thụ động</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="contact.html">Liên hệ</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="digital_index.html">Sản phẩm số</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow"><i class="fas fa-seedling"></i> Sống khỏe từ những lựa chọn nhỏ</span>
+      <h1>Lối sống khỏe<br>và chủ động</h1>
+      <p class="hero-copy">Sức khỏe không chỉ là không có bệnh. Đó là khả năng hiểu cơ thể, xây những thói quen phù hợp và đưa ra lựa chọn có ý thức mỗi ngày.</p>
+    </div>
+    <aside class="hero-note">
+      <strong>Khỏe hơn, không cực đoan hơn.</strong>
+      <p>Những chia sẻ tại đây dựa trên trải nghiệm thực tế, ưu tiên sự bền vững và khuyến khích bạn tìm đến chuyên gia y tế khi cần.</p>
+    </aside>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <section aria-labelledby="pillars-title">
+      <div class="section-head">
+        <div><span class="section-label">Bốn nền tảng</span><h2 id="pillars-title">Một cơ thể khỏe cần nhiều hơn một thói quen</h2></div>
+        <p>Bắt đầu từ điều gần gũi nhất, duy trì đủ lâu và điều chỉnh theo chính cơ thể của bạn.</p>
+      </div>
+      <div class="pillars">
+        <article class="pillar"><span class="pillar-icon"><i class="fas fa-heart-pulse"></i></span><h3>Hiểu cơ thể</h3><p>Nhận biết tín hiệu, giới hạn và nhu cầu thay đổi theo từng giai đoạn.</p></article>
+        <article class="pillar"><span class="pillar-icon"><i class="fas fa-person-running"></i></span><h3>Vận động đúng</h3><p>Chọn cách tập phù hợp để khỏe hơn mà vẫn có thể duy trì lâu dài.</p></article>
+        <article class="pillar"><span class="pillar-icon"><i class="fas fa-shield-heart"></i></span><h3>Chủ động phòng ngừa</h3><p>Đọc thông tin có chọn lọc và giảm những rủi ro có thể kiểm soát.</p></article>
+        <article class="pillar"><span class="pillar-icon"><i class="fas fa-sun"></i></span><h3>Sống cân bằng</h3><p>Nuôi dưỡng năng lượng qua giấc ngủ, tinh thần và các mối quan hệ.</p></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="stories-title">
+      <div class="section-head">
+        <div><span class="section-label">Bài viết chọn lọc</span><h2 id="stories-title">Kiến thức để bạn tự đưa ra lựa chọn</h2></div>
+        <p>Từ tuổi thọ khỏe mạnh, vận động đến những cảnh báo giúp bạn tiêu dùng an toàn hơn.</p>
+      </div>
+      <div class="featured">
+        <article class="story story-alert">
+          <div class="story-image" role="img" aria-label="Cảnh báo thu hồi mỹ phẩm"></div>
+          <div class="story-body"><span class="story-meta">Cảnh báo tiêu dùng · Mới</span><h3>Công văn 1772/QLD-MP: 511 mỹ phẩm Việt Hương bị thu hồi</h3><p>Danh mục các sản phẩm chăm sóc da, tóc, cơ thể, trang điểm và nước hoa bị đình chỉ lưu hành, thu hồi toàn quốc.</p><a href="pages/health/thu-hoi-my-pham-viet-huong-2026.html">Xem danh sách và thông tin chi tiết <i class="fas fa-arrow-right"></i></a></div>
+        </article>
+        <article class="story">
+          <div class="story-image" style="background-image:url('assets/img/Lifespan_VS_Healthspan.jpg')" role="img" aria-label="Tuổi thọ và tuổi thọ khỏe mạnh"></div>
+          <div class="story-body"><span class="story-meta">Sức khỏe dài hạn</span><h3>Sự khác nhau giữa tuổi thọ và tuổi thọ khỏe mạnh</h3><p>Sống lâu là một con số; sống khỏe trong những năm tháng ấy mới là chất lượng cuộc sống.</p><a href="pages/health/LIFESPAN.html">Đọc bài viết <i class="fas fa-arrow-right"></i></a></div>
+        </article>
+        <article class="story">
+          <div class="story-image" style="background-image:url('assets/img/banmakhoe.jpg')" role="img" aria-label="Thói quen sống trẻ khỏe"></div>
+          <div class="story-body"><span class="story-meta">Lão hóa lành mạnh</span><h3>Già hay không — do những lựa chọn mỗi ngày</h3><p>Lão hóa là tự nhiên, nhưng vận động, dinh dưỡng và tinh thần có thể giúp ta đi qua hành trình ấy khỏe mạnh hơn.</p><a href="pages/health/AntiAgeTips.html">Khám phá những gợi ý <i class="fas fa-arrow-right"></i></a></div>
+        </article>
+        <article class="story">
+          <div class="story-image" style="background-image:url('assets/img/runner.png')" role="img" aria-label="Chạy bộ thông minh"></div>
+          <div class="story-body"><span class="story-meta">Vận động</span><h3>Chạy bộ thông minh: chọn đúng cách chạy</h3><p>Không phải cứ chạy nhiều và thật lâu là tốt. Mỗi cách chạy phục vụ một mục tiêu khác nhau.</p><a href="pages/health/SmartRunning.html">Chọn cách chạy phù hợp <i class="fas fa-arrow-right"></i></a></div>
+        </article>
+        <article class="story">
+          <div class="story-image" style="background-image:url('assets/img/2024lookback.jpeg')" role="img" aria-label="Nhìn lại hành trình một năm"></div>
+          <div class="story-body"><span class="story-meta">Tinh thần và hành trình</span><h3>Một năm đáng nhớ: biết ơn và nhìn lại</h3><p>Nhìn lại những điều đã qua để nhận ra bài học, sự trưởng thành và điều ta muốn tiếp tục nuôi dưỡng.</p><a href="2024LOOKBACK.html">Đọc câu chuyện <i class="fas fa-arrow-right"></i></a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div><h2 id="cta-title">Bạn muốn bắt đầu một lối sống phù hợp hơn?</h2><p>Một cuộc trò chuyện giúp bạn nhìn lại thói quen hiện tại, mục tiêu sức khỏe và bước nhỏ có thể bắt đầu ngay mà không tạo thêm áp lực.</p></div>
+      <a class="cta-btn" href="contact.html"><i class="fas fa-comments"></i> Trao đổi cùng Yen Tran</a>
+    </section>
+  </div>
+</main>
+
+<footer><div class="container footer-inner"><p>MoMoShare · Copyright &copy; YEN HAI TRAN</p><p>Sống khỏe · Sống chủ động</p></div></footer>
+<button class="to-top" id="toTop" type="button" aria-label="Về đầu trang"><i class="fas fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Ẩn/hiện nút khi cuộn trang
-    window.addEventListener('scroll', function() {
-        var btn = document.getElementById('goTopBtn');
-        if (window.scrollY > 300) btn.style.display = 'flex';
-        else btn.style.display = 'none';
-    });
-    // Click để về đầu trang
-    document.getElementById('goTopBtn').onclick = function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+const topButton=document.getElementById('toTop');window.addEventListener('scroll',()=>{topButton.style.display=window.scrollY>420?'grid':'none'});topButton.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
-<body class="d-flex flex-column h-100 bg-light">
-    <main class="flex-shrink-0">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-            <div class="container px-5">
-                <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">YEN TRAN</span></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4 active" href="index.html">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Giới thiệu</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="events.html">Sự kiện</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthylifestyle.html">Lối sống khỏe</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthymeal.html">Bữa ăn lành mạnh</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="passiveincome.html">Thu nhập thụ động</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Liên hệ</a></li>
-
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="digital_index.html">Sản phầm số</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Projects Section -->
-        <section class="py-5">
-            <div class="container mb-5">
-                <div class="text-center mb-5">
-                    <h1 class="display-5 fw-bolder mb-0">Lối Sống Khoẻ và Chủ Động (Healthy Lifestyle)</h1>
-                    <div class="lead mt-3 mb-1" style="color:#666; max-width:520px; margin:auto; font-weight:400;">
-                        Cùng khám phá những thói quen sống khỏe, chủ động, trẻ trung hơn mỗi ngày – từ góc nhìn & trải nghiệm thực tế.
-                    </div>
-                </div>
-                <div class="card-list">
-                    <!-- Project Card: Thu hồi mỹ phẩm Việt Hương -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <h2 class="card-title">
-                                    <a href="thu-hoi-my-pham-viet-huong-2026.html">⚠️ Công văn 1772/QLD-MP: 511 mỹ phẩm Việt Hương bị thu hồi toàn quốc</a>
-                                </h2>
-                                <p>Tổng hợp danh mục sản phẩm chăm sóc da, tóc, cơ thể, trang điểm và nước hoa bị đình chỉ lưu hành, thu hồi do không áp dụng CGMP-ASEAN.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Card 1 -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <h2 class="card-title">
-                                    <a href="2024LOOKBACK.html">🌿 Kết Thúc Một Năm Đáng Nhớ - Cảm Ơn & Nhìn Lại ❤️</a>
-                                </h2>
-                                <p>Vậy là một năm nữa lại sắp khép lại. Đây là lúc mình ngồi xuống, nhìn lại những gì đã qua, những gì đã đạt được và cả những điều vẫn còn đang dang dở. Một năm với nhiều cảm xúc, nhiều bài học và những dấu mốc khó quên.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Card 2 -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <h2 class="card-title">
-                                    <a href="LIFESPAN.html">🍀 Sự Khác Nhau Giữa Tuổi Thọ & Tuổi Thọ Khỏe Mạnh 🧚🏻‍♀️</a>
-                                </h2>
-                                <p>Lifespan vs Healthspan - "He who has great health has a thousand dreams; he who has bad health only has one." ~ Rolf Magener</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Card 3 -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <h2 class="card-title">
-                                    <a href="AntiAgeTips.html">🌟 Già Hay Không – Do Mình Cả Thôi! 😆✨</a>
-                                </h2>
-                                <p>Có bao giờ bạn nhìn vào gương và tự hỏi: "Ủa, nếp nhăn này ở đâu ra vậy trời?" 🤨 Lão hóa là chuyện ai cũng phải trải qua, nhưng chúng ta hoàn toàn có thể "hãm phanh" nó lại!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Card 4 -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div>
-                                <h2 class="card-title">
-                                    <a href="SmartRunning.html">🏃‍♂️🔥 Chạy Bộ Thông Minh – Bạn Đã Chọn Đúng Cách Chạy Chưa?</a>
-                                </h2>
-                                <p>Bạn có biết không phải cứ chạy càng nhiều, càng lâu là tốt? Có 3 cách chạy phổ biến, mỗi cách có hiệu quả khác nhau. Hãy chọn đúng để đạt kết quả tốt nhất nhé!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Card 5 - Coming soon -->
-                    <div class="card coming-soon">
-                        <div class="card-body">
-                            <div>
-                                <h2 class="card-title">Next item</h2>
-                                <p>Coming soon ...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Call to action section-->
-        <section class="py-5 bg-gradient-primary-to-secondary text-white">
-            <div class="container px-5 my-5">
-                <div class="text-center">
-                    <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
-                    <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">Contact me</a>
-                </div>
-            </div>
-        </section>
-    </main>
-    <!-- Footer-->
-    <footer class="bg-white py-4 mt-auto">
-        <div class="container px-5">
-            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-<div class="small text-center text-muted fst-italic">MoMoShare</div>
-
-                <div class="small text-center text-muted fst-italic">Copyright &copy; YEN HAI TRAN</div>
-            </div>
-        </div>
-    </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/scripts.js"></script>
 </body>
 </html>
