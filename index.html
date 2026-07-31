@@ -1,502 +1,79 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Blog về phát triển bản thân, sức khỏe, tư duy sống tích cực của Trần Hải Yến" />
-    <meta name="author" content="Yen Tran" />
-    <title>Blog cá nhân - Yen Tran</title>
-    <!-- Open Graph Meta for preview -->
-    <meta property="og:title" content="Blog cá nhân - Yen Tran" />
-    <meta property="og:description" content="Trang chia sẻ về phát triển bản thân, sức khỏe, tư duy sống tích cực của Trần Hải Yến." />
-    <meta property="og:image" content="https://haiyentran.github.io/assets/img/avatar_yen.jpg" />
-    <meta property="og:url" content="https://haiyentran.github.io/" />
-    <meta property="og:type" content="website" />
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Font Awesome icons -->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"/>
-    <!-- Bootstrap core theme CSS -->
-    <link href="css/styles.css" rel="stylesheet" />
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            background: #fafbfc;
-        }
-        .header-avatar-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 14px;
-            margin-bottom: 0px;
-        }
-        .header-avatar {
-            width: 92px;
-            height: 92px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #00b894;
-            box-shadow: 0 4px 24px #09af9152;
-            background: #fff;
-            margin-bottom: 6px;
-        }
-        @media (max-width: 600px) {
-            .header-avatar { width: 63px; height: 63px;}
-        }
-        .site-heading h1 {
-            font-weight: 800;
-            color: #fff !important;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .site-heading .subheading {
-            font-size: 1.25em;
-            color: #555;
-            font-style: italic;
-        }
-        .post-preview {
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 28px #0d6efd12;
-            padding: 32px 28px 20px 28px;
-            margin-bottom: 30px;
-            transition: box-shadow .15s;
-        }
-        .post-preview:hover {
-            box-shadow: 0 8px 44px #0d6efd25;
-            background: #f4f8ff;
-        }
-        .post-title {
-            font-size: 1.4em;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #184cb3;
-        }
-        .post-subtitle {
-            font-size: 1.06em;
-            color: #444;
-            font-weight: 400;
-        }
-        .post-meta {
-            color: #888;
-            font-size: 0.98em;
-            margin-top: 12px;
-        }
-        .post-meta a {
-            color: #1367d1;
-            text-decoration: underline;
-        }
-        hr.my-4 {
-            border-top: 1.5px dashed #d0d6df;
-            margin: 22px 0;
-        }
-        .ffit-section {
-            background: linear-gradient(95deg, #e1fff8 75%, #d2f7ed 100%);
-            border-left: 7px solid #00b894;
-            box-shadow: 0 4px 24px #09af9154;
-            border-radius: 17px;
-            padding: 24px 18px 18px 24px;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-        .ffit-section img {
-            width: 84px;
-            max-width: 30vw;
-            max-height: 95px;
-            object-fit: contain;
-            border-radius: 14px;
-            box-shadow: 0 4px 24px #09af9154;
-            margin-right: 6px;
-        }
-        @media (max-width: 600px) {
-            .ffit-section img {
-                width: 55px;
-                max-width: 22vw;
-                max-height: 62px;
-                margin-right: 0;
-            }
-        }
-        .ffit-section .desc {
-            flex: 1;
-        }
-        .ffit-section h2 {
-            color: #00b894;
-            font-size: 1.22em;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        .ffit-section ul {
-            margin: 6px 0 4px 1.2em;
-            font-size: 0.99em;
-            color: #147a6c;
-        }
-        .ffit-section .btn {
-            background: linear-gradient(90deg,#00b894,#26ffbe);
-            font-weight: 600;
-            border-radius: 26px;
-            color: #fff;
-            padding: 12px 18px;
-            border: none;
-            margin-top: 12px;
-            text-decoration: none;
-            display: inline-block;
-            transition: filter 0.18s;
-        }
-        .ffit-section .btn:hover {
-            filter: brightness(0.93);
-            color: #fff;
-        }
-        .story-section {
-            background: linear-gradient(95deg, #fff3e4 70%, #ffe1c4 100%);
-            border-left-color: #ff8f3d;
-            box-shadow: 0 4px 24px #ffb56a54;
-        }
-        .story-section h2 {
-            color: #ff7a1a;
-        }
-        .story-section .btn {
-            background: linear-gradient(90deg,#ff8f3d,#ffb25a);
-        }
-        .supplement-section {
-            background: linear-gradient(95deg, #f0faf2 70%, #d8f3dc 100%);
-            border-left-color: #2d6a4f;
-            box-shadow: 0 4px 24px #52b78838;
-        }
-        .supplement-section h2 {
-            color: #1a4a2e;
-        }
-        .story-clickable {
-            cursor: pointer;
-        }
-        .story-clickable:focus {
-            outline: 3px solid #ffb25a;
-            outline-offset: 4px;
-        }
-        .demo-section {
-            background: linear-gradient(96deg, #f1fbf8 70%, #e1fef4 100%);
-            border-left: 7px solid #1cae80;
-            box-shadow: 0 4px 20px #31bfa714;
-            border-radius: 16px;
-            margin: 32px 0 28px 0;
-            padding: 20px 18px 18px 24px;
-        }
-        .demo-section h2 {
-            color: #10a579;
-            font-size: 1.16em;
-            font-weight: 700;
-            margin-bottom: 11px;
-            letter-spacing: 0.5px;
-        }
-        .demo-list {
-            margin: 0; padding: 0; list-style: none;
-            display: flex; flex-wrap: wrap; gap: 18px 30px;
-        }
-        .demo-list li {
-            font-size: 1.05em;
-            margin-bottom: 5px;
-        }
-        .demo-list a {
-            color: #0d967c;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 6px 16px 6px 8px;
-            background: #f0fff9;
-            border-radius: 18px;
-            transition: background 0.18s;
-            box-shadow: 0 2px 10px #51e2b40b;
-        }
-        .demo-list a:hover {
-            background: #c7f7de;
-            color: #07795c;
-        }
-        @media (max-width: 768px) {
-            .site-heading h1 { font-size: 2rem; }
-            .container, .container > .row, .container > .row > .col-md-10 { padding-left: 5px !important; padding-right: 5px !important; }
-            .post-preview { padding: 18px 6px 12px 12px; }
-            .post-title, .post-subtitle { text-align: left; font-size: 1em; }
-            .ffit-section { flex-direction: column; gap: 12px; padding: 16px 6px 10px 6px;}
-            .ffit-section img { max-width: 70px; }
-            .ffit-section h2 { font-size: 1em; margin-bottom: 6px;}
-            .demo-section { padding: 14px 5vw 14px 5vw; }
-            .demo-list { gap: 13px 0; flex-direction: column;}
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Góc chia sẻ của Yến Trần về nội lực, sức khỏe chủ động và hành trình xây dựng một cuộc sống có nhiều lựa chọn hơn.">
+  <meta name="author" content="Yen Tran">
+  <meta property="og:title" content="Yến Trần — Sống khỏe, sống chủ động">
+  <meta property="og:description" content="Những câu chuyện chân thật về sức khỏe, nội lực và quyền làm chủ cuộc sống.">
+  <meta property="og:image" content="https://haiyentran.github.io/yenhaitranabo/assets/img/avatar_yen.jpg">
+  <meta property="og:url" content="https://haiyentran.github.io/yenhaitranabo/">
+  <meta property="og:type" content="website">
+  <title>Yến Trần — Sống khỏe, sống chủ động</title>
+  <link rel="icon" href="assets/favicon.ico">
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+    :root{--forest:#173f35;--green:#2d6a4f;--leaf:#40916c;--sage:#dfeae1;--cream:#f8f6f2;--paper:#fffdfa;--ink:#26342f;--muted:#68746f;--gold:#c99b55;--line:rgba(45,106,79,.14)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Open Sans',sans-serif;line-height:1.7}.page-shell{overflow:hidden}.content-wrap{width:min(1160px,calc(100% - 40px));margin:auto}h1,h2,h3{font-family:'Lora',serif}
+    #mainNav{background:rgba(248,246,242,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);padding:0;position:relative;z-index:10}.navbar-brand{font-family:'Lora',serif;font-size:1.25rem;font-weight:700;color:var(--forest)!important;letter-spacing:.08em}.nav-link{color:#43514b!important;font-size:.82rem;font-weight:700;letter-spacing:.015em}.nav-link:hover,.nav-link.active{color:var(--green)!important}.navbar-toggler{border-color:rgba(45,106,79,.3);color:var(--forest)}
+    .hero{position:relative;padding:88px 0 74px;background:linear-gradient(125deg,#f8f6f2 0%,#edf3ec 58%,#dce9df 100%)}.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}.hero:before{width:460px;height:460px;right:-170px;top:-230px;border:92px solid rgba(64,145,108,.08)}.hero:after{width:180px;height:180px;left:-75px;bottom:-100px;background:rgba(201,155,85,.07)}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:70px}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--green);font-size:.75rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.eyebrow:before{content:"";width:34px;height:2px;background:var(--gold)}.hero h1{font-size:clamp(3rem,6vw,5.7rem);line-height:.98;color:var(--forest);font-weight:700;letter-spacing:-.05em;margin:21px 0 25px}.hero h1 em{display:block;color:var(--leaf);font-style:italic;font-weight:600}.hero-copy{max-width:660px;color:#53615b;font-size:1.06rem}.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:31px}.primary-btn,.secondary-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:13px 22px;text-decoration:none;font-size:.87rem;font-weight:800;transition:.2s}.primary-btn{background:var(--forest);color:white}.primary-btn:hover{background:var(--green);color:white;transform:translateY(-2px)}.secondary-btn{border:1px solid rgba(45,106,79,.35);color:var(--green);background:rgba(255,255,255,.58)}.secondary-btn:hover{background:white;color:var(--forest)}
+    .portrait-card{position:relative;max-width:430px;margin-left:auto}.portrait-frame{position:relative;z-index:2;background:var(--paper);padding:14px;border-radius:38% 38% 20px 20px;box-shadow:0 27px 60px rgba(23,63,53,.15);transform:rotate(1.5deg)}.portrait-frame img{display:block;width:100%;aspect-ratio:4/4.35;object-fit:cover;object-position:center top;border-radius:37% 37% 14px 14px}.portrait-note{position:absolute;z-index:3;left:-48px;bottom:32px;background:var(--forest);color:#fff;padding:16px 20px;border-radius:16px;box-shadow:0 15px 35px rgba(23,63,53,.25);font-family:'Lora',serif;font-size:1.03rem;line-height:1.35}.portrait-note span{display:block;color:#b9d8c4;font-family:'Open Sans',sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px}
+    .section{padding:88px 0}.section-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px;align-items:end;margin-bottom:43px}.section-head h2{font-size:clamp(2.15rem,4vw,3.55rem);line-height:1.08;color:var(--forest);margin:12px 0 0;font-weight:700}.section-intro{color:var(--muted);margin:0;max-width:640px}.pillars{background:var(--forest)}.pillars .eyebrow{color:#b9dbc5}.pillars .section-head h2{color:white}.pillars .section-intro{color:#c5d6d0}.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.pillar{display:flex;flex-direction:column;padding:31px;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:rgba(255,255,255,.045);color:white;text-decoration:none;transition:.22s}.pillar:hover{color:white;background:rgba(255,255,255,.09);transform:translateY(-4px)}.pillar-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:#e4f0e8;color:var(--green)}.pillar h3{font-size:1.32rem;margin:20px 0 9px}.pillar p{color:#bdd0c8;font-size:.91rem;margin:0 0 22px}.pillar-more{margin-top:auto;color:#d8eadf;font-size:.79rem;font-weight:800}
+    .featured{background:var(--cream)}.featured-grid{display:grid;grid-template-columns:1.2fr .8fr;grid-template-rows:1fr 1fr;gap:19px}.feature-card{position:relative;display:flex;flex-direction:column;min-height:250px;background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:31px;text-decoration:none;color:var(--ink);overflow:hidden;transition:.22s}.feature-card:first-child{grid-row:1/3;min-height:520px;background:linear-gradient(145deg,#fffdfa,#eef5ef)}.feature-card:after{content:"";position:absolute;right:-55px;bottom:-65px;width:175px;height:175px;border-radius:50%;background:rgba(64,145,108,.07)}.feature-card:hover{color:var(--ink);transform:translateY(-4px);box-shadow:0 18px 45px rgba(23,63,53,.1)}.feature-tag{align-self:flex-start;background:var(--sage);color:var(--green);padding:6px 10px;border-radius:999px;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.11em}.feature-card h3{position:relative;z-index:1;color:var(--forest);font-size:1.5rem;line-height:1.3;margin:22px 0 12px}.feature-card:first-child h3{font-size:clamp(2rem,4vw,3.3rem);line-height:1.12;margin-top:auto}.feature-card p{position:relative;z-index:1;color:var(--muted);font-size:.91rem;margin:0 0 24px}.feature-meta{position:relative;z-index:1;margin-top:auto;color:#7d8883;font-size:.74rem}.feature-card:first-child .feature-meta{margin-top:0}.arrow-circle{position:absolute;right:28px;top:28px;width:39px;height:39px;border-radius:50%;display:grid;place-items:center;background:var(--forest);color:white}
+    .journeys{background:#e6eee7}.journey-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}.journey{background:var(--paper);border-radius:22px;padding:27px;border:1px solid var(--line)}.journey-index{font-family:'Lora',serif;font-size:2.5rem;line-height:1;color:#c4d9ca}.journey h3{font-size:1.3rem;color:var(--forest);margin:18px 0 9px}.journey p{color:var(--muted);font-size:.89rem;margin-bottom:21px}.journey a{color:var(--green);text-decoration:none;font-size:.8rem;font-weight:800}
+    .library{background:var(--cream)}.post-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.post-card{display:grid;grid-template-columns:auto 1fr;gap:18px;background:var(--paper);border:1px solid var(--line);border-radius:19px;padding:23px;text-decoration:none;color:var(--ink);transition:.2s}.post-card:hover{color:var(--ink);border-color:rgba(45,106,79,.3);box-shadow:0 12px 32px rgba(23,63,53,.08);transform:translateY(-2px)}.post-date{width:48px;text-align:center;color:var(--leaf);font-family:'Lora',serif;font-size:1.45rem;line-height:1}.post-date span{display:block;color:#87918d;font-family:'Open Sans',sans-serif;font-size:.61rem;text-transform:uppercase;letter-spacing:.08em;margin-top:6px}.post-card h3{font-size:1.08rem;line-height:1.4;color:var(--forest);margin:0 0 7px}.post-card p{font-size:.8rem;color:var(--muted);margin:0}.demo-card{margin-top:25px;display:flex;justify-content:space-between;align-items:center;gap:30px;background:var(--forest);color:white;border-radius:22px;padding:28px 32px}.demo-card h3{font-size:1.35rem;margin:0 0 5px}.demo-card p{color:#c7d9d2;margin:0;font-size:.88rem}.demo-card a{flex:none;background:white;color:var(--forest);border-radius:999px;padding:11px 18px;text-decoration:none;font-weight:800;font-size:.81rem}
+    .cta{margin:78px auto;background:linear-gradient(120deg,var(--green),var(--forest));color:white;border-radius:30px;padding:48px 52px;display:flex;justify-content:space-between;align-items:center;gap:45px}.cta h2{font-size:clamp(1.9rem,3.5vw,3rem);line-height:1.13;margin:0 0 12px}.cta p{color:#d8e8df;max-width:700px;margin:0}.cta-btn{flex:none;background:white;color:var(--forest);padding:14px 22px;border-radius:999px;text-decoration:none;font-weight:800}.cta-btn:hover{color:var(--green);transform:translateY(-2px)}
+    footer{border-top:1px solid var(--line);padding:27px 0;background:var(--cream);color:#65716c;font-size:.82rem}.footer-row{display:flex;justify-content:space-between;align-items:center}.footer-row a{color:var(--green);text-decoration:none}.to-top{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border:0;border-radius:50%;background:var(--forest);color:white;display:none;place-items:center;z-index:20;box-shadow:0 8px 25px rgba(23,63,53,.22)}
+    @media(max-width:900px){.hero-grid,.section-head{grid-template-columns:1fr}.hero-grid,.section-head{gap:38px}.portrait-card{margin:0 auto}.pillar-grid,.journey-grid{grid-template-columns:1fr}.featured-grid{grid-template-columns:1fr;grid-template-rows:auto}.feature-card:first-child{grid-row:auto;min-height:420px}.cta{flex-direction:column;align-items:flex-start}.navbar-nav{padding-bottom:15px}}
+    @media(max-width:650px){.content-wrap{width:min(100% - 28px,1160px)}.hero{padding:61px 0 65px}.hero h1{font-size:2.8rem}.portrait-note{left:-8px;bottom:20px}.section{padding:66px 0}.featured-grid,.post-grid{grid-template-columns:1fr}.feature-card,.feature-card:first-child{min-height:310px;padding:25px}.feature-card:first-child h3{font-size:2rem}.demo-card,.cta{flex-direction:column;align-items:flex-start;padding:30px 23px}.demo-card a,.cta-btn{width:100%;text-align:center}.cta{margin:54px auto}.footer-row{flex-direction:column;gap:7px;text-align:center}}
+  </style>
 </head>
-<button id="goTopBtn" title="Về đầu trang" style="
-    position: fixed;
-    right: 24px;
-    bottom: 32px;
-    z-index: 99999;
-    background: linear-gradient(90deg,#00b897,#42e6c2);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    box-shadow: 0 2px 16px #0099863b;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 2em;
-    cursor: pointer;
-    transition: background 0.2s;
-">
-    ↑
-</button>
-<script>
-    window.addEventListener('scroll', function() {
-        var btn = document.getElementById('goTopBtn');
-        if (window.scrollY > 300) btn.style.display = 'flex';
-        else btn.style.display = 'none';
-    });
-    document.getElementById('goTopBtn').onclick = function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-</script>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="index.html">YEN TRAN</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Mở/đóng điều hướng">
-                Trình đơn <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4 active" href="index.html">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Giới thiệu</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="events.html">Sự kiện</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthylifestyle.html">Lối sống khỏe</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthymeal.html">Bữa ăn lành mạnh</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="passiveincome.html">Thu nhập thụ động</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Liên hệ</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="digital_index.html">Sản phẩm số</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
-        <div class="container position-relative px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <div class="site-heading py-4">
-                        <h1>TRAN HAI YEN</h1>
-                        <div class="header-avatar-wrap">
-                            <img src="assets/img/avatar_yen.jpg" class="header-avatar" alt="Avatar Yen Tran"/>
-                        </div>
-                        <span class="subheading">Lan tỏa giá trị sống tích cực.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <section class="ffit-section mb-4">
-                    <img src="assets/img/ffit/1.png" alt="F.FIT Slide minh họa" />
-                    <div class="desc">
-                        <h2>F.FIT – Phương pháp giảm mỡ khoa học & bền vững</h2>
-                        <div>
-                            <b>F.FIT</b> là phương pháp giảm mỡ hiệu quả dựa trên khoa học dinh dưỡng, giúp bạn hiểu về cơ thể, biết cách kiểm soát cân nặng lâu dài – không lo tái cân, không ép xác, không hóa chất độc hại.
-                        </div>
-                        <ul>
-                            <li>Dựa trên kiến thức dinh dưỡng & cá nhân hóa từng người.</li>
-                            <li>“Tốt nghiệp” F.FIT bạn có thể tự kiểm soát vóc dáng, không lo tăng lại.</li>
-                            <li>Sản phẩm hữu cơ, chất lượng cao, an toàn cho sức khỏe.</li>
-                        </ul>
-                        <a href="ffit_gallery.html" class="btn">Xem thư viện F.FIT →</a>
-                    </div>
-                </section>
-                <section class="ffit-section story-section story-clickable mb-4" role="link" tabindex="0"
-                    onclick="window.location.href='nhung-cau-chuyen.html';"
-                    onkeydown="if(event.key === 'Enter' || event.key === ' ') { window.location.href='nhung-cau-chuyen.html'; }">
-                    <img src="assets/img/post-sample-image.jpg" alt="Những câu chuyện quanh tôi" />
-                    <div class="desc">
-                        <h2>Những câu chuyện quanh tôi</h2>
-                        <div>Những câu chuyện quanh tôi, có thể bạn thấy mình trong đó.</div>
-                        <ul>
-                            <li>Những lát cắt đời thường gần gũi, chân thật và nhiều cảm hứng.</li>
-                            <li>Góc nhìn trải nghiệm để bạn soi thấy chính mình.</li>
-                            <li>Chuỗi bài viết sẽ được cập nhật liên tục.</li>
-                        </ul>
-                        <a href="nhung-cau-chuyen.html" class="btn">Đọc ngay →</a>
-                    </div>
-                </section>
-                <section class="ffit-section supplement-section story-clickable mb-4" role="link" tabindex="0"
-                    onclick="window.location.href='healthymeal.html#supplement-series';"
-                    onkeydown="if(event.key === 'Enter' || event.key === ' ') { window.location.href='healthymeal.html#supplement-series'; }">
-                    <img src="assets/img/post-sample-image.jpg" alt="Chuỗi bài Supplement" />
-                    <div class="desc">
-                        <h2>Chuỗi bài Supplement</h2>
-                        <div>
-                            Góc chia sẻ và phân tích khách quan về supplement nay được đặt trong Bữa ăn lành mạnh, cùng các bài về dinh dưỡng ứng dụng.
-                        </div>
-                        <a href="healthymeal.html#supplement-series" class="btn">Xem chuỗi bài trong Healthy Meal →</a>
-                    </div>
-                </section>
-                <!-- BÀI MỚI: CRADOR LEADERSHIP BLUEPRINT -->
-                <div class="post-preview">
-                    <a href="crador-leadership-blueprint.html">
-                        <h2 class="post-title">🏆 Tầm nhìn CRADOR 2024: Kỷ nguyên mới - Vị thế mới</h2>
-                        <div class="post-subtitle">
-                            Sổ tay lãnh đạo đột phá: từ niềm tin cốt lõi, nguyên tắc tấm gương đến sức mạnh hệ thống và lộ trình chuyển mình 90 ngày.
-                        </div>
-                    </a>
-                    <div class="post-meta">
-                        Đăng bởi <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> ngày 31 tháng 7, 2026
-                    </div>
-                </div>
-                <hr class="my-4" />
-                <!-- BÀI MỚI: NỘI LỰC - DNA CỦA NGƯỜI THÀNH CÔNG -->
-                <div class="post-preview">
-                    <a href="noi-luc-dna-cua-nguoi-thanh-cong.html">
-                        <h2 class="post-title">🌱 NỘI LỰC - DNA CỦA NGƯỜI THÀNH CÔNG</h2>
-                        <div class="post-subtitle">
-                            Chữa lành giúp ta bớt đau; nội lực giúp ta vững vàng hơn, đứng dậy nhanh hơn và trưởng thành qua mỗi lần vấp ngã.
-                        </div>
-                    </a>
-                    <div class="post-meta">
-                        Đăng bởi <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> ngày 27 tháng 7, 2026
-                    </div>
-                </div>
-                <hr class="my-4" />
-                <div class="post-preview">
-                    <a href="thu-hoi-my-pham-viet-huong-2026.html">
-                        <h2 class="post-title">⚠️ Công văn 1772/QLD-MP: 511 mỹ phẩm Việt Hương bị thu hồi toàn quốc</h2>
-                        <div class="post-subtitle">
-                            Danh mục các sản phẩm chăm sóc da, tóc, cơ thể, trang điểm và nước hoa bị đình chỉ lưu hành, thu hồi do không áp dụng CGMP-ASEAN.
-                        </div>
-                    </a>
-                    <div class="post-meta">
-                        Đăng bởi <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> ngày 15 tháng 5, 2026
-                    </div>
-                </div>
-                <hr class="my-4" />
-                <div class="post-preview">
-                    <a href="affiliate-dropii-mlm-amway-comparison.html">
-                        <h2 class="post-title">📊 Affiliate vs Dropii/Droppii vs MLM (Amway): So sánh mô hình, rủi ro và độ bền</h2>
-                        <div class="post-subtitle">
-                            Phân tích khách quan dưới góc nhìn marketing và mô hình kinh tế: tiền đến từ đâu, rủi ro nằm ở đâu, kỹ năng nào là cốt lõi và mô hình nào phù hợp với kiểu chịu rủi ro của bạn.
-                        </div>
-                    </a>
-                    <div class="post-meta">
-                        Đăng bởi <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> ngày 02 tháng 6, 2026
-                    </div>
-                </div>
-                <hr class="my-4" />
-                <div class="post-preview">
-                    <a href="lam-sao-de-tao-su-dam-bao-tu-con-so-0.html">
-                        <h2 class="post-title">🌱 Làm sao để tạo “sự đảm bảo” từ con số 0?</h2>
-                        <div class="post-subtitle">
-                            Bạn không cần đủ mới bắt đầu. Chỉ cần một bước nhỏ, một kỹ năng mới, và một dòng chảy thứ 2 để tạo quyền lựa chọn cho tương lai.
-                        </div>
-                    </a>
-                    <div class="post-meta">
-                        Posted by <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> on April 18, 2026
-                    </div>
-                </div>
-                <hr class="my-4" />
-                <div class="post-preview">
-                    <a href="ondinh-mot-cam-giac-rat-de-vo.html">
-                        <h2 class="post-title">🌿ỔN ĐỊNH” MỘT CẢM GIÁC RẤT DỄ VỠ</h2>
-                        <div class="post-subtitle">
-                            “Ổn định” không nằm ở công việc hay công ty, mà nằm ở chính khả năng học hỏi, thích nghi và tự tạo lựa chọn của mỗi người.
-                        </div>
-                    </a>
-                    <div class="post-meta">
-                        Posted by <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> on April 18, 2026
-                    </div>
-                </div>
-                <hr class="my-4" />
-                <div class="post-preview">
-                    <a href="gui20namsauChap2.html">
-                        <h2 class="post-title">🌱 GỬI TÔI CỦA TƯƠNG LAI – Chương 2: SỰ LỰA CHỌN</h2>
-                        <div class="post-subtitle">
-                            Một cuộc đối thoại giữa tôi của hiện tại và chính mình 20 năm sau – về ước mơ, những lần muốn bỏ cuộc, và điều khiến bạn vẫn tiếp tục bước đi…
-                        </div>
-                    </a>
-                    <div class="post-meta">
-                        Đăng bởi <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> ngày 20 tháng 3, 2045
-                    </div>
-                </div>
-                <hr class="my-4" />
-                <div class="post-preview">
-                    <a href="2024LOOKBACK.html">
-                        <h2 class="post-title">🌿 KẾT THÚC MỘT NĂM ĐÁNG NHỚ - CẢM ƠN VÀ NHÌN LẠI❤️</h2>
-                        <div class="post-subtitle">
-                            Vậy là một năm nữa lại sắp khép lại. Đây là lúc mình ngồi xuống, nhìn lại những gì đã qua, những gì đã đạt được và cả những điều vẫn còn đang dang dở. Một năm với nhiều cảm xúc, nhiều bài học và những dấu mốc khó quên.
-                        </div>
-                    </a>
-                    <div class="post-meta">
-                        Đăng bởi <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> ngày 31 tháng 12, 2024
-                    </div>
-                </div>
-                <hr class="my-4" />
-                <div class="post-preview">
-                    <a href="LIFESPAN.html">
-                        <h2 class="post-title">🍀Sự khác nhau giữa TUỔI THỌ VÀ TUỔI THỌ KHOẺ MẠNH🧚🏻‍♀️</h2>
-                        <div class="post-subtitle">
-                            (Lifespan vs Healthspan) - "He who has great health has a thousand dreams; he who has bad health only has one." ~ Rolf Magener
-                        </div>
-                    </a>
-                    <div class="post-meta">
-                        Đăng bởi <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> ngày 02 tháng 12, 2024
-                    </div>
-                </div>
-                <hr class="my-4" />
-                <div class="post-preview">
-                    <a href="GUITOICUATUONGLAI_CHAP1.html">
-                        <h2 class="post-title">🌿 GỬI TÔI CỦA TƯƠNG LAI 🌿 - Chương 1 - BẠN VÀ TÔI</h2>
-                        <div class="post-subtitle">
-                            Gửi tôi 20 năm sau, <br/>
-                            Chào bạn, phiên bản của tôi trong tương lai!
-                        </div>
-                    </a>
-                    <div class="post-meta">
-                        Đăng bởi <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> ngày 24 tháng 11, 2024
-                    </div>
-                </div>
-                <hr class="my-4" />
-                <div class="post-preview">
-                    <a href="ANTOANFACEBOOK.html">
-                        <h2 class="post-title">👣🧑🏻‍💻 Tài khoản FACEBOOK bạn có thật sự AN TOÀN.🥷🏼</h2>
-                        <div class="post-subtitle">
-                            Sáng nay lại thấy một người bạn của mình đưa lên bài tài khoản của bạn bị hacker lấy mất, rồi bị giả mạo bạn để lừa gạt người thân, bạn bè.
-                        </div>
-                    </a>
-                    <div class="post-meta">
-                        Đăng bởi <a href="https://www.facebook.com/haiyen.tran2">Yen Tran</a> ngày 24 tháng 11, 2024
-                    </div>
-                </div>
-                <hr class="my-4" />
-                <section class="demo-section">
-                    <h2>🧪 DÙNG THỬ SẢN PHẨM – TRẢI NGHIỆM THỰC TẾ</h2>
-                    <ul class="demo-list">
-                        <li><a href="demoSanPham.html">Trang tổng hợp các bản dùng thử sản phẩm →</a></li>
-                    </ul>
-                </section>
-                <div class="d-flex justify-content-end mb-4">
-                    <a class="btn btn-primary text-uppercase" href="#!">Bài viết cũ hơn →</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="border-top">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-<div class="small text-center text-muted fst-italic">Copyright &copy; YEN HAI TRAN</div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/scripts.js"></script>
+<div class="page-shell">
+  <nav class="navbar navbar-expand-lg" id="mainNav"><div class="container"><a class="navbar-brand" href="index.html">YEN TRAN</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Mở trình đơn">Trình đơn <i class="fas fa-bars"></i></button><div class="collapse navbar-collapse" id="navMenu"><ul class="navbar-nav ms-auto py-3 py-lg-0">
+    <li class="nav-item"><a class="nav-link active px-lg-2 py-lg-4" href="index.html" aria-current="page">Trang chủ</a></li><li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="about.html">Giới thiệu</a></li><li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="events.html">Sự kiện</a></li><li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="healthylifestyle.html">Lối sống khỏe</a></li><li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="healthymeal.html">Bữa ăn lành mạnh</a></li><li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="passiveincome.html">Thu nhập thụ động</a></li><li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="contact.html">Liên hệ</a></li><li class="nav-item"><a class="nav-link px-lg-2 py-lg-4" href="digital_index.html">Sản phẩm số</a></li>
+  </ul></div></div></nav>
+
+  <header class="hero"><div class="content-wrap hero-grid"><div><span class="eyebrow">Chào bạn, mình là Yến Trần</span><h1>Sống khỏe hơn,<em>chủ động hơn.</em></h1><p class="hero-copy">Một góc nhỏ để cùng nhau nhìn lại sức khỏe, nuôi dưỡng nội lực và xây một cuộc sống có nhiều quyền lựa chọn hơn — bằng những bước chân thật, vừa sức và bền vững.</p><div class="hero-actions"><a class="primary-btn" href="#featured">Đọc bài mới nhất <i class="fas fa-arrow-down"></i></a><a class="secondary-btn" href="about.html">Biết thêm về Yến</a></div></div><div class="portrait-card"><div class="portrait-frame"><img src="assets/img/avatar_yen.jpg" alt="Yến Trần"></div><div class="portrait-note"><span>Điều mình tin</span>Thay đổi nhỏ hôm nay<br>tạo nên lựa chọn ngày mai.</div></div></div></header>
+
+  <section class="section pillars"><div class="content-wrap"><div class="section-head"><div><span class="eyebrow">Ba hướng khám phá</span><h2>Một cuộc sống trọn vẹn bắt đầu từ bên trong</h2></div><p class="section-intro">Không có một công thức hoàn hảo cho tất cả. Bạn có thể bắt đầu từ điều đang gần mình nhất: cơ thể khỏe hơn, tâm trí vững hơn hay một hướng đi chủ động hơn cho tương lai.</p></div><div class="pillar-grid">
+    <a class="pillar" href="healthylifestyle.html"><span class="pillar-icon"><i class="fas fa-heart-pulse"></i></span><h3>Sức khỏe chủ động</h3><p>Hiểu cơ thể, xây thói quen và tạo một môi trường sống nâng đỡ sức khỏe mỗi ngày.</p><span class="pillar-more">Khám phá lối sống khỏe <i class="fas fa-arrow-right"></i></span></a>
+    <a class="pillar" href="healthymeal.html"><span class="pillar-icon"><i class="fas fa-leaf"></i></span><h3>Dinh dưỡng vừa đủ</h3><p>Những lựa chọn ăn uống có cơ sở, thực tế và phù hợp với nhịp sống của chính bạn.</p><span class="pillar-more">Đọc về bữa ăn lành mạnh <i class="fas fa-arrow-right"></i></span></a>
+    <a class="pillar" href="passiveincome.html"><span class="pillar-icon"><i class="fas fa-compass"></i></span><h3>Cuộc sống có lựa chọn</h3><p>Nuôi nội lực, học kỹ năng và từng bước xây thêm quyền chủ động cho thời gian, thu nhập.</p><span class="pillar-more">Tìm hiểu hành trình chủ động <i class="fas fa-arrow-right"></i></span></a>
+  </div></div></section>
+
+  <main class="section featured" id="featured"><div class="content-wrap"><div class="section-head"><div><span class="eyebrow">Bài viết nổi bật</span><h2>Những điều đáng dừng lại và suy ngẫm</h2></div><p class="section-intro">Từ tư duy lãnh đạo đến nội lực cá nhân và sức khỏe cộng đồng — mỗi bài viết là một lời mời nhìn sâu hơn vào điều mình đang xây dựng.</p></div><div class="featured-grid">
+    <a class="feature-card" href="crador-leadership-blueprint.html"><span class="feature-tag">Bài mới · Lãnh đạo</span><span class="arrow-circle"><i class="fas fa-arrow-up-right-from-square"></i></span><h3>Tầm nhìn CRADOR 2024: Kỷ nguyên mới — Vị thế mới</h3><p>Sổ tay lãnh đạo đột phá: từ niềm tin cốt lõi, nguyên tắc tấm gương đến sức mạnh hệ thống và lộ trình chuyển mình 90 ngày.</p><span class="feature-meta">31 tháng 7, 2026 · Yến Trần</span></a>
+    <a class="feature-card" href="noi-luc-dna-cua-nguoi-thanh-cong.html"><span class="feature-tag">Phát triển bản thân</span><h3>Nội lực — DNA của người thành công</h3><p>Chữa lành giúp ta bớt đau; nội lực giúp ta vững vàng và đứng dậy nhanh hơn sau mỗi lần vấp ngã.</p><span class="feature-meta">27 tháng 7, 2026</span></a>
+    <a class="feature-card" href="thu-hoi-my-pham-viet-huong-2026.html"><span class="feature-tag">Thông tin sức khỏe</span><h3>511 mỹ phẩm Việt Hương bị thu hồi toàn quốc</h3><p>Thông tin từ Công văn 1772/QLD-MP và danh mục sản phẩm bị đình chỉ lưu hành, thu hồi.</p><span class="feature-meta">15 tháng 5, 2026</span></a>
+  </div></div></main>
+
+  <section class="section journeys"><div class="content-wrap"><div class="section-head"><div><span class="eyebrow">Các hành trình đang mở</span><h2>Đọc, trải nghiệm và tự tìm câu trả lời</h2></div><p class="section-intro">Ba không gian nội dung được cập nhật thường xuyên, giúp bạn đi sâu hơn từ kiến thức đến những câu chuyện đời thật.</p></div><div class="journey-grid">
+    <article class="journey"><span class="journey-index">01</span><h3>F.FIT — Giảm mỡ khoa học</h3><p>Hiểu cơ thể và học cách kiểm soát cân nặng bền vững, không ép xác, không chạy theo giải pháp tức thời.</p><a href="ffit_gallery.html">Xem thư viện F.FIT <i class="fas fa-arrow-right"></i></a></article>
+    <article class="journey"><span class="journey-index">02</span><h3>Những câu chuyện quanh tôi</h3><p>Các lát cắt đời thường gần gũi, chân thật — nơi đôi khi bạn sẽ nhìn thấy một phần của chính mình.</p><a href="nhung-cau-chuyen.html">Đọc những câu chuyện <i class="fas fa-arrow-right"></i></a></article>
+    <article class="journey"><span class="journey-index">03</span><h3>Chuỗi bài Supplement</h3><p>Phân tích thành phần, cách dùng, lợi ích và giới hạn để lựa chọn dựa trên hiểu biết thay vì kỳ vọng.</p><a href="healthymeal.html#supplement-series">Khám phá chuỗi bài <i class="fas fa-arrow-right"></i></a></article>
+  </div></div></section>
+
+  <section class="section library"><div class="content-wrap"><div class="section-head"><div><span class="eyebrow">Thư viện bài viết</span><h2>Đọc theo điều bạn đang quan tâm</h2></div><p class="section-intro">Các bài viết về sự nghiệp, lựa chọn, sức khỏe và an toàn số — được viết từ trải nghiệm và mong muốn chia sẻ điều hữu ích.</p></div><div class="post-grid">
+    <a class="post-card" href="affiliate-dropii-mlm-amway-comparison.html"><span class="post-date">02<span>Thg 6</span></span><div><h3>Affiliate vs Dropii/Droppii vs MLM: mô hình, rủi ro và độ bền</h3><p>Phân tích khách quan về dòng tiền, kỹ năng cốt lõi và mức chịu rủi ro.</p></div></a>
+    <a class="post-card" href="lam-sao-de-tao-su-dam-bao-tu-con-so-0.html"><span class="post-date">18<span>Thg 4</span></span><div><h3>Làm sao để tạo “sự đảm bảo” từ con số 0?</h3><p>Một bước nhỏ, một kỹ năng mới và một dòng chảy thứ hai cho tương lai.</p></div></a>
+    <a class="post-card" href="ondinh-mot-cam-giac-rat-de-vo.html"><span class="post-date">18<span>Thg 4</span></span><div><h3>“Ổn định” — một cảm giác rất dễ vỡ</h3><p>Ổn định nằm ở khả năng học hỏi, thích nghi và tự tạo lựa chọn.</p></div></a>
+    <a class="post-card" href="gui20namsauChap2.html"><span class="post-date">20<span>Thg 3</span></span><div><h3>Gửi tôi của tương lai — Chương 2: Sự lựa chọn</h3><p>Đối thoại với chính mình 20 năm sau về ước mơ và những lần muốn bỏ cuộc.</p></div></a>
+    <a class="post-card" href="2024LOOKBACK.html"><span class="post-date">31<span>Thg 12</span></span><div><h3>Kết thúc một năm đáng nhớ — cảm ơn và nhìn lại</h3><p>Những điều đã đạt được, những bài học và những điều còn dang dở.</p></div></a>
+    <a class="post-card" href="LIFESPAN.html"><span class="post-date">02<span>Thg 12</span></span><div><h3>Sự khác nhau giữa tuổi thọ và tuổi thọ khỏe mạnh</h3><p>Hiểu đúng Lifespan và Healthspan để sống lâu đi cùng sống khỏe.</p></div></a>
+    <a class="post-card" href="GUITOICUATUONGLAI_CHAP1.html"><span class="post-date">24<span>Thg 11</span></span><div><h3>Gửi tôi của tương lai — Chương 1: Bạn và tôi</h3><p>Lá thư gửi phiên bản của mình trong tương lai.</p></div></a>
+    <a class="post-card" href="ANTOANFACEBOOK.html"><span class="post-date">24<span>Thg 11</span></span><div><h3>Tài khoản Facebook của bạn có thật sự an toàn?</h3><p>Những lưu ý cần thiết để bảo vệ mình và người thân trước giả mạo.</p></div></a>
+  </div><div class="demo-card"><div><h3>Dùng thử sản phẩm — trải nghiệm thực tế</h3><p>Trang tổng hợp các bản dùng thử để bạn tìm hiểu trước khi lựa chọn.</p></div><a href="demoSanPham.html">Xem trang dùng thử <i class="fas fa-arrow-right"></i></a></div></div></section>
+
+  <section class="content-wrap cta"><div><h2>Bạn đang ở đâu trên hành trình của mình?</h2><p>Dành khoảng 3 phút nhìn lại cuộc sống hiện tại, điều bạn mong muốn và rào cản đang giữ mình lại. Yến sẽ lắng nghe và liên hệ trao đổi trong 24 giờ — không áp lực, không bán hàng vội vàng.</p></div><a class="cta-btn" href="khao-sat-co-hoi.html"><i class="fas fa-pen-to-square"></i> Bắt đầu bài khảo sát</a></section>
+
+  <footer><div class="content-wrap footer-row"><span>MoMoShare · Copyright © YEN HAI TRAN</span><a href="https://www.facebook.com/haiyen.tran2" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> Facebook · HEALTHY MADE SIMPLE</a></div></footer>
+</div>
+<button class="to-top" id="toTop" aria-label="Về đầu trang"><i class="fas fa-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script><script>const topButton=document.getElementById('toTop');window.addEventListener('scroll',()=>{topButton.style.display=window.scrollY>420?'grid':'none'});topButton.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));</script>
 </body>
 </html>
