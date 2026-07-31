@@ -1,201 +1,662 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Contact | Yen Tran</title>
+    <meta name="description" content="Kết nối với Yen Tran để được tư vấn 1-1 về định hướng phát triển hoặc dinh dưỡng cá nhân hóa." />
+    <meta name="author" content="Yen Tran" />
+    <title>Liên hệ | Yen Tran</title>
+    <meta property="og:title" content="Liên hệ | Yen Tran" />
+    <meta property="og:description" content="Chọn hình thức kết nối phù hợp và đặt lịch trò chuyện cùng Yen Tran." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://haiyentran.github.io/yenhaitranabo/assets/img/avatar_yen.jpg" />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-
-    <!-- Font Awesome icons -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
-    <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" />
-
-    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" />
+    <!-- Bootstrap fallback để trang vẫn hiển thị đúng khi mở trực tiếp bằng file:// -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
 
     <style>
+        :root {
+            --contact-ink: #18332a;
+            --contact-muted: #617169;
+            --contact-green: #18785a;
+            --contact-green-dark: #0e523d;
+            --contact-mint: #e8f7f0;
+            --contact-cream: #fbf8f0;
+            --contact-gold: #d69a42;
+            --contact-border: #dce9e2;
+            --contact-white: #fff;
+        }
+
         body {
-            font-family: 'Open Sans', sans-serif;
             margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background: #fafbfc;
+            background: var(--contact-cream);
+            color: var(--contact-ink);
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
         }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
+
+        #mainNav {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1030;
+            border-bottom: 1px solid rgba(255, 255, 255, .16);
+            background: rgba(8, 55, 40, .2);
+            backdrop-filter: blur(10px);
         }
-        img {
-            max-width: 220px;
-            height: auto;
+
+        #mainNav .navbar-brand,
+        #mainNav .nav-link {
+            color: rgba(255, 255, 255, .9);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        #mainNav .navbar-brand {
+            padding: 18px 0;
+            font-size: 1.15rem;
+            letter-spacing: .08em;
+        }
+
+        #mainNav .nav-link {
+            position: relative;
+            font-size: .78rem;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        #mainNav .nav-link:hover,
+        #mainNav .nav-link:focus,
+        #mainNav .nav-link.active {
+            color: var(--contact-white);
+        }
+
+        #mainNav .nav-link.active::after {
+            position: absolute;
+            right: .75rem;
+            bottom: .55rem;
+            left: .75rem;
+            height: 2px;
+            border-radius: 999px;
+            background: #73ddb5;
+            content: "";
+        }
+
+        #mainNav .navbar-toggler {
+            border-color: rgba(255, 255, 255, .45);
+            color: var(--contact-white);
+            font-size: .82rem;
+            font-weight: 700;
+        }
+
+        .contact-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 150px 0 86px;
+            background:
+                linear-gradient(120deg, rgba(8, 55, 40, .94), rgba(24, 120, 90, .82)),
+                url('assets/img/contact-bg.jpg') center/cover;
+            color: var(--contact-white);
+        }
+
+        .contact-hero::after {
+            position: absolute;
+            right: -80px;
+            bottom: -130px;
+            width: 360px;
+            height: 360px;
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 50%;
+            box-shadow: 0 0 0 55px rgba(255, 255, 255, .05);
+            content: "";
+        }
+
+        .contact-hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            align-items: center;
+            gap: 54px;
+        }
+
+        .hero-copy { max-width: 760px; }
+
+        .hero-profile {
+            position: relative;
+            justify-self: end;
+            width: 260px;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, .28);
+            border-radius: 32px;
+            background: rgba(255, 255, 255, .12);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .2);
+            backdrop-filter: blur(12px);
+        }
+
+        .hero-profile img {
             display: block;
-            margin: 16px auto 20px auto;
-            border-radius: 18px;
-            border: 2px solid #e9ecef;
-            box-shadow: 0 4px 24px 0 #eee;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 23px;
+            object-fit: cover;
         }
-        .page-heading h1 {
-            color: #D2691E;
+
+        .availability {
+            position: absolute;
+            right: -12px;
+            bottom: 26px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 13px;
+            border-radius: 999px;
+            background: #fff;
+            color: var(--contact-green-dark);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+            font-size: .78rem;
             font-weight: 800;
-            letter-spacing: 2px;
         }
-        .page-heading .subheading {
-            color: #777;
-            font-size: 1.25rem;
-            font-style: italic;
+
+        .availability::before {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #25b879;
+            box-shadow: 0 0 0 4px rgba(37, 184, 121, .15);
+            content: "";
         }
-        .cta-btn {
-            font-weight: bold;
+
+        .contact-eyebrow {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 18px;
+            padding: 7px 14px;
+            border: 1px solid rgba(255, 255, 255, .3);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .12);
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .contact-hero h1 {
+            margin: 0 0 18px;
+            color: var(--contact-white);
+            font-family: 'Lora', serif;
+            font-size: clamp(2.5rem, 7vw, 4.7rem);
+            line-height: 1.05;
+        }
+
+        .contact-hero p {
+            max-width: 650px;
+            margin: 0;
+            color: rgba(255, 255, 255, .9);
             font-size: 1.12rem;
-            border-radius: 30px;
-            padding: 12px 32px;
-            margin-bottom: 8px;
-            margin-top: 6px;
-            transition: all 0.25s;
-            box-shadow: 0 2px 8px 0 #ffe2e2;
         }
-        .cta-btn-main {
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
-            color: #fff !important;
-            border: none;
+
+        .contact-main {
+            padding: 70px 0 84px;
         }
-        .cta-btn-main:hover {
-            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+
+        .contact-intro {
+            max-width: 720px;
+            margin: 0 auto 42px;
+            text-align: center;
+        }
+
+        .contact-intro .section-label {
+            color: var(--contact-green);
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .contact-intro h2 {
+            margin: 10px 0 14px;
+            color: var(--contact-ink);
+            font-family: 'Lora', serif;
+            font-size: clamp(1.9rem, 4vw, 2.7rem);
+        }
+
+        .contact-intro p {
+            margin: 0;
+            color: var(--contact-muted);
+        }
+
+        .contact-steps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            max-width: 860px;
+            margin: 28px auto 0;
+        }
+
+        .contact-step {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 12px 14px;
+            border: 1px solid var(--contact-border);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .74);
+            color: #405049;
+            text-align: left;
+            font-size: .86rem;
+            font-weight: 700;
+        }
+
+        .step-number {
+            display: inline-flex;
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: var(--contact-green);
             color: #fff;
+            font-size: .78rem;
+            font-weight: 800;
         }
-        .cta-btn-outline {
+
+        .consult-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            margin-bottom: 34px;
+        }
+
+        .consult-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 32px;
+            border: 1px solid var(--contact-border);
+            border-radius: 24px;
+            background: var(--contact-white);
+            box-shadow: 0 16px 45px rgba(18, 70, 51, .08);
+        }
+
+        .consult-card::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--contact-green), #54c99d);
+            content: "";
+        }
+
+        .consult-card.health::before {
+            background: linear-gradient(90deg, var(--contact-gold), #f2c879);
+        }
+
+        .card-icon {
+            display: inline-flex;
+            width: 54px;
+            height: 54px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+            border-radius: 16px;
+            background: var(--contact-mint);
+            color: var(--contact-green);
+            font-size: 1.35rem;
+        }
+
+        .health .card-icon {
+            background: #fff4df;
+            color: #a76a13;
+        }
+
+        .consult-card h3 {
+            margin: 0 0 12px;
+            color: var(--contact-ink);
+            font-family: 'Lora', serif;
+            font-size: 1.45rem;
+        }
+
+        .consult-card > p {
+            margin: 0 0 18px;
+            color: var(--contact-muted);
+        }
+
+        .consult-card ul {
+            margin: 0 0 26px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .consult-card li {
+            position: relative;
+            margin: 10px 0;
+            padding-left: 27px;
+            color: #405049;
+        }
+
+        .consult-card li::before {
+            position: absolute;
+            top: 1px;
+            left: 0;
+            color: var(--contact-green);
+            content: "✓";
+            font-weight: 800;
+        }
+
+        .contact-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            margin-top: auto;
+            padding: 13px 20px;
+            border: 2px solid var(--contact-green);
+            border-radius: 999px;
+            background: var(--contact-green);
+            color: var(--contact-white) !important;
+            font-size: .93rem;
+            font-weight: 800;
+            letter-spacing: .02em;
+            text-decoration: none;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+
+        .health .contact-cta {
+            border-color: #b7791f;
+            background: #b7791f;
+        }
+
+        .contact-cta:hover,
+        .contact-cta:focus {
+            color: var(--contact-white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(24, 120, 90, .22);
+        }
+
+        .zalo-panel {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            align-items: center;
+            gap: 34px;
+            padding: 36px;
+            border-radius: 26px;
+            background: var(--contact-green-dark);
+            color: var(--contact-white);
+            box-shadow: 0 18px 50px rgba(14, 82, 61, .18);
+        }
+
+        .zalo-panel h2 {
+            margin: 0 0 12px;
+            color: var(--contact-white);
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+        }
+
+        .zalo-panel p {
+            margin: 0 0 20px;
+            color: rgba(255, 255, 255, .82);
+        }
+
+        .zalo-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 13px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .1);
+            color: rgba(255, 255, 255, .92);
+            font-size: .88rem;
+            font-weight: 600;
+        }
+
+        .qr-wrap {
+            justify-self: end;
+            padding: 13px;
+            border-radius: 22px;
+            background: var(--contact-white);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, .18);
+        }
+
+        .qr-wrap img {
+            display: block;
+            width: 210px;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .contact-footer {
+            padding: 34px 0;
+            background: #f5f8f6;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .contact-footer p {
+            margin: 0;
+            color: var(--contact-muted);
+            font-size: .9rem;
+        }
+
+        .footer-social {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 13px;
+            border: 1px solid var(--contact-border);
+            border-radius: 999px;
             background: #fff;
-            border: 2px solid #43bc70;
-            color: #2d7a40;
+            color: var(--contact-green-dark);
+            font-size: .86rem;
+            font-weight: 700;
+            text-decoration: none;
         }
-        .cta-btn-outline:hover {
-            background: #43bc70;
-            color: #fff;
-            border-color: #43bc70;
-        }
-        .contact-block {
-            margin-bottom: 44px;
-            padding: 28px 22px 18px 22px;
-            border-radius: 20px;
-            background: #fff;
-            box-shadow: 0 2px 14px 0 #eee;
-        }
+
+        .footer-social a:hover { border-color: var(--contact-green); }
+
         @media (max-width: 768px) {
-            .container {
-                padding: 0 6px;
+            #mainNav {
+                background: rgba(8, 55, 40, .96);
             }
-            .page-heading h1 {
-                font-size: 2rem;
-                margin-top: 8px;
+
+            #mainNav .navbar-collapse {
+                padding: 0 0 14px;
             }
-            .contact-block {
-                padding: 16px 6px 10px 6px;
-                margin-bottom: 28px;
+
+            #mainNav .nav-link {
+                padding: 10px 0 !important;
             }
-            img {
-                max-width: 150px;
+
+            #mainNav .nav-link.active::after {
+                right: auto;
+                bottom: 5px;
+                left: 0;
+                width: 34px;
+            }
+
+            .contact-hero {
+                padding: 118px 0 64px;
+            }
+
+            .contact-hero-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .hero-profile {
+                justify-self: start;
+                width: min(230px, 72vw);
+            }
+
+            .contact-main {
+                padding: 50px 0 64px;
+            }
+
+            .consult-grid,
+            .zalo-panel,
+            .contact-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .consult-card,
+            .zalo-panel {
+                padding: 25px;
+            }
+
+            .qr-wrap {
+                justify-self: center;
+            }
+
+            .qr-wrap img {
+                width: min(210px, 65vw);
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .contact-cta {
+                transition: none;
             }
         }
     </style>
 </head>
 <body>
-
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="index.html">YEN TRAN</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4 active" href="index.html">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Giới thiệu</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="events.html">Sự kiện</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthylifestyle.html">Lối sống khỏe</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthymeal.html">Bữa ăn lành mạnh</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="passiveincome.html">Thu nhập thụ động</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Liên hệ</a></li>
-
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="digital_index.html">Sản phầm số</a></li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="index.html">YEN TRAN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Mở hoặc đóng trình đơn">
+                Trình đơn <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="events.html">Sự kiện</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthylifestyle.html">Lối sống khỏe</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthymeal.html">Bữa ăn lành mạnh</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="passiveincome.html">Thu nhập thụ động</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4 active" aria-current="page" href="contact.html">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="digital_index.html">Sản phẩm số</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('assets/img/contact-bg.jpg'); background-size: cover; background-position: center;">
-    <div class="container position-relative px-4 px-lg-5" style="padding-top:32px;padding-bottom:26px;">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="page-heading text-center">
-                    <h1 style="color: #fff;">Liên Hệ</h1>
-                    <span class="subheading">Bạn có câu hỏi, hay muốn kết nối? Tôi luôn sẵn sàng lắng nghe!</span>
+    <header class="contact-hero">
+        <div class="container px-4 px-lg-5">
+            <div class="contact-hero-content">
+                <div class="hero-copy">
+                    <span class="contact-eyebrow"><i class="fas fa-comments"></i> Kết nối cùng Yen Tran</span>
+                    <h1>Mình bắt đầu bằng một cuộc trò chuyện nhé.</h1>
+                    <p>Bạn không cần phải có sẵn mọi câu trả lời. Hãy chia sẻ điều bạn đang quan tâm, mình sẽ cùng bạn tìm một bước đi rõ ràng và phù hợp hơn.</p>
+                </div>
+                <div class="hero-profile">
+                    <img src="assets/img/avatar_yen.jpg" alt="Yen Tran" width="480" height="480" />
+                    <span class="availability">Sẵn sàng lắng nghe</span>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<!-- Main Content -->
-<main class="mb-4">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
+    <main class="contact-main">
+        <div class="container px-4 px-lg-5">
+            <section class="contact-intro" aria-labelledby="contact-options-title">
+                <span class="section-label">Chọn điều bạn đang cần</span>
+                <h2 id="contact-options-title">Hai hướng kết nối, một điểm bắt đầu</h2>
+                <p>Mỗi cuộc trò chuyện được thiết kế để tập trung vào mục tiêu thực tế của bạn. Chọn nội dung phù hợp nhất để mình chuẩn bị tốt hơn trước buổi gặp.</p>
+                <div class="contact-steps" aria-label="Quy trình đặt lịch gồm ba bước">
+                    <div class="contact-step"><span class="step-number">01</span> Chọn nội dung tư vấn</div>
+                    <div class="contact-step"><span class="step-number">02</span> Điền form ngắn</div>
+                    <div class="contact-step"><span class="step-number">03</span> Nhận lịch trao đổi</div>
+                </div>
+            </section>
 
-                <!-- QR Code Zalo -->
-                <img src="assets/img/zaloQR.jpg" alt="Kết nối Zalo - Yen Tran" />
-
-                <!-- CTA 1: Tư vấn 1-1 -->
-                <div class="contact-block text-center">
-                    <h4 style="font-weight: bold; margin-bottom: 16px;">👉 Bạn sẵn sàng thay đổi cuộc sống tài chính của mình?</h4>
-                    <p>Bắt đầu bằng việc đặt lịch tư vấn 1-1. Tìm ra hướng đi phù hợp & bắt tay hành động từ hôm nay!</p>
+            <div class="consult-grid">
+                <article class="consult-card">
+                    <span class="card-icon" aria-hidden="true"><i class="fas fa-compass"></i></span>
+                    <h3>Tư vấn định hướng 1-1</h3>
+                    <p>Dành cho bạn đang muốn tạo thay đổi trong công việc, tài chính hoặc xây thêm lựa chọn cho tương lai.</p>
+                    <ul>
+                        <li>Làm rõ điều bạn thực sự muốn</li>
+                        <li>Nhìn lại nguồn lực và điểm đang vướng</li>
+                        <li>Xác định bước hành động đầu tiên</li>
+                    </ul>
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSep2B6Wbti9RsxE9GuAl2G5sWZUXyptfc0v57WWOgM-bAGPoQ/viewform?usp=header"
-                        class="cta-btn cta-btn-main"
-                        target="_blank"
-                        rel="noopener">
-                        <i class="fas fa-calendar-check me-2"></i> ĐẶT HẸN TƯ VẤN 1-1
+                        class="contact-cta" target="_blank" rel="noopener">
+                        <i class="fas fa-calendar-check"></i> Đặt lịch tư vấn 1-1
                     </a>
-                </div>
+                </article>
 
-                <!-- CTA 2: Tư vấn dinh dưỡng -->
-                <div class="contact-block text-center">
-                    <h4 style="font-weight: bold; margin-bottom: 16px;">🥗 Muốn cải thiện sức khỏe & chế độ ăn uống?</h4>
-                    <p>Đặt lịch để nhận tư vấn dinh dưỡng cá nhân hóa từ chuyên gia - phù hợp với mục tiêu và phong cách sống của bạn.</p>
+                <article class="consult-card health">
+                    <span class="card-icon" aria-hidden="true"><i class="fas fa-seedling"></i></span>
+                    <h3>Tư vấn dinh dưỡng</h3>
+                    <p>Dành cho bạn muốn cải thiện chế độ ăn uống theo mục tiêu, nhịp sống và tình trạng thực tế của bản thân.</p>
+                    <ul>
+                        <li>Làm rõ mục tiêu sức khỏe cá nhân</li>
+                        <li>Đánh giá thói quen ăn uống hiện tại</li>
+                        <li>Gợi ý hướng điều chỉnh dễ áp dụng</li>
+                    </ul>
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSclfUUwaSha4yUm9nWuQARceyDBu68ZhvuZRfa_F22WFAcTjA/viewform?usp=header"
-                        class="cta-btn cta-btn-outline"
-                        target="_blank"
-                        rel="noopener">
-                        <i class="fas fa-leaf me-2"></i> ĐẶT HẸN TƯ VẤN DINH DƯỠNG
+                        class="contact-cta" target="_blank" rel="noopener">
+                        <i class="fas fa-leaf"></i> Đặt lịch tư vấn dinh dưỡng
                     </a>
-                </div>
+                </article>
+            </div>
 
+            <section class="zalo-panel" aria-labelledby="zalo-title">
+                <div>
+                    <h2 id="zalo-title">Bạn muốn trao đổi nhanh trước?</h2>
+                    <p>Mở Zalo, chọn chức năng quét mã QR và hướng camera vào mã bên cạnh. Khi nhắn tin, bạn có thể giới thiệu ngắn gọn điều mình đang quan tâm để cuộc trò chuyện bắt đầu dễ dàng hơn.</p>
+                    <span class="zalo-note"><i class="fas fa-mobile-screen-button"></i> Quét mã để kết nối trên Zalo</span>
+                </div>
+                <div class="qr-wrap">
+                    <img src="assets/img/zaloQR.jpg" alt="Mã QR Zalo của Yen Tran" width="480" height="536" />
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="contact-footer border-top">
+        <div class="container px-4 px-lg-5">
+            <div class="footer-inner">
+                <p>MoMoShare · Copyright &copy; YEN HAI TRAN</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/haiyen.tran2" target="_blank" rel="noopener">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                    <a href="#zalo-title"><i class="fas fa-comment-dots"></i> Zalo</a>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </footer>
 
-<!-- Footer -->
-<footer class="border-top">
-    <div class="container">
-<div class="small text-muted fst-italic">MoMoShare</div>
-
-        <div class="small text-muted fst-italic">Copyright &copy; YEN HAI TRAN</div>
-    </div>
-</footer>
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/scripts.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
