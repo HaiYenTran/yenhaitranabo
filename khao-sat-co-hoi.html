@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khám phá cơ hội phù hợp với bạn — Yến Trần</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2D6A4F;
+    --green-mid: #40916C;
+    --green-light: #D8F3DC;
+    --cream: #F8F6F2;
+    --dark: #1A1A1A;
+    --gray: #6B7280;
+    --gray-light: #F3F4F6;
+    --border: #E5E7EB;
+    --pink: #E8857A;
+    --gold: #B5813A;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--green);
+    padding: 64px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    top: -100px; right: -100px;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    bottom: -80px; left: -60px;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.75);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 700;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #95D5B2;
+  }
+  .hero p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .hero-trust {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 22px;
+  }
+  .hero-trust span {
+    padding: 7px 11px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.09);
+    color: rgba(255,255,255,0.82);
+    font-size: 11px;
+  }
+
+  /* ── STEPS BAR ── */
+  .steps-bar {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+  .steps-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+  }
+  .step-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 8px;
+    position: relative;
+    cursor: default;
+    transition: opacity 0.2s;
+  }
+  .step-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: transparent;
+    transition: background 0.3s;
+  }
+  .step-tab.active::after { background: var(--green-mid); }
+  .step-tab.done::after { background: var(--green-light); }
+  .step-dot {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--gray-light);
+    color: var(--gray);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 4px;
+    transition: all 0.3s;
+  }
+  .step-tab.active .step-dot { background: var(--green-mid); color: white; }
+  .step-tab.done .step-dot { background: var(--green-light); color: var(--green); }
+  .step-label {
+    font-size: 10px;
+    color: var(--gray);
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .step-tab.active .step-label { color: var(--green-mid); font-weight: 600; }
+
+  /* ── FORM WRAPPER ── */
+  .form-wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ── SECTION ── */
+  .form-section {
+    display: none;
+    animation: fadeIn 0.35s ease;
+  }
+  .form-section.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    margin-bottom: 28px;
+  }
+  .section-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    background: var(--green-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .section-header p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* ── FIELD ── */
+  .field { margin-bottom: 20px; }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .field label .req { color: var(--pink); margin-left: 2px; }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    color: var(--dark);
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--green-mid);
+    box-shadow: 0 0 0 3px rgba(64,145,108,0.1);
+  }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  .field.has-error { padding: 10px; border-radius: 10px; background: #fff2f0; }
+  .field.has-error input,
+  .field.has-error select { border-color: var(--pink); }
+  .field-error {
+    display: none;
+    margin-top: 8px;
+    color: #b84338;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .field.has-error .field-error { display: block; }
+
+  /* ── RADIO CARDS ── */
+  .radio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .radio-grid.single { grid-template-columns: 1fr; }
+  .radio-card {
+    position: relative;
+    cursor: pointer;
+  }
+  .radio-card input {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+  .radio-card-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: white;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .radio-card input:checked ~ .radio-card-inner {
+    border-color: var(--green-mid);
+    background: var(--green-light);
+  }
+  .radio-card-dot {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .radio-card input:checked ~ .radio-card-inner .radio-card-dot {
+    border-color: var(--green-mid);
+    background: var(--green-mid);
+  }
+  .radio-card input:checked ~ .radio-card-inner .radio-card-dot::after {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: white;
+  }
+  .radio-card-text {
+    font-size: 13px;
+    color: var(--dark);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .radio-card-sub {
+    font-size: 11px;
+    color: var(--gray);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+
+  /* ── CHECKBOX CARDS ── */
+  .check-list { display: flex; flex-direction: column; gap: 8px; }
+  .check-card { position: relative; cursor: pointer; }
+  .check-card input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .check-card-inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: white;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .check-card input:checked ~ .check-card-inner {
+    border-color: var(--green-mid);
+    background: var(--green-light);
+  }
+  .check-box {
+    width: 18px; height: 18px;
+    border-radius: 4px;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .check-card input:checked ~ .check-card-inner .check-box {
+    border-color: var(--green-mid);
+    background: var(--green-mid);
+  }
+  .check-card input:checked ~ .check-card-inner .check-box::after {
+    content: '✓';
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .check-card-text { font-size: 13px; color: var(--dark); font-weight: 500; }
+
+  /* ── RANGE SLIDER ── */
+  .range-wrap { margin-top: 6px; }
+  .range-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--gray); margin-bottom: 6px; }
+  input[type=range] {
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--border);
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--green-mid);
+    border: 2px solid white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  }
+  .range-value {
+    text-align: center;
+    font-weight: 700;
+    color: var(--green-mid);
+    font-size: 15px;
+    margin-top: 8px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 28px 0;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .btn-back {
+    flex: 0 0 auto;
+    padding: 14px 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: white;
+    color: var(--gray);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-back:hover { border-color: var(--dark); color: var(--dark); }
+  .btn-next {
+    flex: 1;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 10px;
+    background: var(--green);
+    color: white;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-next:hover { background: var(--green-mid); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(45,106,79,0.25); }
+  .btn-next:active { transform: translateY(0); }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--green-light);
+    border-left: 3px solid var(--green-mid);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #1B4332;
+    line-height: 1.6;
+    margin: 20px 0;
+  }
+
+  /* ── SUCCESS ── */
+  .success-section {
+    display: none;
+    text-align: center;
+    padding: 48px 0;
+  }
+  .success-section.active { display: block; animation: fadeIn 0.5s ease; }
+  .success-icon {
+    width: 72px; height: 72px;
+    background: var(--green-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 20px;
+  }
+  .success-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .success-section p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 360px;
+    margin: 0 auto 28px;
+  }
+  .zalo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #0068FF;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .zalo-btn:hover { background: #0055d4; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,104,255,0.3); }
+
+  /* ── PROGRESS ── */
+  .progress-bar-wrap {
+    background: var(--border);
+    height: 3px;
+    margin-top: -1px;
+  }
+  .progress-bar-fill {
+    height: 3px;
+    background: var(--green-mid);
+    transition: width 0.4s ease;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 12px;
+    color: var(--gray);
+    border-top: 1px solid var(--border);
+    background: white;
+  }
+
+  @media (max-width: 480px) {
+    .radio-grid { grid-template-columns: 1fr; }
+    .hero { padding: 48px 20px 64px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Khảo sát định hướng cá nhân · 3 phút</div>
+  <h1>Có phải bạn vẫn ổn…<br><em>nhưng đang muốn một điều gì đó khác?</em></h1>
+  <p>Dành 3 phút để nhìn lại cuộc sống hiện tại, điều bạn thực sự mong muốn và những gì đang khiến bạn chưa thể bắt đầu. Không có câu trả lời đúng hay sai — chỉ có câu trả lời phù hợp với bạn.</p>
+  <div class="hero-trust" aria-label="Cam kết của khảo sát">
+    <span>⏱ Chỉ khoảng 3 phút</span>
+    <span>♡ Không cam kết mua hàng</span>
+    <span>💬 Yến phản hồi trong 24 giờ</span>
+  </div>
+</div>
+
+<!-- STEPS BAR -->
+<div class="steps-bar">
+  <div class="steps-inner">
+    <div class="step-tab active" id="tab-1">
+      <div class="step-dot">1</div>
+      <div class="step-label">Cuộc sống<br>hiện tại</div>
+    </div>
+    <div class="step-tab" id="tab-2">
+      <div class="step-dot">2</div>
+      <div class="step-label">Mong muốn<br>& Rào cản</div>
+    </div>
+    <div class="step-tab" id="tab-3">
+      <div class="step-dot">3</div>
+      <div class="step-label">Thông tin<br>liên lạc</div>
+    </div>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressBar" style="width:33%"></div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="form-wrap">
+<form id="mainForm" action="https://formspree.io/f/xrenvveg" method="POST" novalidate>
+
+  <!-- HIDDEN tracking -->
+  <input type="hidden" name="_subject" value="Khảo sát cơ hội mới — Yến Trần">
+  <input type="hidden" name="_next" value="">
+
+  <!-- ══════════════ BƯỚC 1 ══════════════ -->
+  <div class="form-section active" id="section-1">
+    <div class="section-header">
+      <div class="section-tag">Bước 1 / 3 · Cuộc sống hiện tại</div>
+      <h2>Dạo này bạn thế nào?</h2>
+      <p>Đôi khi mọi thứ bên ngoài vẫn ổn, nhưng bên trong mình biết rằng có điều gì đó cần thay đổi. Hãy chọn câu trả lời gần nhất với cuộc sống của bạn lúc này.</p>
+    </div>
+
+    <div class="field">
+      <label>Công việc hiện tại của bạn? <span class="req">*</span></label>
+      <div class="radio-grid">
+        <label class="radio-card">
+          <input type="radio" name="job_type" value="Nhân viên văn phòng" required>
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Nhân viên văn phòng</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="job_type" value="Kinh doanh tự do">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Kinh doanh / Tự do</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="job_type" value="Nội trợ / Chăm con">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Nội trợ / Chăm con</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="job_type" value="Khác">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Khác</div></div>
+          </div>
+        </label>
+      </div>
+      <p class="field-error" role="alert">Bạn vui lòng chọn công việc gần nhất với mình.</p>
+    </div>
+
+    <div class="field">
+      <label>Thu nhập hiện tại có đủ trang trải cuộc sống không? <span class="req">*</span></label>
+      <div class="radio-grid">
+        <label class="radio-card">
+          <input type="radio" name="income_status" value="Đủ cho hiện tại nhưng khó tích lũy" required>
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Đủ cho hiện tại nhưng khó tích lũy</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="income_status" value="Đang khá áp lực về tài chính">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Đang khá áp lực về tài chính</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="income_status" value="Tương đối ổn, muốn có thêm nguồn thu">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Tương đối ổn, muốn có thêm nguồn thu</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="income_status" value="Ổn định, muốn tìm một hướng phát triển mới">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Ổn định, muốn tìm hướng phát triển mới</div></div>
+          </div>
+        </label>
+      </div>
+      <p class="field-error" role="alert">Bạn vui lòng chọn tình trạng gần nhất với mình.</p>
+    </div>
+
+    <div class="field">
+      <label>Thời gian rảnh mỗi ngày (ngoài giờ làm)? <span class="req">*</span></label>
+      <div class="radio-grid">
+        <label class="radio-card">
+          <input type="radio" name="free_time" value="Dưới 1 tiếng" required>
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Dưới 1 tiếng</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="free_time" value="1–2 tiếng">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">1–2 tiếng</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="free_time" value="2–3 tiếng">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">2–3 tiếng</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="free_time" value="Trên 3 tiếng">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Trên 3 tiếng</div></div>
+          </div>
+        </label>
+      </div>
+      <p class="field-error" role="alert">Bạn vui lòng chọn khoảng thời gian phù hợp.</p>
+    </div>
+
+    <div class="btn-row">
+      <button type="button" class="btn-next" onclick="nextStep(1)">
+        Tiếp theo <span>→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════ BƯỚC 2 ══════════════ -->
+  <div class="form-section" id="section-2">
+    <div class="section-header">
+      <div class="section-tag">Bước 2 / 3 · Mong muốn & Rào cản</div>
+      <h2>Bạn muốn điều gì hơn trong cuộc sống?</h2>
+      <p>Hiểu rõ mong muốn thật sự — mới tìm được hướng đi đúng.</p>
+    </div>
+
+    <div class="field">
+      <label>Điều bạn đang muốn nhất lúc này? (chọn tất cả phù hợp) <span class="req">*</span></label>
+      <div class="check-list">
+        <label class="check-card">
+          <input type="checkbox" name="wants[]" value="Thu nhập thêm ngoài lương">
+          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">💰 Thu nhập thêm ngoài lương</div></div>
+        </label>
+        <label class="check-card">
+          <input type="checkbox" name="wants[]" value="Tự do thời gian — không bị ràng buộc giờ giấc">
+          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">⏰ Tự do thời gian — không bị ràng buộc giờ giấc</div></div>
+        </label>
+        <label class="check-card">
+          <input type="checkbox" name="wants[]" value="Làm chủ — không phụ thuộc vào một công ty">
+          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">🏡 Làm chủ — không phụ thuộc vào một công ty</div></div>
+        </label>
+        <label class="check-card">
+          <input type="checkbox" name="wants[]" value="Tích lũy tài sản dài hạn cho gia đình">
+          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">👨‍👩‍👧 Tích lũy tài sản dài hạn cho gia đình</div></div>
+        </label>
+        <label class="check-card">
+          <input type="checkbox" name="wants[]" value="Phát triển bản thân và kỹ năng mới">
+          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">📈 Phát triển bản thân và kỹ năng mới</div></div>
+        </label>
+        <label class="check-card">
+          <input type="checkbox" name="wants[]" value="Cộng đồng tích cực để học hỏi và kết nối">
+          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">🤝 Cộng đồng tích cực để học hỏi và kết nối</div></div>
+        </label>
+        <label class="check-card">
+          <input type="checkbox" name="wants[]" value="Chưa gọi tên được, chỉ biết mình muốn thay đổi">
+          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">🌱 Tôi chưa gọi tên được, chỉ biết mình muốn có điều gì đó thay đổi</div></div>
+        </label>
+      </div>
+      <p class="field-error" role="alert">Bạn vui lòng chọn ít nhất một điều mình đang mong muốn.</p>
+    </div>
+
+    <hr class="divider">
+
+    <div class="field">
+      <label>Rào cản lớn nhất nếu muốn bắt đầu một hướng đi mới? <span class="req">*</span></label>
+      <div class="radio-grid">
+        <label class="radio-card">
+          <input type="radio" name="barrier" value="Không có vốn" required>
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Không có vốn</div><div class="radio-card-sub">Sợ mất tiền đầu tư</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="barrier" value="Không có thời gian">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Không có thời gian</div><div class="radio-card-sub">Công việc hiện tại quá bận</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="barrier" value="Chưa biết bắt đầu từ đâu">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Chưa biết bắt đầu</div><div class="radio-card-sub">Thiếu định hướng rõ ràng</div></div>
+          </div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="barrier" value="Sợ thất bại và rủi ro">
+          <div class="radio-card-inner">
+            <div class="radio-card-dot"></div>
+            <div><div class="radio-card-text">Sợ rủi ro</div><div class="radio-card-sub">Đã từng thử và không thành</div></div>
+          </div>
+        </label>
+      </div>
+      <p class="field-error" role="alert">Bạn vui lòng chọn rào cản gần nhất với mình.</p>
+    </div>
+
+    <div class="field">
+      <label>Nếu nhìn thấy một hướng đi phù hợp và đủ rõ ràng, bạn muốn tìm hiểu ở mức nào? <span class="req">*</span></label>
+      <select name="readiness" required>
+        <option value="" disabled selected>Chọn câu trả lời phù hợp nhất</option>
+        <option value="Muốn bắt đầu tìm hiểu ngay">Tôi muốn bắt đầu tìm hiểu ngay</option>
+        <option value="Muốn được giải thích rõ hơn trước">Tôi muốn có người giải thích rõ hơn trước</option>
+        <option value="Cần thêm thời gian để cân nhắc">Tôi cần thêm thời gian để cân nhắc</option>
+        <option value="Chỉ muốn nhìn lại bản thân">Hiện tại tôi chỉ muốn nhìn lại bản thân</option>
+      </select>
+      <p class="field-error" role="alert">Bạn vui lòng chọn mức độ phù hợp với mình.</p>
+    </div>
+
+    <div class="callout">
+      Yến sẽ đọc kỹ từng chia sẻ và liên hệ trong vòng 24 giờ. Cuộc trò chuyện đầu tiên chỉ để lắng nghe và cùng bạn nhìn rõ hướng đi — không ép mua, không yêu cầu cam kết.
+    </div>
+
+    <div class="btn-row">
+      <button type="button" class="btn-back" onclick="prevStep(2)">← Quay lại</button>
+      <button type="button" class="btn-next" onclick="nextStep(2)">Tiếp theo →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ BƯỚC 3 ══════════════ -->
+  <div class="form-section" id="section-3">
+    <div class="section-header">
+      <div class="section-tag">Bước 3 / 3 · Thông tin liên lạc</div>
+      <h2>Để Yến có thể lắng nghe bạn kỹ hơn.</h2>
+      <p>Yến chỉ dùng thông tin này để đọc câu trả lời và liên hệ trao đổi trực tiếp trong vòng 24 giờ. Thông tin không được bán hoặc chia sẻ cho bên thứ ba nhằm mục đích quảng cáo.</p>
+    </div>
+
+    <div class="field">
+      <label>Họ và tên <span class="req">*</span></label>
+      <input type="text" name="name" placeholder="Tên bạn muốn mình gọi" required>
+      <p class="field-error" role="alert">Bạn vui lòng cho Yến biết tên để tiện xưng hô.</p>
+    </div>
+
+    <div class="field">
+      <label>Số điện thoại / Zalo <span class="req">*</span></label>
+      <input type="tel" name="phone" placeholder="0xxx xxx xxx" required>
+      <p class="field-error" role="alert">Bạn vui lòng nhập số điện thoại hoặc Zalo.</p>
+    </div>
+
+    <div class="field">
+      <label>Email <span style="color:var(--gray);font-weight:400">(không bắt buộc)</span></label>
+      <input type="email" name="email" placeholder="email@example.com">
+      <p class="field-error" role="alert">Email chưa đúng định dạng. Bạn có thể sửa lại hoặc để trống.</p>
+    </div>
+
+    <div class="field">
+      <label>Bạn biết đến mình qua đâu?</label>
+      <select name="source">
+        <option value="" disabled selected>Chọn...</option>
+        <option value="Facebook cá nhân">Facebook cá nhân của Yến</option>
+        <option value="Fanpage Yến Trần">Fanpage Yến Trần</option>
+        <option value="Bạn bè giới thiệu">Bạn bè giới thiệu</option>
+        <option value="Khác">Khác</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Bạn muốn chia sẻ thêm điều gì không?</label>
+      <textarea name="message" placeholder="Mục tiêu, hoàn cảnh, hoặc bất cứ điều gì bạn muốn mình biết trước khi nói chuyện..."></textarea>
+    </div>
+
+    <div class="callout">
+      🔒 Khi gửi khảo sát, bạn đồng ý để Yến liên hệ qua Zalo, điện thoại hoặc email về nội dung vừa chia sẻ. Bạn không có nghĩa vụ mua hàng hay tham gia bất kỳ chương trình nào.
+    </div>
+
+    <div class="btn-row">
+      <button type="button" class="btn-back" onclick="prevStep(3)">← Quay lại</button>
+      <button type="submit" class="btn-next">Gửi để Yến xem và phản hồi</button>
+    </div>
+  </div>
+
+</form>
+
+  <!-- SUCCESS -->
+  <div class="success-section" id="success">
+    <div class="success-icon">🌱</div>
+    <h2>Cảm ơn bạn đã dành thời gian<br>nhìn lại chính mình!</h2>
+    <p>Yến đã nhận được câu trả lời và sẽ đọc thật kỹ trước khi liên hệ trong vòng <strong>24 giờ</strong>. Cuộc trò chuyện đầu tiên chỉ để lắng nghe, hiểu hoàn cảnh của bạn và cùng xem hướng đi nào thực sự phù hợp.</p>
+    <a href="https://zalo.me/0858400957" class="zalo-btn" target="_blank">
+      💬 Nhắn Yến qua Zalo
+    </a>
+  </div>
+
+</div><!-- /form-wrap -->
+
+<footer>
+  © 2026 Yến Trần · Mọi thông tin được giữ bí mật
+</footer>
+
+<script>
+  const TOTAL_STEPS = 3;
+
+  function updateProgress(step) {
+    const pct = (step / TOTAL_STEPS) * 100;
+    document.getElementById('progressBar').style.width = pct + '%';
+    for (let i = 1; i <= TOTAL_STEPS; i++) {
+      const tab = document.getElementById('tab-' + i);
+      tab.className = 'step-tab';
+      if (i < step) tab.classList.add('done');
+      else if (i === step) tab.classList.add('active');
+    }
+  }
+
+  function validateStep(step) {
+    const section = document.getElementById('section-' + step);
+    const fields = section.querySelectorAll('.field');
+    let valid = true;
+    fields.forEach(field => field.classList.remove('has-error'));
+
+    section.querySelectorAll('[required]').forEach(el => {
+      const field = el.closest('.field');
+      let fieldValid = true;
+      if (el.type === 'radio') {
+        fieldValid = Array.from(section.querySelectorAll(`[name="${el.name}"]`)).some(item => item.checked);
+      } else {
+        fieldValid = Boolean(el.value.trim()) && el.checkValidity();
+      }
+      if (!fieldValid) {
+        valid = false;
+        field.classList.add('has-error');
+      }
+    });
+
+    if (step === 2) {
+      const wants = section.querySelectorAll('input[name="wants[]"]');
+      const wantsField = wants[0].closest('.field');
+      if (!Array.from(wants).some(item => item.checked)) {
+        valid = false;
+        wantsField.classList.add('has-error');
+      }
+    }
+
+    const email = section.querySelector('input[type="email"]');
+    if (email && email.value && !email.checkValidity()) {
+      valid = false;
+      email.closest('.field').classList.add('has-error');
+    }
+
+    const firstError = section.querySelector('.field.has-error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return valid;
+  }
+
+  function nextStep(current) {
+    if (!validateStep(current)) {
+      return;
+    }
+    const next = current + 1;
+    document.getElementById('section-' + current).classList.remove('active');
+    document.getElementById('section-' + next).classList.add('active');
+    updateProgress(next);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function prevStep(current) {
+    const prev = current - 1;
+    document.getElementById('section-' + current).classList.remove('active');
+    document.getElementById('section-' + prev).classList.add('active');
+    updateProgress(prev);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Handle form submit via Formspree AJAX
+  document.getElementById('mainForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (!validateStep(3)) return;
+    const btn = this.querySelector('[type=submit]');
+    btn.textContent = 'Đang gửi...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        document.getElementById('section-3').classList.remove('active');
+        document.getElementById('success').classList.add('active');
+        updateProgress(3);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        btn.textContent = 'Gửi để Yến xem và phản hồi';
+        btn.disabled = false;
+        alert('Có lỗi xảy ra. Vui lòng thử lại hoặc nhắn Zalo trực tiếp cho Yến.');
+      }
+    } catch {
+      btn.textContent = 'Gửi để Yến xem và phản hồi';
+      btn.disabled = false;
+      alert('Không thể kết nối. Vui lòng kiểm tra mạng và thử lại.');
+    }
+  });
+</script>
+</body>
+</html>
