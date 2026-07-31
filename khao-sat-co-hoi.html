@@ -3,953 +3,257 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khám phá cơ hội phù hợp với bạn — Yến Trần</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Khảo sát định hướng giúp bạn nhìn rõ hiện trạng, mong muốn, rào cản và bước tiếp theo phù hợp.">
+<title>Nhìn rõ hướng đi của bạn — Yến Trần</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --green: #2D6A4F;
-    --green-mid: #40916C;
-    --green-light: #D8F3DC;
-    --cream: #F8F6F2;
-    --dark: #1A1A1A;
-    --gray: #6B7280;
-    --gray-light: #F3F4F6;
-    --border: #E5E7EB;
-    --pink: #E8857A;
-    --gold: #B5813A;
-    --white: #FFFFFF;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Be Vietnam Pro', sans-serif;
-    background: var(--cream);
-    color: var(--dark);
-    min-height: 100vh;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    background: var(--green);
-    padding: 64px 24px 80px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-    top: -100px; right: -100px;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.03);
-    bottom: -80px; left: -60px;
-  }
-  .hero-eyebrow {
-    display: inline-block;
-    background: rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.75);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-  }
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(32px, 6vw, 52px);
-    font-weight: 700;
-    color: white;
-    line-height: 1.15;
-    margin-bottom: 16px;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: #95D5B2;
-  }
-  .hero p {
-    font-size: 15px;
-    color: rgba(255,255,255,0.7);
-    max-width: 480px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-  .hero-trust {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 22px;
-  }
-  .hero-trust span {
-    padding: 7px 11px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 999px;
-    background: rgba(255,255,255,0.09);
-    color: rgba(255,255,255,0.82);
-    font-size: 11px;
-  }
-
-  /* ── STEPS BAR ── */
-  .steps-bar {
-    background: white;
-    border-bottom: 1px solid var(--border);
-    padding: 0 24px;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-  }
-  .steps-inner {
-    max-width: 560px;
-    margin: 0 auto;
-    display: flex;
-    gap: 0;
-  }
-  .step-tab {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 14px 8px;
-    position: relative;
-    cursor: default;
-    transition: opacity 0.2s;
-  }
-  .step-tab::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: transparent;
-    transition: background 0.3s;
-  }
-  .step-tab.active::after { background: var(--green-mid); }
-  .step-tab.done::after { background: var(--green-light); }
-  .step-dot {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    background: var(--gray-light);
-    color: var(--gray);
-    font-size: 12px;
-    font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 4px;
-    transition: all 0.3s;
-  }
-  .step-tab.active .step-dot { background: var(--green-mid); color: white; }
-  .step-tab.done .step-dot { background: var(--green-light); color: var(--green); }
-  .step-label {
-    font-size: 10px;
-    color: var(--gray);
-    font-weight: 500;
-    text-align: center;
-    line-height: 1.3;
-  }
-  .step-tab.active .step-label { color: var(--green-mid); font-weight: 600; }
-
-  /* ── FORM WRAPPER ── */
-  .form-wrap {
-    max-width: 560px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-  }
-
-  /* ── SECTION ── */
-  .form-section {
-    display: none;
-    animation: fadeIn 0.35s ease;
-  }
-  .form-section.active { display: block; }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .section-header {
-    margin-bottom: 28px;
-  }
-  .section-tag {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--green-mid);
-    background: var(--green-light);
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-  }
-  .section-header h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.3;
-    margin-bottom: 8px;
-  }
-  .section-header p {
-    font-size: 13px;
-    color: var(--gray);
-    line-height: 1.65;
-  }
-
-  /* ── FIELD ── */
-  .field { margin-bottom: 20px; }
-  .field label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--dark);
-    margin-bottom: 6px;
-  }
-  .field label .req { color: var(--pink); margin-left: 2px; }
-  .field input, .field select, .field textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 14px;
-    color: var(--dark);
-    background: white;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-  }
-  .field input:focus, .field select:focus, .field textarea:focus {
-    border-color: var(--green-mid);
-    box-shadow: 0 0 0 3px rgba(64,145,108,0.1);
-  }
-  .field textarea { resize: vertical; min-height: 90px; }
-  .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
-  .field.has-error { padding: 10px; border-radius: 10px; background: #fff2f0; }
-  .field.has-error input,
-  .field.has-error select { border-color: var(--pink); }
-  .field-error {
-    display: none;
-    margin-top: 8px;
-    color: #b84338;
-    font-size: 12px;
-    font-weight: 500;
-  }
-  .field.has-error .field-error { display: block; }
-
-  /* ── RADIO CARDS ── */
-  .radio-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .radio-grid.single { grid-template-columns: 1fr; }
-  .radio-card {
-    position: relative;
-    cursor: pointer;
-  }
-  .radio-card input {
-    position: absolute;
-    opacity: 0;
-    width: 0; height: 0;
-  }
-  .radio-card-inner {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    background: white;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-  .radio-card input:checked ~ .radio-card-inner {
-    border-color: var(--green-mid);
-    background: var(--green-light);
-  }
-  .radio-card-dot {
-    width: 18px; height: 18px;
-    border-radius: 50%;
-    border: 2px solid var(--border);
-    flex-shrink: 0;
-    margin-top: 1px;
-    transition: all 0.2s;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .radio-card input:checked ~ .radio-card-inner .radio-card-dot {
-    border-color: var(--green-mid);
-    background: var(--green-mid);
-  }
-  .radio-card input:checked ~ .radio-card-inner .radio-card-dot::after {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: white;
-  }
-  .radio-card-text {
-    font-size: 13px;
-    color: var(--dark);
-    line-height: 1.5;
-    font-weight: 500;
-  }
-  .radio-card-sub {
-    font-size: 11px;
-    color: var(--gray);
-    font-weight: 400;
-    margin-top: 2px;
-  }
-
-  /* ── CHECKBOX CARDS ── */
-  .check-list { display: flex; flex-direction: column; gap: 8px; }
-  .check-card { position: relative; cursor: pointer; }
-  .check-card input { position: absolute; opacity: 0; width: 0; height: 0; }
-  .check-card-inner {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    background: white;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-  .check-card input:checked ~ .check-card-inner {
-    border-color: var(--green-mid);
-    background: var(--green-light);
-  }
-  .check-box {
-    width: 18px; height: 18px;
-    border-radius: 4px;
-    border: 2px solid var(--border);
-    flex-shrink: 0;
-    transition: all 0.2s;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .check-card input:checked ~ .check-card-inner .check-box {
-    border-color: var(--green-mid);
-    background: var(--green-mid);
-  }
-  .check-card input:checked ~ .check-card-inner .check-box::after {
-    content: '✓';
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-  }
-  .check-card-text { font-size: 13px; color: var(--dark); font-weight: 500; }
-
-  /* ── RANGE SLIDER ── */
-  .range-wrap { margin-top: 6px; }
-  .range-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--gray); margin-bottom: 6px; }
-  input[type=range] {
-    width: 100%;
-    height: 4px;
-    border-radius: 4px;
-    background: var(--border);
-    outline: none;
-    -webkit-appearance: none;
-    cursor: pointer;
-  }
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px; height: 20px;
-    border-radius: 50%;
-    background: var(--green-mid);
-    border: 2px solid white;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
-  }
-  .range-value {
-    text-align: center;
-    font-weight: 700;
-    color: var(--green-mid);
-    font-size: 15px;
-    margin-top: 8px;
-  }
-
-  /* ── DIVIDER ── */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 28px 0;
-  }
-
-  /* ── BUTTONS ── */
-  .btn-row {
-    display: flex;
-    gap: 12px;
-    margin-top: 32px;
-  }
-  .btn-back {
-    flex: 0 0 auto;
-    padding: 14px 20px;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    background: white;
-    color: var(--gray);
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn-back:hover { border-color: var(--dark); color: var(--dark); }
-  .btn-next {
-    flex: 1;
-    padding: 14px 24px;
-    border: none;
-    border-radius: 10px;
-    background: var(--green);
-    color: white;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .btn-next:hover { background: var(--green-mid); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(45,106,79,0.25); }
-  .btn-next:active { transform: translateY(0); }
-
-  /* ── CALLOUT ── */
-  .callout {
-    background: var(--green-light);
-    border-left: 3px solid var(--green-mid);
-    border-radius: 0 8px 8px 0;
-    padding: 14px 16px;
-    font-size: 13px;
-    color: #1B4332;
-    line-height: 1.6;
-    margin: 20px 0;
-  }
-
-  /* ── SUCCESS ── */
-  .success-section {
-    display: none;
-    text-align: center;
-    padding: 48px 0;
-  }
-  .success-section.active { display: block; animation: fadeIn 0.5s ease; }
-  .success-icon {
-    width: 72px; height: 72px;
-    background: var(--green-light);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 32px;
-    margin: 0 auto 20px;
-  }
-  .success-section h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 12px;
-    line-height: 1.3;
-  }
-  .success-section p {
-    font-size: 14px;
-    color: var(--gray);
-    line-height: 1.7;
-    max-width: 360px;
-    margin: 0 auto 28px;
-  }
-  .zalo-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #0068FF;
-    color: white;
-    padding: 14px 28px;
-    border-radius: 10px;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .zalo-btn:hover { background: #0055d4; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,104,255,0.3); }
-
-  /* ── PROGRESS ── */
-  .progress-bar-wrap {
-    background: var(--border);
-    height: 3px;
-    margin-top: -1px;
-  }
-  .progress-bar-fill {
-    height: 3px;
-    background: var(--green-mid);
-    transition: width 0.4s ease;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    text-align: center;
-    padding: 32px 24px;
-    font-size: 12px;
-    color: var(--gray);
-    border-top: 1px solid var(--border);
-    background: white;
-  }
-
-  @media (max-width: 480px) {
-    .radio-grid { grid-template-columns: 1fr; }
-    .hero { padding: 48px 20px 64px; }
-  }
+:root{--green:#2D6A4F;--green-mid:#40916C;--light:#D8F3DC;--cream:#F8F6F2;--ink:#20221f;--gray:#6B7280;--border:#E2E6E3;--pink:#D96C62;--gold:#C6984F;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:var(--cream);color:var(--ink);font-family:'Be Vietnam Pro',sans-serif}
+.hero{position:relative;overflow:hidden;padding:64px 24px 76px;background:linear-gradient(145deg,#255e46,#2D6A4F 55%,#367c5d);text-align:center}
+.hero:before,.hero:after{position:absolute;border-radius:50%;background:rgba(255,255,255,.045);content:''}
+.hero:before{top:-150px;right:-100px;width:420px;height:420px}.hero:after{bottom:-170px;left:-90px;width:360px;height:360px}
+.eyebrow{position:relative;display:inline-block;margin-bottom:18px;padding:7px 15px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.82);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.hero h1{position:relative;max-width:760px;margin:0 auto 16px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:clamp(34px,6vw,56px);line-height:1.08}
+.hero h1 em{color:#a8e0be}.hero>p{position:relative;max-width:620px;margin:auto;color:rgba(255,255,255,.76);font-size:14px;line-height:1.75}
+.trust{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px}.trust span{padding:7px 11px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08);color:#eef9f3;font-size:11px}
+.steps{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--border);background:#fff;box-shadow:0 2px 10px rgba(24,49,39,.05)}
+.steps-inner{display:flex;max-width:680px;margin:auto}.step{position:relative;flex:1;padding:12px 4px;text-align:center}.step:after{position:absolute;right:0;bottom:0;left:0;height:3px;background:transparent;content:''}.step.active:after{background:var(--green-mid)}.step.done:after{background:var(--light)}
+.step-dot{display:grid;width:27px;height:27px;margin:0 auto 4px;border-radius:50%;background:#f0f2f1;color:var(--gray);font-size:11px;font-weight:700;place-items:center}.step.active .step-dot{background:var(--green-mid);color:#fff}.step.done .step-dot{background:var(--light);color:var(--green)}
+.step-label{color:var(--gray);font-size:9px;line-height:1.3}.step.active .step-label{color:var(--green);font-weight:600}.progress{height:3px;background:#eef0ef}.progress-fill{height:100%;width:25%;background:var(--green-mid);transition:width .35s}
+.wrap{max-width:680px;margin:auto;padding:42px 24px 80px}.form-section{display:none;animation:up .35s ease}.form-section.active{display:block}@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.section-head{margin-bottom:28px}.tag{display:inline-block;margin-bottom:11px;padding:5px 11px;border-radius:999px;background:var(--light);color:var(--green);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.section-head h2{margin-bottom:8px;font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.2}.section-head p{color:var(--gray);font-size:13px;line-height:1.7}
+.field{margin-bottom:24px}.field>label,.question{display:block;margin-bottom:9px;font-size:13px;font-weight:600;line-height:1.55}.req{color:var(--pink)}
+.radio-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.radio-grid.single{grid-template-columns:1fr}.check-list{display:grid;gap:8px}.choice{position:relative;cursor:pointer}.choice input{position:absolute;width:0;height:0;opacity:0}
+.choice-box{display:flex;align-items:flex-start;gap:10px;height:100%;padding:13px;border:1.5px solid var(--border);border-radius:11px;background:#fff;transition:.2s}.choice input:checked~.choice-box{border-color:var(--green-mid);background:var(--light);box-shadow:0 2px 10px rgba(45,106,79,.07)}
+.mark{display:grid;flex:0 0 18px;width:18px;height:18px;margin-top:1px;border:2px solid #ccd2cf;border-radius:50%;place-items:center}.check .mark{border-radius:4px}.choice input:checked~.choice-box .mark{border-color:var(--green-mid);background:var(--green-mid)}.choice input:checked~.choice-box .mark:after{color:#fff;font-size:10px;font-weight:700;content:'✓'}
+.choice-text{font-size:12.5px;font-weight:500;line-height:1.5}.choice-sub{display:block;margin-top:2px;color:var(--gray);font-size:10.5px;font-weight:400}
+input[type=text],input[type=tel],input[type=email],select,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;outline:0;background:#fff;color:var(--ink);font:14px 'Be Vietnam Pro',sans-serif;transition:.2s}
+select{appearance:none;background:#fff}textarea{min-height:100px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--green-mid);box-shadow:0 0 0 3px rgba(64,145,108,.1)}
+.field.has-error{padding:11px;border-radius:11px;background:#fff1ef}.field.has-error input,.field.has-error select,.field.has-error textarea{border-color:var(--pink)}.error{display:none;margin-top:7px;color:#a43d35;font-size:11px;font-weight:500}.field.has-error .error{display:block}
+.scale{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}.scale .choice-box{justify-content:center;padding:10px 2px}.scale .choice-text{font-size:11px}.scale-note{display:flex;justify-content:space-between;margin-top:7px;color:var(--gray);font-size:10px}
+.callout{margin:22px 0;padding:15px 17px;border-left:3px solid var(--green-mid);border-radius:0 9px 9px 0;background:var(--light);color:#1d513b;font-size:12.5px;line-height:1.65}
+.buttons{display:flex;gap:10px;margin-top:32px}.back,.next{border-radius:10px;font:600 14px 'Be Vietnam Pro',sans-serif;cursor:pointer}.back{padding:13px 18px;border:1.5px solid var(--border);background:#fff;color:var(--gray)}.next{display:flex;flex:1;align-items:center;justify-content:center;gap:7px;padding:14px 20px;border:0;background:var(--green);color:#fff}.next:hover{background:var(--green-mid)}
+.result-card{overflow:hidden;margin-bottom:28px;border:1px solid #cde3d6;border-radius:20px;background:#fff;box-shadow:0 16px 40px rgba(33,79,59,.1)}.result-top{padding:24px;background:linear-gradient(135deg,#2D6A4F,#40916C);color:#fff}.result-kicker{margin-bottom:7px;color:#c9ecd7;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.result-top h2{font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.15}.result-body{padding:22px}.result-summary{margin-bottom:18px;color:#3f4b45;font-size:13px;line-height:1.75}.result-block{margin-top:18px}.result-block h3{margin-bottom:8px;color:var(--green);font-size:13px}.result-block ul{padding-left:18px;color:#525c57;font-size:12px;line-height:1.75}.disclaimer{margin-top:18px;padding-top:14px;border-top:1px solid var(--border);color:var(--gray);font-size:10px;line-height:1.6}
+.why-talk{margin:28px 0;padding:22px;border-radius:16px;background:#fff}.why-talk h3{margin-bottom:9px;font-family:'Cormorant Garamond',serif;font-size:25px}.why-talk>p{margin-bottom:13px;color:var(--gray);font-size:12px;line-height:1.7}.why-talk ul{display:grid;gap:8px;list-style:none}.why-talk li{display:flex;gap:9px;color:#445049;font-size:12px;line-height:1.55}.why-talk li:before{color:var(--green-mid);font-weight:700;content:'✓'}
+.consent{padding:14px;border-radius:10px;background:#f0f7f3;color:#365145;font-size:11px;line-height:1.6}.success{display:none;padding:50px 0;text-align:center}.success.active{display:block}.success-icon{display:grid;width:74px;height:74px;margin:0 auto 20px;border-radius:50%;background:var(--light);font-size:32px;place-items:center}.success h2{margin-bottom:12px;font-family:'Cormorant Garamond',serif;font-size:32px}.success p{max-width:470px;margin:0 auto 25px;color:var(--gray);font-size:13px;line-height:1.75}.zalo{display:inline-flex;padding:13px 22px;border-radius:10px;background:#0868ff;color:#fff;font-size:13px;font-weight:600;text-decoration:none}
+footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);background:#fff;color:var(--gray);font-size:11px}
+@media(max-width:560px){.hero{padding:48px 18px 58px}.wrap{padding:34px 18px 64px}.radio-grid{grid-template-columns:1fr}.step-label{font-size:8px}.scale{gap:3px}.scale .choice-box{padding:9px 0}.result-top,.result-body,.why-talk{padding:18px}.buttons{align-items:stretch}.back{padding:12px}}
 </style>
 </head>
 <body>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-eyebrow">Khảo sát định hướng cá nhân · 3 phút</div>
-  <h1>Có phải bạn vẫn ổn…<br><em>nhưng đang muốn một điều gì đó khác?</em></h1>
-  <p>Dành 3 phút để nhìn lại cuộc sống hiện tại, điều bạn thực sự mong muốn và những gì đang khiến bạn chưa thể bắt đầu. Không có câu trả lời đúng hay sai — chỉ có câu trả lời phù hợp với bạn.</p>
-  <div class="hero-trust" aria-label="Cam kết của khảo sát">
-    <span>⏱ Chỉ khoảng 3 phút</span>
-    <span>♡ Không cam kết mua hàng</span>
-    <span>💬 Yến phản hồi trong 24 giờ</span>
+<header class="hero">
+  <div class="eyebrow">Bài nhìn lại định hướng cá nhân · khoảng 4–5 phút</div>
+  <h1>Bạn không cần vội thay đổi.<br><em>Trước hết, hãy hiểu mình đang cần gì.</em></h1>
+  <p>Một hành trình ngắn giúp bạn nhìn rõ hiện trạng, điều mình mong muốn, rào cản đang giữ mình lại và bước tiếp theo phù hợp.</p>
+  <div class="trust">
+    <span>🌱 Nhận kết quả cá nhân hóa</span><span>♡ Không ép mua, không cam kết</span><span>💬 Có thể trao đổi riêng 45–60 phút</span>
   </div>
-</div>
+</header>
 
-<!-- STEPS BAR -->
-<div class="steps-bar">
+<nav class="steps" aria-label="Tiến trình khảo sát">
   <div class="steps-inner">
-    <div class="step-tab active" id="tab-1">
-      <div class="step-dot">1</div>
-      <div class="step-label">Cuộc sống<br>hiện tại</div>
-    </div>
-    <div class="step-tab" id="tab-2">
-      <div class="step-dot">2</div>
-      <div class="step-label">Mong muốn<br>& Rào cản</div>
-    </div>
-    <div class="step-tab" id="tab-3">
-      <div class="step-dot">3</div>
-      <div class="step-label">Thông tin<br>liên lạc</div>
-    </div>
+    <div class="step active" id="tab-1"><div class="step-dot">1</div><div class="step-label">Hiện trạng</div></div>
+    <div class="step" id="tab-2"><div class="step-dot">2</div><div class="step-label">Mong muốn</div></div>
+    <div class="step" id="tab-3"><div class="step-dot">3</div><div class="step-label">Rào cản</div></div>
+    <div class="step" id="tab-4"><div class="step-dot">4</div><div class="step-label">Kết quả</div></div>
   </div>
-  <div class="progress-bar-wrap">
-    <div class="progress-bar-fill" id="progressBar" style="width:33%"></div>
-  </div>
-</div>
+  <div class="progress"><div class="progress-fill" id="progress"></div></div>
+</nav>
 
-<!-- FORM -->
-<div class="form-wrap">
-<form id="mainForm" action="https://formspree.io/f/xrenvveg" method="POST" novalidate>
+<main class="wrap">
+<form id="surveyForm" action="https://formspree.io/f/xrenvveg" method="POST" novalidate>
+<input type="hidden" name="_subject" value="Kết quả khảo sát định hướng — Yến Trần">
+<input type="hidden" name="personalized_profile" id="profileInput">
+<input type="hidden" name="personalized_summary" id="summaryInput">
 
-  <!-- HIDDEN tracking -->
-  <input type="hidden" name="_subject" value="Khảo sát cơ hội mới — Yến Trần">
-  <input type="hidden" name="_next" value="">
+<section class="form-section active" id="section-1">
+  <div class="section-head"><span class="tag">Bước 1 · Hiện trạng</span><h2>Dạo này bạn thực sự thế nào?</h2><p>Đừng chọn câu trả lời “nên có”. Hãy chọn điều gần nhất với trải nghiệm của bạn lúc này.</p></div>
 
-  <!-- ══════════════ BƯỚC 1 ══════════════ -->
-  <div class="form-section active" id="section-1">
-    <div class="section-header">
-      <div class="section-tag">Bước 1 / 3 · Cuộc sống hiện tại</div>
-      <h2>Dạo này bạn thế nào?</h2>
-      <p>Đôi khi mọi thứ bên ngoài vẫn ổn, nhưng bên trong mình biết rằng có điều gì đó cần thay đổi. Hãy chọn câu trả lời gần nhất với cuộc sống của bạn lúc này.</p>
-    </div>
-
-    <div class="field">
-      <label>Công việc hiện tại của bạn? <span class="req">*</span></label>
-      <div class="radio-grid">
-        <label class="radio-card">
-          <input type="radio" name="job_type" value="Nhân viên văn phòng" required>
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Nhân viên văn phòng</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="job_type" value="Kinh doanh tự do">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Kinh doanh / Tự do</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="job_type" value="Nội trợ / Chăm con">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Nội trợ / Chăm con</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="job_type" value="Khác">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Khác</div></div>
-          </div>
-        </label>
-      </div>
-      <p class="field-error" role="alert">Bạn vui lòng chọn công việc gần nhất với mình.</p>
-    </div>
-
-    <div class="field">
-      <label>Thu nhập hiện tại có đủ trang trải cuộc sống không? <span class="req">*</span></label>
-      <div class="radio-grid">
-        <label class="radio-card">
-          <input type="radio" name="income_status" value="Đủ cho hiện tại nhưng khó tích lũy" required>
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Đủ cho hiện tại nhưng khó tích lũy</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="income_status" value="Đang khá áp lực về tài chính">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Đang khá áp lực về tài chính</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="income_status" value="Tương đối ổn, muốn có thêm nguồn thu">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Tương đối ổn, muốn có thêm nguồn thu</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="income_status" value="Ổn định, muốn tìm một hướng phát triển mới">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Ổn định, muốn tìm hướng phát triển mới</div></div>
-          </div>
-        </label>
-      </div>
-      <p class="field-error" role="alert">Bạn vui lòng chọn tình trạng gần nhất với mình.</p>
-    </div>
-
-    <div class="field">
-      <label>Thời gian rảnh mỗi ngày (ngoài giờ làm)? <span class="req">*</span></label>
-      <div class="radio-grid">
-        <label class="radio-card">
-          <input type="radio" name="free_time" value="Dưới 1 tiếng" required>
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Dưới 1 tiếng</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="free_time" value="1–2 tiếng">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">1–2 tiếng</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="free_time" value="2–3 tiếng">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">2–3 tiếng</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="free_time" value="Trên 3 tiếng">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Trên 3 tiếng</div></div>
-          </div>
-        </label>
-      </div>
-      <p class="field-error" role="alert">Bạn vui lòng chọn khoảng thời gian phù hợp.</p>
-    </div>
-
-    <div class="btn-row">
-      <button type="button" class="btn-next" onclick="nextStep(1)">
-        Tiếp theo <span>→</span>
-      </button>
-    </div>
+  <div class="field">
+    <span class="question">Khi nghĩ đến công việc và cuộc sống hiện tại, câu nào giống bạn nhất? <span class="req">*</span></span>
+    <div class="radio-grid single">
+      <label class="choice"><input type="radio" name="current_state" value="stable_missing" required><span class="choice-box"><span class="mark"></span><span class="choice-text">Mọi thứ nhìn chung vẫn ổn, nhưng tôi cảm thấy thiếu một điều gì đó</span></span></label>
+      <label class="choice"><input type="radio" name="current_state" value="exhausted"><span class="choice-box"><span class="mark"></span><span class="choice-text">Tôi đang mệt vì công việc và trách nhiệm hằng ngày</span></span></label>
+      <label class="choice"><input type="radio" name="current_state" value="financial"><span class="choice-box"><span class="mark"></span><span class="choice-text">Tôi muốn có thêm thu nhập nhưng chưa biết bắt đầu từ đâu</span></span></label>
+      <label class="choice"><input type="radio" name="current_state" value="growth"><span class="choice-box"><span class="mark"></span><span class="choice-text">Tôi cảm thấy mình có thể phát triển nhiều hơn hiện tại</span></span></label>
+      <label class="choice"><input type="radio" name="current_state" value="unclear"><span class="choice-box"><span class="mark"></span><span class="choice-text">Tôi chưa gọi tên được, chỉ biết mình không muốn tiếp tục như hiện tại</span></span></label>
+    </div><p class="error">Bạn vui lòng chọn câu gần nhất với mình.</p>
   </div>
 
-  <!-- ══════════════ BƯỚC 2 ══════════════ -->
-  <div class="form-section" id="section-2">
-    <div class="section-header">
-      <div class="section-tag">Bước 2 / 3 · Mong muốn & Rào cản</div>
-      <h2>Bạn muốn điều gì hơn trong cuộc sống?</h2>
-      <p>Hiểu rõ mong muốn thật sự — mới tìm được hướng đi đúng.</p>
-    </div>
-
-    <div class="field">
-      <label>Điều bạn đang muốn nhất lúc này? (chọn tất cả phù hợp) <span class="req">*</span></label>
-      <div class="check-list">
-        <label class="check-card">
-          <input type="checkbox" name="wants[]" value="Thu nhập thêm ngoài lương">
-          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">💰 Thu nhập thêm ngoài lương</div></div>
-        </label>
-        <label class="check-card">
-          <input type="checkbox" name="wants[]" value="Tự do thời gian — không bị ràng buộc giờ giấc">
-          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">⏰ Tự do thời gian — không bị ràng buộc giờ giấc</div></div>
-        </label>
-        <label class="check-card">
-          <input type="checkbox" name="wants[]" value="Làm chủ — không phụ thuộc vào một công ty">
-          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">🏡 Làm chủ — không phụ thuộc vào một công ty</div></div>
-        </label>
-        <label class="check-card">
-          <input type="checkbox" name="wants[]" value="Tích lũy tài sản dài hạn cho gia đình">
-          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">👨‍👩‍👧 Tích lũy tài sản dài hạn cho gia đình</div></div>
-        </label>
-        <label class="check-card">
-          <input type="checkbox" name="wants[]" value="Phát triển bản thân và kỹ năng mới">
-          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">📈 Phát triển bản thân và kỹ năng mới</div></div>
-        </label>
-        <label class="check-card">
-          <input type="checkbox" name="wants[]" value="Cộng đồng tích cực để học hỏi và kết nối">
-          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">🤝 Cộng đồng tích cực để học hỏi và kết nối</div></div>
-        </label>
-        <label class="check-card">
-          <input type="checkbox" name="wants[]" value="Chưa gọi tên được, chỉ biết mình muốn thay đổi">
-          <div class="check-card-inner"><div class="check-box"></div><div class="check-card-text">🌱 Tôi chưa gọi tên được, chỉ biết mình muốn có điều gì đó thay đổi</div></div>
-        </label>
-      </div>
-      <p class="field-error" role="alert">Bạn vui lòng chọn ít nhất một điều mình đang mong muốn.</p>
-    </div>
-
-    <hr class="divider">
-
-    <div class="field">
-      <label>Rào cản lớn nhất nếu muốn bắt đầu một hướng đi mới? <span class="req">*</span></label>
-      <div class="radio-grid">
-        <label class="radio-card">
-          <input type="radio" name="barrier" value="Không có vốn" required>
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Không có vốn</div><div class="radio-card-sub">Sợ mất tiền đầu tư</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="barrier" value="Không có thời gian">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Không có thời gian</div><div class="radio-card-sub">Công việc hiện tại quá bận</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="barrier" value="Chưa biết bắt đầu từ đâu">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Chưa biết bắt đầu</div><div class="radio-card-sub">Thiếu định hướng rõ ràng</div></div>
-          </div>
-        </label>
-        <label class="radio-card">
-          <input type="radio" name="barrier" value="Sợ thất bại và rủi ro">
-          <div class="radio-card-inner">
-            <div class="radio-card-dot"></div>
-            <div><div class="radio-card-text">Sợ rủi ro</div><div class="radio-card-sub">Đã từng thử và không thành</div></div>
-          </div>
-        </label>
-      </div>
-      <p class="field-error" role="alert">Bạn vui lòng chọn rào cản gần nhất với mình.</p>
-    </div>
-
-    <div class="field">
-      <label>Nếu nhìn thấy một hướng đi phù hợp và đủ rõ ràng, bạn muốn tìm hiểu ở mức nào? <span class="req">*</span></label>
-      <select name="readiness" required>
-        <option value="" disabled selected>Chọn câu trả lời phù hợp nhất</option>
-        <option value="Muốn bắt đầu tìm hiểu ngay">Tôi muốn bắt đầu tìm hiểu ngay</option>
-        <option value="Muốn được giải thích rõ hơn trước">Tôi muốn có người giải thích rõ hơn trước</option>
-        <option value="Cần thêm thời gian để cân nhắc">Tôi cần thêm thời gian để cân nhắc</option>
-        <option value="Chỉ muốn nhìn lại bản thân">Hiện tại tôi chỉ muốn nhìn lại bản thân</option>
-      </select>
-      <p class="field-error" role="alert">Bạn vui lòng chọn mức độ phù hợp với mình.</p>
-    </div>
-
-    <div class="callout">
-      Yến sẽ đọc kỹ từng chia sẻ và liên hệ trong vòng 24 giờ. Cuộc trò chuyện đầu tiên chỉ để lắng nghe và cùng bạn nhìn rõ hướng đi — không ép mua, không yêu cầu cam kết.
-    </div>
-
-    <div class="btn-row">
-      <button type="button" class="btn-back" onclick="prevStep(2)">← Quay lại</button>
-      <button type="button" class="btn-next" onclick="nextStep(2)">Tiếp theo →</button>
-    </div>
+  <div class="field">
+    <span class="question">Mức độ hài lòng của bạn với cuộc sống hiện tại? <span class="req">*</span></span>
+    <div class="scale">
+      <label class="choice"><input type="radio" name="satisfaction" value="1" required><span class="choice-box"><span class="choice-text">1</span></span></label>
+      <label class="choice"><input type="radio" name="satisfaction" value="2"><span class="choice-box"><span class="choice-text">2</span></span></label>
+      <label class="choice"><input type="radio" name="satisfaction" value="3"><span class="choice-box"><span class="choice-text">3</span></span></label>
+      <label class="choice"><input type="radio" name="satisfaction" value="4"><span class="choice-box"><span class="choice-text">4</span></span></label>
+      <label class="choice"><input type="radio" name="satisfaction" value="5"><span class="choice-box"><span class="choice-text">5</span></span></label>
+      <label class="choice"><input type="radio" name="satisfaction" value="6"><span class="choice-box"><span class="choice-text">6</span></span></label>
+      <label class="choice"><input type="radio" name="satisfaction" value="7"><span class="choice-box"><span class="choice-text">7</span></span></label>
+      <label class="choice"><input type="radio" name="satisfaction" value="8"><span class="choice-box"><span class="choice-text">8</span></span></label>
+      <label class="choice"><input type="radio" name="satisfaction" value="9"><span class="choice-box"><span class="choice-text">9</span></span></label>
+      <label class="choice"><input type="radio" name="satisfaction" value="10"><span class="choice-box"><span class="choice-text">10</span></span></label>
+    </div><div class="scale-note"><span>Rất muốn thay đổi</span><span>Gần điều mình mong muốn</span></div><p class="error">Bạn vui lòng chọn một mức độ.</p>
   </div>
 
-  <!-- ══════════════ BƯỚC 3 ══════════════ -->
-  <div class="form-section" id="section-3">
-    <div class="section-header">
-      <div class="section-tag">Bước 3 / 3 · Thông tin liên lạc</div>
-      <h2>Để Yến có thể lắng nghe bạn kỹ hơn.</h2>
-      <p>Yến chỉ dùng thông tin này để đọc câu trả lời và liên hệ trao đổi trực tiếp trong vòng 24 giờ. Thông tin không được bán hoặc chia sẻ cho bên thứ ba nhằm mục đích quảng cáo.</p>
-    </div>
+  <div class="field">
+    <span class="question">Khi nghĩ về 3–5 năm tới, điều nào khiến bạn lo nhất? <span class="req">*</span></span>
+    <div class="radio-grid">
+      <label class="choice"><input type="radio" name="future_worry" value="income" required><span class="choice-box"><span class="mark"></span><span class="choice-text">Thu nhập không theo kịp chi phí</span></span></label>
+      <label class="choice"><input type="radio" name="future_worry" value="time"><span class="choice-box"><span class="mark"></span><span class="choice-text">Thiếu thời gian cho bản thân và gia đình</span></span></label>
+      <label class="choice"><input type="radio" name="future_worry" value="stagnation"><span class="choice-box"><span class="mark"></span><span class="choice-text">Tiếp tục ở một công việc không còn phù hợp</span></span></label>
+      <label class="choice"><input type="radio" name="future_worry" value="dependence"><span class="choice-box"><span class="mark"></span><span class="choice-text">Phụ thuộc vào một nguồn thu duy nhất</span></span></label>
+      <label class="choice"><input type="radio" name="future_worry" value="regret"><span class="choice-box"><span class="mark"></span><span class="choice-text">Tiếc vì đã không bắt đầu sớm hơn</span></span></label>
+      <label class="choice"><input type="radio" name="future_worry" value="none"><span class="choice-box"><span class="mark"></span><span class="choice-text">Hiện tại tôi chưa quá lo lắng</span></span></label>
+    </div><p class="error">Bạn vui lòng chọn điều khiến mình trăn trở nhất.</p>
+  </div>
+  <div class="buttons"><button type="button" class="next" onclick="nextStep(1)">Tiếp tục nhìn vào mong muốn →</button></div>
+</section>
 
-    <div class="field">
-      <label>Họ và tên <span class="req">*</span></label>
-      <input type="text" name="name" placeholder="Tên bạn muốn mình gọi" required>
-      <p class="field-error" role="alert">Bạn vui lòng cho Yến biết tên để tiện xưng hô.</p>
-    </div>
+<section class="form-section" id="section-2">
+  <div class="section-head"><span class="tag">Bước 2 · Mong muốn</span><h2>Cuộc sống bạn thực sự muốn trông như thế nào?</h2><p>Không cần một kế hoạch hoàn hảo. Hãy bắt đầu từ điều có ý nghĩa nhất với bạn.</p></div>
 
-    <div class="field">
-      <label>Số điện thoại / Zalo <span class="req">*</span></label>
-      <input type="tel" name="phone" placeholder="0xxx xxx xxx" required>
-      <p class="field-error" role="alert">Bạn vui lòng nhập số điện thoại hoặc Zalo.</p>
-    </div>
-
-    <div class="field">
-      <label>Email <span style="color:var(--gray);font-weight:400">(không bắt buộc)</span></label>
-      <input type="email" name="email" placeholder="email@example.com">
-      <p class="field-error" role="alert">Email chưa đúng định dạng. Bạn có thể sửa lại hoặc để trống.</p>
-    </div>
-
-    <div class="field">
-      <label>Bạn biết đến mình qua đâu?</label>
-      <select name="source">
-        <option value="" disabled selected>Chọn...</option>
-        <option value="Facebook cá nhân">Facebook cá nhân của Yến</option>
-        <option value="Fanpage Yến Trần">Fanpage Yến Trần</option>
-        <option value="Bạn bè giới thiệu">Bạn bè giới thiệu</option>
-        <option value="Khác">Khác</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label>Bạn muốn chia sẻ thêm điều gì không?</label>
-      <textarea name="message" placeholder="Mục tiêu, hoàn cảnh, hoặc bất cứ điều gì bạn muốn mình biết trước khi nói chuyện..."></textarea>
-    </div>
-
-    <div class="callout">
-      🔒 Khi gửi khảo sát, bạn đồng ý để Yến liên hệ qua Zalo, điện thoại hoặc email về nội dung vừa chia sẻ. Bạn không có nghĩa vụ mua hàng hay tham gia bất kỳ chương trình nào.
-    </div>
-
-    <div class="btn-row">
-      <button type="button" class="btn-back" onclick="prevStep(3)">← Quay lại</button>
-      <button type="submit" class="btn-next">Gửi để Yến xem và phản hồi</button>
-    </div>
+  <div class="field">
+    <span class="question">Nếu 2–3 năm tới diễn ra theo cách bạn mong muốn, điều gì sẽ thay đổi? <span class="req">*</span> <small>(chọn tối đa 3)</small></span>
+    <div class="check-list max-three">
+      <label class="choice check"><input type="checkbox" name="desired_changes[]" value="income"><span class="choice-box"><span class="mark"></span><span class="choice-text">Có thêm một nguồn thu nhập</span></span></label>
+      <label class="choice check"><input type="checkbox" name="desired_changes[]" value="time"><span class="choice-box"><span class="mark"></span><span class="choice-text">Chủ động hơn về thời gian</span></span></label>
+      <label class="choice check"><input type="checkbox" name="desired_changes[]" value="family"><span class="choice-box"><span class="mark"></span><span class="choice-text">Có nhiều thời gian chất lượng cho gia đình</span></span></label>
+      <label class="choice check"><input type="checkbox" name="desired_changes[]" value="growth"><span class="choice-box"><span class="mark"></span><span class="choice-text">Tự tin hơn và phát triển kỹ năng mới</span></span></label>
+      <label class="choice check"><input type="checkbox" name="desired_changes[]" value="meaning"><span class="choice-box"><span class="mark"></span><span class="choice-text">Có một công việc hoặc sự nghiệp mang ý nghĩa</span></span></label>
+      <label class="choice check"><input type="checkbox" name="desired_changes[]" value="community"><span class="choice-box"><span class="mark"></span><span class="choice-text">Có cộng đồng tích cực để cùng học hỏi</span></span></label>
+      <label class="choice check"><input type="checkbox" name="desired_changes[]" value="choice"><span class="choice-box"><span class="mark"></span><span class="choice-text">Có đủ lựa chọn để không phụ thuộc vào công việc hiện tại</span></span></label>
+    </div><p class="error">Bạn vui lòng chọn từ một đến ba điều.</p>
   </div>
 
+  <div class="field">
+    <span class="question">Trong những điều trên, điều nào quan trọng nhất với bạn lúc này? <span class="req">*</span></span>
+    <div class="radio-grid">
+      <label class="choice"><input type="radio" name="priority" value="financial" required><span class="choice-box"><span class="mark"></span><span class="choice-text">Sự an tâm tài chính</span></span></label>
+      <label class="choice"><input type="radio" name="priority" value="time"><span class="choice-box"><span class="mark"></span><span class="choice-text">Quyền chủ động thời gian</span></span></label>
+      <label class="choice"><input type="radio" name="priority" value="growth"><span class="choice-box"><span class="mark"></span><span class="choice-text">Phát triển năng lực và sự nghiệp</span></span></label>
+      <label class="choice"><input type="radio" name="priority" value="meaning"><span class="choice-box"><span class="mark"></span><span class="choice-text">Cảm hứng và ý nghĩa</span></span></label>
+    </div><p class="error">Bạn vui lòng chọn một ưu tiên chính.</p>
+  </div>
+
+  <div class="field"><label for="whyImportant">Vì sao điều đó quan trọng với bạn? <span class="req">*</span></label><textarea id="whyImportant" name="why_important" required placeholder="Ví dụ: để bớt áp lực tài chính, có thời gian bên con, được làm điều mình yêu thích, hoặc cảm thấy mình đang tiến về phía trước…"></textarea><p class="error">Bạn hãy chia sẻ ngắn điều khiến mong muốn này có ý nghĩa.</p></div>
+  <div class="buttons"><button type="button" class="back" onclick="prevStep(2)">← Quay lại</button><button type="button" class="next" onclick="nextStep(2)">Nhìn vào điều đang giữ mình lại →</button></div>
+</section>
+
+<section class="form-section" id="section-3">
+  <div class="section-head"><span class="tag">Bước 3 · Rào cản và nguồn lực</span><h2>Điều gì đang giữ bạn lại?</h2><p>Rào cản không nói rằng bạn yếu. Nó cho biết bạn cần điều kiện và sự hỗ trợ nào để bước đi an toàn hơn.</p></div>
+
+  <div class="field">
+    <span class="question">Rào cản lớn nhất của bạn hiện tại là gì? <span class="req">*</span></span>
+    <div class="radio-grid">
+      <label class="choice"><input type="radio" name="barrier" value="unclear" required><span class="choice-box"><span class="mark"></span><span class="choice-text">Chưa biết bắt đầu từ đâu</span></span></label>
+      <label class="choice"><input type="radio" name="barrier" value="time"><span class="choice-box"><span class="mark"></span><span class="choice-text">Không có nhiều thời gian</span></span></label>
+      <label class="choice"><input type="radio" name="barrier" value="money"><span class="choice-box"><span class="mark"></span><span class="choice-text">Lo thiếu vốn hoặc mất tiền</span></span></label>
+      <label class="choice"><input type="radio" name="barrier" value="fear"><span class="choice-box"><span class="mark"></span><span class="choice-text">Sợ thất bại hoặc chọn sai</span></span></label>
+      <label class="choice"><input type="radio" name="barrier" value="confidence"><span class="choice-box"><span class="mark"></span><span class="choice-text">Thiếu tự tin vào bản thân</span></span></label>
+      <label class="choice"><input type="radio" name="barrier" value="support"><span class="choice-box"><span class="mark"></span><span class="choice-text">Thiếu người hướng dẫn và đồng hành</span></span></label>
+    </div><p class="error">Bạn vui lòng chọn rào cản lớn nhất.</p>
+  </div>
+
+  <div class="field">
+    <span class="question">Trước đây bạn đã từng thử tạo một thay đổi tương tự chưa? <span class="req">*</span></span>
+    <div class="radio-grid single">
+      <label class="choice"><input type="radio" name="past_attempt" value="new" required><span class="choice-box"><span class="mark"></span><span class="choice-text">Chưa, tôi mới bắt đầu suy nghĩ</span></span></label>
+      <label class="choice"><input type="radio" name="past_attempt" value="research"><span class="choice-box"><span class="mark"></span><span class="choice-text">Đã tự tìm hiểu nhưng chưa hành động</span></span></label>
+      <label class="choice"><input type="radio" name="past_attempt" value="stopped"><span class="choice-box"><span class="mark"></span><span class="choice-text">Đã bắt đầu một vài lần nhưng không duy trì được</span></span></label>
+      <label class="choice"><input type="radio" name="past_attempt" value="mismatch"><span class="choice-box"><span class="mark"></span><span class="choice-text">Đã thử một cơ hội hoặc dự án nhưng không phù hợp</span></span></label>
+    </div><p class="error">Bạn vui lòng chọn trải nghiệm gần nhất.</p>
+  </div>
+
+  <div class="field">
+    <span class="question">Bạn đang có những nguồn lực nào? <span class="req">*</span> <small>(chọn tất cả phù hợp)</small></span>
+    <div class="check-list resource-list">
+      <label class="choice check"><input type="checkbox" name="resources[]" value="time"><span class="choice-box"><span class="mark"></span><span class="choice-text">Có thể dành 30–60 phút mỗi ngày</span></span></label>
+      <label class="choice check"><input type="checkbox" name="resources[]" value="learning"><span class="choice-box"><span class="mark"></span><span class="choice-text">Sẵn sàng học kỹ năng mới</span></span></label>
+      <label class="choice check"><input type="checkbox" name="resources[]" value="communication"><span class="choice-box"><span class="mark"></span><span class="choice-text">Có khả năng giao tiếp hoặc kết nối</span></span></label>
+      <label class="choice check"><input type="checkbox" name="resources[]" value="support"><span class="choice-box"><span class="mark"></span><span class="choice-text">Có sự ủng hộ của gia đình</span></span></label>
+      <label class="choice check"><input type="checkbox" name="resources[]" value="unclear"><span class="choice-box"><span class="mark"></span><span class="choice-text">Tôi chưa rõ nguồn lực của mình và cần người cùng nhìn lại</span></span></label>
+    </div><p class="error">Bạn vui lòng chọn ít nhất một nguồn lực hoặc chọn “chưa rõ”.</p>
+  </div>
+
+  <div class="field">
+    <span class="question">Bạn cần điều gì để cảm thấy an tâm hơn khi bắt đầu? <span class="req">*</span></span>
+    <div class="check-list support-list">
+      <label class="choice check"><input type="checkbox" name="support_needed[]" value="roadmap"><span class="choice-box"><span class="mark"></span><span class="choice-text">Một lộ trình rõ ràng</span></span></label>
+      <label class="choice check"><input type="checkbox" name="support_needed[]" value="mentor"><span class="choice-box"><span class="mark"></span><span class="choice-text">Người hướng dẫn từng bước</span></span></label>
+      <label class="choice check"><input type="checkbox" name="support_needed[]" value="flexible"><span class="choice-box"><span class="mark"></span><span class="choice-text">Có thể bắt đầu trong thời gian rảnh</span></span></label>
+      <label class="choice check"><input type="checkbox" name="support_needed[]" value="transparent"><span class="choice-box"><span class="mark"></span><span class="choice-text">Thông tin minh bạch về thời gian, chi phí và rủi ro</span></span></label>
+      <label class="choice check"><input type="checkbox" name="support_needed[]" value="community"><span class="choice-box"><span class="mark"></span><span class="choice-text">Một cộng đồng tích cực để đồng hành</span></span></label>
+    </div><p class="error">Bạn vui lòng chọn ít nhất một điều mình cần.</p>
+  </div>
+  <div class="callout">Kết quả tiếp theo không phải chẩn đoán tâm lý. Đây là một bản phản chiếu từ những ưu tiên bạn vừa chọn, giúp bạn có điểm bắt đầu rõ ràng hơn.</div>
+  <div class="buttons"><button type="button" class="back" onclick="prevStep(3)">← Quay lại</button><button type="button" class="next" onclick="showResult()">Xem kết quả của tôi →</button></div>
+</section>
+
+<section class="form-section" id="section-4">
+  <article class="result-card" aria-live="polite">
+    <div class="result-top"><div class="result-kicker">Bức tranh hiện tại của bạn</div><h2 id="resultTitle"></h2></div>
+    <div class="result-body">
+      <p class="result-summary" id="resultSummary"></p>
+      <div class="result-block"><h3>Điểm mạnh bạn đang có</h3><ul id="resultStrengths"></ul></div>
+      <div class="result-block"><h3>Lời khuyên cơ bản để bắt đầu</h3><ul id="resultAdvice"></ul></div>
+      <p class="disclaimer">Kết quả phản ánh ưu tiên tại thời điểm trả lời, không phải đánh giá cố định về con người bạn và không thay thế tư vấn tâm lý, tài chính hoặc nghề nghiệp chuyên môn.</p>
+    </div>
+  </article>
+
+  <section class="why-talk">
+    <h3>Vì sao có thể cần một cuộc trò chuyện sâu hơn?</h3>
+    <p>Kết quả tự động cho bạn bức tranh ban đầu. Trong buổi trao đổi riêng 45–60 phút, Yến sẽ cùng bạn:</p>
+    <ul>
+      <li>Tóm tắt điều bạn thực sự đang muốn và vấn đề cốt lõi phía sau.</li>
+      <li>Nhìn lại nguồn lực, giới hạn và mức rủi ro phù hợp với hoàn cảnh riêng.</li>
+      <li>Trả lời minh bạch về hướng đi Yến đang triển khai: cách hoạt động, thời gian, chi phí và những khó khăn thực tế.</li>
+      <li>Cùng đánh giá mức độ phù hợp trước khi bạn quyết định — không ép mua, không yêu cầu cam kết.</li>
+      <li>Đề xuất một bước tiếp theo thực tế, kể cả khi giải pháp của Yến chưa phù hợp.</li>
+    </ul>
+  </section>
+
+  <div class="section-head"><span class="tag">Trao đổi riêng 45–60 phút</span><h2>Nếu bạn muốn Yến cùng mình gỡ từng câu hỏi</h2><p>Để lại cách liên hệ thuận tiện. Yến sẽ đọc kết quả trước và nhắn xác nhận thời gian trong vòng 24 giờ.</p></div>
+  <div class="field"><label for="name">Tên bạn muốn Yến gọi <span class="req">*</span></label><input id="name" type="text" name="name" required placeholder="Tên của bạn"><p class="error">Bạn vui lòng nhập tên.</p></div>
+  <div class="field"><label for="phone">Số điện thoại / Zalo <span class="req">*</span></label><input id="phone" type="tel" name="phone" required placeholder="0xxx xxx xxx"><p class="error">Bạn vui lòng nhập số điện thoại hoặc Zalo.</p></div>
+  <div class="field"><label for="email">Email <small>(không bắt buộc)</small></label><input id="email" type="email" name="email" placeholder="email@example.com"><p class="error">Email chưa đúng định dạng.</p></div>
+  <div class="field"><label for="contactMethod">Bạn muốn Yến liên hệ theo cách nào? <span class="req">*</span></label><select id="contactMethod" name="contact_method" required><option value="">Chọn cách thuận tiện nhất</option><option>Nhắn Zalo trước</option><option>Gọi điện để hẹn lịch</option><option>Gửi thêm thông tin để tôi đọc trước</option></select><p class="error">Bạn vui lòng chọn cách liên hệ.</p></div>
+  <div class="field"><label for="timeSlot">Khung giờ thuận tiện cho buổi trao đổi 45–60 phút <span class="req">*</span></label><select id="timeSlot" name="preferred_time" required><option value="">Chọn khung giờ</option><option>Buổi sáng 08:00–11:30</option><option>Buổi chiều 13:30–17:30</option><option>Buổi tối 19:00–21:30</option><option>Tôi muốn trao đổi để chọn giờ khác</option></select><p class="error">Bạn vui lòng chọn khung giờ.</p></div>
+  <div class="field"><label for="question">Điều bạn muốn Yến giúp làm rõ nhất trong buổi trao đổi</label><textarea id="question" name="main_question" placeholder="Ví dụ: Tôi có ít thời gian, chưa rõ nên bắt đầu thế nào và muốn hiểu rủi ro thực tế…"></textarea></div>
+  <p class="consent">🔒 Khi gửi, bạn đồng ý để Yến liên hệ về nội dung khảo sát. Thông tin không được bán hoặc chia sẻ cho bên thứ ba nhằm mục đích quảng cáo. Bạn không có nghĩa vụ mua hàng hay tham gia bất kỳ chương trình nào.</p>
+  <div class="buttons"><button type="button" class="back" onclick="prevStep(4)">← Xem lại</button><button type="submit" class="next">Gửi kết quả & đăng ký trao đổi</button></div>
+</section>
 </form>
 
-  <!-- SUCCESS -->
-  <div class="success-section" id="success">
-    <div class="success-icon">🌱</div>
-    <h2>Cảm ơn bạn đã dành thời gian<br>nhìn lại chính mình!</h2>
-    <p>Yến đã nhận được câu trả lời và sẽ đọc thật kỹ trước khi liên hệ trong vòng <strong>24 giờ</strong>. Cuộc trò chuyện đầu tiên chỉ để lắng nghe, hiểu hoàn cảnh của bạn và cùng xem hướng đi nào thực sự phù hợp.</p>
-    <a href="https://zalo.me/0858400957" class="zalo-btn" target="_blank">
-      💬 Nhắn Yến qua Zalo
-    </a>
-  </div>
-
-</div><!-- /form-wrap -->
-
-<footer>
-  © 2026 Yến Trần · Mọi thông tin được giữ bí mật
-</footer>
+<section class="success" id="success">
+  <div class="success-icon">🌱</div><h2>Yến đã nhận được bức tranh của bạn</h2>
+  <p>Cảm ơn bạn đã chia sẻ thật lòng. Yến sẽ đọc kết quả trước và liên hệ trong vòng 24 giờ để xác nhận buổi trao đổi 45–60 phút. Cuộc trò chuyện đầu tiên nhằm lắng nghe, làm rõ và cùng đánh giá hướng đi phù hợp.</p>
+  <a class="zalo" href="https://zalo.me/0858400957" target="_blank" rel="noopener">💬 Nhắn Yến qua Zalo</a>
+</section>
+</main>
+<footer>© 2026 Yến Trần · Kết quả mang tính định hướng, không phải chẩn đoán chuyên môn</footer>
 
 <script>
-  const TOTAL_STEPS = 3;
-
-  function updateProgress(step) {
-    const pct = (step / TOTAL_STEPS) * 100;
-    document.getElementById('progressBar').style.width = pct + '%';
-    for (let i = 1; i <= TOTAL_STEPS; i++) {
-      const tab = document.getElementById('tab-' + i);
-      tab.className = 'step-tab';
-      if (i < step) tab.classList.add('done');
-      else if (i === step) tab.classList.add('active');
-    }
-  }
-
-  function validateStep(step) {
-    const section = document.getElementById('section-' + step);
-    const fields = section.querySelectorAll('.field');
-    let valid = true;
-    fields.forEach(field => field.classList.remove('has-error'));
-
-    section.querySelectorAll('[required]').forEach(el => {
-      const field = el.closest('.field');
-      let fieldValid = true;
-      if (el.type === 'radio') {
-        fieldValid = Array.from(section.querySelectorAll(`[name="${el.name}"]`)).some(item => item.checked);
-      } else {
-        fieldValid = Boolean(el.value.trim()) && el.checkValidity();
-      }
-      if (!fieldValid) {
-        valid = false;
-        field.classList.add('has-error');
-      }
-    });
-
-    if (step === 2) {
-      const wants = section.querySelectorAll('input[name="wants[]"]');
-      const wantsField = wants[0].closest('.field');
-      if (!Array.from(wants).some(item => item.checked)) {
-        valid = false;
-        wantsField.classList.add('has-error');
-      }
-    }
-
-    const email = section.querySelector('input[type="email"]');
-    if (email && email.value && !email.checkValidity()) {
-      valid = false;
-      email.closest('.field').classList.add('has-error');
-    }
-
-    const firstError = section.querySelector('.field.has-error');
-    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return valid;
-  }
-
-  function nextStep(current) {
-    if (!validateStep(current)) {
-      return;
-    }
-    const next = current + 1;
-    document.getElementById('section-' + current).classList.remove('active');
-    document.getElementById('section-' + next).classList.add('active');
-    updateProgress(next);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function prevStep(current) {
-    const prev = current - 1;
-    document.getElementById('section-' + current).classList.remove('active');
-    document.getElementById('section-' + prev).classList.add('active');
-    updateProgress(prev);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // Handle form submit via Formspree AJAX
-  document.getElementById('mainForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    if (!validateStep(3)) return;
-    const btn = this.querySelector('[type=submit]');
-    btn.textContent = 'Đang gửi...';
-    btn.disabled = true;
-
-    try {
-      const res = await fetch(this.action, {
-        method: 'POST',
-        body: new FormData(this),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        document.getElementById('section-3').classList.remove('active');
-        document.getElementById('success').classList.add('active');
-        updateProgress(3);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        btn.textContent = 'Gửi để Yến xem và phản hồi';
-        btn.disabled = false;
-        alert('Có lỗi xảy ra. Vui lòng thử lại hoặc nhắn Zalo trực tiếp cho Yến.');
-      }
-    } catch {
-      btn.textContent = 'Gửi để Yến xem và phản hồi';
-      btn.disabled = false;
-      alert('Không thể kết nối. Vui lòng kiểm tra mạng và thử lại.');
-    }
-  });
+const TOTAL=4;
+const PROFILES={
+ financial:{title:'Bạn đang tìm sự an tâm tài chính',summary:'Điều bạn tìm kiếm có thể không phải là một lời hứa làm giàu nhanh, mà là cảm giác an tâm hơn và có thêm lựa chọn cho tương lai. Bạn đang ý thức rõ về trách nhiệm của mình; điều cần tránh là hành động vì áp lực hoặc một lời hứa thiếu dữ liệu.',strengths:['Bạn có tư duy thực tế và quan tâm đến sự bền vững.','Bạn đã bắt đầu nhìn xa hơn nhu cầu trước mắt.'],advice:['Xác định khoảng tài chính bạn muốn cải thiện mỗi tháng.','Đặt mục tiêu nguồn thu bổ sung đầu tiên ở mức khả thi.','Làm rõ thời gian, chi phí và rủi ro trước mọi quyết định.']},
+ time:{title:'Bạn đang tìm quyền chủ động về thời gian',summary:'Bạn có thể không thiếu trách nhiệm hay động lực; điều bạn thiếu là quyền quyết định thời gian của chính mình. Mong muốn thay đổi sẽ bền hơn nếu hướng đi mới không tiếp tục lấy đi sức khỏe và thời gian dành cho những người quan trọng.',strengths:['Bạn có tinh thần trách nhiệm cao.','Bạn hiểu thời gian là một phần của chất lượng sống, không chỉ là lịch làm việc.'],advice:['Theo dõi quỹ thời gian thực tế trong một tuần.','Giữ một khung cố định 30–60 phút thay vì chờ lúc rảnh.','Ưu tiên cách bắt đầu linh hoạt và có thể thử từng phần.']},
+ growth:{title:'Bạn đang tìm một hướng phát triển mới',summary:'Bạn có thể vẫn làm tốt công việc hiện tại nhưng không còn cảm thấy mình đang tiến về phía trước. Khoảng trống chính có thể nằm ở cơ hội học hỏi, môi trường và cảm giác được sử dụng hết năng lực.',strengths:['Bạn còn nhiều năng lượng để phát triển.','Bạn có khả năng nhìn thấy tiềm năng lớn hơn ở chính mình.'],advice:['Phân biệt bạn đang chán công việc hay thiếu cơ hội phát triển.','Chọn một kỹ năng muốn sở hữu sau 12 tháng.','Thử một dự án nhỏ trước khi thực hiện thay đổi lớn.']},
+ meaning:{title:'Bạn đang tìm lại cảm hứng và ý nghĩa',summary:'Cuộc sống của bạn có thể không có một vấn đề quá lớn, nhưng bạn muốn những gì mình làm mang lại nhiều cảm hứng và giá trị hơn. Đây không phải sự thiếu biết ơn; nó có thể là dấu hiệu bạn đang bước sang một giai đoạn trưởng thành mới.',strengths:['Bạn nhạy cảm với giá trị và ý nghĩa của công việc.','Bạn muốn thành công theo cách phù hợp với con người mình.'],advice:['Viết ra ba hoạt động khiến bạn cảm thấy có năng lượng.','Xác định giá trị bạn không muốn đánh đổi.','Tìm một môi trường cho phép vừa học hỏi vừa đóng góp.']},
+ courage:{title:'Bạn đã có mong muốn — điều còn thiếu là cảm giác đủ an toàn',summary:'Bạn có thể hiểu mình muốn gì nhưng nỗi sợ thất bại, chọn sai hoặc mất mát đang khiến bạn dừng lại. Nỗi sợ không nói rằng bạn yếu; nó đang cố bảo vệ những điều quan trọng với bạn.',strengths:['Bạn có ý thức về rủi ro và không quyết định bốc đồng.','Bạn đã có mong muốn đủ rõ để bắt đầu kiểm chứng.'],advice:['Gọi tên rủi ro cụ thể thay vì chỉ nói “tôi sợ”.','Xác định giới hạn thời gian và tài chính không thể đánh đổi.','Yêu cầu thông tin minh bạch và bắt đầu bằng một bước có thể đảo ngược.']}
+};
+function updateProgress(step){document.getElementById('progress').style.width=(step/TOTAL*100)+'%';for(let i=1;i<=TOTAL;i++){const tab=document.getElementById('tab-'+i);tab.className='step';if(i<step)tab.classList.add('done');else if(i===step)tab.classList.add('active')}}
+function validate(step){const section=document.getElementById('section-'+step);let ok=true;section.querySelectorAll('.field').forEach(f=>f.classList.remove('has-error'));const names=new Set();section.querySelectorAll('[required]').forEach(el=>{if(names.has(el.name))return;names.add(el.name);let valid;if(el.type==='radio')valid=!!section.querySelector('input[name="'+el.name+'"]:checked');else valid=!!el.value.trim()&&el.checkValidity();if(!valid){ok=false;el.closest('.field').classList.add('has-error')}});
+ const groups=[['.max-three input',1,3],['.resource-list input',1,99],['.support-list input',1,99]];groups.forEach(g=>{const list=section.querySelectorAll(g[0]);if(!list.length)return;const count=Array.from(list).filter(x=>x.checked).length;if(count<g[1]||count>g[2]){ok=false;list[0].closest('.field').classList.add('has-error')}});
+ const email=section.querySelector('input[type=email]');if(email&&email.value&&!email.checkValidity()){ok=false;email.closest('.field').classList.add('has-error')}const first=section.querySelector('.has-error');if(first)first.scrollIntoView({behavior:'smooth',block:'center'});return ok}
+function go(step){document.querySelector('.form-section.active').classList.remove('active');document.getElementById('section-'+step).classList.add('active');updateProgress(step);window.scrollTo({top:document.querySelector('.steps').offsetTop,behavior:'smooth'})}
+function nextStep(current){if(validate(current))go(current+1)}function prevStep(current){go(current-1)}
+function chooseProfile(){const priority=document.querySelector('input[name=priority]:checked').value;const barrier=document.querySelector('input[name=barrier]:checked').value;if(['fear','confidence'].includes(barrier))return'courage';return priority}
+function showResult(){if(!validate(3))return;const key=chooseProfile(),p=PROFILES[key]||PROFILES.growth;document.getElementById('resultTitle').textContent=p.title;document.getElementById('resultSummary').textContent=p.summary;document.getElementById('resultStrengths').innerHTML=p.strengths.map(x=>'<li>'+x+'</li>').join('');document.getElementById('resultAdvice').innerHTML=p.advice.map(x=>'<li>'+x+'</li>').join('');document.getElementById('profileInput').value=p.title;document.getElementById('summaryInput').value=p.summary;go(4)}
+document.querySelectorAll('.max-three input').forEach(el=>el.addEventListener('change',()=>{const checked=document.querySelectorAll('.max-three input:checked');if(checked.length>3){el.checked=false;el.closest('.field').classList.add('has-error')}else el.closest('.field').classList.remove('has-error')}));
+document.getElementById('surveyForm').addEventListener('submit',async function(e){e.preventDefault();if(!validate(4))return;const btn=this.querySelector('[type=submit]');btn.disabled=true;btn.textContent='Đang gửi kết quả…';try{const res=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}});if(!res.ok)throw new Error();document.getElementById('section-4').classList.remove('active');document.getElementById('success').classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}catch(err){btn.disabled=false;btn.textContent='Gửi kết quả & đăng ký trao đổi';alert('Chưa thể gửi lúc này. Bạn vui lòng thử lại hoặc nhắn Zalo trực tiếp cho Yến.')}});
 </script>
 </body>
 </html>
