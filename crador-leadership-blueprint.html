@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Tầm nhìn CRADOR 2024 - sổ tay lãnh đạo đột phá về niềm tin, năng lực dẫn dắt, sức mạnh hệ thống và lộ trình KOC 90 ngày." />
+    <meta name="author" content="Yen Tran" />
+    <title>Tầm nhìn CRADOR 2024: Kỷ nguyên mới - Vị thế mới</title>
+    <meta property="og:title" content="Tầm nhìn CRADOR 2024: Kỷ nguyên mới - Vị thế mới" />
+    <meta property="og:description" content="Sổ tay lãnh đạo đột phá: từ cốt lõi bản thân đến sức mạnh hệ thống." />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://haiyentran.github.io/yenhaitranabo/assets/img/crador-leadership-blueprint-cover.jpg" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        :root {
+            --crador-navy: #061a33;
+            --crador-blue: #0c2c52;
+            --crador-gold: #d8ad57;
+            --crador-gold-light: #f1d78e;
+            --crador-ink: #15243a;
+            --crador-muted: #647184;
+            --crador-surface: #f5f7fb;
+            --crador-white: #fff;
+        }
+        body {
+            margin: 0;
+            background: var(--crador-surface);
+            color: var(--crador-ink);
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.75;
+        }
+        #mainNav {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1030;
+            border-bottom: 1px solid rgba(255,255,255,.13);
+            background: rgba(6,26,51,.32);
+            backdrop-filter: blur(10px);
+        }
+        #mainNav .navbar-brand,
+        #mainNav .nav-link {
+            color: rgba(255,255,255,.9);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        #mainNav .navbar-brand { padding: 18px 0; letter-spacing: .08em; }
+        #mainNav .nav-link { font-size: .78rem; text-transform: uppercase; }
+        #mainNav .navbar-toggler { border-color: rgba(255,255,255,.45); color: #fff; }
+        .crador-hero {
+            padding: 150px 0 80px;
+            background:
+                linear-gradient(115deg, rgba(3,17,35,.97), rgba(10,43,82,.88)),
+                url('assets/img/crador-leadership-blueprint-cover.jpg') center/cover;
+            color: #fff;
+        }
+        .crador-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            padding: 7px 14px;
+            border: 1px solid rgba(241,215,142,.45);
+            border-radius: 999px;
+            background: rgba(216,173,87,.12);
+            color: var(--crador-gold-light);
+            font-size: .8rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+        .crador-hero h1 {
+            max-width: 920px;
+            margin: 0 0 18px;
+            color: #fff;
+            font-family: 'Lora', serif;
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            line-height: 1.08;
+        }
+        .crador-hero p {
+            max-width: 720px;
+            margin: 0;
+            color: rgba(255,255,255,.84);
+            font-size: 1.12rem;
+        }
+        .article-main { padding: 64px 0 82px; }
+        .article-lead {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            align-items: center;
+            gap: 38px;
+            margin-bottom: 44px;
+        }
+        .cover-card {
+            overflow: hidden;
+            border: 1px solid rgba(216,173,87,.45);
+            border-radius: 24px;
+            background: var(--crador-navy);
+            box-shadow: 0 18px 50px rgba(6,26,51,.18);
+        }
+        .cover-card img { display: block; width: 100%; height: auto; }
+        .article-copy h2,
+        .section-title {
+            color: var(--crador-navy);
+            font-family: 'Lora', serif;
+        }
+        .article-copy h2 { margin: 0 0 16px; font-size: clamp(1.9rem,4vw,2.7rem); }
+        .article-copy p { color: var(--crador-muted); }
+        .document-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+        .document-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 12px 19px;
+            border: 2px solid var(--crador-navy);
+            border-radius: 999px;
+            background: var(--crador-navy);
+            color: #fff !important;
+            font-weight: 800;
+            text-decoration: none;
+        }
+        .document-btn.secondary { background: transparent; color: var(--crador-navy) !important; }
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(3,minmax(0,1fr));
+            gap: 18px;
+            margin: 24px 0 48px;
+        }
+        .highlight-card {
+            padding: 24px;
+            border: 1px solid #dce3ee;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(6,26,51,.06);
+        }
+        .highlight-card .icon {
+            display: inline-flex;
+            width: 46px;
+            height: 46px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            border-radius: 14px;
+            background: #fff5d9;
+            color: #9a6b17;
+        }
+        .highlight-card h3 { margin: 0 0 9px; font-size: 1.08rem; }
+        .highlight-card p { margin: 0; color: var(--crador-muted); font-size: .94rem; }
+        .pdf-section {
+            padding: 28px;
+            border-radius: 24px;
+            background: var(--crador-navy);
+            box-shadow: 0 18px 55px rgba(6,26,51,.18);
+        }
+        .pdf-section h2 { margin: 0 0 8px; color: #fff; font-family: 'Lora',serif; }
+        .pdf-section > p { margin: 0 0 20px; color: rgba(255,255,255,.72); }
+        .pdf-frame {
+            display: block;
+            width: 100%;
+            height: min(78vh,900px);
+            min-height: 560px;
+            border: 0;
+            border-radius: 14px;
+            background: #fff;
+        }
+        .pdf-fallback { margin: 16px 0 0; color: rgba(255,255,255,.75); font-size: .9rem; }
+        .pdf-fallback a { color: var(--crador-gold-light); }
+        footer { padding: 30px 0; background: #fff; text-align: center; color: var(--crador-muted); }
+        @media (max-width: 900px) {
+            .article-lead { grid-template-columns: 1fr; }
+            .cover-card { max-width: 680px; }
+            .highlights { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            #mainNav { background: rgba(6,26,51,.97); }
+            #mainNav .navbar-collapse { padding-bottom: 14px; }
+            #mainNav .nav-link { padding: 10px 0 !important; }
+            .crador-hero { padding: 118px 0 62px; }
+            .article-main { padding: 48px 0 62px; }
+            .pdf-section { padding: 18px; }
+            .pdf-frame { min-height: 480px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="index.html">YEN TRAN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Mở hoặc đóng trình đơn">
+                Trình đơn <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="events.html">Sự kiện</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthylifestyle.html">Lối sống khỏe</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="healthymeal.html">Bữa ăn lành mạnh</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="passiveincome.html">Thu nhập thụ động</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="crador-hero">
+        <div class="container px-4 px-lg-5">
+            <span class="crador-kicker"><i class="fas fa-crown"></i> Leadership Blueprint</span>
+            <h1>Tầm nhìn CRADOR 2024: Kỷ nguyên mới - Vị thế mới</h1>
+            <p>Sổ tay lãnh đạo đột phá từ FCA Foo Howe Kean - hành trình xây dựng sự nghiệp bền vững từ cốt lõi bản thân đến sức mạnh hệ thống.</p>
+        </div>
+    </header>
+
+    <main class="article-main">
+        <div class="container px-4 px-lg-5">
+            <section class="article-lead">
+                <div class="cover-card">
+                    <img src="assets/img/crador-leadership-blueprint-cover.jpg" alt="Bìa tài liệu Tầm nhìn CRADOR 2024" width="1376" height="768" />
+                </div>
+                <div class="article-copy">
+                    <h2>Lãnh đạo bắt đầu từ việc dẫn dắt chính mình</h2>
+                    <p>Tài liệu đặt ra những câu hỏi rất trực diện: ta phản ứng thế nào trước sự từ chối, đã thực sự tin vào bản thân chưa, và đang tự làm tất cả hay biết huy động sức mạnh của hệ thống?</p>
+                    <p>Xuyên suốt 12 trang là một thông điệp nhất quán: trước khi tạo ảnh hưởng lên người khác, người lãnh đạo cần xây niềm tin, làm gương bằng hành động, chủ động tìm sự đồng hành và góp phần kiến tạo một văn hóa đội nhóm tích cực.</p>
+                    <div class="document-actions">
+                        <a class="document-btn" href="assets/docs/CRADOR_Leadership_Blueprint.pdf" target="_blank" rel="noopener">
+                            <i class="fas fa-book-open"></i> Mở tài liệu PDF
+                        </a>
+                        <a class="document-btn secondary" href="assets/docs/CRADOR_Leadership_Blueprint.pdf" download>
+                            <i class="fas fa-download"></i> Tải về
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="section-title">Những nội dung chính</h2>
+            <div class="highlights">
+                <article class="highlight-card">
+                    <span class="icon"><i class="fas fa-mirror"></i></span>
+                    <h3>Nguyên tắc tấm gương</h3>
+                    <p>Tự bồi dưỡng bản thân trước khi bồi dưỡng người khác; niềm tin và khí chất tạo nên sức mạnh dẫn dắt.</p>
+                </article>
+                <article class="highlight-card">
+                    <span class="icon"><i class="fas fa-route"></i></span>
+                    <h3>Lộ trình chuyển mình 90 ngày</h3>
+                    <p>Đặt mục tiêu cá nhân, duy trì kỷ luật hành động và tạo ra sự thay đổi có thể nhìn thấy.</p>
+                </article>
+                <article class="highlight-card">
+                    <span class="icon"><i class="fas fa-people-group"></i></span>
+                    <h3>Sức mạnh của hệ thống</h3>
+                    <p>Biết “mượn lực” từ tuyến trên và đội nhóm bằng ba chìa khóa: tôn trọng, tin tưởng và yêu thương.</p>
+                </article>
+                <article class="highlight-card">
+                    <span class="icon"><i class="fas fa-gears"></i></span>
+                    <h3>Hệ sinh thái phối hợp</h3>
+                    <p>Xem đồng đội là đối tác cùng chí hướng, phối hợp nhịp nhàng và nuôi dưỡng tinh thần cho đi.</p>
+                </article>
+                <article class="highlight-card">
+                    <span class="icon"><i class="fas fa-comments"></i></span>
+                    <h3>Bản sắc văn hóa CRADOR</h3>
+                    <p>Thay chỉ trích bằng khen ngợi, phê phán bằng động viên, than phiền bằng lòng biết ơn.</p>
+                </article>
+                <article class="highlight-card">
+                    <span class="icon"><i class="fas fa-mountain-sun"></i></span>
+                    <h3>Lựa chọn tin tưởng</h3>
+                    <p>Khi đã có lộ trình, công cụ và văn hóa bảo vệ, bước còn lại là tin tưởng và hành động.</p>
+                </article>
+            </div>
+
+            <section class="pdf-section" aria-labelledby="pdf-reader-title">
+                <h2 id="pdf-reader-title">Đọc trọn bộ tài liệu</h2>
+                <p>12 trang nội dung về tư duy lãnh đạo, hành động cá nhân và xây dựng đội nhóm bền vững.</p>
+                <iframe class="pdf-frame" src="assets/docs/CRADOR_Leadership_Blueprint.pdf#view=FitH" title="Tài liệu CRADOR Leadership Blueprint"></iframe>
+                <p class="pdf-fallback">Nếu trình duyệt không hiển thị tài liệu, hãy <a href="assets/docs/CRADOR_Leadership_Blueprint.pdf" target="_blank" rel="noopener">mở PDF trong tab mới</a>.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="border-top">
+        <div class="container px-4 px-lg-5">MoMoShare · Copyright &copy; YEN HAI TRAN</div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
