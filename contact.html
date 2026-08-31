@@ -697,7 +697,12 @@
             let previousFocus = null;
             const openPopup = () => { previousFocus = document.activeElement; popup.classList.add('is-open'); popup.setAttribute('aria-hidden', 'false'); document.body.classList.add('zalo-popup-open'); closeButton.focus(); };
             const closePopup = () => { popup.classList.remove('is-open'); popup.setAttribute('aria-hidden', 'true'); document.body.classList.remove('zalo-popup-open'); if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus(); };
-            document.querySelectorAll('[data-zalo-popup]').forEach((trigger) => trigger.addEventListener('click', (event) => { event.preventDefault(); openPopup(); }));
+            document.addEventListener('click', (event) => {
+                const trigger = event.target.closest('[data-zalo-popup]');
+                if (!trigger) return;
+                event.preventDefault();
+                openPopup();
+            });
             closeButton.addEventListener('click', closePopup);
             popup.addEventListener('click', (event) => { if (event.target === popup) closePopup(); });
             document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && popup.classList.contains('is-open')) closePopup(); });
