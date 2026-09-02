@@ -37,7 +37,7 @@ select{appearance:none;background:#fff}textarea{min-height:100px;resize:vertical
 .buttons{display:flex;gap:10px;margin-top:32px}.back,.next{border-radius:10px;font:600 14px 'Be Vietnam Pro',sans-serif;cursor:pointer}.back{padding:13px 18px;border:1.5px solid var(--border);background:#fff;color:var(--gray)}.next{display:flex;flex:1;align-items:center;justify-content:center;gap:7px;padding:14px 20px;border:0;background:var(--green);color:#fff}.next:hover{background:var(--green-mid)}
 .result-card{overflow:hidden;margin-bottom:28px;border:1px solid #cde3d6;border-radius:20px;background:#fff;box-shadow:0 16px 40px rgba(33,79,59,.1)}.result-top{padding:24px;background:linear-gradient(135deg,#2D6A4F,#40916C);color:#fff}.result-kicker{margin-bottom:7px;color:#c9ecd7;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.result-top h2{font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.15}.result-body{padding:22px}.result-summary{margin-bottom:18px;color:#3f4b45;font-size:13px;line-height:1.75}.result-block{margin-top:18px}.result-block h3{margin-bottom:8px;color:var(--green);font-size:13px}.result-block ul{padding-left:18px;color:#525c57;font-size:12px;line-height:1.75}.disclaimer{margin-top:18px;padding-top:14px;border-top:1px solid var(--border);color:var(--gray);font-size:10px;line-height:1.6}
 .why-talk{margin:28px 0;padding:22px;border-radius:16px;background:#fff}.why-talk h3{margin-bottom:9px;font-family:'Cormorant Garamond',serif;font-size:25px}.why-talk>p{margin-bottom:13px;color:var(--gray);font-size:12px;line-height:1.7}.why-talk ul{display:grid;gap:8px;list-style:none}.why-talk li{display:flex;gap:9px;color:#445049;font-size:12px;line-height:1.55}.why-talk li:before{color:var(--green-mid);font-weight:700;content:'✓'}
-.consent{padding:14px;border-radius:10px;background:#f0f7f3;color:#365145;font-size:11px;line-height:1.6}.success{display:none;padding:50px 0;text-align:center}.success.active{display:block}.success-icon{display:grid;width:74px;height:74px;margin:0 auto 20px;border-radius:50%;background:var(--light);font-size:32px;place-items:center}.success h2{margin-bottom:12px;font-family:'Cormorant Garamond',serif;font-size:32px}.success p{max-width:470px;margin:0 auto 25px;color:var(--gray);font-size:13px;line-height:1.75}.zalo{display:inline-flex;padding:13px 22px;border-radius:10px;background:#0868ff;color:#fff;font-size:13px;font-weight:600;text-decoration:none}
+.consent{padding:14px;border-radius:10px;background:#f0f7f3;color:#365145;font-size:11px;line-height:1.6}.success{display:none;padding:50px 0;text-align:center}.success.active{display:block}.success-icon{display:grid;width:74px;height:74px;margin:0 auto 20px;border-radius:50%;background:var(--light);font-size:32px;place-items:center}.success h2{margin-bottom:12px;font-family:'Cormorant Garamond',serif;font-size:32px}.success p{max-width:520px;margin:0 auto 22px;color:var(--gray);font-size:13px;line-height:1.75}.group-step{max-width:520px;margin:24px auto 0;padding:22px;border:1px solid #cde3d6;border-radius:18px;background:#fff;box-shadow:0 14px 34px rgba(33,79,59,.1)}.group-step h3{margin-bottom:8px;color:var(--green);font-family:'Cormorant Garamond',serif;font-size:25px}.group-step>p{margin-bottom:16px}.group-qr{display:block;width:min(280px,80vw);height:auto;margin:0 auto 16px;padding:10px;border:1px solid var(--border);border-radius:16px;background:#fff}.zalo{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:13px 22px;border-radius:10px;background:#0868ff;color:#fff;font-size:13px;font-weight:600;text-decoration:none}.zalo:hover{background:#0758d6}.group-note{display:block;margin-top:13px;color:var(--gray);font-size:10.5px;line-height:1.6}
 footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);background:#fff;color:var(--gray);font-size:11px}
 @media(max-width:560px){.hero{padding:48px 18px 58px}.wrap{padding:34px 18px 64px}.radio-grid{grid-template-columns:1fr}.step-label{font-size:8px}.scale{gap:3px}.scale .choice-box{padding:9px 0}.result-top,.result-body,.why-talk{padding:18px}.buttons{align-items:stretch}.back{padding:12px}}
 </style>
@@ -227,10 +227,17 @@ footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);ba
 </section>
 </form>
 
-<section class="success" id="success">
-  <div class="success-icon">🌱</div><h2>Yến đã nhận được bức tranh của bạn</h2>
-  <p>Cảm ơn bạn đã chia sẻ thật lòng. Yến sẽ đọc kết quả trước và liên hệ trong vòng 24 giờ để xác nhận buổi trao đổi 45–60 phút. Cuộc trò chuyện đầu tiên nhằm lắng nghe, làm rõ và cùng đánh giá hướng đi phù hợp.</p>
-  <a class="zalo" href="https://zalo.me/0858400957" target="_blank" rel="noopener">💬 Nhắn Yến qua Zalo</a>
+<section class="success" id="success" aria-live="polite">
+  <div class="success-icon">✓</div>
+  <h2>Yến đã nhận được thông tin của bạn</h2>
+  <p>Cảm ơn bạn đã hoàn thành bài nhìn lại. Để nhận phần kết quả, cập nhật hướng dẫn và trao đổi trực tiếp với Yến, hãy hoàn tất bước cuối cùng bên dưới.</p>
+  <div class="group-step">
+    <h3>Bước cuối: tham gia nhóm Zalo</h3>
+    <p>Mở Zalo và quét mã QR, hoặc bấm nút nếu bạn đang xem trên điện thoại.</p>
+    <img class="group-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&amp;margin=12&amp;data=https%3A%2F%2Fzalo.me%2Fg%2Fr0eqids1nwvngw1pgjkw" alt="Mã QR tham gia nhóm Zalo để nhận kết quả và trao đổi với Yến" width="320" height="320">
+    <a class="zalo" href="https://zalo.me/g/r0eqids1nwvngw1pgjkw" target="_blank" rel="noopener">💬 Mở nhóm Zalo</a>
+    <span class="group-note">Nếu đang dùng cùng một điện thoại, hãy bấm “Mở nhóm Zalo”. Nếu mã không quét được, bạn vẫn có thể dùng nút này để tham gia trực tiếp.</span>
+  </div>
 </section>
 </main>
 <footer>© 2026 Yến Trần · Kết quả mang tính định hướng, không phải chẩn đoán chuyên môn</footer>
