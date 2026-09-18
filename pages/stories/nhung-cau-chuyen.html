@@ -91,6 +91,87 @@
             padding: 26px 16px;
             color: #aaa;
         }
+        .success-showcase {
+            margin: 0 0 58px;
+            padding: 34px 30px 28px;
+            overflow: hidden;
+            border: 1px solid #f0d8c3;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #fff9f3, #fff);
+            box-shadow: 0 14px 42px rgba(148, 79, 25, 0.08);
+        }
+        .success-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 28px;
+            margin-bottom: 24px;
+        }
+        .success-kicker {
+            color: #d96613;
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+        .success-head h2 {
+            margin: 7px 0 4px;
+            color: #2f2a26;
+            font-size: clamp(1.7rem, 4vw, 2.55rem);
+            font-weight: 900;
+            letter-spacing: -.04em;
+        }
+        .success-head p { max-width: 650px; margin: 0; color: #6b625b; }
+        .canva-link {
+            flex: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 17px;
+            border-radius: 999px;
+            background: #ff7a1a;
+            color: #fff;
+            text-decoration: none;
+            font-size: .82rem;
+            font-weight: 800;
+        }
+        .canva-link:hover { color: #fff; background: #d96613; }
+        .success-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 6px 2px 20px;
+            scroll-snap-type: x mandatory;
+            scrollbar-color: #e5a06b transparent;
+            scrollbar-width: thin;
+        }
+        .success-story {
+            flex: 0 0 255px;
+            min-height: 260px;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            padding: 23px;
+            border: 1px solid #f0dfd1;
+            border-radius: 16px;
+            background: #fff;
+        }
+        .success-no { color: #e7a16c; font-size: .72rem; font-weight: 900; letter-spacing: .1em; }
+        .success-story h3 { margin: 12px 0 10px; color: #d96613; font-size: 1.14rem; font-weight: 800; }
+        .success-story p { margin: 0; color: #625c57; font-size: .88rem; line-height: 1.65; }
+        .success-result {
+            margin-top: auto;
+            padding-top: 16px;
+            color: #74431f;
+            font-size: .78rem;
+            font-weight: 700;
+        }
+        .success-disclaimer {
+            margin: 8px 0 0;
+            color: #81766d;
+            font-size: .74rem;
+            line-height: 1.55;
+        }
         @media (max-width: 900px) {
             .container { max-width: 99vw; }
         }
@@ -98,6 +179,11 @@
             .container { padding: 8px 1vw; }
             .card-body { flex-direction: column; padding: 22px 7px; }
             .card-avatar { width: 100%; height: 180px; }
+            .success-showcase { padding: 25px 18px 22px; border-radius: 18px; }
+            .success-head { align-items: flex-start; flex-direction: column; }
+            .canva-link { width: 100%; justify-content: center; }
+            .success-scroll { margin-right: -18px; }
+            .success-story { flex-basis: 225px; }
         }
     </style>
 </head>
@@ -163,6 +249,31 @@
                         cảm xúc chân thật và những bài học nhỏ để bạn có thêm động lực mỗi ngày.
                     </div>
                 </div>
+                <section class="success-showcase" aria-labelledby="success-title">
+                    <div class="success-head">
+                        <div>
+                            <span class="success-kicker">Từ bộ Câu chuyện thành công</span>
+                            <h2 id="success-title">Mỗi người một xuất phát điểm</h2>
+                            <p>Những lát cắt ngắn về người đi làm, chủ kinh doanh và các gia đình đã tìm một hướng chủ động hơn cho sức khỏe, thời gian và tương lai.</p>
+                        </div>
+                        <a class="canva-link" href="https://www.canva.com/design/DAHFsCWihCE/vbpnFJkuW75-5LWXxYjfWQ/edit?zarsrc=31" target="_blank" rel="noopener">Xem đủ 49 câu chuyện <i class="bi bi-arrow-up-right"></i></a>
+                    </div>
+                    <div class="success-scroll" aria-label="Các câu chuyện thành công tiêu biểu">
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 01</span><h3>Gia đình Hùng &amp; Nga</h3><p>Từ vị trí quản lý cấp cao nhưng thiếu thời gian cho gia đình, anh Hùng bắt đầu tìm hiểu sau trải nghiệm sản phẩm và mong muốn xây thêm một nền tảng dài hạn.</p><div class="success-result">Điểm giữ lại: chủ động hơn cho gia đình và tương lai.</div></article>
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 02</span><h3>Chị Châu Lý</h3><p>Dù có công việc ổn định trong ngành kinh tế và chứng khoán, chị vẫn trăn trở về sự phụ thuộc vào công việc làm công và những biến cố khó đoán.</p><div class="success-result">Điểm giữ lại: chuẩn bị nhiều phương án cho cuộc sống.</div></article>
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 03</span><h3>Chị Mai Lê</h3><p>Một biến cố tài chính gia đình khiến chị nhìn lại sự ổn định của công việc văn phòng, rồi từng bước học về dinh dưỡng và xây một hướng đi mới.</p><div class="success-result">Điểm giữ lại: kiên trì dù khởi đầu bằng hoài nghi.</div></article>
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 04</span><h3>Trang &amp; Huy</h3><p>Một người thành công trong bảo hiểm, một người bận rộn với cửa hàng vật liệu xây dựng. Trải nghiệm sức khỏe khiến hai anh chị nhìn lại chất lượng sống.</p><div class="success-result">Điểm giữ lại: thành công cần đi cùng sức khỏe và thời gian.</div></article>
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 05</span><h3>Hồng &amp; Thiện</h3><p>Từ kinh doanh hàng tiêu dùng và công việc bán hàng, hai anh chị tìm kiếm một mô hình phù hợp hơn khi sức khỏe và thị trường truyền thống cùng biến động.</p><div class="success-result">Điểm giữ lại: thích nghi trước khi hoàn cảnh buộc phải đổi thay.</div></article>
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 06</span><h3>Tú &amp; Quốc</h3><p>Công việc quản lý ổn định đi cùng áp lực thời gian và sức khỏe đã khiến chị Tú tìm một môi trường có thể phát triển bản thân và chủ động hơn.</p><div class="success-result">Điểm giữ lại: tự do cần được xây bằng năng lực.</div></article>
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 07</span><h3>Nguyệt Đỗ</h3><p>Từng là giám đốc chi nhánh dược phẩm và huấn luyện viên dinh dưỡng, chị đi từ định kiến ban đầu đến quyết định tìm hiểu qua trải nghiệm thực tế.</p><div class="success-result">Điểm giữ lại: kiểm chứng trước khi kết luận.</div></article>
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 08</span><h3>Nguyệt Anh</h3><p>Trải qua nhiều vị trí trong du lịch, dịch vụ và bán hàng, chị nhận ra một công việc ổn định vẫn có thể giới hạn quyền chủ động về thời gian.</p><div class="success-result">Điểm giữ lại: kinh nghiệm đa ngành trở thành lợi thế.</div></article>
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 09</span><h3>Ngọc Trầm</h3><p>Nữ kỹ sư dầu khí bắt đầu từ nhu cầu chăm sóc sức khỏe, rồi tìm hiểu sâu hơn khi muốn xây nền tảng vững chắc cho gia đình và con nhỏ.</p><div class="success-result">Điểm giữ lại: ước mơ cần một kế hoạch và hành động đều đặn.</div></article>
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 10</span><h3>Quỳnh Châu</h3><p>Từ giáo viên tiếng Thái và nhân viên văn phòng, một lần đi phiên dịch tình cờ mở ra cho chị một hướng đi mà chính người được tư vấn lại không chọn.</p><div class="success-result">Điểm giữ lại: cơ hội chỉ có ý nghĩa khi mình hành động.</div></article>
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 11</span><h3>Quãng &amp; Linh</h3><p>Cùng xuất phát từ digital marketing và nhiều dự án nhỏ, hai anh chị chủ động so sánh nhiều mô hình trước khi chọn con đường phù hợp với giá trị của mình.</p><div class="success-result">Điểm giữ lại: lựa chọn nên dựa trên tìm hiểu và đối chiếu.</div></article>
+                        <article class="success-story"><span class="success-no">CÂU CHUYỆN 12</span><h3>Thi &amp; Diệp</h3><p>Một người từng vận hành quán cà phê, một người có nền tảng tài chính và khởi nghiệp; cả hai đều hiểu rõ áp lực chi phí, nhân sự và rủi ro vận hành.</p><div class="success-result">Điểm giữ lại: một mô hình tốt phải phù hợp nguồn lực và mục tiêu.</div></article>
+                    </div>
+                    <p class="success-disclaimer">Các nội dung trên được tóm lược từ chia sẻ cá nhân trong bộ Canva do chủ trang cung cấp. Kết quả của mỗi người khác nhau; đây không phải cam kết về thu nhập hay bảo đảm kết quả tương tự.</p>
+                </section>
                 <div class="card-list">
                     <div class="card">
                         <div class="card-body">
