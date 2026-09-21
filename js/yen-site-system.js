@@ -2,7 +2,7 @@
   'use strict';
 
   var path = location.pathname.replace(/\/+$/, '') || '/';
-  if (path.endsWith('/gioi-thieu-yen-tran.html')) return;
+  if (path.endsWith('/gioi-thieu-yen-tran.html') || path.endsWith('/pages/books/doc-sach.html')) return;
 
   var root = '/';
   var links = [
