@@ -711,7 +711,6 @@
             closeButton.addEventListener('click', closePopup);
             popup.addEventListener('click', (event) => { if (event.target === popup) closePopup(); });
             document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && popup.classList.contains('is-open')) closePopup(); });
-            window.setTimeout(openPopup, 350);
         })();
     </script>
 
