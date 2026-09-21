@@ -176,6 +176,16 @@
             #passwordBox {padding: 17px 7vw;}
         }
     </style>
+
+  <link rel="canonical" href="https://yenhaitran.com/pages/showcase/myfit.html">
+  <meta name="description" content="Khám phá F.FIT - Hành trình thay đổi của tôi cùng Yến Trần — những chia sẻ thực tế để sống khỏe và chủ động hơn.">
+  <meta property="og:title" content="F.FIT - Hành trình thay đổi của tôi">
+  <meta property="og:description" content="Khám phá F.FIT - Hành trình thay đổi của tôi cùng Yến Trần — những chia sẻ thực tế để sống khỏe và chủ động hơn.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yenhaitran.com/pages/showcase/myfit.html">
+  <meta property="og:image" content="https://yenhaitran.com/assets/img/avatar_yen.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/css/yen-site-system.css">
 </head>
 <!-- Nút về đầu trang -->
 <button id="goTopBtn" title="Về đầu trang" style="
@@ -215,8 +225,8 @@
     <!-- Password Overlay -->
     <div id="passwordOverlay">
         <form id="passwordBox" onsubmit="return false;">
-            <h2>Bảo mật: Nhập mật khẩu để truy cập</h2>
-            <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autofocus />
+            <h1>Bảo mật: Nhập mật khẩu để truy cập</h1>
+            <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." aria-label="Mật khẩu truy cập" autofocus />
             <br>
             <button id="submitBtn" type="submit">Vào trang</button>
             <div id="wrongPwd">Mật khẩu không đúng. Vui lòng thử lại.</div>
@@ -229,7 +239,7 @@
     <div class="container py-4" id="mainContent" style="display:none;">
         <a href="ffit_gallery.html" class="btn-back">&larr; Quay lại Thư viện F.FIT</a>
         <h2 class="section-title">F.FIT – Hành trình thay đổi vóc dáng & sức khỏe</h2>
-        
+
         <div class="desc-blk mb-4">
             <strong>F.FIT</strong> là phương pháp giảm mỡ khoa học dựa trên dinh dưỡng & hiểu chuyển hoá cơ thể, giúp bạn thiết kế bữa ăn hợp lý, đủ chất & hiệu quả.<br><br>
             <b>Vì sao nên dùng F.FIT?</b>
@@ -277,7 +287,7 @@
     <!-- Modal hiển thị ảnh lớn -->
     <div id="imgModal" onclick="this.style.display='none'">
         <span class="close-modal" onclick="document.getElementById('imgModal').style.display='none';event.stopPropagation()">&times;</span>
-        <img id="modalImg" src="" alt="Ảnh lớn">
+        <img id="modalImg" src="" alt="Ảnh lớn" decoding="async">
     </div>
 
     <script>
@@ -349,5 +359,7 @@
             </div>
         </div>
     </footer>
+
+<script src="/js/yen-site-system.js" defer></script>
 </body>
 </html>

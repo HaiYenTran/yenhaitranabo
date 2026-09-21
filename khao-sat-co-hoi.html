@@ -41,6 +41,15 @@ select{appearance:none;background:#fff}textarea{min-height:100px;resize:vertical
 footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);background:#fff;color:var(--gray);font-size:11px}
 @media(max-width:560px){.hero{padding:48px 18px 58px}.wrap{padding:34px 18px 64px}.radio-grid{grid-template-columns:1fr}.step-label{font-size:8px}.scale{gap:3px}.scale .choice-box{padding:9px 0}.result-top,.result-body,.why-talk{padding:18px}.buttons{align-items:stretch}.back{padding:12px}}
 </style>
+
+  <link rel="canonical" href="https://yenhaitran.com/khao-sat-co-hoi.html">
+  <meta property="og:title" content="Nhìn rõ hướng đi của bạn — Yến Trần">
+  <meta property="og:description" content="Khảo sát định hướng giúp bạn nhìn rõ hiện trạng, mong muốn, rào cản và bước tiếp theo phù hợp.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yenhaitran.com/khao-sat-co-hoi.html">
+  <meta property="og:image" content="https://yenhaitran.com/assets/img/avatar_yen.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/css/yen-site-system.css">
 </head>
 <body>
 <header class="hero">
@@ -234,8 +243,8 @@ footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);ba
   <div class="group-step">
     <h3>Bước cuối: tham gia nhóm Zalo</h3>
     <p>Mở Zalo và quét mã QR, hoặc bấm nút nếu bạn đang xem trên điện thoại.</p>
-    <img class="group-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&amp;margin=12&amp;data=https%3A%2F%2Fzalo.me%2Fg%2Fr0eqids1nwvngw1pgjkw" alt="Mã QR tham gia nhóm Zalo để nhận kết quả và trao đổi với Yến" width="320" height="320">
-    <a class="zalo" href="https://zalo.me/g/r0eqids1nwvngw1pgjkw" target="_blank" rel="noopener">💬 Mở nhóm Zalo</a>
+    <img class="group-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&amp;margin=12&amp;data=https%3A%2F%2Fzalo.me%2Fg%2Fr0eqids1nwvngw1pgjkw" alt="Mã QR tham gia nhóm Zalo để nhận kết quả và trao đổi với Yến" width="320" height="320" decoding="async">
+    <a class="zalo" href="https://zalo.me/g/r0eqids1nwvngw1pgjkw" target="_blank" rel="noopener noreferrer">💬 Mở nhóm Zalo</a>
     <span class="group-note">Nếu đang dùng cùng một điện thoại, hãy bấm “Mở nhóm Zalo”. Nếu mã không quét được, bạn vẫn có thể dùng nút này để tham gia trực tiếp.</span>
   </div>
 </section>
@@ -262,5 +271,7 @@ function showResult(){if(!validate(3))return;const key=chooseProfile(),p=PROFILE
 document.querySelectorAll('.max-three input').forEach(el=>el.addEventListener('change',()=>{const checked=document.querySelectorAll('.max-three input:checked');if(checked.length>3){el.checked=false;el.closest('.field').classList.add('has-error')}else el.closest('.field').classList.remove('has-error')}));
 document.getElementById('surveyForm').addEventListener('submit',async function(e){e.preventDefault();if(!validate(4))return;const btn=this.querySelector('[type=submit]');btn.disabled=true;btn.textContent='Đang gửi kết quả…';try{const res=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}});if(!res.ok)throw new Error();document.getElementById('section-4').classList.remove('active');document.getElementById('success').classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}catch(err){btn.disabled=false;btn.textContent='Gửi kết quả & đăng ký trao đổi';alert('Chưa thể gửi lúc này. Bạn vui lòng thử lại hoặc nhắn Zalo trực tiếp cho Yến.')}});
 </script>
+
+<script src="/js/yen-site-system.js" defer></script>
 </body>
 </html>
