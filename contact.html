@@ -384,10 +384,10 @@
             box-shadow: 0 10px 24px rgba(24, 120, 90, .22);
         }
 
-        .consult-dialog { position: fixed; inset: 0; z-index: 1100; display: none; place-items: center; padding: 20px; background: rgba(7, 47, 36, .72); }
+        .consult-dialog { position: fixed; inset: 0; z-index: 10050; display: none; place-items: start center; padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom)); overflow-y: auto; background: rgba(7, 47, 36, .72); }
         .consult-dialog.is-open { display: grid; }
         body.consult-dialog-open { overflow: hidden; }
-        .consult-dialog-card { position: relative; width: min(560px, 100%); max-height: calc(100vh - 40px); overflow-y: auto; padding: 30px; border-radius: 18px; background: var(--contact-white); box-shadow: 0 28px 80px rgba(0, 0, 0, .28); }
+        .consult-dialog-card { position: relative; width: min(560px, 100%); max-height: calc(100dvh - 32px); overflow-y: auto; overscroll-behavior: contain; padding: 30px; border-radius: 18px; background: var(--contact-white); box-shadow: 0 28px 80px rgba(0, 0, 0, .28); }
         .consult-dialog-close { position: absolute; top: 14px; right: 14px; width: 42px; height: 42px; border: 0; border-radius: 50%; background: #edf5f1; color: var(--contact-green-dark); font-size: 1.2rem; cursor: pointer; }
         .consult-dialog h2 { margin: 0 48px 8px 0; font-family: 'Lora', serif; }
         .consult-dialog-intro { margin: 0 0 20px; color: var(--contact-muted); }
@@ -403,6 +403,17 @@
         .consult-form-status.is-error { color: #a33225; }
         .consult-form-status.is-success { color: var(--contact-green); }
         .consult-honeypot { position: absolute !important; left: -9999px !important; }
+        .consult-success-toast { position: fixed; z-index: 10100; top: max(20px, env(safe-area-inset-top)); left: 50%; display: flex; align-items: flex-start; gap: 12px; width: min(520px, calc(100% - 32px)); padding: 18px 20px; border-radius: 14px; background: #fff; color: var(--contact-green-dark); box-shadow: 0 18px 54px rgba(0, 0, 0, .24); opacity: 0; visibility: hidden; transform: translate(-50%, -14px); transition: opacity .2s ease, transform .2s ease, visibility .2s; }
+        .consult-success-toast.is-visible { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+        .consult-success-toast i { margin-top: 2px; color: var(--contact-green); font-size: 1.4rem; }
+        .consult-success-toast strong { display: block; margin-bottom: 3px; }
+        .consult-success-toast p { margin: 0; color: var(--contact-muted); font-size: .92rem; }
+
+        @media (max-width: 480px) {
+            .consult-dialog { padding: 8px; }
+            .consult-dialog-card { max-height: calc(100dvh - 16px); padding: 24px 18px 20px; border-radius: 12px; }
+            .consult-dialog h2 { font-size: 1.45rem; }
+        }
 
         .zalo-panel {
             display: grid;
@@ -705,6 +716,11 @@
         </div>
     </div>
 
+    <div class="consult-success-toast" id="consult-success-toast" role="status" aria-live="polite" aria-atomic="true">
+        <i class="fas fa-circle-check" aria-hidden="true"></i>
+        <div><strong>Đã gửi thông tin thành công</strong><p>Yến đã nhận được yêu cầu và sẽ chủ động liên hệ lại với bạn sớm.</p></div>
+    </div>
+
     <div class="zalo-popup" id="zalo-contact" role="dialog" aria-modal="true" aria-labelledby="zalo-popup-title" aria-hidden="true">
         <div class="zalo-popup-card" role="document">
             <button class="zalo-popup-close" type="button" aria-label="Đóng cửa sổ liên hệ Zalo" data-zalo-close><i class="fas fa-xmark" aria-hidden="true"></i></button>
@@ -759,7 +775,9 @@
             const status = document.getElementById('consult-form-status');
             const closeButton = dialog.querySelector('[data-consult-close]');
             const submitButton = form.querySelector('[type="submit"]');
+            const successToast = document.getElementById('consult-success-toast');
             let previousFocus = null;
+            let toastTimer = null;
 
             const closeDialog = () => {
                 dialog.classList.remove('is-open');
@@ -799,8 +817,10 @@
                     const selectedType = typeInput.value;
                     form.reset();
                     typeInput.value = selectedType;
-                    status.textContent = 'Đã gửi thành công. Yến sẽ liên hệ lại với bạn sớm.';
-                    status.className = 'consult-form-status is-success';
+                    closeDialog();
+                    successToast.classList.add('is-visible');
+                    clearTimeout(toastTimer);
+                    toastTimer = setTimeout(() => successToast.classList.remove('is-visible'), 6000);
                 } catch (error) {
                     status.textContent = error.message || 'Có lỗi xảy ra. Bạn vui lòng thử lại hoặc liên hệ qua Zalo.';
                     status.className = 'consult-form-status is-error';
