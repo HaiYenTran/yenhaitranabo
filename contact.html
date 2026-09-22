@@ -384,6 +384,26 @@
             box-shadow: 0 10px 24px rgba(24, 120, 90, .22);
         }
 
+        .consult-dialog { position: fixed; inset: 0; z-index: 1100; display: none; place-items: center; padding: 20px; background: rgba(7, 47, 36, .72); }
+        .consult-dialog.is-open { display: grid; }
+        body.consult-dialog-open { overflow: hidden; }
+        .consult-dialog-card { position: relative; width: min(560px, 100%); max-height: calc(100vh - 40px); overflow-y: auto; padding: 30px; border-radius: 18px; background: var(--contact-white); box-shadow: 0 28px 80px rgba(0, 0, 0, .28); }
+        .consult-dialog-close { position: absolute; top: 14px; right: 14px; width: 42px; height: 42px; border: 0; border-radius: 50%; background: #edf5f1; color: var(--contact-green-dark); font-size: 1.2rem; cursor: pointer; }
+        .consult-dialog h2 { margin: 0 48px 8px 0; font-family: 'Lora', serif; }
+        .consult-dialog-intro { margin: 0 0 20px; color: var(--contact-muted); }
+        .consult-form, .consult-field { display: grid; gap: 15px; }
+        .consult-field { gap: 6px; }
+        .consult-field label { color: var(--contact-green-dark); font-weight: 750; }
+        .consult-field input, .consult-field textarea { width: 100%; padding: 12px 14px; border: 1px solid #bdcbc5; border-radius: 10px; background: #fff; color: #17352c; font: inherit; }
+        .consult-field textarea { min-height: 110px; resize: vertical; }
+        .consult-field input:focus, .consult-field textarea:focus { outline: 3px solid rgba(24, 120, 90, .18); border-color: var(--contact-green); }
+        .consult-form .contact-cta { width: 100%; border: 0; cursor: pointer; }
+        .consult-form-note { margin: 0; color: var(--contact-muted); font-size: .82rem; line-height: 1.55; }
+        .consult-form-status { min-height: 24px; margin: 0; font-weight: 700; }
+        .consult-form-status.is-error { color: #a33225; }
+        .consult-form-status.is-success { color: var(--contact-green); }
+        .consult-honeypot { position: absolute !important; left: -9999px !important; }
+
         .zalo-panel {
             display: grid;
             grid-template-columns: 1.15fr .85fr;
@@ -631,10 +651,9 @@
                         <li>Nhìn lại nguồn lực và điểm đang vướng</li>
                         <li>Xác định bước hành động đầu tiên</li>
                     </ul>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSep2B6Wbti9RsxE9GuAl2G5sWZUXyptfc0v57WWOgM-bAGPoQ/viewform?usp=header"
-                        class="contact-cta" target="_blank" rel="noopener noreferrer">
+                    <button class="contact-cta" type="button" data-consult-type="Tư vấn định hướng 1-1">
                         <i class="fas fa-calendar-check"></i> Đặt lịch tư vấn 1-1
-                    </a>
+                    </button>
                 </article>
 
                 <article class="consult-card health">
@@ -646,10 +665,9 @@
                         <li>Đánh giá thói quen ăn uống hiện tại</li>
                         <li>Gợi ý hướng điều chỉnh dễ áp dụng</li>
                     </ul>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSclfUUwaSha4yUm9nWuQARceyDBu68ZhvuZRfa_F22WFAcTjA/viewform?usp=header"
-                        class="contact-cta" target="_blank" rel="noopener noreferrer">
+                    <button class="contact-cta" type="button" data-consult-type="Tư vấn dinh dưỡng">
                         <i class="fas fa-leaf"></i> Đặt lịch tư vấn dinh dưỡng
-                    </a>
+                    </button>
                 </article>
             </div>
 
@@ -667,6 +685,25 @@
             </section>
         </div>
     </main>
+
+    <div class="consult-dialog" id="consult-dialog" role="dialog" aria-modal="true" aria-labelledby="consult-dialog-title" aria-hidden="true">
+        <div class="consult-dialog-card" role="document">
+            <button class="consult-dialog-close" type="button" aria-label="Đóng biểu mẫu" data-consult-close><i class="fas fa-xmark" aria-hidden="true"></i></button>
+            <h2 id="consult-dialog-title">Gửi thông tin cho Yến</h2>
+            <p class="consult-dialog-intro">Bạn để lại vài thông tin ngắn. Yến sẽ đọc và chủ động liên hệ lại để thống nhất thời gian trao đổi.</p>
+            <form class="consult-form" id="consult-form">
+                <input type="hidden" name="type" id="consult-type" value="Tư vấn định hướng 1-1">
+                <div class="consult-field"><label for="consult-name">Họ và tên *</label><input id="consult-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+                <div class="consult-field"><label for="consult-phone">Số điện thoại hoặc Zalo *</label><input id="consult-phone" name="phone" type="tel" autocomplete="tel" required maxlength="80"></div>
+                <div class="consult-field"><label for="consult-email">Email (không bắt buộc)</label><input id="consult-email" name="email" type="email" autocomplete="email" maxlength="160"></div>
+                <div class="consult-field"><label for="consult-message">Điều bạn muốn trao đổi</label><textarea id="consult-message" name="message" maxlength="2000" placeholder="Chia sẻ ngắn gọn mục tiêu hoặc điều bạn đang vướng..."></textarea></div>
+                <div class="consult-honeypot" aria-hidden="true"><label>Website <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+                <p class="consult-form-note">Khi gửi, thông tin sẽ được chuyển riêng tới nhóm Telegram quản trị của Yến để liên hệ lại; không hiển thị công khai.</p>
+                <button class="contact-cta" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Gửi thông tin</button>
+                <p class="consult-form-status" id="consult-form-status" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
 
     <div class="zalo-popup" id="zalo-contact" role="dialog" aria-modal="true" aria-labelledby="zalo-popup-title" aria-hidden="true">
         <div class="zalo-popup-card" role="document">
@@ -711,6 +748,66 @@
             closeButton.addEventListener('click', closePopup);
             popup.addEventListener('click', (event) => { if (event.target === popup) closePopup(); });
             document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && popup.classList.contains('is-open')) closePopup(); });
+        })();
+
+        (() => {
+            const endpoint = 'https://momoshare-contact.jennatranabo.workers.dev/';
+            const dialog = document.getElementById('consult-dialog');
+            const form = document.getElementById('consult-form');
+            const typeInput = document.getElementById('consult-type');
+            const title = document.getElementById('consult-dialog-title');
+            const status = document.getElementById('consult-form-status');
+            const closeButton = dialog.querySelector('[data-consult-close]');
+            const submitButton = form.querySelector('[type="submit"]');
+            let previousFocus = null;
+
+            const closeDialog = () => {
+                dialog.classList.remove('is-open');
+                dialog.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('consult-dialog-open');
+                if (previousFocus) previousFocus.focus();
+            };
+
+            document.querySelectorAll('[data-consult-type]').forEach((button) => {
+                button.addEventListener('click', () => {
+                    previousFocus = button;
+                    typeInput.value = button.dataset.consultType;
+                    title.textContent = button.dataset.consultType;
+                    status.textContent = '';
+                    status.className = 'consult-form-status';
+                    dialog.classList.add('is-open');
+                    dialog.setAttribute('aria-hidden', 'false');
+                    document.body.classList.add('consult-dialog-open');
+                    document.getElementById('consult-name').focus();
+                });
+            });
+
+            closeButton.addEventListener('click', closeDialog);
+            dialog.addEventListener('click', (event) => { if (event.target === dialog) closeDialog(); });
+            document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && dialog.classList.contains('is-open')) closeDialog(); });
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                submitButton.disabled = true;
+                status.textContent = 'Đang gửi thông tin…';
+                status.className = 'consult-form-status';
+                try {
+                    const payload = Object.fromEntries(new FormData(form).entries());
+                    const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                    const result = await response.json().catch(() => ({}));
+                    if (!response.ok || !result.ok) throw new Error(result.error || 'Không thể gửi thông tin lúc này.');
+                    const selectedType = typeInput.value;
+                    form.reset();
+                    typeInput.value = selectedType;
+                    status.textContent = 'Đã gửi thành công. Yến sẽ liên hệ lại với bạn sớm.';
+                    status.className = 'consult-form-status is-success';
+                } catch (error) {
+                    status.textContent = error.message || 'Có lỗi xảy ra. Bạn vui lòng thử lại hoặc liên hệ qua Zalo.';
+                    status.className = 'consult-form-status is-error';
+                } finally {
+                    submitButton.disabled = false;
+                }
+            });
         })();
     </script>
 
