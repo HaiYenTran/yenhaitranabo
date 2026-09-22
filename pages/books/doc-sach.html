@@ -38,7 +38,7 @@
     const slug=new URLSearchParams(location.search).get('book'),book=BOOKS[slug];if(!book)location.replace('pages/books/tu-sach.html');
     const $=id=>document.getElementById(id),frame=$('pdfFrame');
     $('bookTitle').textContent=book.title;$('bookAuthor').textContent=book.author;$('reviewLink').href=book.review;
-    const ACCESS_KEY='yen-books-access-2026';function unlock(){sessionStorage.setItem(ACCESS_KEY,'yes');$('gate').hidden=true;frame.src=book.pdf+'#toolbar=0&navpanes=0&view=FitH';frame.hidden=false}if(sessionStorage.getItem(ACCESS_KEY)==='yes')unlock();
+    const ACCESS_KEY='yen-books-access-2026';function unlock(){sessionStorage.setItem(ACCESS_KEY,'yes');$('gate').hidden=true;frame.src=book.pdf+'#toolbar=0&navpanes=0&view=FitH';frame.hidden=false;window.yenBookOpened=slug;if(window.YenAnalytics)window.YenAnalytics.track('book_reader_view',{book:slug})}if(sessionStorage.getItem(ACCESS_KEY)==='yes')unlock();
     $('passwordForm').addEventListener('submit',e=>{e.preventDefault();if($('password').value==='2026')unlock();else{$('error').textContent='Mật khẩu chưa đúng. Bạn có thể liên hệ Yến ở bên dưới.';$('password').select()}});
   </script>
 

@@ -2,6 +2,52 @@
   'use strict';
 
   var path = location.pathname.replace(/\/+$/, '') || '/';
+
+  function analyticsProperties(extra) {
+    return Object.assign({
+      path: location.pathname,
+      page_title: document.title
+    }, extra || {});
+  }
+
+  function trackAnalyticsEvent(name, properties) {
+    var attempts = 0;
+    var send = function () {
+      if (window.zaraz && typeof window.zaraz.track === 'function') {
+        window.zaraz.track(name, analyticsProperties(properties));
+        return;
+      }
+      attempts += 1;
+      if (attempts < 20) window.setTimeout(send, 250);
+    };
+    send();
+  }
+
+  window.YenAnalytics = window.YenAnalytics || { track: trackAnalyticsEvent };
+
+  document.addEventListener('click', function (event) {
+    var target = event.target.closest('a, button');
+    if (!target) return;
+    var href = target.getAttribute('href') || '';
+    if (target.matches('[data-yt-zalo], [data-zalo-trigger], .zalo-trigger') || /zalo\.me|zalo-qr/i.test(href)) {
+      trackAnalyticsEvent('zalo_contact_click', { label: (target.textContent || '').trim().slice(0, 80) });
+    }
+    if (target.matches('[data-consult-type]')) {
+      trackAnalyticsEvent('consultation_form_open', { consultation_type: target.getAttribute('data-consult-type') || 'unknown' });
+    }
+    if (/(?:^|\/)pages\/books\/doc-sach\.html/i.test(href)) {
+      trackAnalyticsEvent('book_read_open', { destination: href });
+    }
+    if (/(?:^|\/)pages\/stories\/(?!nhung-cau-chuyen\.html)[^?#]+\.html/i.test(href) || /^nhung-cau-chuyen-bai-[^?#]+\.html/i.test(href)) {
+      trackAnalyticsEvent('article_open', { destination: href });
+    }
+  });
+
+  if (window.yenBookOpened) trackAnalyticsEvent('book_reader_view', { book: window.yenBookOpened });
+  if (/\/pages\/stories\/(?!nhung-cau-chuyen\.html$)[^/]+\.html$/i.test(path)) {
+    trackAnalyticsEvent('article_view');
+  }
+
   if (path.endsWith('/gioi-thieu-yen-tran.html') || path.endsWith('/pages/books/doc-sach.html')) return;
 
   var root = '/';

@@ -815,6 +815,7 @@
                     const result = await response.json().catch(() => ({}));
                     if (!response.ok || !result.ok) throw new Error(result.error || 'Không thể gửi thông tin lúc này.');
                     const selectedType = typeInput.value;
+                    if (window.YenAnalytics) window.YenAnalytics.track('consultation_form_success', { consultation_type: selectedType });
                     form.reset();
                     typeInput.value = selectedType;
                     closeDialog();
