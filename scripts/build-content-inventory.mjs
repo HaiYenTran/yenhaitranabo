@@ -100,4 +100,10 @@ const markdown = `# Danh mục nội dung website\n\n` +
 fs.mkdirSync(path.join(root, 'docs'), { recursive: true });
 fs.writeFileSync(path.join(root, 'docs/content-inventory.csv'), csv);
 fs.writeFileSync(path.join(root, 'docs/content-inventory.md'), markdown);
+const bulkRedirectCsv = redirectRows.map((row) => {
+  const source = `yenhaitran.com${row.url}`;
+  const target = `https://yenhaitran.com${row.proposedTarget}`;
+  return `${source},${target},301,TRUE,FALSE,FALSE,FALSE`;
+}).join('\n') + '\n';
+fs.writeFileSync(path.join(root, 'docs/cloudflare-bulk-redirects.csv'), bulkRedirectCsv);
 console.log(`Đã kiểm kê ${rows.length} trang; đề xuất xem xét chuyển hướng ${redirectRows.length} URL.`);
