@@ -11,6 +11,7 @@
     ['Sống khỏe', '/healthylifestyle.html'],
     ['Góc chủ động', '/passiveincome.html'],
     ['Khám phá', '/digital_index.html'],
+    ['Sự kiện', '/events.html'],
     ['Liên hệ', '/contact.html']
   ];
 
@@ -18,7 +19,8 @@
     if (href === '/') return path === '/' || path.endsWith('/index.html');
     if (href === '/healthylifestyle.html') return /health|breakfast|healthymeal|kiem-soat-can-nang|ffit/i.test(path);
     if (href === '/passiveincome.html') return /passive|stories|nhung-cau-chuyen|khao-sat|ondinh|dam-bao/i.test(path);
-    if (href === '/digital_index.html') return /digital|books|showcase|events/i.test(path);
+    if (href === '/digital_index.html') return /digital|books|showcase/i.test(path);
+    if (href === '/events.html') return /events/i.test(path);
     return path === href;
   }
 

@@ -92,6 +92,7 @@
             background: linear-gradient(90deg,#62d882 85%,#acf9cc 100%);
             color: #086a38;
         }
+        .btn-weight {background:linear-gradient(90deg,#173f35,#2d6a4f);color:#fff}
         .btn-back:hover, .btn-mentor:hover {
             opacity: 0.85;
             box-shadow: 0 2px 14px #19be8f24;
@@ -129,6 +130,7 @@
             text-align: center;
             text-shadow: 1px 2px 6px rgba(40,40,40,0.27);
         }
+        .lightbox-close{position:fixed;top:18px;right:22px;z-index:10001;width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:#173f35;font-size:1.7rem;line-height:1;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,.25)}
         @media (max-width: 700px) {
             .container {padding: 8px 1vw;}
             .gallery {gap: 12px;}
@@ -215,7 +217,7 @@
     <div class="container">
         <div class="choose">
             <a href="index.html" class="btn-back">&larr; Quay về Trang chủ</a>
-            <a href="kiem-soat-can-nang.html" class="btn-back">&larr; Quay lại trang Kiểm soát cân nặng</a>
+            <a href="kiem-soat-can-nang.html" class="btn-back btn-weight">Kiểm soát cân nặng cùng Yến →</a>
             <a href="khoffit.html" class="btn-mentor">Kho mentor F.FIT giảm cân thành công</a>
         </div>
         <h1>F.FIT – Phương pháp giảm mỡ khoa học</h1>
@@ -243,6 +245,7 @@
     </div>
     <!-- Lightbox for viewing big images -->
     <div class="lightbox-bg" id="lightboxBg" tabindex="-1">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Đóng ảnh">×</button>
         <div class="lightbox-img-wrap">
             <img src="" alt="F.FIT Slide lớn" class="lightbox-img" id="lightboxImg" decoding="async">
             <div class="lightbox-caption" id="lightboxCaption"></div>
@@ -277,6 +280,10 @@
         }
         document.getElementById('lightboxBg').onclick = function(e) {
             if (e.target === this) this.classList.remove('active');
+        };
+        document.getElementById('lightboxClose').onclick = function(e) {
+            e.stopPropagation();
+            document.getElementById('lightboxBg').classList.remove('active');
         };
         window.addEventListener('keydown', function(e){
             if(e.key === "Escape") document.getElementById('lightboxBg').classList.remove('active');
