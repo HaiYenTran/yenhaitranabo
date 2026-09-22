@@ -23,6 +23,12 @@
     footer{border-top:1px solid var(--line);padding:27px 0;color:#65716c;font-size:.82rem}.footer-row{display:flex;justify-content:space-between}.footer-row a{color:var(--green);text-decoration:none}.to-top{position:fixed;right:22px;bottom:24px;width:46px;height:46px;padding:0;border:0;border-radius:50%;background:var(--forest);color:white;display:none;align-items:center;justify-content:center;z-index:20;box-shadow:0 8px 25px rgba(23,63,53,.22)}.to-top svg{width:19px;height:19px;stroke:currentColor}
     @media(max-width:900px){.transform-grid,.hero-grid,.section-head,.story-grid,.fit-box{grid-template-columns:1fr}.transform-grid,.hero-grid,.section-head,.story-grid{gap:36px}.transform-poster,.event-poster{transform:none}.program-grid{grid-template-columns:repeat(2,1fr)}.experience-grid{grid-template-columns:1fr}.cta{flex-direction:column;align-items:flex-start}.navbar-nav{padding-bottom:15px}}
     @media(max-width:650px){.content-wrap{width:min(100% - 28px,1160px)}.transform-event,.hero{padding:56px 0 65px}.transform-event h1,.hero h1{font-size:2.75rem}.program-grid{grid-template-columns:1fr}.event-badge{left:10px;bottom:17px}.section,.transform-program{padding:64px 0}.fit{padding-bottom:60px}.fit-box{padding:29px 20px}.cta{padding:31px 23px;margin-bottom:55px}.cta a{width:100%;text-align:center}.footer-row{flex-direction:column;gap:7px;text-align:center}}
+    /* Keep the square event artwork readable without letting it dominate the hero. */
+    .transform-event{padding:64px 0}
+    .transform-grid{grid-template-columns:minmax(0,1.15fr) minmax(320px,.75fr)}
+    .transform-poster{width:min(100%,430px);justify-self:end}
+    .transform-poster img{height:auto;aspect-ratio:1/1;object-fit:contain}
+    @media(max-width:900px){.transform-poster{width:min(100%,520px);justify-self:center}}
   </style>
 
   <link rel="canonical" href="https://yenhaitran.com/events.html">
