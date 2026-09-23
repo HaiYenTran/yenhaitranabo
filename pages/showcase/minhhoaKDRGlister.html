@@ -225,9 +225,9 @@
     </div>
 </div>
 
+<script src="/js/access-gate.js"></script>
 <script>
-    // Password logic
-    const PASSWORD = "2025";
+    // Kiểm tra quyền truy cập
     const overlay = document.getElementById('passwordOverlay');
     const mainContent = document.getElementById('mainContent');
     const input = document.getElementById('passwordInput');
@@ -239,8 +239,8 @@
         mainContent.style.display = "block";
         document.body.style.overflow = "";
     }
-    submitBtn.onclick = function() {
-        if (input.value === PASSWORD) {
+    submitBtn.onclick = async function() {
+        if (await window.YenAccessGate.verify(input.value)) {
             unlockPage();
         } else {
             wrong.style.display = "block";

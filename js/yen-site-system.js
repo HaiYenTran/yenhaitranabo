@@ -157,36 +157,42 @@
     if (modal._returnFocus && typeof modal._returnFocus.focus === 'function') modal._returnFocus.focus();
   }
 
-  function buildContact() {
-    if (/\/(contact|kiem-soat-can-nang)\.html$/.test(path)) {
-      var simpleFooter = document.createElement('footer');
-      simpleFooter.className = 'yt-site-footer';
-      simpleFooter.innerHTML = '<div class="yt-footer-inner"><span>© Yến Trần · Sống khỏe, sống chủ động</span>' +
-        '<span><a href="/healthylifestyle.html">Sống khỏe</a> · <a href="/passiveincome.html">Góc chủ động</a> · <a href="/kham-pha.html">Khám phá</a> · <a href="/contact.html">Liên hệ</a></span></div>';
-      document.body.appendChild(simpleFooter);
-      return;
-    }
-    var strip = document.createElement('section');
-    strip.className = 'yt-contact-strip';
-    strip.setAttribute('aria-labelledby', 'yt-contact-title');
-    strip.innerHTML = '<div><h2 id="yt-contact-title">Bạn muốn cùng Yến nhìn rõ bước tiếp theo?</h2>' +
-      '<p>Nhắn Yến qua Zalo, chia sẻ ngắn điều bạn đang quan tâm. Yến sẽ lắng nghe trước và gợi ý một bước nhỏ, phù hợp với tình trạng hiện tại của bạn.</p></div>' +
-      '<button class="yt-zalo-button" type="button" data-yt-zalo>Quét mã Zalo để liên hệ</button>';
-    document.body.appendChild(strip);
-
+  function buildFooter() {
     var footer = document.createElement('footer');
     footer.className = 'yt-site-footer';
     footer.innerHTML = '<div class="yt-footer-inner"><span>© Yến Trần · Sống khỏe, sống chủ động</span>' +
       '<span><a href="/healthylifestyle.html">Sống khỏe</a> · <a href="/passiveincome.html">Góc chủ động</a> · <a href="/kham-pha.html">Khám phá</a> · <a href="/contact.html">Liên hệ</a></span></div>';
     document.body.appendChild(footer);
+  }
 
-    var floatButton = document.createElement('button');
-    floatButton.className = 'yt-zalo-float';
-    floatButton.type = 'button';
-    floatButton.setAttribute('data-yt-zalo', '');
-    floatButton.setAttribute('aria-label', 'Mở mã QR Zalo để liên hệ Yến');
-    floatButton.textContent = 'Liên hệ Zalo';
-    document.body.appendChild(floatButton);
+  function nextStepForPage() {
+    var readerLink = document.querySelector('a[href*="pages/books/doc-sach.html"]');
+    if (/\/pages\/books\/(?!tu-sach|doc-sach)/i.test(path) && readerLink) {
+      return { eyebrow: 'Bước tiếp theo · Đọc', title: 'Mở bản đọc đầy đủ', copy: 'Nếu phần giới thiệu phù hợp với điều bạn đang tìm, hãy tiếp tục với bản đọc online và ghi lại một ý muốn áp dụng.', label: 'Đọc sách online', href: readerLink.href };
+    }
+    if (/\/(?:pages\/(?:health|breakfast)\/|healthylifestyle\.html$|healthymeal\.html$|nutrilite-|protein-thuc-vat|omega-3|vitamin-c)/i.test(path)) {
+      return { eyebrow: 'Bước tiếp theo · Tự đánh giá', title: 'Nhìn toàn cảnh trước khi chọn điều cần đổi', copy: 'Dùng Bánh xe cuộc đời để xác định lĩnh vực đang cần ưu tiên thay vì thay đổi quá nhiều thứ cùng lúc.', label: 'Làm Bánh xe cuộc đời', href: '/pages/digital/banh-xe-cuoc-doi.html' };
+    }
+    if (/\/(?:pages\/(?:stories|passive-income)\/|passiveincome\.html$|khao-sat-co-hoi\.html$|2024LOOKBACK|GUITOICUATUONGLAI|gui20namsau|affiliate-|crador-)/i.test(path)) {
+      return { eyebrow: 'Bước tiếp theo · Làm rõ hướng đi', title: 'Biến điều vừa đọc thành câu trả lời của riêng bạn', copy: 'Trả lời chuỗi câu hỏi ngắn để nhìn rõ mong muốn, nguồn lực và bước thử nghiệm phù hợp trong giai đoạn hiện tại.', label: 'Nhìn lại định hướng cá nhân', href: '/khao-sat-co-hoi.html' };
+    }
+    if (/\/pages\/showcase\/(?:ffit_gallery|khoffit|myfit)\.html$/i.test(path)) {
+      return { eyebrow: 'Bước tiếp theo · Tìm hiểu', title: 'Xem cách Yến đồng hành kiểm soát cân nặng', copy: 'Đọc rõ phương pháp, đối tượng phù hợp và cách bắt đầu trước khi quyết định có cần trao đổi riêng hay không.', label: 'Tìm hiểu cùng Yến', href: '/kiem-soat-can-nang.html' };
+    }
+    if (/\/events\.html$/i.test(path)) {
+      return { eyebrow: 'Bước tiếp theo · Đăng ký', title: 'Trao đổi trước khi tham dự', copy: 'Gửi thông tin ngắn để Yến phản hồi về nội dung, cách chuẩn bị và mức độ phù hợp của sự kiện với bạn.', label: 'Đăng ký trao đổi', href: '/contact.html?consult=direction' };
+    }
+    if (/\/pages\/digital\/(?!banh-xe-cuoc-doi|digital_index)/i.test(path)) {
+      return { eyebrow: 'Bước tiếp theo · Trao đổi', title: 'Bạn muốn áp dụng vào trường hợp của mình?', copy: 'Gửi vài thông tin ngắn về mục tiêu và tình trạng hiện tại. Yến sẽ đọc trước rồi phản hồi hướng phù hợp.', label: 'Đăng ký tư vấn dinh dưỡng', href: '/contact.html?consult=nutrition' };
+    }
+    if (/\/pages\/digital\/digital_index\.html$/i.test(path) || /\/kham-pha\.html$/i.test(path)) {
+      return { eyebrow: 'Bước tiếp theo · Dùng công cụ', title: 'Bắt đầu bằng một bức ảnh rõ hơn về hiện tại', copy: 'Chấm điểm tám lĩnh vực trong 5–7 phút để biết mình nên ưu tiên điều gì trước.', label: 'Làm Bánh xe cuộc đời', href: '/pages/digital/banh-xe-cuoc-doi.html' };
+    }
+    return { eyebrow: 'Bước tiếp theo · Kết nối', title: 'Chia sẻ điều bạn muốn làm rõ', copy: 'Nhắn Yến một câu ngắn về điều bạn đang quan tâm. Yến sẽ đọc và phản hồi trong vòng 24 giờ.', label: 'Quét mã Zalo để liên hệ', zalo: true };
+  }
+
+  function buildZaloModal() {
+    if (document.querySelector('.yt-zalo-modal')) return;
 
     var modal = document.createElement('div');
     modal.className = 'yt-zalo-modal';
@@ -196,7 +202,7 @@
       '<button class="yt-zalo-close" type="button" aria-label="Đóng">×</button>' +
       '<h2 id="yt-zalo-title">Kết nối với Yến qua Zalo</h2>' +
       '<p>Mở Zalo, chọn quét mã QR và hướng camera vào mã bên dưới.</p>' +
-      '<img src="/assets/img/zalo-qr-yen-tran.png" alt="Mã QR Zalo cá nhân của Yến Trần" width="1260" height="1920">' +
+      '<img loading="lazy" src="/assets/img/zalo-qr-yen-tran.png" alt="Mã QR Zalo cá nhân của Yến Trần" width="1260" height="1920">' +
       '<span class="yt-zalo-note">Yến thường phản hồi trong vòng 24 giờ.</span></section>';
     document.body.appendChild(modal);
     document.querySelectorAll('[data-yt-zalo]').forEach(function (el) { el.addEventListener('click', openZalo); });
@@ -215,6 +221,24 @@
     });
   }
 
+  function buildJourney() {
+    var ownsFinalStep = /\/(?:contact|kiem-soat-can-nang|khao-sat-co-hoi)\.html$/.test(path) || /\/pages\/digital\/banh-xe-cuoc-doi\.html$/.test(path);
+    if (!ownsFinalStep) {
+      var step = nextStepForPage();
+      var strip = document.createElement('section');
+      strip.className = 'yt-contact-strip yt-next-step';
+      strip.setAttribute('aria-labelledby', 'yt-next-step-title');
+      var action = step.zalo
+        ? '<button class="yt-zalo-button" type="button" data-yt-zalo>' + step.label + '</button>'
+        : '<a class="yt-zalo-button" href="' + step.href + '">' + step.label + '</a>';
+      strip.innerHTML = '<div><span class="yt-next-step-label">' + step.eyebrow + '</span><h2 id="yt-next-step-title">' + step.title + '</h2>' +
+        '<p>' + step.copy + '</p></div>' + action;
+      document.body.appendChild(strip);
+    }
+    buildFooter();
+    if (document.querySelector('[data-yt-zalo]')) buildZaloModal();
+  }
+
   function improveContent() {
     document.querySelectorAll('a[target="_blank"]').forEach(function (a) {
       var rel = new Set((a.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
@@ -228,5 +252,5 @@
   buildGroupReturn(siteHeader);
   applyDesignSystem();
   improveContent();
-  buildContact();
+  buildJourney();
 })();

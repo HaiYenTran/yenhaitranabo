@@ -142,6 +142,7 @@ body.yt-unified .yt-content-card:hover {
 }
 .yt-contact-strip h2 { margin: 0 0 10px; color: white; font: 700 clamp(1.65rem, 4vw, 2.55rem)/1.15 'Lora', serif; }
 .yt-contact-strip p { max-width: 700px; margin: 0; color: rgba(255, 255, 255, .76); line-height: 1.7; }
+.yt-next-step-label { display: block; margin-bottom: 10px; color: #f1cf96; font-size: .7rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 .yt-zalo-button {
   display: inline-flex;
   min-height: 46px;
@@ -237,6 +238,5 @@ body.yt-unified .yt-content-card:hover {
   .yt-group-return { width: min(100% - 24px, 1160px); min-height: 44px; }
   .yt-group-label { display: none; }
   .yt-contact-strip { width: min(100% - 24px, 1080px); }
-  .yt-zalo-float { right: 12px; bottom: 12px; }
   .yt-zalo-dialog { padding: 26px 18px 22px; }
 }

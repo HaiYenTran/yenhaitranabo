@@ -24,6 +24,7 @@
   <header class="topbar"><a id="reviewLink" href="pages/books/tu-sach.html">← Về trang review</a><div class="title"><strong id="bookTitle">Tủ sách Yến</strong><small id="bookAuthor"></small></div><div class="reader-note">Bản PDF chỉ dành cho mục đích đọc cá nhân</div></header>
   <main class="reader"><iframe class="pdf-frame" id="pdfFrame" title="Trình đọc PDF" hidden></iframe></main>
   <section class="gate" id="gate" aria-modal="true" role="dialog"><div class="gate-card"><div><span style="color:var(--rust);font-weight:800;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase">Tủ sách đọc online</span><h1>Mời bạn nhập mật khẩu để đọc</h1><p>Tài liệu được chia sẻ để phục vụ việc học và đọc cá nhân. Vì tôn trọng bản quyền, vui lòng không sao chép hoặc phát tán lại.</p><form class="password-row" id="passwordForm"><input id="password" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu" aria-label="Mật khẩu" required><button class="unlock" type="submit">Vào đọc sách</button></form><p class="error" id="error" role="alert"></p><div class="contact-note"><strong>Chưa có mật khẩu?</strong> Liên hệ Yến qua Zalo để được hướng dẫn và nhận tài nguyên đọc.<div class="contacts"><a class="contact" href="https://zalo.me/0858400957" target="_blank" rel="noopener noreferrer">Nhắn Zalo cho Yến</a></div></div></div><div class="qr-wrap"><img class="qr" src="assets/img/zalo-qr-yen-tran.png" alt="Mã QR Zalo cá nhân của Yến Trần" decoding="async" width="1260" height="1888"><div class="qr-label">Quét QR để liên hệ Zalo</div></div></div></section>
+  <script src="/js/access-gate.js"></script>
   <script>
     const BOOKS={
       'hanh-trinh-ve-phuong-dong':{title:'Hành trình về Phương Đông',author:'Blair T. Spalding · Nguyên Phong',pdf:'assets/docs/books/hanh-trinh-ve-phuong-dong.pdf',review:'pages/books/hanh-trinh-ve-phuong-dong.html'},
@@ -38,8 +39,8 @@
     const slug=new URLSearchParams(location.search).get('book'),book=BOOKS[slug];if(!book)location.replace('pages/books/tu-sach.html');
     const $=id=>document.getElementById(id),frame=$('pdfFrame');
     $('bookTitle').textContent=book.title;$('bookAuthor').textContent=book.author;$('reviewLink').href=book.review;
-    const ACCESS_KEY='yen-books-access-2026';function unlock(){sessionStorage.setItem(ACCESS_KEY,'yes');$('gate').hidden=true;frame.src=book.pdf+'#toolbar=0&navpanes=0&view=FitH';frame.hidden=false;window.yenBookOpened=slug;if(window.YenAnalytics)window.YenAnalytics.track('book_reader_view',{book:slug})}if(sessionStorage.getItem(ACCESS_KEY)==='yes')unlock();
-    $('passwordForm').addEventListener('submit',e=>{e.preventDefault();if($('password').value==='2026')unlock();else{$('error').textContent='Mật khẩu chưa đúng. Bạn có thể liên hệ Yến ở bên dưới.';$('password').select()}});
+    const ACCESS_KEY='yen-books-access-v1';function unlock(){sessionStorage.setItem(ACCESS_KEY,'yes');$('gate').hidden=true;frame.src=book.pdf+'#toolbar=0&navpanes=0&view=FitH';frame.hidden=false;window.yenBookOpened=slug;if(window.YenAnalytics)window.YenAnalytics.track('book_reader_view',{book:slug})}if(sessionStorage.getItem(ACCESS_KEY)==='yes')unlock();
+    $('passwordForm').addEventListener('submit',async e=>{e.preventDefault();if(await window.YenAccessGate.verify($('password').value))unlock();else{$('error').textContent='Mật khẩu chưa đúng. Bạn có thể liên hệ Yến ở bên dưới.';$('password').select()}});
   </script>
 
 <script src="/js/yen-site-system.js" defer></script>
