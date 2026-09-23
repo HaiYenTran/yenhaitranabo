@@ -131,11 +131,20 @@
             text-shadow: 1px 2px 6px rgba(40,40,40,0.27);
         }
         .lightbox-close{position:fixed;top:18px;right:22px;z-index:10001;width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:#173f35;font-size:1.7rem;line-height:1;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,.25)}
+        .lightbox-nav{position:fixed;top:50%;z-index:10001;width:52px;height:52px;display:grid;place-items:center;transform:translateY(-50%);border:1px solid rgba(255,255,255,.35);border-radius:50%;background:rgba(255,255,255,.94);color:#173f35;font-size:1.7rem;font-weight:800;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,.25)}
+        .lightbox-prev{left:24px}.lightbox-next{right:24px}.lightbox-nav:hover,.lightbox-nav:focus-visible,.lightbox-close:hover,.lightbox-close:focus-visible{background:#dff7ee;outline:3px solid #f2bf66;outline-offset:3px}
+        .lightbox-position{display:block;margin-top:5px;color:rgba(255,255,255,.72);font-size:.78rem;font-weight:700;letter-spacing:.06em}
+        .gallery img{cursor:zoom-in}
         @media (max-width: 700px) {
             .container {padding: 8px 1vw;}
             .gallery {gap: 12px;}
             .gallery img {max-width: 96vw;}
-            .lightbox-img {max-width: 99vw;}
+            .lightbox-bg{padding:68px 10px 88px}
+            .lightbox-img-wrap{max-width:100%;max-height:100%}
+            .lightbox-img{max-width:100%;max-height:68vh}
+            .lightbox-close{top:12px;right:12px}
+            .lightbox-nav{top:auto;bottom:18px;transform:none;width:48px;height:48px}
+            .lightbox-prev{left:calc(50% - 62px)}.lightbox-next{right:calc(50% - 62px)}
         }
         .ffit-intro {
             background: #f8fbff;
@@ -257,12 +266,15 @@
         </div>
     </div>
     <!-- Lightbox for viewing big images -->
-    <div class="lightbox-bg" id="lightboxBg" tabindex="-1">
+    <div class="lightbox-bg" id="lightboxBg" tabindex="-1" role="dialog" aria-modal="true" aria-label="Xem ảnh F.FIT" aria-hidden="true">
         <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Đóng ảnh">×</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" type="button" aria-label="Xem ảnh trước">‹</button>
         <div class="lightbox-img-wrap">
             <img src="" alt="F.FIT Slide lớn" class="lightbox-img" id="lightboxImg" decoding="async">
             <div class="lightbox-caption" id="lightboxCaption"></div>
+            <span class="lightbox-position" id="lightboxPosition" aria-live="polite"></span>
         </div>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button" aria-label="Xem ảnh tiếp theo">›</button>
     </div>
     <!-- FontAwesome for icon -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
@@ -281,27 +293,79 @@
             img.decoding = "async";
             img.width = 720;
             img.style.background = "#eafcf5";
-            img.onclick = function() {
-                openLightbox(img.src, `Hình minh họa #${num}`);
+            img.tabIndex = 0;
+            img.setAttribute('role', 'button');
+            img.setAttribute('aria-label', `Mở hình minh họa #${num}`);
+            img.onclick = function() { openLightbox(idx); };
+            img.onkeydown = function(event) {
+                if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openLightbox(idx); }
             };
             gallery.appendChild(img);
         });
 
         // Lightbox
-        function openLightbox(src, caption) {
-            document.getElementById('lightboxImg').src = src;
-            document.getElementById('lightboxCaption').innerText = caption;
-            document.getElementById('lightboxBg').classList.add('active');
+        const lightbox = document.getElementById('lightboxBg');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxPosition = document.getElementById('lightboxPosition');
+        let currentIndex = 0;
+        let returnFocus = null;
+        let touchStartX = 0;
+
+        function renderLightbox() {
+            const num = imgList[currentIndex];
+            lightboxImg.src = `assets/img/ffit-web/${num}.webp`;
+            lightboxImg.alt = `Hình minh họa F.FIT #${num}`;
+            lightboxCaption.innerText = `Hình minh họa #${num}`;
+            lightboxPosition.innerText = `${currentIndex + 1} / ${imgList.length}`;
+            [imgList[(currentIndex + 1) % imgList.length], imgList[(currentIndex - 1 + imgList.length) % imgList.length]].forEach(function(adjacent){
+                const preload = new Image(); preload.src = `assets/img/ffit-web/${adjacent}.webp`;
+            });
         }
-        document.getElementById('lightboxBg').onclick = function(e) {
-            if (e.target === this) this.classList.remove('active');
+        function openLightbox(index) {
+            currentIndex = index;
+            returnFocus = document.activeElement;
+            renderLightbox();
+            lightbox.classList.add('active');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('lightboxClose').focus();
+        }
+        function moveLightbox(direction) {
+            currentIndex = (currentIndex + direction + imgList.length) % imgList.length;
+            renderLightbox();
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            if (returnFocus) returnFocus.focus();
+        }
+        lightbox.onclick = function(e) {
+            if (e.target === this) closeLightbox();
         };
         document.getElementById('lightboxClose').onclick = function(e) {
             e.stopPropagation();
-            document.getElementById('lightboxBg').classList.remove('active');
+            closeLightbox();
         };
+        document.getElementById('lightboxPrev').onclick = function(e) { e.stopPropagation(); moveLightbox(-1); };
+        document.getElementById('lightboxNext').onclick = function(e) { e.stopPropagation(); moveLightbox(1); };
+        lightbox.addEventListener('touchstart', function(e){ touchStartX = e.changedTouches[0].clientX; }, {passive:true});
+        lightbox.addEventListener('touchend', function(e){
+            const delta = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(delta) > 55) moveLightbox(delta < 0 ? 1 : -1);
+        }, {passive:true});
         window.addEventListener('keydown', function(e){
-            if(e.key === "Escape") document.getElementById('lightboxBg').classList.remove('active');
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') moveLightbox(-1);
+            if (e.key === 'ArrowRight') moveLightbox(1);
+            if (e.key === 'Tab') {
+                const controls = [document.getElementById('lightboxClose'), document.getElementById('lightboxPrev'), document.getElementById('lightboxNext')];
+                const first = controls[0], last = controls[controls.length - 1];
+                if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
         });
     </script>
     <footer class="border-top">
