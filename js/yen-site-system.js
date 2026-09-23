@@ -53,11 +53,9 @@
   var root = '/';
   var links = [
     ['Trang chủ', '/'],
-    ['Về Yến', '/about.html'],
     ['Sống khỏe', '/healthylifestyle.html'],
-    ['Góc chủ động', '/passiveincome.html'],
-    ['Khám phá', '/digital_index.html'],
-    ['Sự kiện', '/events.html'],
+    ['Góc chủ động & câu chuyện', '/passiveincome.html'],
+    ['Khám phá', '/kham-pha.html'],
     ['Liên hệ', '/contact.html']
   ];
 
@@ -65,8 +63,7 @@
     if (href === '/') return path === '/' || path.endsWith('/index.html');
     if (href === '/healthylifestyle.html') return /health|breakfast|healthymeal|kiem-soat-can-nang|ffit/i.test(path);
     if (href === '/passiveincome.html') return /passive|stories|nhung-cau-chuyen|khao-sat|ondinh|dam-bao/i.test(path);
-    if (href === '/digital_index.html') return /digital|books|showcase/i.test(path);
-    if (href === '/events.html') return /events/i.test(path);
+    if (href === '/kham-pha.html') return /kham-pha|digital|books|showcase|events/i.test(path);
     return path === href;
   }
 
@@ -121,7 +118,7 @@
       var simpleFooter = document.createElement('footer');
       simpleFooter.className = 'yt-site-footer';
       simpleFooter.innerHTML = '<div class="yt-footer-inner"><span>© Yến Trần · Sống khỏe, sống chủ động</span>' +
-        '<span><a href="/about.html">Về Yến</a> · <a href="/contact.html">Liên hệ</a> · <a href="/pages/books/tu-sach.html">Tủ sách</a></span></div>';
+        '<span><a href="/healthylifestyle.html">Sống khỏe</a> · <a href="/passiveincome.html">Góc chủ động</a> · <a href="/kham-pha.html">Khám phá</a> · <a href="/contact.html">Liên hệ</a></span></div>';
       document.body.appendChild(simpleFooter);
       return;
     }
@@ -136,7 +133,7 @@
     var footer = document.createElement('footer');
     footer.className = 'yt-site-footer';
     footer.innerHTML = '<div class="yt-footer-inner"><span>© Yến Trần · Sống khỏe, sống chủ động</span>' +
-      '<span><a href="/about.html">Về Yến</a> · <a href="/contact.html">Liên hệ</a> · <a href="/pages/books/tu-sach.html">Tủ sách</a></span></div>';
+      '<span><a href="/healthylifestyle.html">Sống khỏe</a> · <a href="/passiveincome.html">Góc chủ động</a> · <a href="/kham-pha.html">Khám phá</a> · <a href="/contact.html">Liên hệ</a></span></div>';
     document.body.appendChild(footer);
 
     var floatButton = document.createElement('button');
