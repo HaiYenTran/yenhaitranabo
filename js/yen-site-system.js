@@ -74,6 +74,49 @@
     });
   }
 
+  function primaryGroup() {
+    if (/\/privacy\.html$/.test(path)) return { name: 'Liên hệ', href: '/contact.html' };
+    if (/\/(?:pages\/(?:health|breakfast)\/|(?:nutrilite-plant-protein-review|protein-thuc-vat-tri-blend|omega-3-hap-thu-epa-dha|vitamin-c-extended-release)\.html$)/i.test(path)) {
+      return { name: 'Sống khỏe', href: '/healthylifestyle.html' };
+    }
+    if (/\/(?:pages\/(?:passive-income|stories)\/|(?:2024LOOKBACK|GUITOICUATUONGLAI_CHAP1|gui20namsauChap2|affiliate-dropii-mlm-amway-comparison|crador-leadership-blueprint|khao-sat-co-hoi)\.html$)/i.test(path)) {
+      return { name: 'Góc chủ động & câu chuyện', href: '/passiveincome.html' };
+    }
+    if (/\/(?:pages\/(?:books|digital|showcase)\/|events(?:\/|\.html$))/i.test(path)) {
+      return { name: 'Khám phá', href: '/kham-pha.html' };
+    }
+    return null;
+  }
+
+  function isGroupHome(group) {
+    if (!group) return true;
+    if (group.href === '/healthylifestyle.html') return /\/(?:healthylifestyle\.html|pages\/health\/healthylifestyle\.html)$/.test(path);
+    if (group.href === '/passiveincome.html') return /\/(?:passiveincome\.html|pages\/passive-income\/passiveincome\.html)$/.test(path);
+    if (group.href === '/kham-pha.html') return /\/kham-pha\.html$/.test(path);
+    if (group.href === '/contact.html') return /\/contact\.html$/.test(path);
+    return false;
+  }
+
+  function applyDesignSystem() {
+    document.querySelectorAll('.btn-primary, .primary-btn, .cta-btn, .contact-cta, .personal-cta-button, .zalo-link, button.primary, a.primary, a.btn:not(.light):not(.secondary):not(.btn-secondary), button.btn:not(.light):not(.secondary):not(.btn-secondary)').forEach(function (el) {
+      el.classList.add('yt-primary-action');
+    });
+    document.querySelectorAll('.story-card, .article-card, .series-card, .env-card, .book-card, .product-card, .digital-card, .event-card, .next-card, .plan-card, .explore-card, .card').forEach(function (el) {
+      el.classList.add('yt-content-card');
+    });
+  }
+
+  function buildGroupReturn(header) {
+    var group = primaryGroup();
+    if (!group || isGroupHome(group)) return;
+    var returnBar = document.createElement('nav');
+    returnBar.className = 'yt-group-return';
+    returnBar.setAttribute('aria-label', 'Nhóm nội dung chính');
+    returnBar.innerHTML = '<a href="' + group.href + '"><span aria-hidden="true">←</span> Trở về ' + group.name + '</a>' +
+      '<span class="yt-group-label">Nhóm nội dung chính · ' + group.name + '</span>';
+    header.insertAdjacentElement('afterend', returnBar);
+  }
+
   function buildHeader() {
     var header = document.createElement('header');
     header.className = 'yt-site-header';
@@ -95,6 +138,7 @@
       toggle.setAttribute('aria-label', open ? 'Đóng menu' : 'Mở menu');
     });
     header.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { header.setAttribute('data-open', 'false'); }); });
+    return header;
   }
 
   function openZalo() {
@@ -180,7 +224,9 @@
 
   document.body.classList.add('yt-unified');
   hideLegacyShell();
-  buildHeader();
+  var siteHeader = buildHeader();
+  buildGroupReturn(siteHeader);
+  applyDesignSystem();
   improveContent();
   buildContact();
 })();
