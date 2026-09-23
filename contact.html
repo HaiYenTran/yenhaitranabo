@@ -709,7 +709,7 @@
                 <div class="consult-field"><label for="consult-email">Email (không bắt buộc)</label><input id="consult-email" name="email" type="email" autocomplete="email" maxlength="160"></div>
                 <div class="consult-field"><label for="consult-message">Điều bạn muốn trao đổi</label><textarea id="consult-message" name="message" maxlength="2000" placeholder="Chia sẻ ngắn gọn mục tiêu hoặc điều bạn đang vướng..."></textarea></div>
                 <div class="consult-honeypot" aria-hidden="true"><label>Website <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
-                <p class="consult-form-note">Khi gửi, thông tin sẽ được chuyển riêng tới nhóm Telegram quản trị của Yến để liên hệ lại; không hiển thị công khai.</p>
+                <p class="consult-form-note">Khi gửi, thông tin sẽ được chuyển riêng tới nhóm Telegram quản trị của Yến để liên hệ lại; không hiển thị công khai. <a href="/privacy.html" target="_blank" rel="noopener">Xem cam kết quyền riêng tư</a>.</p>
                 <button class="contact-cta" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Gửi thông tin</button>
                 <p class="consult-form-status" id="consult-form-status" role="status" aria-live="polite"></p>
             </form>
@@ -778,6 +778,15 @@
             const successToast = document.getElementById('consult-success-toast');
             let previousFocus = null;
             let toastTimer = null;
+            let lastAttemptAt = 0;
+            const duplicateWindow = 10 * 60 * 1000;
+
+            const normalize = (value) => String(value || '').trim().toLowerCase().replace(/\s+/g, ' ');
+            const submissionKey = (payload) => ['yen-contact', normalize(payload.type), normalize(payload.phone), normalize(payload.email)].join('|');
+            const showError = (message) => {
+                status.textContent = message;
+                status.className = 'consult-form-status is-error';
+            };
 
             const closeDialog = () => {
                 dialog.classList.remove('is-open');
@@ -800,21 +809,44 @@
                 });
             });
 
+            const requestedConsult = new URLSearchParams(location.search).get('consult');
+            if (requestedConsult) {
+                const typeMap = { orientation: 'Tư vấn định hướng 1-1', nutrition: 'Tư vấn dinh dưỡng' };
+                const requestedType = typeMap[requestedConsult];
+                const trigger = requestedType && Array.from(document.querySelectorAll('[data-consult-type]')).find((button) => button.dataset.consultType === requestedType);
+                if (trigger) window.setTimeout(() => trigger.click(), 150);
+            }
+
             closeButton.addEventListener('click', closeDialog);
             dialog.addEventListener('click', (event) => { if (event.target === dialog) closeDialog(); });
             document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && dialog.classList.contains('is-open')) closeDialog(); });
 
             form.addEventListener('submit', async (event) => {
                 event.preventDefault();
+                const now = Date.now();
+                if (now - lastAttemptAt < 15000) {
+                    showError('Bạn vừa gửi yêu cầu. Vui lòng chờ một chút trước khi thử lại để tránh gửi trùng.');
+                    return;
+                }
+                const payload = Object.fromEntries(new FormData(form).entries());
+                const key = submissionKey(payload);
+                const previousSubmission = Number(localStorage.getItem(key) || 0);
+                if (previousSubmission && now - previousSubmission < duplicateWindow) {
+                    showError('Thông tin này đã được gửi rồi. Yến đã nhận được yêu cầu; bạn không cần gửi lại.');
+                    return;
+                }
+                lastAttemptAt = now;
                 submitButton.disabled = true;
                 status.textContent = 'Đang gửi thông tin…';
                 status.className = 'consult-form-status';
                 try {
-                    const payload = Object.fromEntries(new FormData(form).entries());
                     const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                     const result = await response.json().catch(() => ({}));
+                    if (response.status === 409) throw new Error('Thông tin này đã được gửi rồi. Yến đã nhận được yêu cầu; bạn không cần gửi lại.');
+                    if (response.status === 429) throw new Error('Hệ thống nhận thấy có quá nhiều lần gửi liên tiếp. Vui lòng đợi vài phút rồi thử lại.');
                     if (!response.ok || !result.ok) throw new Error(result.error || 'Không thể gửi thông tin lúc này.');
                     const selectedType = typeInput.value;
+                    localStorage.setItem(key, String(Date.now()));
                     if (window.YenAnalytics) window.YenAnalytics.track('consultation_form_success', { consultation_type: selectedType });
                     form.reset();
                     typeInput.value = selectedType;
@@ -823,8 +855,7 @@
                     clearTimeout(toastTimer);
                     toastTimer = setTimeout(() => successToast.classList.remove('is-visible'), 6000);
                 } catch (error) {
-                    status.textContent = error.message || 'Có lỗi xảy ra. Bạn vui lòng thử lại hoặc liên hệ qua Zalo.';
-                    status.className = 'consult-form-status is-error';
+                    showError(error.message || 'Có lỗi xảy ra. Bạn vui lòng thử lại hoặc liên hệ qua Zalo.');
                 } finally {
                     submitButton.disabled = false;
                 }
