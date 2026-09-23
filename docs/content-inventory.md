@@ -36,8 +36,8 @@ Cập nhật tự động: 2026-09-22
 | `/digital_theman.html` | `/pages/digital/digital_theman.html` | Trùng tên file với 1 URL khác |
 | `/digital_thoiquenxau.html` | `/pages/digital/digital_thoiquenxau.html` | Trùng tên file với 1 URL khác |
 | `/DocToTrongCoThe.html` | `/pages/health/DocToTrongCoThe.html` | Trùng tên file với 1 URL khác |
-| `/events_transform01Dec.html` | `/pages/showcase/events_transform01Dec.html` | Trùng tên file với 2 URL khác |
-| `/events/events_transform01Dec.html` | `/pages/showcase/events_transform01Dec.html` | Trùng tên file với 2 URL khác |
+| `/events_transform01Dec.html` | `/events.html` | Sự kiện Transform đã ngừng hiển thị; chuyển về trang Sự kiện |
+| `/events/events_transform01Dec.html` | `/events.html` | Sự kiện Transform đã ngừng hiển thị; chuyển về trang Sự kiện |
 | `/ffit_gallery.html` | `/pages/showcase/ffit_gallery.html` | Trùng tên file với 1 URL khác |
 | `/Hatchia.html` | `/pages/health/Hatchia.html` | Trùng tên file với 1 URL khác |
 | `/healthylifestyle.html` | `/pages/health/healthylifestyle.html` | Trùng tên file với 1 URL khác |

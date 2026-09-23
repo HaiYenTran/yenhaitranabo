@@ -4,7 +4,7 @@
     <base href="../../">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F.FIT – Phương pháp giảm mỡ khoa học</title>
+
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -169,15 +169,28 @@
         }
     </style>
 
-  <link rel="canonical" href="https://yenhaitran.com/pages/showcase/ffit_gallery.html">
+  <link rel="stylesheet" href="/css/yen-site-system.css">
+
+
+  <meta property="og:locale" content="vi_VN">
+
+
+  <meta property="og:locale" content="vi_VN">
+
+
+  <meta property="og:locale" content="vi_VN">
+
+  <title>F.FIT – Phương pháp giảm mỡ khoa học</title>
   <meta name="description" content="Khám phá F.FIT – Phương pháp giảm mỡ khoa học cùng Yến Trần — những chia sẻ thực tế để sống khỏe và chủ động hơn.">
+  <link rel="canonical" href="https://yenhaitran.com/pages/showcase/ffit_gallery.html">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="F.FIT – Phương pháp giảm mỡ khoa học">
   <meta property="og:description" content="Khám phá F.FIT – Phương pháp giảm mỡ khoa học cùng Yến Trần — những chia sẻ thực tế để sống khỏe và chủ động hơn.">
-  <meta property="og:type" content="website">
   <meta property="og:url" content="https://yenhaitran.com/pages/showcase/ffit_gallery.html">
   <meta property="og:image" content="https://yenhaitran.com/assets/img/avatar_yen.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="/css/yen-site-system.css">
+  <script type="application/ld+json" data-yen-schema="true">{"@context":"https://schema.org","name":"F.FIT – Phương pháp giảm mỡ khoa học","description":"Khám phá F.FIT – Phương pháp giảm mỡ khoa học cùng Yến Trần — những chia sẻ thực tế để sống khỏe và chủ động hơn.","url":"https://yenhaitran.com/pages/showcase/ffit_gallery.html","image":"https://yenhaitran.com/assets/img/avatar_yen.jpg","@type":"WebPage","inLanguage":"vi"}</script>
 </head>
 <!-- Nút về đầu trang -->
 <button id="goTopBtn" title="Về đầu trang" style="
@@ -262,9 +275,11 @@
         const gallery = document.getElementById('ffitGallery');
         imgList.forEach(function(num, idx) {
             let img = document.createElement('img');
-            img.src = `assets/img/ffit/${num}.png`;
+            img.src = `assets/img/ffit-web/${num}.webp`;
             img.alt = `F.FIT Slide #${num}`;
             img.loading = "lazy";
+            img.decoding = "async";
+            img.width = 720;
             img.style.background = "#eafcf5";
             img.onclick = function() {
                 openLightbox(img.src, `Hình minh họa #${num}`);
