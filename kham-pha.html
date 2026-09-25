@@ -11,6 +11,7 @@
   <style>
     :root{--forest:#173f35;--green:#2d6a4f;--cream:#f7f2e8;--paper:#fffdf8;--ink:#26332e;--muted:#66736d;--rust:#a75d3b;--gold:#c99b55;--line:rgba(38,51,46,.14)}
     *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Open Sans',sans-serif}.explore-hero{padding:clamp(64px,10vw,120px) 20px 70px;background:radial-gradient(circle at 80% 15%,#dfece4 0,transparent 36%),var(--paper)}.explore-wrap{width:min(1100px,100%);margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:var(--rust);font-size:.75rem;font-weight:800}.explore-hero h1{max-width:850px;margin:.35em 0 .3em;font:600 clamp(3rem,8vw,6.5rem)/.98 'Lora',serif;letter-spacing:-.055em;color:var(--forest)}.explore-hero p{max-width:700px;margin:0;color:var(--muted);font-size:clamp(1rem,2vw,1.2rem);line-height:1.75}.explore-main{padding:70px 20px 110px}.explore-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.explore-card{min-height:390px;padding:34px;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:inherit;text-decoration:none;box-shadow:0 16px 40px rgba(23,63,53,.07);transition:.2s ease}.explore-card:hover{transform:translateY(-5px);box-shadow:0 24px 55px rgba(23,63,53,.13)}.explore-card:nth-child(2){background:var(--forest);color:#fff}.explore-card:nth-child(3){background:#efe2d5}.explore-card.video-ai{grid-column:1/-1;min-height:260px;background:linear-gradient(120deg,#f7ead7,#e1efe7)}.card-no{color:var(--gold);font:600 2rem 'Lora',serif}.explore-card h2{margin:auto 0 12px;font:600 clamp(1.8rem,3vw,2.55rem)/1.08 'Lora',serif}.explore-card p{margin:0;color:var(--muted);line-height:1.7}.explore-card:nth-child(2) p{color:rgba(255,255,255,.7)}.card-link{margin-top:25px;color:var(--green);font-weight:800}.explore-card:nth-child(2) .card-link{color:#f1cf94}.about-note{margin-top:42px;padding:25px 28px;border-left:3px solid var(--gold);background:rgba(255,253,248,.7);color:var(--muted);line-height:1.7}.about-note a{color:var(--green);font-weight:800}@media(max-width:800px){.explore-grid{grid-template-columns:1fr}.explore-card,.explore-card.video-ai{grid-column:auto;min-height:280px}}@media(max-width:480px){.explore-hero,.explore-main{padding-left:16px;padding-right:16px}.explore-card{padding:26px}}
+    .explore-card.has-visual{overflow:hidden;padding:0}.card-visual{position:relative;height:205px;overflow:hidden;background:#dfe8e2}.card-visual>img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}.explore-card:hover .card-visual>img{transform:scale(1.035)}.card-copy{display:flex;flex:1;flex-direction:column;padding:30px 32px 32px}.card-copy h2{margin:28px 0 12px}.card-copy .card-link{margin-top:auto;padding-top:24px}.book-collage{display:flex;align-items:end;justify-content:center;gap:0;padding:22px 22px 0;background:linear-gradient(135deg,#ede2d1,#dfeae2)}.book-collage img{position:relative;width:31%;height:175px;object-fit:contain;filter:drop-shadow(0 12px 12px rgba(23,63,53,.2));transition:transform .28s ease}.book-collage img:first-child{z-index:1;transform:rotate(-8deg) translateX(13px)}.book-collage img:nth-child(2){z-index:2;height:188px}.book-collage img:last-child{z-index:1;transform:rotate(8deg) translateX(-13px)}.explore-card:hover .book-collage img:first-child{transform:rotate(-11deg) translate(8px,-4px)}.explore-card:hover .book-collage img:nth-child(2){transform:translateY(-6px)}.explore-card:hover .book-collage img:last-child{transform:rotate(11deg) translate(-8px,-4px)}.event-visual:after{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(7,31,25,.42));content:''}.explore-card.video-ai{display:grid;grid-template-columns:minmax(320px,.92fr) minmax(0,1.08fr);min-height:340px}.explore-card.video-ai .card-visual{display:grid;height:100%;min-height:340px;grid-template-columns:1fr 1fr;background:#153e34}.explore-card.video-ai .card-visual img{height:100%;object-fit:cover}.explore-card.video-ai .card-copy{justify-content:center;padding:42px}.explore-card.video-ai .card-copy h2{margin:20px 0 12px}@media(max-width:800px){.explore-card.video-ai{display:flex}.explore-card.video-ai .card-visual{width:100%;height:280px;min-height:0}.explore-card.video-ai .card-copy{padding:30px 32px 32px}}@media(max-width:480px){.explore-card.has-visual{padding:0}.card-copy,.explore-card.video-ai .card-copy{padding:26px}.card-visual{height:190px}.book-collage img{height:160px}.book-collage img:nth-child(2){height:172px}.explore-card.video-ai .card-visual{height:245px}}
   </style>
 
 
@@ -45,25 +46,36 @@
   <main class="explore-main">
     <div class="explore-wrap">
       <section class="explore-grid" aria-label="Bốn nhóm nội dung khám phá">
-        <a class="explore-card" href="/pages/books/tu-sach.html">
-          <span class="card-no">01</span><h2>Tủ sách</h2>
+        <a class="explore-card has-visual" href="/pages/books/tu-sach.html">
+          <div class="card-visual book-collage" aria-hidden="true">
+            <img loading="lazy" src="/assets/img/books/hanh-trinh-ve-phuong-dong-cover.png" alt="" width="827" height="1170">
+            <img loading="lazy" src="/assets/img/books/cau-hoi-la-cau-tra-loi-cover.png" alt="" width="564" height="790">
+            <img loading="lazy" src="/assets/img/books/procode-cover.png" alt="" width="347" height="576">
+          </div>
+          <div class="card-copy"><span class="card-no">01</span><h2>Tủ sách</h2>
           <p>Những cuốn sách Yến yêu thích, phần giới thiệu dễ đọc và không gian đọc trực tuyến.</p>
-          <span class="card-link">Mở tủ sách →</span>
+          <span class="card-link">Mở tủ sách →</span></div>
         </a>
-        <a class="explore-card" href="/pages/digital/digital_index.html">
-          <span class="card-no">02</span><h2>Sản phẩm số</h2>
+        <a class="explore-card has-visual" href="/pages/digital/digital_index.html">
+          <div class="card-visual"><img loading="lazy" src="/assets/img/optimized/cover-giamcan-480.webp" alt="Minh họa cẩm nang Bí quyết giảm cân lành mạnh" width="480" height="320"></div>
+          <div class="card-copy"><span class="card-no">02</span><h2>Sản phẩm số</h2>
           <p>Bài trắc nghiệm, tài liệu và công cụ nhỏ giúp bạn biến điều đã biết thành bước thực hành cụ thể.</p>
-          <span class="card-link">Xem sản phẩm số →</span>
+          <span class="card-link">Xem sản phẩm số →</span></div>
         </a>
-        <a class="explore-card" href="/events.html">
-          <span class="card-no">03</span><h2>Sự kiện</h2>
+        <a class="explore-card has-visual" href="/events.html">
+          <div class="card-visual event-visual"><img loading="lazy" src="/assets/img/lrc16-chuyen-minh-cham-dinh-cao.jpg" alt="Poster sự kiện LRC 16 – Chuyển mình, chạm đỉnh cao" width="1280" height="720"></div>
+          <div class="card-copy"><span class="card-no">03</span><h2>Sự kiện</h2>
           <p>Các chương trình, buổi gặp gỡ và hoạt động đang được Yến giới thiệu hoặc đồng hành.</p>
-          <span class="card-link">Xem sự kiện →</span>
+          <span class="card-link">Xem sự kiện →</span></div>
         </a>
-        <a class="explore-card video-ai" href="/video-ai.html">
-          <span class="card-no">04</span><h2>Video AI</h2>
+        <a class="explore-card video-ai has-visual" href="/video-ai.html">
+          <div class="card-visual">
+            <img loading="lazy" src="/assets/img/video-ai/my-first-video-ai.jpg" alt="Khung hình video AI đầu tiên của Yến" width="506" height="900">
+            <img loading="lazy" src="/assets/img/video-ai/trung-thu-an-binh.jpg" alt="Khung hình video AI Trung thu an bình" width="506" height="900">
+          </div>
+          <div class="card-copy"><span class="card-no">04</span><h2>Video AI</h2>
           <p>Những thử nghiệm hình ảnh chuyển động và câu chuyện được Yến sáng tạo với sự hỗ trợ của AI.</p>
-          <span class="card-link">Mở thư viện Video AI →</span>
+          <span class="card-link">Mở thư viện Video AI →</span></div>
         </a>
       </section>
       <p class="about-note">Bạn muốn hiểu thêm về người đứng sau những nội dung này? <a href="/about.html">Đọc câu chuyện của Yến</a>.</p>
