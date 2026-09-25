@@ -41,6 +41,9 @@
     if (/(?:^|\/)pages\/stories\/(?!nhung-cau-chuyen\.html)[^?#]+\.html/i.test(href) || /^nhung-cau-chuyen-bai-[^?#]+\.html/i.test(href)) {
       trackAnalyticsEvent('article_open', { destination: href });
     }
+    if (target.matches('[data-youtube-video]')) {
+      trackAnalyticsEvent('youtube_video_open', { video_id: target.getAttribute('data-youtube-video') || 'unknown' });
+    }
   });
 
   if (window.yenBookOpened) trackAnalyticsEvent('book_reader_view', { book: window.yenBookOpened });
@@ -63,7 +66,7 @@
     if (href === '/') return path === '/' || path.endsWith('/index.html');
     if (href === '/healthylifestyle.html') return /health|breakfast|healthymeal|kiem-soat-can-nang|ffit/i.test(path);
     if (href === '/passiveincome.html') return /passive|stories|nhung-cau-chuyen|khao-sat|ondinh|dam-bao/i.test(path);
-    if (href === '/kham-pha.html') return /kham-pha|digital|books|showcase|events/i.test(path);
+    if (href === '/kham-pha.html') return /kham-pha|digital|books|showcase|events|video-ai/i.test(path);
     return path === href;
   }
 
@@ -82,7 +85,7 @@
     if (/\/(?:pages\/(?:passive-income|stories)\/|(?:2024LOOKBACK|GUITOICUATUONGLAI_CHAP1|gui20namsauChap2|affiliate-dropii-mlm-amway-comparison|crador-leadership-blueprint|khao-sat-co-hoi)\.html$)/i.test(path)) {
       return { name: 'Góc chủ động & câu chuyện', href: '/passiveincome.html' };
     }
-    if (/\/(?:pages\/(?:books|digital|showcase)\/|events(?:\/|\.html$))/i.test(path)) {
+    if (/\/(?:pages\/(?:books|digital|showcase)\/|events(?:\/|\.html$)|video-ai\.html$)/i.test(path)) {
       return { name: 'Khám phá', href: '/kham-pha.html' };
     }
     return null;
@@ -166,6 +169,9 @@
   }
 
   function nextStepForPage() {
+    if (/\/video-ai\.html$/i.test(path)) {
+      return { eyebrow: 'Bước tiếp theo · Xem thêm', title: 'Theo dõi những video tiếp theo của Yến', copy: 'Mở kênh MoMoShare Wellness để xem thêm video và nhận thông báo khi Yến đăng nội dung mới.', label: 'Mở kênh YouTube', href: 'https://www.youtube.com/@momosharewellness' };
+    }
     var readerLink = document.querySelector('a[href*="pages/books/doc-sach.html"]');
     if (/\/pages\/books\/(?!tu-sach|doc-sach)/i.test(path) && readerLink) {
       return { eyebrow: 'Bước tiếp theo · Đọc', title: 'Mở bản đọc đầy đủ', copy: 'Nếu phần giới thiệu phù hợp với điều bạn đang tìm, hãy tiếp tục với bản đọc online và ghi lại một ý muốn áp dụng.', label: 'Đọc sách online', href: readerLink.href };
