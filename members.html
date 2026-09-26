@@ -60,6 +60,9 @@
     .member-doc h3 { margin: 0 0 7px; color: #26332e; font-size: 1rem; line-height: 1.45; }
     .member-doc p { margin: 0; color: #718078; font-size: .76rem; line-height: 1.55; }
     .member-placeholder { min-width: 104px; padding: 9px 12px; border: 1px dashed rgba(38,51,46,.25); color: #6e7b75; font-size: .7rem; font-weight: 800; text-align: center; }
+    .member-open { min-width: 104px; padding: 10px 13px; background: #173f35; color: #fff; font-size: .72rem; font-weight: 800; text-align: center; text-decoration: none; }
+    .member-empty { padding: 22px; border: 1px dashed rgba(38,51,46,.2); color: #66736d; background: #fffdf8; }
+    .member-state[data-state="ready"] { border-left-color: #8fca9b; }
 
     .member-admin-preview { margin-top: 66px; padding: clamp(28px, 5vw, 48px); background: #eadfce; }
     .member-admin-preview h2 { margin: 0 0 10px; color: #173f35; font-size: clamp(1.55rem, 4vw, 2.25rem); }
@@ -85,14 +88,14 @@
   </style>
 </head>
 <body>
-  <main class="member-shell">
+  <main class="member-shell" data-member-page>
     <section class="member-hero" aria-labelledby="member-title">
       <div>
         <span class="member-kicker">Không gian dành cho thành viên</span>
         <h1 id="member-title">Ghi chú, tài liệu và nguồn tham khảo dùng chung</h1>
         <p>Một nơi gọn gàng để các thành viên tìm lại tài liệu làm việc, nguồn nghiên cứu và nội dung phát triển bản thân. Khung này chưa chứa file thật và chưa kích hoạt đăng nhập.</p>
       </div>
-      <aside class="member-state">
+      <aside class="member-state" id="member-runtime-state">
         <strong>Bản khung nội dung</strong>
         <span>Cấu trúc đã sẵn sàng để gắn hệ thống thành viên và kho tài liệu riêng tư ở bước sau.</span>
       </aside>
@@ -118,7 +121,7 @@
             <div><span class="member-category-label">Nhóm 01</span><h2 id="amway-title">Amway · Present Value</h2></div>
             <p>Slide trình bày, ghi chú chia sẻ và tài liệu giúp thành viên chuẩn bị nội dung làm việc.</p>
           </div>
-          <div class="member-docs">
+          <div class="member-docs" data-member-docs="amway-present-value">
             <article class="member-doc">
               <span class="member-doc-icon" aria-hidden="true">PDF</span>
               <div><h3>Amway Values by THI - 2026</h3><p>Slide trình bày · 57 trang · Tài liệu mẫu do Yến cung cấp</p></div>
@@ -132,7 +135,7 @@
             <div><span class="member-category-label">Nhóm 02</span><h2 id="wellness-title">Wellness · Sources</h2></div>
             <p>Nguồn nghiên cứu và tài liệu tham khảo dùng để kiểm tra thông tin trước khi chia sẻ về sức khỏe.</p>
           </div>
-          <div class="member-docs">
+          <div class="member-docs" data-member-docs="wellness-sources">
             <article class="member-doc">
               <span class="member-doc-icon" aria-hidden="true">PDF</span>
               <div><h3>Systematic Review and Meta-analysis on the Effect of Soy on Thyroid Function</h3><p>Scientific Reports · 2019 · 9 trang · Tổng quan hệ thống và phân tích gộp</p></div>
@@ -156,7 +159,7 @@
             <div><span class="member-category-label">Nhóm 03</span><h2 id="self-title">Self · Improve</h2></div>
             <p>Ghi chú học tập, slide thực hành và nội dung giúp thành viên phát triển cách làm việc với chính mình.</p>
           </div>
-          <div class="member-docs">
+          <div class="member-docs" data-member-docs="self-improve">
             <article class="member-doc">
               <span class="member-doc-icon" aria-hidden="true">PDF</span>
               <div><h3>Trì hoãn: Biết phải làm - tại sao vẫn không làm?</h3><p>Slide · 10 trang · Bùi Quang Minh</p></div>
@@ -168,12 +171,13 @@
         <section class="member-admin-preview" aria-labelledby="admin-preview-title">
           <h2 id="admin-preview-title">Khung quản trị đã được tách riêng</h2>
           <p>Trang quản trị mẫu mô tả nơi thêm thành viên, phân quyền và thêm tài liệu sau này. Hiện tại các thao tác chưa hoạt động để tránh tạo cảm giác bảo mật giả.</p>
-          <a href="members-admin.html">Xem khung trang quản trị →</a>
+          <a href="members-admin.html" data-admin-link hidden>Xem khung trang quản trị →</a>
         </section>
         <p class="member-safety">Lưu ý: Trang hiện tại chỉ là giao diện cấu trúc. Trước khi gắn file thật, cần hoàn thiện đăng nhập và kiểm tra quyền ở phía máy chủ.</p>
       </div>
     </div>
   </main>
   <script src="/js/yen-site-system.js" defer></script>
+  <script src="/js/member-portal.js" defer></script>
 </body>
 </html>

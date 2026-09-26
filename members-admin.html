@@ -29,11 +29,21 @@
     .admin-panel-head { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 22px; }
     .admin-panel h2 { margin: 0; color: #173f35; font-size: 1.45rem; }
     .admin-disabled { padding: 9px 13px; border: 1px dashed rgba(38,51,46,.28); background: transparent; color: #7a8580; font: 800 .7rem/1 'Open Sans', sans-serif; cursor: not-allowed; }
+    .admin-disabled:not(:disabled) { border-style: solid; border-color: #173f35; background: #173f35; color: #fff; cursor: pointer; }
     .admin-list { display: grid; gap: 10px; }
     .admin-row { display: grid; grid-template-columns: minmax(0, 1fr) 150px 120px; gap: 16px; align-items: center; padding: 15px 0; border-top: 1px solid rgba(38,51,46,.1); }
     .admin-row strong { color: #33413b; font-size: .88rem; }
     .admin-row span { color: #748078; font-size: .74rem; }
     .admin-status { color: #2d6a4f !important; font-weight: 800; }
+    .admin-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; margin-bottom: 26px; }
+    .admin-field { display: grid; gap: 7px; }
+    .admin-field.full { grid-column: 1 / -1; }
+    .admin-field label { color: #53615b; font-size: .74rem; font-weight: 800; }
+    .admin-field input, .admin-field select, .admin-field textarea { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid rgba(38,51,46,.22); background: #fff; color: #26332e; font: 400 16px/1.4 'Open Sans', sans-serif; }
+    .admin-field textarea { min-height: 84px; resize: vertical; }
+    .admin-form-actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; }
+    .admin-message { margin: 0 0 20px; color: #2d6a4f; font-size: .78rem; font-weight: 700; }
+    .admin-message[data-error="true"] { color: #9f3f2f; }
     .admin-workflow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .admin-step { min-height: 150px; padding: 20px; background: #f7f2e8; }
     .admin-step b { color: #a75d3b; font-size: .7rem; letter-spacing: .1em; }
@@ -45,16 +55,19 @@
       .admin-grid { grid-template-columns: 1fr; }
       .admin-workflow { grid-template-columns: 1fr; }
       .admin-row { grid-template-columns: 1fr; gap: 5px; }
+      .admin-form { grid-template-columns: 1fr; }
+      .admin-field.full, .admin-form-actions { grid-column: auto; }
     }
   </style>
 </head>
 <body>
-  <main class="admin-shell">
+  <main class="admin-shell" data-member-admin-page>
     <header class="admin-top">
       <div><span class="admin-kicker">Bản khung · Chưa kích hoạt</span><h1>Quản trị thành viên</h1></div>
       <a class="admin-back" href="members.html">← Trở về không gian thành viên</a>
     </header>
-    <div class="admin-alert" role="note"><strong>Chưa phải hệ thống quản trị thật.</strong> Các nút được vô hiệu hóa cho đến khi có đăng nhập, cơ sở dữ liệu và kho file riêng tư phía máy chủ.</div>
+    <div class="admin-alert" role="note"><strong>Chế độ an toàn.</strong> Biểu mẫu chỉ được kích hoạt sau khi Cloudflare Access xác thực tài khoản quản trị và backend trả về đúng quyền.</div>
+    <p class="admin-message" id="admin-message" aria-live="polite">Đang kiểm tra kết nối hệ thống thành viên…</p>
 
     <div class="admin-grid">
       <aside class="admin-nav" aria-label="Khu vực quản trị mẫu">
@@ -69,7 +82,13 @@
       <div class="admin-panels">
         <section class="admin-panel" aria-labelledby="members-title">
           <div class="admin-panel-head"><h2 id="members-title">Thành viên</h2><button class="admin-disabled" type="button" disabled>+ Thêm thành viên</button></div>
-          <div class="admin-list">
+          <form class="admin-form" id="member-form">
+            <div class="admin-field"><label for="member-name">Tên hiển thị</label><input id="member-name" name="displayName" autocomplete="name" disabled data-admin-control></div>
+            <div class="admin-field"><label for="member-email">Email</label><input id="member-email" name="email" type="email" autocomplete="email" required disabled data-admin-control></div>
+            <div class="admin-field"><label for="member-role">Vai trò</label><select id="member-role" name="role" disabled data-admin-control><option value="member">Thành viên</option><option value="admin">Quản trị viên</option></select></div>
+            <div class="admin-form-actions"><button class="admin-disabled" type="submit" disabled data-admin-control>Lưu thành viên</button></div>
+          </form>
+          <div class="admin-list" id="admin-member-list">
             <div class="admin-row"><strong>Yến Trần</strong><span>Chủ sở hữu</span><span class="admin-status">Sẽ kích hoạt</span></div>
             <div class="admin-row"><strong>Thành viên mẫu</strong><span>Thành viên</span><span>Chưa tạo</span></div>
           </div>
@@ -77,15 +96,26 @@
 
         <section class="admin-panel" aria-labelledby="documents-title">
           <div class="admin-panel-head"><h2 id="documents-title">Quy trình thêm tài liệu</h2><button class="admin-disabled" type="button" disabled>+ Thêm tài liệu</button></div>
+          <form class="admin-form" id="document-form">
+            <div class="admin-field full"><label for="document-title">Tên tài liệu</label><input id="document-title" name="title" required disabled data-admin-control></div>
+            <div class="admin-field"><label for="document-category">Nhóm</label><select id="document-category" name="category" disabled data-admin-control><option value="amway-present-value">Amway · Present Value</option><option value="wellness-sources">Wellness · Sources</option><option value="self-improve">Self · Improve</option></select></div>
+            <div class="admin-field"><label for="document-access">Quyền xem</label><select id="document-access" name="accessLevel" disabled data-admin-control><option value="member">Tất cả thành viên</option><option value="admin">Chỉ quản trị viên</option></select></div>
+            <div class="admin-field full"><label for="document-source">Nguồn / ghi chú</label><input id="document-source" name="sourceLabel" disabled data-admin-control></div>
+            <div class="admin-field full"><label for="document-description">Mô tả</label><textarea id="document-description" name="description" disabled data-admin-control></textarea></div>
+            <div class="admin-field full"><label for="document-file">Tệp (tối đa 25 MB)</label><input id="document-file" name="file" type="file" disabled data-admin-control></div>
+            <div class="admin-form-actions"><button class="admin-disabled" type="submit" disabled data-admin-control>Lưu tài liệu</button></div>
+          </form>
           <div class="admin-workflow">
             <article class="admin-step"><b>BƯỚC 01</b><h3>Chọn nhóm</h3><p>Amway · Present Value, Wellness · Sources hoặc Self · Improve.</p></article>
             <article class="admin-step"><b>BƯỚC 02</b><h3>Thêm thông tin</h3><p>Tên tài liệu, mô tả, nguồn, ngày cập nhật và quyền được xem.</p></article>
             <article class="admin-step"><b>BƯỚC 03</b><h3>Gắn tệp riêng tư</h3><p>Tải lên kho bảo mật hoặc gắn nguồn giới hạn quyền sau khi hệ thống hoàn thiện.</p></article>
           </div>
+          <div class="admin-list" id="admin-document-list"></div>
         </section>
       </div>
     </div>
   </main>
   <script src="/js/yen-site-system.js" defer></script>
+  <script src="/js/member-portal.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+{
+  "name": "yen-tran-member-library",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:local": "wrangler d1 migrations apply yen-tran-members --local",
+    "db:remote": "wrangler d1 migrations apply yen-tran-members --remote"
+  },
+  "devDependencies": {
+    "wrangler": "^4.40.0"
+  }
+}
