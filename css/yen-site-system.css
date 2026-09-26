@@ -77,6 +77,9 @@ body.yt-unified > footer:not(.yt-site-footer) { display: none !important; }
 }
 .yt-nav-links a:hover,
 .yt-nav-links a[aria-current='page'] { background: var(--yt-green-soft); color: var(--yt-forest) !important; }
+.yt-nav-links .yt-member-link { border: 1px solid rgba(45, 106, 79, .28); color: var(--yt-green) !important; }
+.yt-nav-links .yt-member-link:hover,
+.yt-nav-links .yt-member-link[aria-current='page'] { border-color: var(--yt-green); background: var(--yt-green-soft); color: var(--yt-forest) !important; }
 .yt-nav-links .yt-contact-link { background: var(--yt-forest); color: white !important; padding-inline: 17px; }
 .yt-nav-links .yt-contact-link:hover { background: var(--yt-green); color: white !important; }
 

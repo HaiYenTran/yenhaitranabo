@@ -59,6 +59,7 @@
     ['Sống khỏe', '/healthylifestyle.html'],
     ['Góc chủ động & câu chuyện', '/passiveincome.html'],
     ['Khám phá', '/kham-pha.html'],
+    ['Thành viên', '/members.html'],
     ['Liên hệ', '/contact.html']
   ];
 
@@ -67,6 +68,7 @@
     if (href === '/healthylifestyle.html') return /health|breakfast|healthymeal|kiem-soat-can-nang|ffit/i.test(path);
     if (href === '/passiveincome.html') return !/tu-do-noi-tam-khong-de-hoan-canh-kiem-soat/i.test(path) && /passive|stories|nhung-cau-chuyen|khao-sat|ondinh|dam-bao/i.test(path);
     if (href === '/kham-pha.html') return /kham-pha|digital|books|showcase|events|video-ai/i.test(path);
+    if (href === '/members.html') return /\/members(?:-admin)?\.html$/i.test(path);
     return path === href;
   }
 
@@ -132,7 +134,7 @@
       '<div class="yt-nav-links" id="yt-nav-links">' +
       links.map(function (item, index) {
         var current = isCurrent(item[1]) ? ' aria-current="page"' : '';
-        var cls = index === links.length - 1 ? ' class="yt-contact-link"' : '';
+        var cls = item[1] === '/contact.html' ? ' class="yt-contact-link"' : (item[1] === '/members.html' ? ' class="yt-member-link"' : '');
         return '<a' + cls + current + ' href="' + item[1] + '">' + item[0] + '</a>';
       }).join('') + '</div></nav>';
     document.body.insertBefore(header, document.body.firstChild);
@@ -231,7 +233,7 @@
   }
 
   function buildJourney() {
-    var ownsFinalStep = /\/(?:contact|kiem-soat-can-nang|khao-sat-co-hoi)\.html$/.test(path) || /\/pages\/digital\/banh-xe-cuoc-doi\.html$/.test(path);
+    var ownsFinalStep = /\/(?:contact|kiem-soat-can-nang|khao-sat-co-hoi|members|members-admin)\.html$/.test(path) || /\/pages\/digital\/banh-xe-cuoc-doi\.html$/.test(path);
     if (!ownsFinalStep) {
       var step = nextStepForPage();
       var strip = document.createElement('section');
