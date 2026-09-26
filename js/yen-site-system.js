@@ -65,7 +65,7 @@
   function isCurrent(href) {
     if (href === '/') return path === '/' || path.endsWith('/index.html');
     if (href === '/healthylifestyle.html') return /health|breakfast|healthymeal|kiem-soat-can-nang|ffit/i.test(path);
-    if (href === '/passiveincome.html') return /passive|stories|nhung-cau-chuyen|khao-sat|ondinh|dam-bao/i.test(path);
+    if (href === '/passiveincome.html') return !/tu-do-noi-tam-khong-de-hoan-canh-kiem-soat/i.test(path) && /passive|stories|nhung-cau-chuyen|khao-sat|ondinh|dam-bao/i.test(path);
     if (href === '/kham-pha.html') return /kham-pha|digital|books|showcase|events|video-ai/i.test(path);
     return path === href;
   }
@@ -78,6 +78,9 @@
   }
 
   function primaryGroup() {
+    if (/\/pages\/stories\/tu-do-noi-tam-khong-de-hoan-canh-kiem-soat\.html$/.test(path)) {
+      return { name: 'Thư viện bài viết', href: '/#thu-vien-bai-viet' };
+    }
     if (/\/privacy\.html$/.test(path)) return { name: 'Liên hệ', href: '/contact.html' };
     if (/\/(?:pages\/(?:health|breakfast)\/|(?:nutrilite-plant-protein-review|protein-thuc-vat-tri-blend|omega-3-hap-thu-epa-dha|vitamin-c-extended-release)\.html$)/i.test(path)) {
       return { name: 'Sống khỏe', href: '/healthylifestyle.html' };
