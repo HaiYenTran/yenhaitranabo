@@ -35,6 +35,18 @@
     .member-stat b { display: block; color: #173f35; font: 700 1.8rem/1.1 'Lora', serif; }
     .member-stat span { display: block; margin-top: 7px; color: #66736d; font-size: .78rem; }
 
+    .member-tools { margin: -30px 0 64px; scroll-margin-top: 110px; }
+    .member-tools-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 18px; }
+    .member-tools-head h2 { margin: 8px 0 0; color: #173f35; font-size: clamp(1.65rem, 4vw, 2.45rem); }
+    .member-tools-head p { max-width: 430px; margin: 0; color: #66736d; font-size: .84rem; line-height: 1.65; }
+    .member-tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .member-tool { display: flex; min-height: 210px; flex-direction: column; padding: 28px; border: 1px solid rgba(38,51,46,.14); background: #fffdf8; color: inherit; text-decoration: none; box-shadow: 0 12px 28px rgba(23,63,53,.06); }
+    .member-tool:hover { border-color: rgba(45,106,79,.48); transform: translateY(-2px); }
+    .member-tool-icon { display: grid; width: 46px; height: 46px; margin-bottom: 24px; place-items: center; background: #dfece4; color: #173f35; font-size: .72rem; font-weight: 900; letter-spacing: .06em; }
+    .member-tool h3 { margin: 0 0 9px; color: #173f35; font-size: 1.25rem; }
+    .member-tool p { margin: 0 0 24px; color: #66736d; font-size: .82rem; line-height: 1.65; }
+    .member-tool strong { margin-top: auto; color: #2d6a4f; font-size: .78rem; }
+
     .member-layout { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 42px; align-items: start; }
     .member-nav { position: sticky; top: 92px; padding: 22px; border: 1px solid rgba(38,51,46,.14); background: #fffdf8; }
     .member-nav strong { display: block; margin-bottom: 14px; color: #173f35; font: 700 1rem/1.3 'Lora', serif; }
@@ -74,9 +86,12 @@
       .member-hero { grid-template-columns: 1fr; }
       .member-overview { grid-template-columns: 1fr; }
       .member-layout { grid-template-columns: 1fr; }
+      .member-tool-grid { grid-template-columns: 1fr; }
       .member-nav { position: static; }
       .member-category-head { display: block; }
       .member-category-head p { margin-top: 10px; }
+      .member-tools-head { display: block; }
+      .member-tools-head p { margin-top: 10px; }
     }
     @media (max-width: 560px) {
       .member-shell { width: min(100% - 24px, 1160px); padding-top: 24px; }
@@ -104,12 +119,21 @@
     <section class="member-overview" aria-label="Tổng quan thư viện mẫu">
       <div class="member-stat"><b>03</b><span>nhóm tài liệu ban đầu</span></div>
       <div class="member-stat"><b>05</b><span>bản ghi tài liệu mẫu</span></div>
-      <div class="member-stat"><b>00</b><span>file được đưa lên GitHub</span></div>
+      <div class="member-stat"><b>02</b><span>công cụ tra cứu dùng chung</span></div>
+    </section>
+
+    <section class="member-tools" id="member-tools" aria-labelledby="member-tools-title">
+      <div class="member-tools-head"><div><span class="member-category-label">Dùng nhanh</span><h2 id="member-tools-title">Công cụ dành cho thành viên</h2></div><p>Mở trực tiếp các trang thường dùng khi chuẩn bị nội dung hoặc trao đổi với khách hàng.</p></div>
+      <div class="member-tool-grid">
+        <a class="member-tool" href="/pages/showcase/demoSanPham.html"><span class="member-tool-icon" aria-hidden="true">DEMO</span><h3>Demo sản phẩm thực tế</h3><p>Tổng hợp phần minh họa SA8, Dish Drops, L.O.C và Glister để dễ tìm lại khi cần trình bày.</p><strong>Mở trang demo →</strong></a>
+        <a class="member-tool" href="/pages/members/bang-gia-san-pham.html"><span class="member-tool-icon" aria-hidden="true">GIÁ</span><h3>Tra cứu bảng giá sản phẩm</h3><p>Tìm nhanh theo thương hiệu, nhóm sản phẩm hoặc tên thường dùng; mở ảnh lớn để đọc mã hàng và giá.</p><strong>Mở trang bảng giá →</strong></a>
+      </div>
     </section>
 
     <div class="member-layout">
       <nav class="member-nav" aria-label="Nhóm tài liệu">
         <strong>Danh mục</strong>
+        <a href="#member-tools">Công cụ tra cứu</a>
         <a href="#amway-present-value">Amway · Present Value</a>
         <a href="#wellness-sources">Wellness · Sources</a>
         <a href="#self-improve">Self · Improve</a>
