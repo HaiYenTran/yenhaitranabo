@@ -9,6 +9,7 @@ Backend cho khu vực thành viên của `yenhaitran.com`.
 - D1 lưu thành viên, quyền, metadata tài liệu và nhật ký truy cập.
 - R2 bucket để private; chỉ Worker có binding mới đọc/ghi file.
 - Không commit token, Account ID, Access AUD hoặc file thành viên.
+- `members-login.html` chỉ là chế độ demo giao diện. Hai tài khoản demo chạy trong `sessionStorage`, không gọi API, không đọc file và không được dùng làm cơ chế bảo mật production.
 
 ## Kích hoạt
 

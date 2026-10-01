@@ -63,10 +63,10 @@
 <body>
   <main class="admin-shell" data-member-admin-page>
     <header class="admin-top">
-      <div><span class="admin-kicker">Bản khung · Chưa kích hoạt</span><h1>Quản trị thành viên</h1></div>
+      <div><span class="admin-kicker" id="admin-mode-label">Bản khung · Chưa kích hoạt</span><h1>Quản trị thành viên</h1></div>
       <a class="admin-back" href="members.html">← Trở về không gian thành viên</a>
     </header>
-    <div class="admin-alert" role="note"><strong>Chế độ an toàn.</strong> Biểu mẫu chỉ được kích hoạt sau khi Cloudflare Access xác thực tài khoản quản trị và backend trả về đúng quyền.</div>
+    <div class="admin-alert" id="admin-safety-alert" role="note"><strong>Chế độ an toàn.</strong> Biểu mẫu chỉ được kích hoạt sau khi Cloudflare Access xác thực tài khoản quản trị và backend trả về đúng quyền.</div>
     <p class="admin-message" id="admin-message" aria-live="polite">Đang kiểm tra kết nối hệ thống thành viên…</p>
 
     <div class="admin-grid">

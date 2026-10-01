@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Đăng nhập thử nghiệm | Thành viên Yến Trần</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    :root { color-scheme: light; }
+    body { min-height: 100vh; margin: 0; background: #f7f3eb; color: #26332e; }
+    .login-shell { display: grid; width: min(100% - 28px, 1040px); min-height: 100vh; margin: 0 auto; place-items: center; padding: 40px 0; }
+    .login-card { display: grid; width: 100%; overflow: hidden; border: 1px solid rgba(38,51,46,.14); background: #fffdf8; box-shadow: 0 28px 70px rgba(23,63,53,.12); grid-template-columns: .9fr 1.1fr; }
+    .login-intro { padding: clamp(32px, 6vw, 68px); background: #173f35; color: #fff; }
+    .login-kicker { color: #efc987; font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .login-intro h1 { margin: 18px 0; color: #fff; font-size: clamp(2.1rem, 5vw, 3.8rem); line-height: 1.05; letter-spacing: -.04em; }
+    .login-intro p { color: rgba(255,255,255,.76); line-height: 1.75; }
+    .login-note { margin-top: 28px; padding: 18px; border-left: 2px solid #efc987; background: rgba(255,255,255,.07); font-size: .78rem; line-height: 1.65; }
+    .login-form-wrap { padding: clamp(32px, 6vw, 68px); }
+    .login-form-wrap h2 { margin: 0 0 8px; color: #173f35; font-size: 1.8rem; }
+    .login-form-wrap > p { margin: 0 0 28px; color: #66736d; line-height: 1.65; }
+    .login-field { margin-bottom: 18px; }
+    .login-field label { display: block; margin-bottom: 8px; color: #43524b; font-size: .78rem; font-weight: 800; }
+    .login-field input { width: 100%; box-sizing: border-box; padding: 14px 15px; border: 1px solid rgba(38,51,46,.24); background: #fff; color: #26332e; font: inherit; }
+    .login-field input:focus { border-color: #2d6a4f; outline: 3px solid rgba(45,106,79,.14); }
+    .login-submit { width: 100%; padding: 15px 18px; border: 0; background: #173f35; color: #fff; font: 800 .86rem/1 inherit; cursor: pointer; }
+    .login-submit:hover { background: #2d6a4f; }
+    .login-message { min-height: 1.5em; margin: 14px 0 0; color: #a23f32; font-size: .78rem; }
+    .login-real { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(38,51,46,.12); color: #66736d; font-size: .76rem; line-height: 1.6; }
+    .login-real a { color: #2d6a4f; font-weight: 800; }
+    @media (max-width: 760px) { .login-card { grid-template-columns: 1fr; } .login-intro, .login-form-wrap { padding: 30px 24px; } }
+  </style>
+</head>
+<body>
+  <main class="login-shell">
+    <section class="login-card" aria-labelledby="login-title">
+      <div class="login-intro">
+        <span class="login-kicker">Chế độ thử nghiệm</span>
+        <h1 id="login-title">Kiểm tra luồng Thành viên</h1>
+        <p>Đăng nhập để xem cách giao diện thay đổi giữa vai trò quản trị và thành viên trước khi hệ thống thật được kích hoạt.</p>
+        <div class="login-note"><strong>Không phải tài khoản bảo mật thật.</strong><br>Tài khoản thử nghiệm không thể mở file riêng tư, thêm thành viên, tải file hoặc thay đổi dữ liệu.</div>
+      </div>
+      <div class="login-form-wrap">
+        <h2>Đăng nhập tài khoản test</h2>
+        <p>Nhập tài khoản thử nghiệm đã được cấp.</p>
+        <form id="demo-login-form">
+          <div class="login-field"><label for="demo-username">Tên đăng nhập</label><input id="demo-username" name="username" autocomplete="username" required></div>
+          <div class="login-field"><label for="demo-password">Mật khẩu</label><input id="demo-password" name="password" type="password" autocomplete="current-password" required></div>
+          <button class="login-submit" type="submit">Vào khu vực thử nghiệm</button>
+          <p class="login-message" id="demo-login-message" aria-live="polite"></p>
+        </form>
+        <p class="login-real">Thành viên thật sẽ đăng nhập bằng OTP gửi tới email đã được cấp quyền khi Cloudflare Access được kích hoạt. <a href="/members.html">Quay lại trang Thành viên</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="/js/member-demo-login.js" defer></script>
+</body>
+</html>

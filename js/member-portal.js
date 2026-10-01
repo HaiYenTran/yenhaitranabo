@@ -50,6 +50,20 @@
     if (span) span.textContent = copy;
   }
 
+  function demoSession() {
+    try {
+      var value = JSON.parse(sessionStorage.getItem('yenMemberDemo') || 'null');
+      return value && value.demo ? value : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function unlockMemberPage() {
+    var page = document.querySelector('[data-member-page]');
+    if (page) page.setAttribute('data-member-locked', 'false');
+  }
+
   function renderDocuments(documents) {
     var grouped = {};
     documents.forEach(function (doc) {
@@ -75,9 +89,18 @@
 
   async function initMemberPage() {
     if (!document.querySelector('[data-member-page]')) return;
+    var demo = demoSession();
+    if (demo) {
+      unlockMemberPage();
+      setRuntimeState('Xin chào ' + demo.displayName, 'Bạn đang xem bản thử nghiệm với quyền ' + demo.role + '. Tài liệu thật vẫn bị khóa.', 'ready');
+      var demoAdminLink = document.querySelector('[data-admin-link]');
+      if (demoAdminLink) demoAdminLink.hidden = !demo.isAdmin;
+      return;
+    }
     try {
       var session = await request('/session');
       var member = session.member;
+      unlockMemberPage();
       setRuntimeState('Xin chào ' + (member.displayName || member.email), 'Bạn đang truy cập với quyền ' + member.role + '.', 'ready');
       var result = await request('/documents');
       renderDocuments(result.documents || []);
@@ -191,6 +214,19 @@
 
   async function initAdminPage() {
     if (!document.querySelector('[data-member-admin-page]')) return;
+    var demo = demoSession();
+    if (demo) {
+      if (!demo.isAdmin) {
+        window.location.replace('/members.html?demo=1');
+        return;
+      }
+      var label = document.getElementById('admin-mode-label');
+      var alert = document.getElementById('admin-safety-alert');
+      if (label) label.textContent = 'Chế độ quản trị thử nghiệm';
+      if (alert) alert.innerHTML = '<strong>Đang xem bản thử nghiệm.</strong> Các nút thay đổi dữ liệu được khóa; tài khoản này không thể xem file riêng tư hoặc quản trị thành viên thật.';
+      setAdminMessage('Đăng nhập bằng Quản trị viên thử nghiệm · chỉ xem giao diện.', false);
+      return;
+    }
     try {
       var session = await request('/session');
       if (!session.member.isAdmin) throw new Error('Tài khoản không có quyền quản trị.');

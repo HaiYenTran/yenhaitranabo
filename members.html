@@ -75,6 +75,12 @@
     .member-open { min-width: 104px; padding: 10px 13px; background: #173f35; color: #fff; font-size: .72rem; font-weight: 800; text-align: center; text-decoration: none; }
     .member-empty { padding: 22px; border: 1px dashed rgba(38,51,46,.2); color: #66736d; background: #fffdf8; }
     .member-state[data-state="ready"] { border-left-color: #8fca9b; }
+    [data-member-locked="true"] .member-protected { display: none; }
+    .member-lock { margin: 24px 0 64px; padding: clamp(26px, 5vw, 42px); border: 1px solid rgba(38,51,46,.14); background: #fffdf8; text-align: center; }
+    .member-lock h2 { margin: 0 0 10px; color: #173f35; font-size: clamp(1.45rem, 4vw, 2.1rem); }
+    .member-lock p { max-width: 650px; margin: 0 auto 20px; color: #66736d; line-height: 1.7; }
+    .member-lock a { display: inline-block; padding: 13px 20px; background: #173f35; color: #fff; font-size: .78rem; font-weight: 800; text-decoration: none; }
+    [data-member-locked="false"] .member-lock { display: none; }
 
     .member-admin-preview { margin-top: 66px; padding: clamp(28px, 5vw, 48px); background: #eadfce; }
     .member-admin-preview h2 { margin: 0 0 10px; color: #173f35; font-size: clamp(1.55rem, 4vw, 2.25rem); }
@@ -103,26 +109,32 @@
   </style>
 </head>
 <body>
-  <main class="member-shell" data-member-page>
+  <main class="member-shell" data-member-page data-member-locked="true">
     <section class="member-hero" aria-labelledby="member-title">
       <div>
         <span class="member-kicker">Không gian dành cho thành viên</span>
         <h1 id="member-title">Ghi chú, tài liệu và nguồn tham khảo dùng chung</h1>
-        <p>Một nơi gọn gàng để các thành viên tìm lại tài liệu làm việc, nguồn nghiên cứu và nội dung phát triển bản thân. Khung này chưa chứa file thật và chưa kích hoạt đăng nhập.</p>
+        <p>Một nơi gọn gàng để các thành viên tìm lại tài liệu làm việc, nguồn nghiên cứu và nội dung phát triển bản thân. Tài liệu thật chỉ mở cho email đã được cấp quyền.</p>
       </div>
       <aside class="member-state" id="member-runtime-state">
         <strong>Bản khung nội dung</strong>
-        <span>Cấu trúc đã sẵn sàng để gắn hệ thống thành viên và kho tài liệu riêng tư ở bước sau.</span>
+        <span>Cấu trúc đã sẵn sàng. Bạn có thể <a href="/members-login.html" style="color:#efc987;font-weight:800">đăng nhập thử nghiệm</a> để kiểm tra phân quyền giao diện.</span>
       </aside>
     </section>
 
-    <section class="member-overview" aria-label="Tổng quan thư viện mẫu">
+    <section class="member-lock" aria-labelledby="member-lock-title">
+      <h2 id="member-lock-title">Nội dung dành riêng cho thành viên</h2>
+      <p>Thành viên thật đăng nhập bằng email được cấp quyền. Tài khoản thử nghiệm chỉ dùng để xem giao diện và không thể mở tài liệu riêng tư.</p>
+      <a href="/members-login.html">Đăng nhập thử nghiệm</a>
+    </section>
+
+    <section class="member-overview member-protected" aria-label="Tổng quan thư viện mẫu">
       <div class="member-stat"><b>03</b><span>nhóm tài liệu ban đầu</span></div>
       <div class="member-stat"><b>05</b><span>bản ghi tài liệu mẫu</span></div>
       <div class="member-stat"><b>02</b><span>công cụ tra cứu dùng chung</span></div>
     </section>
 
-    <section class="member-tools" id="member-tools" aria-labelledby="member-tools-title">
+    <section class="member-tools member-protected" id="member-tools" aria-labelledby="member-tools-title">
       <div class="member-tools-head"><div><span class="member-category-label">Dùng nhanh</span><h2 id="member-tools-title">Công cụ dành cho thành viên</h2></div><p>Mở trực tiếp các trang thường dùng khi chuẩn bị nội dung hoặc trao đổi với khách hàng.</p></div>
       <div class="member-tool-grid">
         <a class="member-tool" href="/pages/showcase/demoSanPham.html"><span class="member-tool-icon" aria-hidden="true">DEMO</span><h3>Demo sản phẩm thực tế</h3><p>Tổng hợp phần minh họa SA8, Dish Drops, L.O.C và Glister để dễ tìm lại khi cần trình bày.</p><strong>Mở trang demo →</strong></a>
@@ -130,7 +142,7 @@
       </div>
     </section>
 
-    <div class="member-layout">
+    <div class="member-layout member-protected">
       <nav class="member-nav" aria-label="Nhóm tài liệu">
         <strong>Danh mục</strong>
         <a href="#member-tools">Công cụ tra cứu</a>
@@ -194,7 +206,7 @@
 
         <section class="member-admin-preview" aria-labelledby="admin-preview-title">
           <h2 id="admin-preview-title">Khung quản trị đã được tách riêng</h2>
-          <p>Trang quản trị mẫu mô tả nơi thêm thành viên, phân quyền và thêm tài liệu sau này. Hiện tại các thao tác chưa hoạt động để tránh tạo cảm giác bảo mật giả.</p>
+          <p>Trang quản trị mô tả nơi thêm thành viên, phân quyền và thêm tài liệu. Tài khoản quản trị thử nghiệm chỉ xem giao diện và không thể thay đổi dữ liệu thật.</p>
           <a href="members-admin.html" data-admin-link hidden>Xem khung trang quản trị →</a>
         </section>
         <p class="member-safety">Lưu ý: Trang hiện tại chỉ là giao diện cấu trúc. Trước khi gắn file thật, cần hoàn thiện đăng nhập và kiểm tra quyền ở phía máy chủ.</p>
