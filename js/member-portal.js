@@ -64,6 +64,16 @@
     if (page) page.setAttribute('data-member-locked', 'false');
   }
 
+  function showLogout(isDemo) {
+    document.querySelectorAll('[data-member-logout]').forEach(function (link) {
+      link.hidden = false;
+      if (isDemo) link.setAttribute('href', '/members-login.html');
+      link.addEventListener('click', function () {
+        if (isDemo) sessionStorage.removeItem('yenMemberDemo');
+      });
+    });
+  }
+
   function renderDocuments(documents) {
     var grouped = {};
     documents.forEach(function (doc) {
@@ -92,6 +102,7 @@
     var demo = demoSession();
     if (demo) {
       unlockMemberPage();
+      showLogout(true);
       setRuntimeState('Xin chào ' + demo.displayName, 'Bạn đang xem bản thử nghiệm với quyền ' + demo.role + '. Tài liệu thật vẫn bị khóa.', 'ready');
       var demoAdminLink = document.querySelector('[data-admin-link]');
       if (demoAdminLink) demoAdminLink.hidden = !demo.isAdmin;
@@ -101,6 +112,7 @@
       var session = await request('/session');
       var member = session.member;
       unlockMemberPage();
+      showLogout(false);
       setRuntimeState('Xin chào ' + (member.displayName || member.email), 'Bạn đang truy cập với quyền ' + member.role + '.', 'ready');
       var result = await request('/documents');
       renderDocuments(result.documents || []);
@@ -220,6 +232,7 @@
         window.location.replace('/members.html?demo=1');
         return;
       }
+      showLogout(true);
       var label = document.getElementById('admin-mode-label');
       var alert = document.getElementById('admin-safety-alert');
       if (label) label.textContent = 'Chế độ quản trị thử nghiệm';
@@ -230,6 +243,7 @@
     try {
       var session = await request('/session');
       if (!session.member.isAdmin) throw new Error('Tài khoản không có quyền quản trị.');
+      showLogout(false);
       document.querySelectorAll('[data-admin-control]').forEach(function (element) { element.disabled = false; });
       document.getElementById('member-form').addEventListener('submit', submitMember);
       document.getElementById('document-form').addEventListener('submit', submitDocument);

@@ -25,6 +25,7 @@
     .login-field input:focus { border-color: #2d6a4f; outline: 3px solid rgba(45,106,79,.14); }
     .login-submit { width: 100%; padding: 15px 18px; border: 0; background: #173f35; color: #fff; font: 800 .86rem/1 inherit; cursor: pointer; }
     .login-submit:hover { background: #2d6a4f; }
+    .login-otp { display: block; margin-top: 12px; padding: 14px 18px; border: 1px solid #173f35; color: #173f35; font-size: .82rem; font-weight: 800; text-align: center; text-decoration: none; }
     .login-message { min-height: 1.5em; margin: 14px 0 0; color: #a23f32; font-size: .78rem; }
     .login-real { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(38,51,46,.12); color: #66736d; font-size: .76rem; line-height: 1.6; }
     .login-real a { color: #2d6a4f; font-weight: 800; }
@@ -47,9 +48,10 @@
           <div class="login-field"><label for="demo-username">Tên đăng nhập</label><input id="demo-username" name="username" autocomplete="username" required></div>
           <div class="login-field"><label for="demo-password">Mật khẩu</label><input id="demo-password" name="password" type="password" autocomplete="current-password" required></div>
           <button class="login-submit" type="submit">Vào khu vực thử nghiệm</button>
+          <a class="login-otp" href="/members.html">Đăng nhập thật bằng email OTP</a>
           <p class="login-message" id="demo-login-message" aria-live="polite"></p>
         </form>
-        <p class="login-real">Thành viên thật sẽ đăng nhập bằng OTP gửi tới email đã được cấp quyền khi Cloudflare Access được kích hoạt. <a href="/members.html">Quay lại trang Thành viên</a></p>
+        <p class="login-real">Thành viên thật đăng nhập bằng OTP gửi tới email đã được cấp quyền. Không có mật khẩu dùng chung và mã OTP chỉ sử dụng một lần. <a href="/members.html">Quay lại trang Thành viên</a></p>
       </div>
     </section>
   </main>
