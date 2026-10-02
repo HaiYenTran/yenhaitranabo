@@ -6,6 +6,11 @@ const JSON_HEADERS = {
 };
 
 const MAX_UPLOAD_BYTES = 25 * 1024 * 1024;
+const SESSION_COOKIE = 'yen_member_session';
+const SESSION_DAYS = 7;
+const PASSWORD_ITERATIONS = 100000;
+const MAX_FAILED_ATTEMPTS = 5;
+const LOCK_MINUTES = 15;
 const VALID_ROLES = new Set(['owner', 'admin', 'member']);
 const VALID_CATEGORIES = new Set(['amway-present-value', 'wellness-sources', 'self-improve']);
 const VALID_ACCESS_LEVELS = new Set(['member', 'admin']);
@@ -26,11 +31,68 @@ function safeFileName(value) {
   return String(value || 'document.pdf').replace(/[\r\n"\\/]/g, '_').slice(0, 180);
 }
 
-async function identityFromAccess(ctx) {
-  if (!ctx.access) return null;
-  const identity = await ctx.access.getIdentity();
-  const email = normalizeEmail(identity?.email);
-  return email ? { email, id: identity?.user_uuid || identity?.id || '' } : null;
+function bytesToHex(bytes) {
+  return Array.from(bytes).map((byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
+function randomHex(length = 32) {
+  const bytes = new Uint8Array(length);
+  crypto.getRandomValues(bytes);
+  return bytesToHex(bytes);
+}
+
+async function sha256(value) {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+  return bytesToHex(new Uint8Array(digest));
+}
+
+async function passwordHash(password, salt, iterations = PASSWORD_ITERATIONS) {
+  const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
+  const bits = await crypto.subtle.deriveBits({
+    name: 'PBKDF2',
+    hash: 'SHA-256',
+    salt: new TextEncoder().encode(salt),
+    iterations
+  }, key, 256);
+  return bytesToHex(new Uint8Array(bits));
+}
+
+function constantTimeEqual(a, b) {
+  const left = String(a || '');
+  const right = String(b || '');
+  if (left.length !== right.length) return false;
+  let difference = 0;
+  for (let index = 0; index < left.length; index += 1) difference |= left.charCodeAt(index) ^ right.charCodeAt(index);
+  return difference === 0;
+}
+
+function cookieValue(request, name) {
+  const cookie = request.headers.get('cookie') || '';
+  const item = cookie.split(';').map((part) => part.trim()).find((part) => part.startsWith(`${name}=`));
+  return item ? decodeURIComponent(item.slice(name.length + 1)) : '';
+}
+
+function sessionCookie(token, maxAge) {
+  return `${SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; Max-Age=${maxAge}; HttpOnly; Secure; SameSite=Strict`;
+}
+
+function requestOriginAllowed(request) {
+  const origin = request.headers.get('origin');
+  return !origin || origin === new URL(request.url).origin;
+}
+
+async function sessionMember(request, env) {
+  const token = cookieValue(request, SESSION_COOKIE);
+  if (!token || token.length !== 64) return null;
+  const tokenHash = await sha256(token);
+  const member = await env.DB.prepare(
+    `SELECT m.id, m.email, m.username, m.display_name, m.role, m.active, s.token_hash
+     FROM member_sessions s JOIN members m ON m.id = s.member_id
+     WHERE s.token_hash = ? AND s.expires_at > CURRENT_TIMESTAMP`
+  ).bind(tokenHash).first();
+  if (!member || member.active !== 1) return null;
+  await env.DB.prepare('UPDATE member_sessions SET last_seen_at = CURRENT_TIMESTAMP WHERE token_hash = ?').bind(tokenHash).run();
+  return member;
 }
 
 async function memberForEmail(env, email) {
@@ -39,22 +101,18 @@ async function memberForEmail(env, email) {
     .first();
 }
 
-async function requireMember(env, ctx) {
-  const identity = await identityFromAccess(ctx);
-  if (!identity) return { error: json({ ok: false, code: 'access_required', message: 'Cần đăng nhập qua Cloudflare Access.' }, 401) };
-  const member = await memberForEmail(env, identity.email);
-  if (!member || member.active !== 1) {
-    return { error: json({ ok: false, code: 'member_not_active', message: 'Email này chưa được cấp quyền thành viên.' }, 403) };
-  }
-  return { identity, member };
+async function requireMember(request, env) {
+  const member = await sessionMember(request, env);
+  if (!member) return { error: json({ ok: false, code: 'login_required', message: 'Cần đăng nhập tài khoản thành viên.' }, 401) };
+  return { member };
 }
 
 function isAdmin(member) {
   return member.role === 'owner' || member.role === 'admin';
 }
 
-async function requireAdmin(env, ctx) {
-  const access = await requireMember(env, ctx);
+async function requireAdmin(request, env) {
+  const access = await requireMember(request, env);
   if (access.error) return access;
   if (!isAdmin(access.member)) return { error: json({ ok: false, code: 'admin_required', message: 'Bạn không có quyền quản trị.' }, 403) };
   return access;
@@ -81,8 +139,57 @@ async function logAccess(env, email, action, documentId = null, detail = '') {
     .run();
 }
 
-async function routeSession(env, ctx) {
-  const access = await requireMember(env, ctx);
+async function routeLogin(request, env) {
+  if (!requestOriginAllowed(request)) return json({ ok: false, message: 'Nguồn yêu cầu không hợp lệ.' }, 403);
+  let body;
+  try { body = await parseJson(request); } catch { return json({ ok: false, message: 'Dữ liệu đăng nhập không hợp lệ.' }, 400); }
+  const identifier = String(body.identifier || '').trim().toLowerCase().slice(0, 160);
+  const password = String(body.password || '');
+  if (!identifier || password.length < 8 || password.length > 200) return json({ ok: false, message: 'Tên đăng nhập hoặc mật khẩu không đúng.' }, 401);
+
+  const member = await env.DB.prepare(
+    `SELECT id, email, username, display_name, role, active, password_hash, password_salt,
+            password_iterations, failed_attempts, locked_until
+     FROM members WHERE email = ? COLLATE NOCASE OR username = ? COLLATE NOCASE LIMIT 1`
+  ).bind(identifier, identifier).first();
+  const locked = member?.locked_until && new Date(member.locked_until).getTime() > Date.now();
+  if (!member || member.active !== 1 || !member.password_hash || !member.password_salt || locked) {
+    return json({ ok: false, message: locked ? 'Tài khoản tạm khóa 15 phút vì nhập sai nhiều lần.' : 'Tên đăng nhập hoặc mật khẩu không đúng.' }, locked ? 429 : 401);
+  }
+  const computed = await passwordHash(password, member.password_salt, Number(member.password_iterations || PASSWORD_ITERATIONS));
+  if (!constantTimeEqual(computed, member.password_hash)) {
+    const failures = Number(member.failed_attempts || 0) + 1;
+    await env.DB.prepare(
+      `UPDATE members SET failed_attempts = ?, locked_until = CASE WHEN ? >= ? THEN datetime('now', '+' || ? || ' minutes') ELSE NULL END,
+       updated_at = CURRENT_TIMESTAMP WHERE id = ?`
+    ).bind(failures, failures, MAX_FAILED_ATTEMPTS, LOCK_MINUTES, member.id).run();
+    return json({ ok: false, message: failures >= MAX_FAILED_ATTEMPTS ? 'Tài khoản tạm khóa 15 phút vì nhập sai nhiều lần.' : 'Tên đăng nhập hoặc mật khẩu không đúng.' }, failures >= MAX_FAILED_ATTEMPTS ? 429 : 401);
+  }
+
+  await env.DB.prepare('UPDATE members SET failed_attempts = 0, locked_until = NULL, updated_at = CURRENT_TIMESTAMP WHERE id = ?').bind(member.id).run();
+  await env.DB.prepare('DELETE FROM member_sessions WHERE expires_at <= CURRENT_TIMESTAMP OR member_id = ?').bind(member.id).run();
+  const token = randomHex(32);
+  const tokenHash = await sha256(token);
+  await env.DB.prepare(
+    `INSERT INTO member_sessions (token_hash, member_id, expires_at, user_agent)
+     VALUES (?, ?, datetime('now', '+' || ? || ' days'), ?)`
+  ).bind(tokenHash, member.id, SESSION_DAYS, String(request.headers.get('user-agent') || '').slice(0, 300)).run();
+  const response = json({ ok: true, member: { displayName: member.display_name, role: member.role, isAdmin: isAdmin(member) } });
+  response.headers.set('set-cookie', sessionCookie(token, SESSION_DAYS * 86400));
+  return response;
+}
+
+async function routeLogout(request, env) {
+  if (!requestOriginAllowed(request)) return json({ ok: false, message: 'Nguồn yêu cầu không hợp lệ.' }, 403);
+  const token = cookieValue(request, SESSION_COOKIE);
+  if (token) await env.DB.prepare('DELETE FROM member_sessions WHERE token_hash = ?').bind(await sha256(token)).run();
+  const response = json({ ok: true });
+  response.headers.set('set-cookie', sessionCookie('', 0));
+  return response;
+}
+
+async function routeSession(request, env) {
+  const access = await requireMember(request, env);
   if (access.error) return access.error;
   return json({
     ok: true,
@@ -95,14 +202,14 @@ async function routeSession(env, ctx) {
   });
 }
 
-async function routeDocuments(env, ctx) {
-  const access = await requireMember(env, ctx);
+async function routeDocuments(request, env) {
+  const access = await requireMember(request, env);
   if (access.error) return access.error;
   return json({ ok: true, documents: await listDocuments(env, access.member) });
 }
 
-async function routeDocumentContent(env, ctx, id) {
-  const access = await requireMember(env, ctx);
+async function routeDocumentContent(request, env, id) {
+  const access = await requireMember(request, env);
   if (access.error) return access.error;
   const document = await env.DB.prepare(
     'SELECT id, title, object_key, file_name, mime_type, access_level, active FROM documents WHERE id = ?'
@@ -124,8 +231,8 @@ async function routeDocumentContent(env, ctx, id) {
   return new Response(object.body, { headers });
 }
 
-async function routeAdminMembers(request, env, ctx) {
-  const access = await requireAdmin(env, ctx);
+async function routeAdminMembers(request, env) {
+  const access = await requireAdmin(request, env);
   if (access.error) return access.error;
   if (request.method === 'GET') {
     const result = await env.DB.prepare(
@@ -152,8 +259,8 @@ async function routeAdminMembers(request, env, ctx) {
   return json({ ok: true }, 201);
 }
 
-async function routeAdminMemberUpdate(request, env, ctx, id) {
-  const access = await requireAdmin(env, ctx);
+async function routeAdminMemberUpdate(request, env, id) {
+  const access = await requireAdmin(request, env);
   if (access.error) return access.error;
   if (request.method !== 'PATCH') return json({ ok: false, message: 'Phương thức không được hỗ trợ.' }, 405);
   let body;
@@ -172,8 +279,8 @@ async function routeAdminMemberUpdate(request, env, ctx, id) {
   return json({ ok: true });
 }
 
-async function routeAdminDocuments(request, env, ctx) {
-  const access = await requireAdmin(env, ctx);
+async function routeAdminDocuments(request, env) {
+  const access = await requireAdmin(request, env);
   if (access.error) return access.error;
   if (request.method === 'GET') return json({ ok: true, documents: await listDocuments(env, access.member) });
   if (request.method !== 'POST') return json({ ok: false, message: 'Phương thức không được hỗ trợ.' }, 405);
@@ -195,8 +302,8 @@ async function routeAdminDocuments(request, env, ctx) {
   return json({ ok: true, id: result.meta.last_row_id }, 201);
 }
 
-async function routeAdminDocumentFile(request, env, ctx, id) {
-  const access = await requireAdmin(env, ctx);
+async function routeAdminDocumentFile(request, env, id) {
+  const access = await requireAdmin(request, env);
   if (access.error) return access.error;
   if (request.method !== 'PUT') return json({ ok: false, message: 'Phương thức không được hỗ trợ.' }, 405);
   const declaredLength = Number(request.headers.get('content-length') || 0);
@@ -219,25 +326,27 @@ async function routeAdminDocumentFile(request, env, ctx, id) {
 }
 
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, '') || '/';
     if (!path.startsWith('/member-api')) return json({ ok: false, message: 'Không tìm thấy.' }, 404);
 
     try {
-      if (path === '/member-api/session' && request.method === 'GET') return routeSession(env, ctx);
-      if (path === '/member-api/documents' && request.method === 'GET') return routeDocuments(env, ctx);
+      if (path === '/member-api/login' && request.method === 'POST') return routeLogin(request, env);
+      if (path === '/member-api/logout' && request.method === 'POST') return routeLogout(request, env);
+      if (path === '/member-api/session' && request.method === 'GET') return routeSession(request, env);
+      if (path === '/member-api/documents' && request.method === 'GET') return routeDocuments(request, env);
 
       let match = path.match(/^\/member-api\/documents\/(\d+)\/content$/);
-      if (match && request.method === 'GET') return routeDocumentContent(env, ctx, Number(match[1]));
+      if (match && request.method === 'GET') return routeDocumentContent(request, env, Number(match[1]));
 
-      if (path === '/member-api/admin/members') return routeAdminMembers(request, env, ctx);
+      if (path === '/member-api/admin/members') return routeAdminMembers(request, env);
       match = path.match(/^\/member-api\/admin\/members\/(\d+)$/);
-      if (match) return routeAdminMemberUpdate(request, env, ctx, Number(match[1]));
+      if (match) return routeAdminMemberUpdate(request, env, Number(match[1]));
 
-      if (path === '/member-api/admin/documents') return routeAdminDocuments(request, env, ctx);
+      if (path === '/member-api/admin/documents') return routeAdminDocuments(request, env);
       match = path.match(/^\/member-api\/admin\/documents\/(\d+)\/file$/);
-      if (match) return routeAdminDocumentFile(request, env, ctx, Number(match[1]));
+      if (match) return routeAdminDocumentFile(request, env, Number(match[1]));
 
       return json({ ok: false, message: 'Không tìm thấy endpoint.' }, 404);
     } catch (error) {

@@ -50,26 +50,22 @@
     if (span) span.textContent = copy;
   }
 
-  function demoSession() {
-    try {
-      var value = JSON.parse(sessionStorage.getItem('yenMemberDemo') || 'null');
-      return value && value.demo ? value : null;
-    } catch (error) {
-      return null;
-    }
-  }
-
   function unlockMemberPage() {
     var page = document.querySelector('[data-member-page]');
     if (page) page.setAttribute('data-member-locked', 'false');
   }
 
-  function showLogout(isDemo) {
+  function showLogout() {
     document.querySelectorAll('[data-member-logout]').forEach(function (link) {
       link.hidden = false;
-      if (isDemo) link.setAttribute('href', '/members-login.html');
-      link.addEventListener('click', function () {
-        if (isDemo) sessionStorage.removeItem('yenMemberDemo');
+      link.setAttribute('href', '/members-login.html');
+      link.addEventListener('click', async function (event) {
+        event.preventDefault();
+        try {
+          await request('/logout', { method: 'POST' });
+        } finally {
+          window.location.replace('/members-login.html');
+        }
       });
     });
   }
@@ -99,20 +95,11 @@
 
   async function initMemberPage() {
     if (!document.querySelector('[data-member-page]')) return;
-    var demo = demoSession();
-    if (demo) {
-      unlockMemberPage();
-      showLogout(true);
-      setRuntimeState('Xin chào ' + demo.displayName, 'Bạn đang xem bản thử nghiệm với quyền ' + demo.role + '. Tài liệu thật vẫn bị khóa.', 'ready');
-      var demoAdminLink = document.querySelector('[data-admin-link]');
-      if (demoAdminLink) demoAdminLink.hidden = !demo.isAdmin;
-      return;
-    }
     try {
       var session = await request('/session');
       var member = session.member;
       unlockMemberPage();
-      showLogout(false);
+      showLogout();
       setRuntimeState('Xin chào ' + (member.displayName || member.email), 'Bạn đang truy cập với quyền ' + member.role + '.', 'ready');
       var result = await request('/documents');
       renderDocuments(result.documents || []);
@@ -120,8 +107,8 @@
       if (adminLink) adminLink.hidden = !member.isAdmin;
     } catch (error) {
       setRuntimeState(
-        'Hệ thống đăng nhập chưa kích hoạt',
-        'Giao diện mẫu vẫn có thể xem; tài liệu thật sẽ chỉ mở sau khi Cloudflare Access và kho riêng tư được kết nối.',
+        'Bạn chưa đăng nhập',
+        'Đăng nhập bằng tài khoản đã được cấp để mở không gian thành viên.',
         'offline'
       );
     }
@@ -226,31 +213,18 @@
 
   async function initAdminPage() {
     if (!document.querySelector('[data-member-admin-page]')) return;
-    var demo = demoSession();
-    if (demo) {
-      if (!demo.isAdmin) {
-        window.location.replace('/members.html?demo=1');
-        return;
-      }
-      showLogout(true);
-      var label = document.getElementById('admin-mode-label');
-      var alert = document.getElementById('admin-safety-alert');
-      if (label) label.textContent = 'Chế độ quản trị thử nghiệm';
-      if (alert) alert.innerHTML = '<strong>Đang xem bản thử nghiệm.</strong> Các nút thay đổi dữ liệu được khóa; tài khoản này không thể xem file riêng tư hoặc quản trị thành viên thật.';
-      setAdminMessage('Đăng nhập bằng Quản trị viên thử nghiệm · chỉ xem giao diện.', false);
-      return;
-    }
     try {
       var session = await request('/session');
       if (!session.member.isAdmin) throw new Error('Tài khoản không có quyền quản trị.');
-      showLogout(false);
+      showLogout();
       document.querySelectorAll('[data-admin-control]').forEach(function (element) { element.disabled = false; });
       document.getElementById('member-form').addEventListener('submit', submitMember);
       document.getElementById('document-form').addEventListener('submit', submitDocument);
       await refreshAdminData();
       setAdminMessage('Đã kết nối hệ thống quản trị.', false);
     } catch (error) {
-      setAdminMessage('Chưa kích hoạt: ' + error.message, true);
+      setAdminMessage(error.message, true);
+      if (error.status === 401) window.setTimeout(function () { window.location.replace('/members-login.html'); }, 900);
     }
   }
 
