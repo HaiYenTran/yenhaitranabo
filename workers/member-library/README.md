@@ -10,6 +10,7 @@ Backend cho khu vực thành viên của `yenhaitran.com`.
 - R2 bucket để private; chỉ Worker có binding mới đọc/ghi file.
 - Không commit token, Account ID, Access AUD hoặc file thành viên.
 - `members-login.html` chỉ là chế độ demo giao diện. Hai tài khoản demo chạy trong `sessionStorage`, không gọi API, không đọc file và không được dùng làm cơ chế bảo mật production.
+- Tài liệu nội bộ không được đặt trong GitHub. Chỉ commit metadata; tệp HTML/PDF/Markdown thật phải được tải lên R2 private qua trang quản trị sau khi Access đã xác thực owner/admin.
 
 ## Kích hoạt
 
