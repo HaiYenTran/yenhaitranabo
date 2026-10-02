@@ -51,7 +51,10 @@
     trackAnalyticsEvent('article_view');
   }
 
-  if (path.endsWith('/gioi-thieu-yen-tran.html') || path.endsWith('/pages/books/doc-sach.html')) return;
+  if (path.endsWith('/gioi-thieu-yen-tran.html') || path.endsWith('/pages/books/doc-sach.html')) {
+    if (document.querySelector('[data-yt-zalo]')) buildZaloModal();
+    return;
+  }
 
   var root = '/';
   var links = [
