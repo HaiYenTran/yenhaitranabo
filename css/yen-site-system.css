@@ -210,6 +210,9 @@ body.yt-unified .yt-content-card:hover {
 .yt-zalo-dialog h2 { margin: 0 34px 8px; color: var(--yt-forest); font: 700 1.8rem/1.2 'Lora', serif; }
 .yt-zalo-dialog p { margin: 0 0 20px; color: var(--yt-muted); font-size: .9rem; line-height: 1.65; }
 .yt-zalo-dialog img { display: block; width: min(290px, 100%); height: auto; margin: 0 auto 18px; object-fit: contain; }
+.yt-zalo-direct { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--yt-forest); border-radius: 999px; color: var(--yt-forest); font-size: .78rem; font-weight: 800; text-decoration: none; }
+.yt-zalo-direct:hover { background: var(--yt-forest); color: white; }
+.yt-zalo-direct:focus-visible { outline: 3px solid #d39b54; outline-offset: 3px; }
 .yt-zalo-close { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--yt-cream); color: var(--yt-forest); font-size: 1.3rem; cursor: pointer; }
 .yt-zalo-note { display: block; margin-top: 12px; color: var(--yt-muted); font-size: .72rem; }
 

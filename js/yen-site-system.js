@@ -212,8 +212,9 @@
       '<section class="yt-zalo-dialog" role="dialog" aria-modal="true" aria-labelledby="yt-zalo-title">' +
       '<button class="yt-zalo-close" type="button" aria-label="Đóng">×</button>' +
       '<h2 id="yt-zalo-title">Kết nối với Yến qua Zalo</h2>' +
-      '<p>Mở Zalo, chọn quét mã QR và hướng camera vào mã bên dưới.</p>' +
+      '<p>Đang dùng máy tính? Mở Zalo trên điện thoại và quét mã QR bên dưới.</p>' +
       '<img loading="lazy" src="/assets/img/zalo-qr-yen-tran.png" alt="Mã QR Zalo cá nhân của Yến Trần" width="1260" height="1920">' +
+      '<a class="yt-zalo-direct" href="https://zalo.me/0858400957">Đang dùng điện thoại? Mở Zalo trực tiếp →</a>' +
       '<span class="yt-zalo-note">Yến thường phản hồi trong vòng 24 giờ.</span></section>';
     document.body.appendChild(modal);
     document.querySelectorAll('[data-yt-zalo]').forEach(function (el) { el.addEventListener('click', openZalo); });
