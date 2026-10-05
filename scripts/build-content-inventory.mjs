@@ -19,8 +19,12 @@ walk(root);
 files.sort((a, b) => a.localeCompare(b, 'vi'));
 
 const topLevelOfficial = new Set([
-  'index.html', 'about.html', 'contact.html', 'events.html', 'gioi-thieu-yen-tran.html',
+  'index.html', 'hanh-trinh-song-khoe-chu-dong.html', 'contact.html', 'events.html', 'gioi-thieu-yen-tran.html',
   'khao-sat-co-hoi.html', 'kiem-soat-can-nang.html', '404.html'
+]);
+
+const approvedRedirects = new Map([
+  ['about.html', 'hanh-trinh-song-khoe-chu-dong.html']
 ]);
 
 const byBase = new Map();
@@ -49,6 +53,7 @@ const rows = files.map((file) => {
   const group = byBase.get(path.basename(file).toLowerCase()) || [];
   const target = group.length > 1 ? preferred(group) : '';
   const isDuplicate = group.length > 1 && file !== target;
+  const approvedTarget = approvedRedirects.get(file) || '';
   return {
     url: '/' + file,
     title,
@@ -57,9 +62,9 @@ const rows = files.map((file) => {
     bytes: Buffer.byteLength(html),
     hash,
     duplicateGroup: group.length > 1 ? path.basename(file) : '',
-    proposedStatus: isDuplicate ? 'Chuyển hướng sau khi duyệt' : 'Giữ / cần duyệt nội dung',
-    proposedTarget: isDuplicate ? '/' + target : '',
-    reason: isDuplicate ? `Trùng tên file với ${group.length - 1} URL khác` : 'Chưa phát hiện trùng tên file'
+    proposedStatus: approvedTarget ? 'Đã duyệt chuyển hướng 301' : (isDuplicate ? 'Chuyển hướng sau khi duyệt' : 'Giữ / cần duyệt nội dung'),
+    proposedTarget: approvedTarget ? '/' + approvedTarget : (isDuplicate ? '/' + target : ''),
+    reason: approvedTarget ? 'Đổi URL có ý nghĩa hơn; giữ URL cũ để bảo toàn liên kết và SEO' : (isDuplicate ? `Trùng tên file với ${group.length - 1} URL khác` : 'Chưa phát hiện trùng tên file')
   };
 });
 

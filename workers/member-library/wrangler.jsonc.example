@@ -8,6 +8,10 @@
     {
       "pattern": "yenhaitran.com/member-api/*",
       "zone_name": "yenhaitran.com"
+    },
+    {
+      "pattern": "yenhaitran.com/about.html",
+      "zone_name": "yenhaitran.com"
     }
   ],
   "d1_databases": [

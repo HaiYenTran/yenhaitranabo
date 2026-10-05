@@ -1,9 +1,9 @@
 # Danh mục nội dung website
 
-Cập nhật tự động: 2026-09-22
+Cập nhật tự động: 2026-10-05
 
-- Tổng số trang HTML: **193**
-- URL có khả năng là bản cũ do trùng tên file: **82**
+- Tổng số trang HTML: **203**
+- URL có khả năng là bản cũ do trùng tên file: **83**
 - Nhóm có nội dung giống hệt nhau: **0**
 - Trạng thái hiện tại: **chỉ kiểm kê và đề xuất; chưa xóa trang, chưa kích hoạt chuyển hướng**.
 
@@ -11,6 +11,7 @@ Cập nhật tự động: 2026-09-22
 
 | URL cũ | URL đề xuất giữ lại | Lý do |
 |---|---|---|
+| `/about.html` | `/hanh-trinh-song-khoe-chu-dong.html` | Đổi URL có ý nghĩa hơn; giữ URL cũ để bảo toàn liên kết và SEO |
 | `/Ansang1.html` | `/pages/breakfast/Ansang1.html` | Trùng tên file với 1 URL khác |
 | `/Ansang2.html` | `/pages/breakfast/Ansang2.html` | Trùng tên file với 1 URL khác |
 | `/Ansang3.html` | `/pages/breakfast/Ansang3.html` | Trùng tên file với 1 URL khác |
@@ -36,8 +37,8 @@ Cập nhật tự động: 2026-09-22
 | `/digital_theman.html` | `/pages/digital/digital_theman.html` | Trùng tên file với 1 URL khác |
 | `/digital_thoiquenxau.html` | `/pages/digital/digital_thoiquenxau.html` | Trùng tên file với 1 URL khác |
 | `/DocToTrongCoThe.html` | `/pages/health/DocToTrongCoThe.html` | Trùng tên file với 1 URL khác |
-| `/events_transform01Dec.html` | `/events.html` | Sự kiện Transform đã ngừng hiển thị; chuyển về trang Sự kiện |
-| `/events/events_transform01Dec.html` | `/events.html` | Sự kiện Transform đã ngừng hiển thị; chuyển về trang Sự kiện |
+| `/events_transform01Dec.html` | `/pages/showcase/events_transform01Dec.html` | Trùng tên file với 2 URL khác |
+| `/events/events_transform01Dec.html` | `/pages/showcase/events_transform01Dec.html` | Trùng tên file với 2 URL khác |
 | `/ffit_gallery.html` | `/pages/showcase/ffit_gallery.html` | Trùng tên file với 1 URL khác |
 | `/Hatchia.html` | `/pages/health/Hatchia.html` | Trùng tên file với 1 URL khác |
 | `/healthylifestyle.html` | `/pages/health/healthylifestyle.html` | Trùng tên file với 1 URL khác |
