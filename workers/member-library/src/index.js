@@ -329,8 +329,8 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, '') || '/';
-    if (path === '/about.html') {
-      return Response.redirect('https://yenhaitran.com/hanh-trinh-song-khoe-chu-dong.html', 301);
+    if (path === '/about.html' || path === '/hanh-trinh-song-khoe-chu-dong.html') {
+      return Response.redirect('https://yenhaitran.com/yen_journey.html', 301);
     }
     if (!path.startsWith('/member-api')) return json({ ok: false, message: 'Không tìm thấy.' }, 404);
 

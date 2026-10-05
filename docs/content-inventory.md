@@ -2,16 +2,16 @@
 
 Cập nhật tự động: 2026-10-05
 
-- Tổng số trang HTML: **203**
-- URL có khả năng là bản cũ do trùng tên file: **83**
-- Nhóm có nội dung giống hệt nhau: **0**
+- Tổng số trang HTML: **204**
+- URL có khả năng là bản cũ do trùng tên file: **84**
+- Nhóm có nội dung giống hệt nhau: **1**
 - Trạng thái hiện tại: **chỉ kiểm kê và đề xuất; chưa xóa trang, chưa kích hoạt chuyển hướng**.
 
 ## Bảng URL cũ → URL đề xuất
 
 | URL cũ | URL đề xuất giữ lại | Lý do |
 |---|---|---|
-| `/about.html` | `/hanh-trinh-song-khoe-chu-dong.html` | Đổi URL có ý nghĩa hơn; giữ URL cũ để bảo toàn liên kết và SEO |
+| `/about.html` | `/yen_journey.html` | Đổi URL có ý nghĩa hơn; giữ URL cũ để bảo toàn liên kết và SEO; nội dung giống hệt 1 URL khác |
 | `/Ansang1.html` | `/pages/breakfast/Ansang1.html` | Trùng tên file với 1 URL khác |
 | `/Ansang2.html` | `/pages/breakfast/Ansang2.html` | Trùng tên file với 1 URL khác |
 | `/Ansang3.html` | `/pages/breakfast/Ansang3.html` | Trùng tên file với 1 URL khác |
@@ -40,6 +40,7 @@ Cập nhật tự động: 2026-10-05
 | `/events_transform01Dec.html` | `/pages/showcase/events_transform01Dec.html` | Trùng tên file với 2 URL khác |
 | `/events/events_transform01Dec.html` | `/pages/showcase/events_transform01Dec.html` | Trùng tên file với 2 URL khác |
 | `/ffit_gallery.html` | `/pages/showcase/ffit_gallery.html` | Trùng tên file với 1 URL khác |
+| `/hanh-trinh-song-khoe-chu-dong.html` | `/yen_journey.html` | Đổi URL có ý nghĩa hơn; giữ URL cũ để bảo toàn liên kết và SEO; nội dung giống hệt 1 URL khác |
 | `/Hatchia.html` | `/pages/health/Hatchia.html` | Trùng tên file với 1 URL khác |
 | `/healthylifestyle.html` | `/pages/health/healthylifestyle.html` | Trùng tên file với 1 URL khác |
 | `/healthymeal.html` | `/pages/breakfast/healthymeal.html` | Trùng tên file với 1 URL khác |

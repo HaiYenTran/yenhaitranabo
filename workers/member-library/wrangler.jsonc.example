@@ -12,6 +12,10 @@
     {
       "pattern": "yenhaitran.com/about.html",
       "zone_name": "yenhaitran.com"
+    },
+    {
+      "pattern": "yenhaitran.com/hanh-trinh-song-khoe-chu-dong.html",
+      "zone_name": "yenhaitran.com"
     }
   ],
   "d1_databases": [

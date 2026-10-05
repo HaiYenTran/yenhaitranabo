@@ -19,12 +19,13 @@ walk(root);
 files.sort((a, b) => a.localeCompare(b, 'vi'));
 
 const topLevelOfficial = new Set([
-  'index.html', 'hanh-trinh-song-khoe-chu-dong.html', 'contact.html', 'events.html', 'gioi-thieu-yen-tran.html',
+  'index.html', 'yen_journey.html', 'contact.html', 'events.html', 'gioi-thieu-yen-tran.html',
   'khao-sat-co-hoi.html', 'kiem-soat-can-nang.html', '404.html'
 ]);
 
 const approvedRedirects = new Map([
-  ['about.html', 'hanh-trinh-song-khoe-chu-dong.html']
+  ['about.html', 'yen_journey.html'],
+  ['hanh-trinh-song-khoe-chu-dong.html', 'yen_journey.html']
 ]);
 
 const byBase = new Map();
