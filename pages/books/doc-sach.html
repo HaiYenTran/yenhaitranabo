@@ -2,30 +2,52 @@
 <html lang="vi">
 <head>
   <base href="../../">
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex,nofollow"><title>Đọc sách online | Tủ sách Yến</title>
-  <link rel="icon" href="assets/favicon.ico"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Đọc sách online | Tủ sách Yến</title>
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--forest:#173f35;--green:#2d6a4f;--cream:#f2ede4;--ink:#29332f;--muted:#69736e;--rust:#9b4d2e}*{box-sizing:border-box}html,body{margin:0;height:100%;background:#18201d;color:white;font-family:'Open Sans',sans-serif}button,a,input{font:inherit}.topbar{height:62px;position:relative;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:15px;padding:11px 18px;background:#101613;border-bottom:1px solid #ffffff1f}.topbar a{color:#d8e6df;text-decoration:none;font-weight:700;font-size:.82rem}.title{text-align:center}.title strong{display:block;font-family:Lora,serif}.title small{color:#9eb2a9}.reader{height:calc(100vh - 62px)}.pdf-frame{display:block;width:100%;height:100%;border:0;background:#eef0f1}.reader-note{justify-self:end;color:#9eb2a9;font-size:.72rem;text-align:right}.gate{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:18px;background:linear-gradient(145deg,#173f35f5,#111714f8)}.gate[hidden]{display:none}.gate-card{width:min(720px,100%);display:grid;grid-template-columns:minmax(0,1fr) 170px;gap:30px;align-items:center;padding:clamp(25px,5vw,44px);background:var(--cream);color:var(--ink);border-radius:4px;box-shadow:0 28px 90px #0008}.gate h1{font:700 clamp(2rem,5vw,3.3rem)/1.05 Lora,serif;color:var(--forest);margin:10px 0 18px}.gate p{color:var(--muted);line-height:1.65}.password-row{display:flex;gap:9px;margin-top:22px}.password-row input{min-width:0;flex:1;border:1px solid #b5b8b1;border-radius:3px;padding:12px 14px;background:white}.unlock,.contact{border:0;border-radius:999px;background:var(--forest);color:white;padding:12px 18px;text-decoration:none;font-weight:800;cursor:pointer}.error{min-height:20px;margin:8px 0 0;color:#a53625;font-size:.78rem}.contact-note{margin-top:20px;padding-top:18px;border-top:1px solid #cfc9bc;font-size:.82rem}.contacts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.contact{font-size:.76rem;padding:9px 13px}.qr-wrap{text-align:center}.qr{display:block;width:auto;max-width:150px;max-height:230px;margin:auto;background:white;padding:7px;border-radius:3px;object-fit:contain}.qr-label{text-align:center;color:var(--green);font-weight:800;font-size:.72rem;margin-top:8px}@media(max-width:700px){.topbar{grid-template-columns:1fr auto}.title{text-align:left}.topbar>a{display:none}.reader-note{max-width:125px}.gate{align-items:start;overflow:auto}.gate-card{grid-template-columns:1fr;margin:auto}.qr-wrap{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:14px;text-align:left}.qr{width:96px;max-height:150px}.qr-label{text-align:left;margin:0}.password-row{flex-direction:column}.unlock{width:100%}}
-    .pdf-frame[hidden]{display:none}
+    :root{--forest:#173f35;--green:#2d6a4f;--cream:#f2ede4;--paper:#fff;--ink:#29332f;--muted:#69736e;--rust:#9b4d2e;--bar:#101613;--control:#26322e}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#252c29;color:white;font-family:'Open Sans',sans-serif}button,a,input{font:inherit}.app{height:100vh;height:100dvh;display:grid;grid-template-rows:auto auto minmax(0,1fr)}.topbar{position:relative;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:15px;min-height:62px;padding:10px max(14px,env(safe-area-inset-right)) 10px max(14px,env(safe-area-inset-left));background:var(--bar);border-bottom:1px solid #ffffff1f}.topbar a{color:#d8e6df;text-decoration:none;font-weight:700;font-size:.82rem}.title{text-align:center;min-width:0}.title strong,.title small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.title strong{font-family:Lora,serif}.title small{color:#9eb2a9}.reader-note{justify-self:end;color:#9eb2a9;font-size:.72rem;text-align:right}.toolbar{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:7px max(10px,env(safe-area-inset-right)) 7px max(10px,env(safe-area-inset-left));background:#18201d;border-bottom:1px solid #ffffff19;box-shadow:0 3px 13px #0004}.tool-button{min-width:42px;min-height:40px;border:1px solid #ffffff2e;border-radius:8px;background:var(--control);color:#fff;font-weight:800;cursor:pointer}.tool-button:hover:not(:disabled),.tool-button:focus-visible{background:#385046;outline:2px solid #91c6ae;outline-offset:1px}.tool-button:disabled{opacity:.35;cursor:not-allowed}.page-control{display:flex;align-items:center;gap:7px;color:#ced9d4;font-size:.78rem;white-space:nowrap}.page-control input{width:58px;height:40px;border:1px solid #ffffff35;border-radius:8px;background:#fff;color:#1b2621;text-align:center;font-weight:800}.zoom-value{min-width:48px;color:#ced9d4;text-align:center;font-size:.75rem}.reader{position:relative;min-height:0;overflow:auto;overscroll-behavior:contain;background:radial-gradient(circle at 50% 0,#46504c 0,#2e3532 44%,#242a27 100%);padding:22px max(12px,env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));touch-action:pan-y}.canvas-wrap{display:flex;justify-content:center;align-items:flex-start;min-height:100%;margin:auto}.pdf-canvas{display:block;max-width:none;background:white;box-shadow:0 15px 45px #0008}.status{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:#e3ece8;background:#252c29}.status[hidden]{display:none}.status-card{max-width:480px}.spinner{width:42px;height:42px;margin:0 auto 16px;border:4px solid #ffffff25;border-top-color:#8bc3aa;border-radius:50%;animation:spin .8s linear infinite}.status.error .spinner{display:none}.status strong{display:block;font:700 1.25rem Lora,serif;margin-bottom:8px}.status p{color:#b9c7c1;margin:0}.fallback-link{display:inline-flex;margin-top:16px;padding:10px 16px;border-radius:999px;background:#e7eee9;color:var(--forest);font-weight:800;text-decoration:none}@keyframes spin{to{transform:rotate(360deg)}}.gate{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:18px;background:linear-gradient(145deg,#173f35f5,#111714f8)}.gate[hidden]{display:none}.gate-card{width:min(720px,100%);display:grid;grid-template-columns:minmax(0,1fr) 170px;gap:30px;align-items:center;padding:clamp(25px,5vw,44px);background:var(--cream);color:var(--ink);border-radius:4px;box-shadow:0 28px 90px #0008}.gate h1{font:700 clamp(2rem,5vw,3.3rem)/1.05 Lora,serif;color:var(--forest);margin:10px 0 18px}.gate p{color:var(--muted);line-height:1.65}.password-row{display:flex;gap:9px;margin-top:22px}.password-row input{min-width:0;flex:1;border:1px solid #b5b8b1;border-radius:3px;padding:12px 14px;background:white}.unlock,.contact{border:0;border-radius:999px;background:var(--forest);color:white;padding:12px 18px;text-decoration:none;font-weight:800;cursor:pointer}.error{min-height:20px;margin:8px 0 0;color:#a53625;font-size:.78rem}.contact-note{margin-top:20px;padding-top:18px;border-top:1px solid #cfc9bc;font-size:.82rem}.contacts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.contact{font-size:.76rem;padding:9px 13px}.qr-wrap{text-align:center}.qr{display:block;width:auto;max-width:150px;max-height:230px;margin:auto;background:white;padding:7px;border-radius:3px;object-fit:contain}.qr-label{text-align:center;color:var(--green);font-weight:800;font-size:.72rem;margin-top:8px}
+    @media(max-width:700px){.app{grid-template-rows:auto auto minmax(0,1fr)}.topbar{grid-template-columns:auto minmax(0,1fr);min-height:58px}.title{text-align:left}.topbar>a{font-size:0}.topbar>a::before{content:'←';font-size:1.25rem}.reader-note{display:none}.toolbar{justify-content:space-between;gap:5px;min-height:52px}.tool-button{min-width:38px;min-height:38px;padding:0 9px}.zoom-value{display:none}.page-control{gap:5px}.page-control input{width:48px;height:38px}.reader{padding-top:14px}.gate{align-items:start;overflow:auto}.gate-card{grid-template-columns:1fr;margin:auto}.qr-wrap{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:14px;text-align:left}.qr{width:96px;max-height:150px}.qr-label{text-align:left;margin:0}.password-row{flex-direction:column}.unlock{width:100%}}
+    @media(max-width:380px){.toolbar{gap:3px}.tool-button{min-width:35px;padding:0 7px}.page-control{font-size:.7rem}.page-control input{width:43px}}
+    @media(prefers-reduced-motion:reduce){.spinner{animation:none}}
   </style>
-
   <link rel="canonical" href="https://yenhaitran.com/pages/books/doc-sach.html">
-  <meta name="description" content="Khám phá Đọc sách online | Tủ sách Yến cùng Yến Trần — những chia sẻ thực tế để sống khỏe và chủ động hơn.">
+  <meta name="description" content="Trình đọc sách online của Tủ sách Yến, tối ưu cho điện thoại, máy tính bảng và máy tính.">
   <meta property="og:title" content="Đọc sách online | Tủ sách Yến">
-  <meta property="og:description" content="Khám phá Đọc sách online | Tủ sách Yến cùng Yến Trần — những chia sẻ thực tế để sống khỏe và chủ động hơn.">
+  <meta property="og:description" content="Trình đọc sách online của Tủ sách Yến, tối ưu cho điện thoại, máy tính bảng và máy tính.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yenhaitran.com/pages/books/doc-sach.html">
   <meta property="og:image" content="https://yenhaitran.com/assets/img/avatar_yen.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="/css/yen-site-system.css">
 </head>
 <body>
-  <header class="topbar"><a id="reviewLink" href="pages/books/tu-sach.html">← Về trang review</a><div class="title"><strong id="bookTitle">Tủ sách Yến</strong><small id="bookAuthor"></small></div><div class="reader-note">Bản PDF chỉ dành cho mục đích đọc cá nhân</div></header>
-  <main class="reader"><iframe class="pdf-frame" id="pdfFrame" title="Trình đọc PDF" hidden></iframe></main>
-  <section class="gate" id="gate" aria-modal="true" role="dialog"><div class="gate-card"><div><span style="color:var(--rust);font-weight:800;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase">Tủ sách đọc online</span><h1>Mời bạn nhập mật khẩu để đọc</h1><p>Tài liệu được chia sẻ để phục vụ việc học và đọc cá nhân. Vì tôn trọng bản quyền, vui lòng không sao chép hoặc phát tán lại.</p><form class="password-row" id="passwordForm"><input id="password" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu" aria-label="Mật khẩu" required><button class="unlock" type="submit">Vào đọc sách</button></form><p class="error" id="error" role="alert"></p><div class="contact-note"><strong>Chưa có mật khẩu?</strong> Liên hệ Yến qua Zalo để được hướng dẫn và nhận tài nguyên đọc.<div class="contacts"><a class="contact" href="https://zalo.me/0858400957" target="_blank" rel="noopener noreferrer">Nhắn Zalo cho Yến</a></div></div></div><div class="qr-wrap"><img class="qr" src="assets/img/zalo-qr-yen-tran.png" alt="Mã QR Zalo cá nhân của Yến Trần" decoding="async" width="1260" height="1888"><div class="qr-label">Quét QR để liên hệ Zalo</div></div></div></section>
+  <div class="app">
+    <header class="topbar"><a id="reviewLink" href="pages/books/tu-sach.html" aria-label="Về trang giới thiệu sách">← Về trang review</a><div class="title"><strong id="bookTitle">Tủ sách Yến</strong><small id="bookAuthor"></small></div><div class="reader-note">Đọc cá nhân · Không phát tán lại</div></header>
+    <nav class="toolbar" aria-label="Điều khiển trình đọc">
+      <button class="tool-button" id="prevPage" type="button" aria-label="Trang trước" title="Trang trước">←</button>
+      <label class="page-control"><span>Trang</span><input id="pageInput" type="number" min="1" value="1" inputmode="numeric" aria-label="Số trang"><span>/ <b id="pageCount">–</b></span></label>
+      <button class="tool-button" id="nextPage" type="button" aria-label="Trang sau" title="Trang sau">→</button>
+      <button class="tool-button" id="zoomOut" type="button" aria-label="Thu nhỏ" title="Thu nhỏ">−</button>
+      <span class="zoom-value" id="zoomValue" aria-live="polite">Vừa trang</span>
+      <button class="tool-button" id="zoomIn" type="button" aria-label="Phóng to" title="Phóng to">＋</button>
+      <button class="tool-button" id="fitWidth" type="button" aria-label="Vừa chiều rộng" title="Vừa chiều rộng">↔</button>
+    </nav>
+    <main class="reader" id="reader" aria-busy="true">
+      <div class="canvas-wrap"><canvas class="pdf-canvas" id="pdfCanvas" aria-label="Trang sách đang đọc"></canvas></div>
+      <div class="status" id="status"><div class="status-card"><div class="spinner" aria-hidden="true"></div><strong id="statusTitle">Đang mở sách…</strong><p id="statusText">Trang đầu tiên có thể cần vài giây để hiển thị.</p><a class="fallback-link" id="fallbackLink" href="#" target="_blank" rel="noopener" hidden>Mở PDF gốc</a></div></div>
+    </main>
+  </div>
+  <section class="gate" id="gate" aria-modal="true" role="dialog" aria-labelledby="gateTitle"><div class="gate-card"><div><span style="color:var(--rust);font-weight:800;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase">Tủ sách đọc online</span><h1 id="gateTitle">Mời bạn nhập mật khẩu để đọc</h1><p>Tài liệu được chia sẻ để phục vụ việc học và đọc cá nhân. Vì tôn trọng bản quyền, vui lòng không sao chép hoặc phát tán lại.</p><form class="password-row" id="passwordForm"><input id="password" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu" aria-label="Mật khẩu" required><button class="unlock" type="submit">Vào đọc sách</button></form><p class="error" id="error" role="alert"></p><div class="contact-note"><strong>Chưa có mật khẩu?</strong> Liên hệ Yến qua Zalo để được hướng dẫn và nhận tài nguyên đọc.<div class="contacts"><a class="contact" href="https://zalo.me/0858400957" target="_blank" rel="noopener noreferrer">Nhắn Zalo cho Yến</a></div></div></div><div class="qr-wrap"><img class="qr" src="assets/img/zalo-qr-yen-tran.png" alt="Mã QR Zalo cá nhân của Yến Trần" decoding="async" width="1260" height="1888"><div class="qr-label">Quét QR để liên hệ Zalo</div></div></div></section>
   <script src="/js/access-gate.js"></script>
-  <script>
+  <script type="module">
+    import * as pdfjsLib from '/vendor/pdfjs/build/pdf.min.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc='/vendor/pdfjs/build/pdf.worker.min.mjs';
+
     const BOOKS={
       'hanh-trinh-ve-phuong-dong':{title:'Hành trình về Phương Đông',author:'Blair T. Spalding · Nguyên Phong',pdf:'assets/docs/books/hanh-trinh-ve-phuong-dong.pdf',review:'pages/books/hanh-trinh-ve-phuong-dong.html'},
       'cau-hoi-la-cau-tra-loi':{title:'Câu hỏi là câu trả lời',author:'Allan Pease',pdf:'assets/docs/books/cau-hoi-la-cau-tra-loi.pdf',review:'pages/books/cau-hoi-la-cau-tra-loi.html'},
@@ -36,12 +58,91 @@
       '100m-money-models':{title:'$100M Money Models',author:'Alex Hormozi',pdf:'assets/docs/books/100m-money-models.pdf',review:'pages/books/review-sach.html?book=100m-money-models'},
       'nguoi-giau-co-nhat-thanh-babylon':{title:'Người giàu có nhất thành Babylon',author:'George S. Clason',pdf:'assets/docs/books/nguoi-giau-co-nhat-thanh-babylon.pdf',review:'pages/books/review-sach.html?book=nguoi-giau-co-nhat-thanh-babylon'}
     };
-    const slug=new URLSearchParams(location.search).get('book'),book=BOOKS[slug];if(!book)location.replace('pages/books/tu-sach.html');
-    const $=id=>document.getElementById(id),frame=$('pdfFrame');
-    $('bookTitle').textContent=book.title;$('bookAuthor').textContent=book.author;$('reviewLink').href=book.review;
-    const ACCESS_KEY='yen-books-access-v1';function unlock(){sessionStorage.setItem(ACCESS_KEY,'yes');$('gate').hidden=true;frame.src=book.pdf+'#toolbar=0&navpanes=0&view=FitH';frame.hidden=false;window.yenBookOpened=slug;if(window.YenAnalytics)window.YenAnalytics.track('book_reader_view',{book:slug})}if(sessionStorage.getItem(ACCESS_KEY)==='yes')unlock();
-    $('passwordForm').addEventListener('submit',async e=>{e.preventDefault();if(await window.YenAccessGate.verify($('password').value))unlock();else{$('error').textContent='Mật khẩu chưa đúng. Bạn có thể liên hệ Yến ở bên dưới.';$('password').select()}});
-  </script>
+    const $=id=>document.getElementById(id);
+    const slug=new URLSearchParams(location.search).get('book');
+    const book=BOOKS[slug];
+    if(!book)location.replace('pages/books/tu-sach.html');
 
-<script src="/js/yen-site-system.js" defer></script>
-</body></html>
+    const reader=$('reader'),canvas=$('pdfCanvas'),context=canvas.getContext('2d',{alpha:false});
+    const state={pdf:null,page:1,zoom:1,fit:true,renderTask:null,renderToken:0,touchX:0,touchY:0};
+    $('bookTitle').textContent=book.title;
+    $('bookAuthor').textContent=book.author;
+    $('reviewLink').href=book.review;
+    $('fallbackLink').href=book.pdf;
+    document.title=book.title+' | Đọc online';
+
+    function showStatus(title,text,isError=false){$('statusTitle').textContent=title;$('statusText').textContent=text;$('status').classList.toggle('error',isError);$('status').hidden=false;$('fallbackLink').hidden=!isError;reader.setAttribute('aria-busy','true')}
+    function hideStatus(){$('status').hidden=true;reader.setAttribute('aria-busy','false')}
+    function updateControls(){const total=state.pdf?.numPages||0;$('pageInput').value=state.page;$('pageInput').max=total||1;$('pageCount').textContent=total||'–';$('prevPage').disabled=!total||state.page<=1;$('nextPage').disabled=!total||state.page>=total;$('zoomValue').textContent=state.fit?'Vừa trang':Math.round(state.zoom*100)+'%'}
+    function updateHash(){history.replaceState(null,'',location.pathname+location.search+'#page='+state.page)}
+    function initialPage(){const match=location.hash.match(/page=(\d+)/);return match?Number(match[1]):1}
+
+    async function renderPage(){
+      if(!state.pdf)return;
+      const token=++state.renderToken;
+      if(state.renderTask){try{state.renderTask.cancel()}catch(e){}}
+      showStatus('Đang hiển thị trang '+state.page+'…','');
+      try{
+        const page=await state.pdf.getPage(state.page);
+        if(token!==state.renderToken)return;
+        const base=page.getViewport({scale:1});
+        const available=Math.max(260,reader.clientWidth-28);
+        const cssScale=state.fit?Math.min(2,available/base.width):state.zoom;
+        if(state.fit)state.zoom=cssScale;
+        const viewport=page.getViewport({scale:cssScale});
+        const outputScale=Math.min(window.devicePixelRatio||1,2);
+        canvas.width=Math.floor(viewport.width*outputScale);
+        canvas.height=Math.floor(viewport.height*outputScale);
+        canvas.style.width=Math.floor(viewport.width)+'px';
+        canvas.style.height=Math.floor(viewport.height)+'px';
+        state.renderTask=page.render({canvasContext:context,viewport,transform:outputScale!==1?[outputScale,0,0,outputScale,0,0]:null});
+        await state.renderTask.promise;
+        if(token!==state.renderToken)return;
+        state.renderTask=null;
+        hideStatus();
+        updateControls();
+        updateHash();
+        reader.scrollTo({top:0,left:0,behavior:'auto'});
+        canvas.setAttribute('aria-label',`${book.title}, trang ${state.page} trên ${state.pdf.numPages}`);
+      }catch(error){
+        if(error?.name==='RenderingCancelledException')return;
+        console.error(error);
+        showStatus('Không thể hiển thị trang này','Bạn có thể thử tải lại trang hoặc mở PDF gốc.',true);
+      }
+    }
+    async function openBook(){
+      if(state.pdf)return;
+      showStatus('Đang mở sách…','Trang đầu tiên có thể cần vài giây để hiển thị.');
+      try{
+        state.pdf=await pdfjsLib.getDocument({url:'/'+book.pdf,cMapUrl:'/vendor/pdfjs/cmaps/',cMapPacked:true,standardFontDataUrl:'/vendor/pdfjs/standard_fonts/',wasmUrl:'/vendor/pdfjs/wasm/',isEvalSupported:false}).promise;
+        state.page=Math.min(Math.max(initialPage(),1),state.pdf.numPages);
+        updateControls();
+        await renderPage();
+        window.yenBookOpened=slug;
+        if(window.YenAnalytics)window.YenAnalytics.track('book_reader_view',{book:slug});
+      }catch(error){
+        console.error(error);
+        showStatus('Chưa mở được sách','Vui lòng kiểm tra kết nối rồi tải lại trang. Bạn cũng có thể dùng liên kết dự phòng.',true);
+      }
+    }
+    function goToPage(page){const total=state.pdf?.numPages||0;if(!total)return;state.page=Math.min(Math.max(Number(page)||1,1),total);renderPage()}
+    function zoom(delta){state.fit=false;state.zoom=Math.min(3,Math.max(.45,state.zoom+delta));renderPage()}
+    function unlock(){sessionStorage.setItem('yen-books-access-v1','yes');$('gate').hidden=true;openBook()}
+
+    $('prevPage').addEventListener('click',()=>goToPage(state.page-1));
+    $('nextPage').addEventListener('click',()=>goToPage(state.page+1));
+    $('pageInput').addEventListener('change',e=>goToPage(e.target.value));
+    $('pageInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();goToPage(e.currentTarget.value);e.currentTarget.blur()}});
+    $('zoomOut').addEventListener('click',()=>zoom(-.15));
+    $('zoomIn').addEventListener('click',()=>zoom(.15));
+    $('fitWidth').addEventListener('click',()=>{state.fit=true;renderPage()});
+    document.addEventListener('keydown',e=>{if(!$('gate').hidden||e.target.matches('input'))return;if(e.key==='ArrowLeft'||e.key==='PageUp')goToPage(state.page-1);if(e.key==='ArrowRight'||e.key==='PageDown')goToPage(state.page+1)});
+    reader.addEventListener('touchstart',e=>{state.touchX=e.changedTouches[0].clientX;state.touchY=e.changedTouches[0].clientY},{passive:true});
+    reader.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-state.touchX,dy=e.changedTouches[0].clientY-state.touchY;if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.35)goToPage(state.page+(dx<0?1:-1))},{passive:true});
+    let resizeTimer;window.addEventListener('resize',()=>{if(!state.fit||!state.pdf)return;clearTimeout(resizeTimer);resizeTimer=setTimeout(renderPage,180)});
+    $('passwordForm').addEventListener('submit',async e=>{e.preventDefault();if(await window.YenAccessGate.verify($('password').value))unlock();else{$('error').textContent='Mật khẩu chưa đúng. Bạn có thể liên hệ Yến ở bên dưới.';$('password').select()}});
+    updateControls();
+    if(sessionStorage.getItem('yen-books-access-v1')==='yes')unlock();else setTimeout(()=>$('password').focus(),50);
+  </script>
+</body>
+</html>
