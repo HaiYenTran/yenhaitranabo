@@ -115,6 +115,12 @@ gh api repos/HaiYenTran/yenhaitranabo/pages/builds/latest --jq '{status: .status
 ```
 
 4. Đợi build hoàn tất, kiểm tra URL HTML, asset/PDF và thao tác trên web. Nếu CDN còn bản cũ, thử URL có query kiểm tra; không đổi DNS để xử lý cache thông thường.
+
+   **Cache Cloudflare cho CSS/JS dùng chung (đã gặp ngày 20/11/2026):** Cloudflare giữ `css/yen-site-system.css`, `js/yen-site-system.js` và các file tĩnh khác tối đa 4 giờ (`cache-control: max-age=14400`). HTML mới lên web sau khoảng 1–2 phút, nhưng trang vẫn dùng CSS/JS cũ cho tới khi cache hết hạn, nên trang có thể hiển thị sai dù push và build đã thành công.
+
+   - Nhận biết: `curl -sSI https://yenhaitran.com/css/yen-site-system.css` cho `cf-cache-status: HIT` kèm `age` lớn, và nội dung tải về không có thay đổi mới; tải kèm `?v=<số ngẫu nhiên>` thì có.
+   - Xử lý: chủ website purge đúng URL file vừa sửa tại Cloudflare → `yenhaitran.com` → **Caching → Configuration → Purge Cache → Custom Purge → URL**. Không cần Purge Everything. Token Claude hiện chỉ đọc nên không tự purge được.
+   - Sau purge: kiểm tra lại file (không kèm query) và các trang bị ảnh hưởng trên web thật trước khi báo hoàn tất. Nếu không purge, ghi rõ thay đổi sẽ có hiệu lực chậm nhất khoảng 4 giờ.
 5. Chỉ báo “đã lên web” sau khi nội dung mới được xác minh. Nếu chỉ push xong, nói rõ đang triển khai.
 
 Khôi phục website tĩnh: xác định commit gây lỗi, xem diff và dùng commit đảo ngược (`git revert <commit>`) khi phù hợp và được phép; chạy QA rồi push. Không dùng reset hard/force-push làm cách khôi phục mặc định. Git revert không khôi phục dữ liệu D1/R2 hoặc DNS.
