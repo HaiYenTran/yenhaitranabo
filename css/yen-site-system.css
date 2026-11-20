@@ -131,6 +131,7 @@ body.yt-unified .yt-content-card:hover {
 }
 
 .yt-contact-strip {
+  box-sizing: border-box;
   width: min(1080px, calc(100% - 36px));
   margin: 72px auto 0;
   padding: clamp(28px, 5vw, 52px);
