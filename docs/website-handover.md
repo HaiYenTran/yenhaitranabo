@@ -21,9 +21,9 @@ Ngày lập: 18/11/2026; cập nhật 20/11/2026 với kết quả kiểm tra Cl
 | SSL/TLS | Chế độ SSL `Full`. Ngày 20/11/2026 chủ website đã bật Always Use HTTPS và nâng TLS tối thiểu lên **1.2** (xác minh qua API); TLS 1.3 bật. Website vẫn phản hồi bình thường sau thay đổi | Không hạ TLS tối thiểu khi chưa có lý do cụ thể |
 | Tên miền (nhà đăng ký) | Chưa xác định nhà đăng ký, ngày hết hạn, tự gia hạn. Không suy ra từ việc dùng DNS Cloudflare | Chủ tài khoản kiểm tra Domain Registration trên Cloudflare hoặc hóa đơn mua tên miền |
 | CI | `.github/workflows/site-quality.yml` chạy Node 20 và prepublish QA trên PR/push main | Giữ kiểm tra này; nó không phải cấu hình triển khai Pages |
-| Worker thành viên `yen-tran-member-library` | Đang chạy; 3 route trên yenhaitran.com; binding `DB`; workers.dev tắt; mã khớp repo. Chi tiết: `workers/member-library/README.md` | Deploy cần token quyền ghi; không deploy khi chưa được yêu cầu |
+| Worker thành viên `yen-tran-member-library` | Đang chạy; 3 route trên yenhaitran.com; binding `DB` và `MEMBER_FILES` (R2, thêm 20/11/2026); workers.dev tắt; mã khớp repo. Chi tiết: `workers/member-library/README.md` | Deploy cần token quyền ghi; không deploy khi chưa được yêu cầu |
 | D1 `yen-tran-members` | Production, 5 bảng, ~72 KB. Chưa truy vấn dữ liệu, chưa kiểm tra backup/Time Travel | Không chạy migration remote khi chưa có kế hoạch backup |
-| R2 | **Chưa bật trên tài khoản**; bucket `yen-tran-member-files` chưa tồn tại. Chủ website muốn dùng nếu nằm trong gói miễn phí | Bật R2 trên Dashboard → tạo bucket private → deploy lại Worker thành viên có binding `MEMBER_FILES` |
+| R2 | Bật 20/11/2026. Bucket `yen-tran-member-files`: Standard, APAC, private (r2.dev tắt), đã gắn vào Worker thành viên. Gói miễn phí: 10 GB, 1 triệu lượt ghi, 10 triệu lượt đọc/tháng | Tải tài liệu qua `members-admin.html`; theo dõi dung lượng để ở trong hạn mức miễn phí |
 | Worker form liên hệ `momoshare-contact` | Đang chạy qua `*.workers.dev`, gửi form `contact.html` sang Telegram; mã sao lưu tại `workers/momoshare-contact/` | Mã từng chỉ sửa trên Dashboard; so sánh bản chạy với repo trước khi sửa |
 | Analytics | Cloudflare Web Analytics bật (tự cài beacon). Zaraz bật nhưng chỉ có 1 công cụ Custom HTML đặt `window.yenZarazReady=true`; **không có công cụ nào nhận sự kiện `zaraz.track()`** từ `js/yen-site-system.js` | Chọn đích nhận sự kiện (vd. GA4) hoặc chấp nhận chỉ dùng Web Analytics |
 | Search Console | Repo có file xác minh `google736698dcc33cd215.html`; DNS không có bản ghi xác minh Google. Chưa biết tài khoản sở hữu | Chủ tài khoản Google kiểm tra |
@@ -123,7 +123,7 @@ Khôi phục website tĩnh: xác định commit gây lỗi, xem diff và dùng c
 
 Đọc `workers/member-library/README.md`, `src/index.js`, `migrations/` và `wrangler.jsonc.example`. Cấu hình mẫu có Worker `yen-tran-member-library`, binding `DB` và `MEMBER_FILES`, route `/member-api/*` cùng các route cụ thể `/about.html`, `/hanh-trinh-song-khoe-chu-dong.html`. Xác minh cấu hình thực tế trước khi sửa; deploy Worker có thể ảnh hưởng các URL này.
 
-Trạng thái đã đọc qua API ngày 20/11/2026: Worker đang chạy với đúng ba route trên và binding `DB`; R2 chưa bật nên chưa có `MEMBER_FILES` (xem `workers/member-library/README.md`).
+Trạng thái ngày 20/11/2026: Worker đang chạy với đúng ba route trên, binding `DB` và `MEMBER_FILES` → R2 `yen-tran-member-files` (xem `workers/member-library/README.md`).
 
 Mã hiện có xử lý login/logout/session, danh sách/nội dung tài liệu và API quản trị thành viên/tài liệu. Có cơ chế xác thực backend, session và lưu tài liệu R2; không suy ra tài khoản hoặc file production đã được provision từ mã nguồn.
 
@@ -142,7 +142,7 @@ Các script được khai báo trong package của Worker:
 
 Claude cần quyền GitHub để push/xem Pages; quyền Cloudflare để quản lý Worker, DNS, D1, R2; quyền nhà đăng ký tên miền cho gia hạn nếu khác Cloudflare. Dùng đăng nhập chính thức hoặc quyền tối thiểu phù hợp; không chuyển token qua file Markdown. Quyền từng có ở Codex không bảo đảm Claude đã có trong môi trường mới.
 
-Quyền hiện có (20/11/2026): một API token Cloudflare **chỉ đọc** do chủ website tạo, lưu dưới dạng network secret của môi trường Claude Code (không nằm trong repo hay hội thoại). Quyền gồm đọc zone/DNS/Workers Routes/Zone Settings của `yenhaitran.com` và đọc Workers Scripts/D1/Account Settings. Không có quyền ghi, Registrar hay R2. Khi cần thay đổi, chủ website cấp tạm quyền Edit tương ứng rồi gỡ lại sau khi xong.
+Quyền hiện có (20/11/2026): một API token Cloudflare **chỉ đọc** do chủ website tạo, lưu dưới dạng network secret của môi trường Claude Code (không nằm trong repo hay hội thoại). Quyền gồm đọc zone/DNS/Workers Routes/Zone Settings của `yenhaitran.com` và đọc Workers Scripts/D1/Account Settings. Ngày 20/11/2026 đã cấp tạm Edit cho Workers R2 Storage và Workers Scripts để tạo bucket và gắn binding; chủ website cần gỡ lại sau khi xong. Không có quyền Registrar. Khi cần thay đổi, cấp tạm quyền Edit tương ứng rồi gỡ lại.
 
 Đã xác minh ngày 20/11/2026: không có cron trên hai Worker; Email Routing của zone chưa cấu hình.
 

@@ -18,8 +18,10 @@ Backend cho khu vực thành viên của `yenhaitran.com`.
 
 - Worker `yen-tran-member-library` đã deploy, lần cuối 05/10/2026. Mã đang chạy khớp logic với `src/index.js` (so sau khi đóng gói bằng esbuild).
 - Ba route ở trên đều trỏ vào Worker này và phản hồi đúng trên web thật.
-- Binding hiện có: chỉ `DB` → D1 `yen-tran-members` (production, 5 bảng). Chưa truy vấn dữ liệu.
-- **R2 chưa được bật trên tài khoản**, Worker chưa có binding `MEMBER_FILES`. Đăng nhập hoạt động; mở/tải tài liệu (`src/index.js` dòng gọi `env.MEMBER_FILES.get`/`.put`) sẽ lỗi cho tới khi bật R2, tạo bucket và deploy lại có binding.
+- Binding: `DB` → D1 `yen-tran-members` (production, 5 bảng; chưa truy vấn dữ liệu) và, từ 20/11/2026, `MEMBER_FILES` → R2 `yen-tran-member-files`.
+- R2 bật ngày 20/11/2026. Bucket `yen-tran-member-files`: lớp Standard, vị trí APAC, **private** (r2.dev tắt, không có custom domain), ban đầu rỗng.
+- Binding R2 được thêm bằng API cập nhật settings của Worker, không tải lại mã: mã đang chạy giống hệt bản trước (05/10/2026), 3 route giữ nguyên. Kiểm tra sau thay đổi: `/member-api/session` và `/member-api/documents` trả 401 khi chưa đăng nhập, hai trang cũ vẫn 301.
+- Bước tiếp theo: owner đăng nhập `members-admin.html` để tải tài liệu lên R2. Không đặt tài liệu nội bộ trong GitHub.
 
 ## Kích hoạt
 
