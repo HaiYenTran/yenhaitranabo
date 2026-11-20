@@ -18,7 +18,7 @@ Ngày lập: 18/11/2026; cập nhật 20/11/2026 với kết quả kiểm tra Cl
 |---|---|---|
 | Website tĩnh / GitHub Pages | Workflow "pages build and deployment" chạy thành công trên `main` (commit d236d31); file CNAME chứa yenhaitran.com | Chưa xem trực tiếp Settings → Pages; kiểm tra trước khi thay luồng deploy |
 | DNS (Cloudflare) | Zone `yenhaitran.com` active, gói Free, nameserver Cloudflare. 4 bản ghi A về IP GitHub Pages (185.199.108–111.153) và `www` CNAME `haiyentran.github.io`, tất cả bật proxy | Không đổi DNS để xử lý cache thông thường |
-| SSL/TLS | Chế độ SSL `Full`. Ngày 20/11/2026: Always Use HTTPS **tắt**, TLS tối thiểu **1.0**; chủ website đã quyết định bật HTTPS bắt buộc và nâng TLS 1.2 (chờ thao tác trên Dashboard) | Kiểm tra lại qua API sau khi đổi |
+| SSL/TLS | Chế độ SSL `Full`. Ngày 20/11/2026 chủ website đã bật Always Use HTTPS và nâng TLS tối thiểu lên **1.2** (xác minh qua API); TLS 1.3 bật. Website vẫn phản hồi bình thường sau thay đổi | Không hạ TLS tối thiểu khi chưa có lý do cụ thể |
 | Tên miền (nhà đăng ký) | Chưa xác định nhà đăng ký, ngày hết hạn, tự gia hạn. Không suy ra từ việc dùng DNS Cloudflare | Chủ tài khoản kiểm tra Domain Registration trên Cloudflare hoặc hóa đơn mua tên miền |
 | CI | `.github/workflows/site-quality.yml` chạy Node 20 và prepublish QA trên PR/push main | Giữ kiểm tra này; nó không phải cấu hình triển khai Pages |
 | Worker thành viên `yen-tran-member-library` | Đang chạy; 3 route trên yenhaitran.com; binding `DB`; workers.dev tắt; mã khớp repo. Chi tiết: `workers/member-library/README.md` | Deploy cần token quyền ghi; không deploy khi chưa được yêu cầu |
