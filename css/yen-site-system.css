@@ -130,6 +130,11 @@ body.yt-unified .yt-content-card:hover {
   transform: translateY(-3px);
 }
 
+.yt-table-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+.yt-table-scroll > table { margin-bottom: 0; }
+.yt-table-scroll:focus-visible { outline: 3px solid #f2bf66; outline-offset: 3px; }
+.yt-long-link { overflow-wrap: anywhere; word-break: break-word; }
+
 .yt-contact-strip {
   box-sizing: border-box;
   width: min(1080px, calc(100% - 36px));
