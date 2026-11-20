@@ -95,6 +95,9 @@
         .lightbox-bg.active {
             display: flex;
         }
+        .lightbox-close{position:fixed;top:18px;right:22px;z-index:10001;width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:#173f35;font-size:1.7rem;line-height:1;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,.25)}
+        .lightbox-close:hover,.lightbox-close:focus-visible{background:#dff7ee;outline:3px solid #f2bf66;outline-offset:3px}
+        @media (max-width:600px){.lightbox-close{top:12px;right:12px}}
         .lightbox-img-wrap {
             max-width: 92vw;
             max-height: 92vh;
@@ -182,7 +185,11 @@
             .lightbox-img {max-width: 99vw;}
             #passwordBox {padding: 17px 7vw;}
         }
-    </style>
+    
+        #passwordBox{position:relative}
+        .gate-exit{position:absolute;top:8px;right:8px;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;color:#4a5550;font-size:28px;line-height:1;text-decoration:none}
+        .gate-exit:hover,.gate-exit:focus-visible{background:#0000000f;outline:2px solid #00b897;outline-offset:2px}
+</style>
 
   <link rel="stylesheet" href="/css/yen-site-system.css">
 
@@ -244,6 +251,7 @@
 <body>
     <div id="passwordOverlay">
         <form id="passwordBox" onsubmit="return false;">
+            <a class="gate-exit" id="gateExit" href="pages/showcase/ffit_gallery.html" aria-label="Đóng và quay lại thư viện ảnh F.FIT" title="Đóng">&times;</a>
             <h2>Bảo mật: Vui lòng nhập mật khẩu để truy cập</h2>
             <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autofocus />
             <br>
@@ -267,7 +275,8 @@
         </div>
     </div>
     <!-- Lightbox for viewing big images -->
-    <div class="lightbox-bg" id="lightboxBg" tabindex="-1">
+    <div class="lightbox-bg" id="lightboxBg" tabindex="-1" role="dialog" aria-modal="true" aria-label="Xem ảnh Mentor F.FIT">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Đóng ảnh" title="Đóng">&times;</button>
         <div class="lightbox-img-wrap">
             <img src="" alt="Mentor F.FIT Slide lớn" class="lightbox-img" id="lightboxImg" decoding="async">
             <div class="lightbox-caption" id="lightboxCaption"></div>
@@ -278,6 +287,12 @@
         // Kiểm tra quyền truy cập
         // Password overlay logic
         const overlay = document.getElementById('passwordOverlay');
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.style.display !== 'none') {
+            e.preventDefault();
+            window.location.href = document.getElementById('gateExit').href;
+        }
+    });
         const mainContent = document.getElementById('mainContent');
         const input = document.getElementById('passwordInput');
         const submitBtn = document.getElementById('submitBtn');
@@ -345,10 +360,10 @@
                 lightboxCaption.textContent = e.target.alt + " (#" + e.target.getAttribute('data-num') + ")";
                 lightboxBg.classList.add('active');
                 document.body.style.overflow = "hidden";
-                lightboxBg.focus();
+                document.getElementById('lightboxClose').focus();
             }
-            // đóng khi click ra ngoài
-            if (e.target === lightboxBg) {
+            // đóng khi click ra ngoài hoặc bấm nút đóng
+            if (e.target === lightboxBg || e.target.id === 'lightboxClose') {
                 lightboxBg.classList.remove('active');
                 document.body.style.overflow = "";
             }

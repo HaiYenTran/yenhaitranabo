@@ -84,7 +84,11 @@
             h1{font-size:1.13em;}
             .youtube-link .youtube-btn {padding: 11px 10vw 11px 12px; font-size: 1em;}
         }
-    </style>
+    
+        #passwordBox{position:relative}
+        .gate-exit{position:absolute;top:8px;right:8px;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;color:#4a5550;font-size:28px;line-height:1;text-decoration:none}
+        .gate-exit:hover,.gate-exit:focus-visible{background:#0000000f;outline:2px solid #00b897;outline-offset:2px}
+</style>
     <!-- Font Awesome icon (YouTube icon) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 
@@ -114,6 +118,7 @@
 <body>
 <div id="passwordOverlay">
     <form id="passwordBox" onsubmit="return false;">
+            <a class="gate-exit" id="gateExit" href="pages/showcase/demoSanPham.html" aria-label="Đóng và quay lại trang demo sản phẩm" title="Đóng">&times;</a>
         <h2>Bảo mật: Nhập mật khẩu để xem nội dung</h2>
         <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." autofocus />
         <br>
@@ -189,6 +194,12 @@
 <script>
     // Kiểm tra quyền truy cập
     const overlay = document.getElementById('passwordOverlay');
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.style.display !== 'none') {
+            e.preventDefault();
+            window.location.href = document.getElementById('gateExit').href;
+        }
+    });
     const mainContent = document.getElementById('mainContent');
     const input = document.getElementById('passwordInput');
     const submitBtn = document.getElementById('submitBtn');

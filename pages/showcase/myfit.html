@@ -70,12 +70,14 @@
         }
         .gallery-item:hover { box-shadow: 0 8px 40px #71c6856e; border-color:#5ad770;}
         .gallery-item img:hover { transform: scale(1.04);}
-        #imgModal { display: none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.77); align-items:center; justify-content:center; z-index: 99;}
+        #imgModal { display: none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.77); align-items:center; justify-content:center; z-index: 10001;}
         #imgModal img { max-width: 95vw; max-height: 90vh; border-radius:14px; box-shadow:0 8px 32px #555;}
         #imgModal .close-modal {
             position:absolute; top:2.5%; right:3.5%;
             font-size: 2.2em; color: #fff; cursor: pointer; font-weight: bold; z-index: 999;
+            width: 48px; height: 48px; border: 0; border-radius: 50%; background: rgba(0,0,0,.35); line-height: 1;
         }
+        #imgModal .close-modal:hover, #imgModal .close-modal:focus-visible { background: rgba(0,0,0,.6); outline: 3px solid #fff; outline-offset: 2px; }
         .desc-blk {
             background: linear-gradient(90deg, #d6ffd9, #eafef3 90%);
             border-radius: 18px;
@@ -175,7 +177,11 @@
         @media (max-width: 700px) {
             #passwordBox {padding: 17px 7vw;}
         }
-    </style>
+    
+        #passwordBox{position:relative}
+        .gate-exit{position:absolute;top:8px;right:8px;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;color:#4a5550;font-size:28px;line-height:1;text-decoration:none}
+        .gate-exit:hover,.gate-exit:focus-visible{background:#0000000f;outline:2px solid #00b897;outline-offset:2px}
+</style>
 
   <link rel="stylesheet" href="/css/yen-site-system.css">
 
@@ -238,6 +244,7 @@
     <!-- Password Overlay -->
     <div id="passwordOverlay">
         <form id="passwordBox" onsubmit="return false;">
+            <a class="gate-exit" id="gateExit" href="pages/showcase/ffit_gallery.html" aria-label="Đóng và quay lại thư viện ảnh F.FIT" title="Đóng">&times;</a>
             <h1>Bảo mật: Nhập mật khẩu để truy cập</h1>
             <input type="password" id="passwordInput" placeholder="Nhập mật khẩu..." aria-label="Mật khẩu truy cập" autofocus />
             <br>
@@ -298,8 +305,8 @@
     </div>
 
     <!-- Modal hiển thị ảnh lớn -->
-    <div id="imgModal" onclick="this.style.display='none'">
-        <span class="close-modal" onclick="document.getElementById('imgModal').style.display='none';event.stopPropagation()">&times;</span>
+    <div id="imgModal" role="dialog" aria-modal="true" aria-label="Xem ảnh lớn" onclick="this.style.display='none'">
+        <button class="close-modal" type="button" aria-label="Đóng ảnh" title="Đóng" onclick="document.getElementById('imgModal').style.display='none';event.stopPropagation()">&times;</button>
         <img id="modalImg" src="" alt="Ảnh lớn" decoding="async">
     </div>
 
@@ -307,6 +314,12 @@
     <script>
         // Kiểm tra quyền truy cập
         const overlay = document.getElementById('passwordOverlay');
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.style.display !== 'none') {
+            e.preventDefault();
+            window.location.href = document.getElementById('gateExit').href;
+        }
+    });
         const mainContent = document.getElementById('mainContent');
         const input = document.getElementById('passwordInput');
         const submitBtn = document.getElementById('submitBtn');
@@ -347,6 +360,7 @@
                 img.onclick = function(ev){
                     document.getElementById('modalImg').src = this.src;
                     document.getElementById('imgModal').style.display = 'flex';
+                    document.querySelector('#imgModal .close-modal').focus();
                     ev.stopPropagation();
                 }
                 wrap.appendChild(img);
@@ -362,6 +376,10 @@
 
         document.getElementById('imgModal').onclick = function(){ this.style.display='none'; };
         document.getElementById('modalImg').onclick = function(ev){ ev.stopPropagation(); }
+        document.addEventListener('keydown', function (e) {
+            var modal = document.getElementById('imgModal');
+            if (e.key === 'Escape' && modal.style.display === 'flex') modal.style.display = 'none';
+        });
     </script>
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/0e2498450d.js" crossorigin="anonymous"></script>
