@@ -1,0 +1,7 @@
+{
+  "name": "momoshare-contact",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-09-22",
+  "workers_dev": true
+  // Secret TELEGRAM_BOT_TOKEN và TELEGRAM_CHAT_ID đặt bằng `wrangler secret put`, không ghi vào file này.
+}

@@ -129,4 +129,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 workers/member-library/wrangler.jsonc
+workers/momoshare-contact/wrangler.jsonc
 .wrangler/

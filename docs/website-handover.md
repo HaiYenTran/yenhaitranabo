@@ -1,6 +1,6 @@
 # Bàn giao website yenhaitran.com
 
-Ngày lập: 18/11/2026. Dành cho Claude Code hoặc người tiếp quản. Tài liệu này dựa trên mã nguồn đã đọc và kết quả triển khai trong phiên làm việc; không phải bản kiểm toán toàn bộ hạ tầng. Quy tắc làm việc tại `../CLAUDE.md`.
+Ngày lập: 18/11/2026; cập nhật 20/11/2026 với kết quả kiểm tra Cloudflare chỉ đọc (mục 2, 7, 8). Dành cho Claude Code hoặc người tiếp quản. Tài liệu này dựa trên mã nguồn đã đọc và kết quả triển khai trong phiên làm việc; không phải bản kiểm toán toàn bộ hạ tầng. Quy tắc làm việc tại `../CLAUDE.md`.
 
 ## 1. Repo và trạng thái bàn giao
 
@@ -16,12 +16,17 @@ Ngày lập: 18/11/2026. Dành cho Claude Code hoặc người tiếp quản. T�
 
 | Thành phần | Bằng chứng/trạng thái | Cách tiếp quản |
 |---|---|---|
-| Website tĩnh / GitHub Pages | Đã push main, kiểm tra API Pages build và URL công khai trong phiên; file CNAME chứa yenhaitran.com | Kiểm tra Settings → Pages và Actions trước khi thay luồng deploy |
-| Tên miền HTTPS | Website đã phản hồi tại https://yenhaitran.com; các lần kiểm tra thấy header Cloudflare | Xác minh DNS, proxy, SSL và tài khoản quản lý trong Cloudflare; chưa xác minh registrar/ngày gia hạn |
+| Website tĩnh / GitHub Pages | Workflow "pages build and deployment" chạy thành công trên `main` (commit d236d31); file CNAME chứa yenhaitran.com | Chưa xem trực tiếp Settings → Pages; kiểm tra trước khi thay luồng deploy |
+| DNS (Cloudflare) | Zone `yenhaitran.com` active, gói Free, nameserver Cloudflare. 4 bản ghi A về IP GitHub Pages (185.199.108–111.153) và `www` CNAME `haiyentran.github.io`, tất cả bật proxy | Không đổi DNS để xử lý cache thông thường |
+| SSL/TLS | Chế độ SSL `Full`. Ngày 20/11/2026: Always Use HTTPS **tắt**, TLS tối thiểu **1.0**; chủ website đã quyết định bật HTTPS bắt buộc và nâng TLS 1.2 (chờ thao tác trên Dashboard) | Kiểm tra lại qua API sau khi đổi |
+| Tên miền (nhà đăng ký) | Chưa xác định nhà đăng ký, ngày hết hạn, tự gia hạn. Không suy ra từ việc dùng DNS Cloudflare | Chủ tài khoản kiểm tra Domain Registration trên Cloudflare hoặc hóa đơn mua tên miền |
 | CI | `.github/workflows/site-quality.yml` chạy Node 20 và prepublish QA trên PR/push main | Giữ kiểm tra này; nó không phải cấu hình triển khai Pages |
-| Cloudflare Worker thành viên | Có mã nguồn, migration, package và cấu hình mẫu | Chưa xác minh trạng thái Worker production, binding hoặc quyền tài khoản trong lần bàn giao này |
-| D1 và R2 | Cấu hình mẫu khai báo D1 `yen-tran-members`, R2 `yen-tran-member-files` | Không suy ra tài nguyên đã tạo hoặc dữ liệu đã tải; kiểm tra dashboard/CLI sau đăng nhập |
-| Backend form, analytics, các tích hợp khác | Có triển khai trong mã trang và hệ thống dùng chung | Chưa kiểm thử toàn bộ endpoint hay quyền quản trị; tra vị trí gọi trước khi sửa |
+| Worker thành viên `yen-tran-member-library` | Đang chạy; 3 route trên yenhaitran.com; binding `DB`; workers.dev tắt; mã khớp repo. Chi tiết: `workers/member-library/README.md` | Deploy cần token quyền ghi; không deploy khi chưa được yêu cầu |
+| D1 `yen-tran-members` | Production, 5 bảng, ~72 KB. Chưa truy vấn dữ liệu, chưa kiểm tra backup/Time Travel | Không chạy migration remote khi chưa có kế hoạch backup |
+| R2 | **Chưa bật trên tài khoản**; bucket `yen-tran-member-files` chưa tồn tại. Chủ website muốn dùng nếu nằm trong gói miễn phí | Bật R2 trên Dashboard → tạo bucket private → deploy lại Worker thành viên có binding `MEMBER_FILES` |
+| Worker form liên hệ `momoshare-contact` | Đang chạy qua `*.workers.dev`, gửi form `contact.html` sang Telegram; mã sao lưu tại `workers/momoshare-contact/` | Mã từng chỉ sửa trên Dashboard; so sánh bản chạy với repo trước khi sửa |
+| Analytics | Cloudflare Web Analytics bật (tự cài beacon). Zaraz bật nhưng chỉ có 1 công cụ Custom HTML đặt `window.yenZarazReady=true`; **không có công cụ nào nhận sự kiện `zaraz.track()`** từ `js/yen-site-system.js` | Chọn đích nhận sự kiện (vd. GA4) hoặc chấp nhận chỉ dùng Web Analytics |
+| Search Console | Repo có file xác minh `google736698dcc33cd215.html`; DNS không có bản ghi xác minh Google. Chưa biết tài khoản sở hữu | Chủ tài khoản Google kiểm tra |
 
 Không cần chuyển host hoặc đổi nameserver để đổi công cụ AI. GitHub, Cloudflare và nhà đăng ký tên miền vẫn là các dịch vụ riêng của chủ website.
 
@@ -39,6 +44,7 @@ Không cần chuyển host hoặc đổi nameserver để đổi công cụ AI. 
 - `js/access-gate.js`: kiểm tra cổng mật khẩu phía client. Không ghi lại giá trị mật khẩu hoặc digest vào tài liệu bàn giao.
 - `members.html`, `members-login.html`, `members-admin.html`, `js/member-auth.js`, `js/member-portal.js`: giao diện khu vực thành viên.
 - `workers/member-library/`: backend thành viên; đọc README và mã thực tế, vì hướng dẫn cũ có thể chưa bao quát các thay đổi mới.
+- `workers/momoshare-contact/`: sao lưu nguyên văn Worker form liên hệ (Telegram) đang chạy; đọc README trước khi sửa hoặc deploy.
 - `sitemap.xml`, `robots.txt`, `CNAME`: chỉ mục và tên miền.
 - `docs/content-inventory.md`, `docs/content-inventory.csv`: kiểm kê nội dung; kiểm tra độ mới trước khi dùng làm nguồn chân lý.
 - `docs/cloudflare-bulk-redirects.csv`: dữ liệu redirect; sự tồn tại file không chứng minh đã import vào Cloudflare.
@@ -117,6 +123,8 @@ Khôi phục website tĩnh: xác định commit gây lỗi, xem diff và dùng c
 
 Đọc `workers/member-library/README.md`, `src/index.js`, `migrations/` và `wrangler.jsonc.example`. Cấu hình mẫu có Worker `yen-tran-member-library`, binding `DB` và `MEMBER_FILES`, route `/member-api/*` cùng các route cụ thể `/about.html`, `/hanh-trinh-song-khoe-chu-dong.html`. Xác minh cấu hình thực tế trước khi sửa; deploy Worker có thể ảnh hưởng các URL này.
 
+Trạng thái đã đọc qua API ngày 20/11/2026: Worker đang chạy với đúng ba route trên và binding `DB`; R2 chưa bật nên chưa có `MEMBER_FILES` (xem `workers/member-library/README.md`).
+
 Mã hiện có xử lý login/logout/session, danh sách/nội dung tài liệu và API quản trị thành viên/tài liệu. Có cơ chế xác thực backend, session và lưu tài liệu R2; không suy ra tài khoản hoặc file production đã được provision từ mã nguồn.
 
 Các script được khai báo trong package của Worker:
@@ -134,13 +142,17 @@ Các script được khai báo trong package của Worker:
 
 Claude cần quyền GitHub để push/xem Pages; quyền Cloudflare để quản lý Worker, DNS, D1, R2; quyền nhà đăng ký tên miền cho gia hạn nếu khác Cloudflare. Dùng đăng nhập chính thức hoặc quyền tối thiểu phù hợp; không chuyển token qua file Markdown. Quyền từng có ở Codex không bảo đảm Claude đã có trong môi trường mới.
 
-Chưa xác minh trong lần bàn giao này:
+Quyền hiện có (20/11/2026): một API token Cloudflare **chỉ đọc** do chủ website tạo, lưu dưới dạng network secret của môi trường Claude Code (không nằm trong repo hay hội thoại). Quyền gồm đọc zone/DNS/Workers Routes/Zone Settings của `yenhaitran.com` và đọc Workers Scripts/D1/Account Settings. Không có quyền ghi, Registrar hay R2. Khi cần thay đổi, chủ website cấp tạm quyền Edit tương ứng rồi gỡ lại sau khi xong.
+
+Đã xác minh ngày 20/11/2026: không có cron trên hai Worker; Email Routing của zone chưa cấu hình.
+
+Chưa xác minh:
 
 - Nhà đăng ký, ngày hết hạn và chế độ tự gia hạn tên miền.
-- Toàn bộ DNS, SSL, redirect/Access rules và thiết lập cache hiện hành.
-- Worker nào thực sự đang deploy, D1/R2 nào đang active, trạng thái backup và file nội bộ.
-- Quyền và hoạt động của analytics, Search Console, Telegram/form, các tài khoản quản trị.
-- Có automation định kỳ ngoài repo nào đang hoạt động hay không; chúng không tự chuyển theo Git.
+- Redirect/Bulk Redirects, cache, WAF/Access rules (chưa có quyền đọc); `docs/cloudflare-bulk-redirects.csv` chưa được đối chiếu với Cloudflare.
+- Dữ liệu và trạng thái backup/Time Travel của D1.
+- Tài khoản sở hữu Search Console; bot Telegram ngoài Worker form.
+- Automation ngoài Cloudflare (Zapier, Make, Apps Script…); không thấy không có nghĩa là không có.
 
 Hạn chế cần biết: PDF Khát vọng trăm năm lớn và từng được GitHub cảnh báo vượt mức kích thước khuyến nghị 50 MB (push vẫn thành công). Có thể tối ưu có chủ đích sau này, phải giữ khả năng đọc và kiểm tra chất lượng; không tự thay file gốc chỉ để giảm dung lượng.
 
