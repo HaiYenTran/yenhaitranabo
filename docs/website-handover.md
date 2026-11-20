@@ -53,7 +53,7 @@ Không cần chuyển host hoặc đổi nameserver để đổi công cụ AI. 
 
 ## 4. Chuẩn nội dung được chuyển từ kỹ năng riêng
 
-Các quy tắc chính đã chép vào CLAUDE.md để Claude không cần truy cập `~/.codex/skills`. Cấu trúc nội dung: Trang chủ; Sống khỏe; Góc chủ động & câu chuyện; Khám phá (sách/sản phẩm số/sự kiện); Liên hệ. Chọn một nhóm chính cho mỗi trang.
+Ngày 20/11/2026: đã chuyển đầy đủ quy trình và hai tài liệu tham chiếu sang `.claude/skills/yen-tran-website-content/`. Claude có thể gọi `/yen-tran-website-content`; không cần truy cập `~/.codex/skills`. Bản chuyển đổi giữ chuẩn nội dung gốc, thêm hướng dẫn dùng trong repo và cập nhật hai sách mới. Metadata giao diện riêng của OpenAI (`agents/openai.yaml`) không cần cho Claude nên không đưa sang. Quy tắc cấp cao vẫn ở CLAUDE.md. Bản đồ dưới đây là ảnh chụp lúc bàn giao; khi cập nhật chủ đề, duy trì bản đồ trong `references/keyword-map.md` của skill. Cấu trúc nội dung: Trang chủ; Sống khỏe; Góc chủ động & câu chuyện; Khám phá (sách/sản phẩm số/sự kiện); Liên hệ. Chọn một nhóm chính cho mỗi trang.
 
 Hành trình mong muốn: đọc nội dung → dùng công cụ/tài nguyên → gửi kết quả hoặc đăng ký tư vấn → Yến phản hồi. Chọn một CTA cuối phù hợp; với trang sách hiện tại là mở trình đọc. Không thêm nhiều lời mời cạnh tranh.
 

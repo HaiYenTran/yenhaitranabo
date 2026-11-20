@@ -2,6 +2,10 @@
 
 Đọc `docs/website-handover.md` trước khi thay đổi kiến trúc, hosting, quyền truy cập hoặc xuất bản. Đây là website đang hoạt động của Yến Trần, repo `HaiYenTran/yenhaitranabo`.
 
+## Skill nội dung website
+
+Dùng `.claude/skills/yen-tran-website-content/SKILL.md` cho yêu cầu viết, sửa, review hoặc xuất bản nội dung yenhaitran.com. Có thể gọi `/yen-tran-website-content`. Đọc các tài liệu `references/` của skill theo quy trình trong đó; bản đồ từ khóa trong skill là nơi cập nhật khi thay đổi phân công chủ đề. Skill không cung cấp quyền tài khoản hoặc tự cấp quyền xuất bản.
+
 ## Cách phối hợp
 
 - Trao đổi bằng tiếng Việt, ngắn gọn, nêu kết quả và giới hạn kiểm chứng.
